@@ -55,7 +55,7 @@ export default function InsightsHero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="group inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-white px-5 py-2.5 border border-white/50 rounded-[6px] text-sm font-normal transition-all duration-300"
+            className="group inline-flex items-center gap-2 bg-transparent hover:bg-[#C9184A] text-white px-5 py-2.5 border border-[#C9184A] rounded-[6px] text-sm font-normal transition-all duration-300"
           >
             Latest News
             <ArrowUpRight size={18} strokeWidth={1.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

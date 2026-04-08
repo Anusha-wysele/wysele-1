@@ -154,7 +154,7 @@ export default function GetInTouch() {
                             disabled={!form.confirm}
                             className={`mt-5 group border px-8 py-3 rounded-[6px] text-[1.1rem] font-normal transition-all duration-300 inline-flex items-center justify-center gap-2 self-start overflow-hidden ${
                                 form.confirm 
-                                    ? "border-white/50 hover:border-[#C9184A] bg-transparent hover:bg-[#C9184A] text-white cursor-pointer" 
+                                    ? "border-[#C9184A] bg-transparent hover:bg-[#C9184A] text-white cursor-pointer" 
                                     : "border-white/20 bg-transparent text-white/40 cursor-not-allowed"
                             }`}
                         >
