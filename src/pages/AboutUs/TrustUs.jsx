@@ -29,7 +29,7 @@ const tabs = ["Technology", "Development", "Research"];
 const BAR_COLORS = {
     finances: "#c9dbd8",
     economy: "#8db8b2",
-    investment: "#C9184A", // Updated to brand color
+    investment: "#1e2d3d",
 };
 
 const LEGEND = [
@@ -90,7 +90,7 @@ export default function TrustUs() {
           justify-content: center;
           min-height: auto;
           background: #ffffff;
-          padding: 60px 48px;
+          padding: 60px 48px 20px 48px;
         }
 
         .bc-card {

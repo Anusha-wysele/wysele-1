@@ -38,25 +38,25 @@ const SimnStats = () => {
 
     const stats = [
         {
-            icon: <TrainRegional size={28} weight="thin" className="text-gray-700" />,
+            icon: <TrainRegional size={24} weight="thin" className="text-gray-700" />,
             value: "25",
             suffix: "+",
             label: "Happy Clients & Growing"
         },
         {
-            icon: <Headset size={28} weight="thin" className="text-gray-700" />,
+            icon: <Headset size={24} weight="thin" className="text-gray-700" />,
             value: "20000",
             suffix: "+",
             label: "Hours of Monthly Support"
         },
         {
-            icon: <HeadCircuit size={28} weight="thin" className="text-gray-700" />,
+            icon: <HeadCircuit size={24} weight="thin" className="text-gray-700" />,
             value: "60",
             suffix: "+",
             label: "Skilled Consultants"
         },
         {
-            icon: <HandFist size={28} weight="thin" className="text-gray-700" />,
+            icon: <HandFist size={24} weight="thin" className="text-gray-700" />,
             value: "25",
             suffix: "+",
             label: "Years Leadership"
@@ -102,60 +102,60 @@ const SimnStats = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="py-16 md:py-24 bg-white overflow-hidden">
+        <section ref={sectionRef} className="pb-8 md:pb-12 pt-0 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 
                 {/* Operating Locations Section */}
-                <div className="text-center mb-12 md:mb-20 space-y-6">
-                    <div className="flex flex-col items-center justify-center gap-4">
-                        <MapPinSimpleArea size={40} weight="thin" className="text-red-600" />
-                        <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-gray-500">Operating Locations</h2>
+                <div className="text-center mb-6 md:mb-10 space-y-4">
+                    <div className="flex flex-col items-center justify-center gap-2">
+                        <MapPinSimpleArea size={32} weight="thin" className="text-red-600" />
+                        <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500">Operating Locations</h2>
                     </div>
-                    <div className="w-16 h-0.5 bg-red-600 mx-auto"></div>
-                    <h3 className="text-3xl md:text-5xl font-light text-gray-900 max-w-4xl mx-auto leading-tight tracking-tight">
-                        Our Global Presence: Driving Innovation Worldwide
+                    <div className="w-12 h-0.5 bg-red-600 mx-auto"></div>
+                    <h3 className="text-2xl md:text-4xl font-light text-gray-900 max-w-4xl mx-auto leading-tight tracking-tight">
+                        Our Global Presence
                     </h3>
-                    <p className="text-gray-600 text-[15px] md:text-base leading-relaxed max-w-4xl mx-auto font-light">
-                        Our strategic locations form the foundation of our worldwide reach, empowering us to provide seamless services and support to clients globally. From our headquarters in India to our regional office in the USA, we ensure local expertise and around-the-clock support.
+                    <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed max-w-3xl mx-auto font-light">
+                        Our strategic locations form the foundation of our worldwide reach, empowering us to provide seamless services and support to clients globally.
                     </p>
                 </div>
 
                 {/* Location Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 md:mb-24 max-w-4xl mx-auto">
-                    <div className="bg-gray-50 p-8 md:p-10 rounded-2xl space-y-4 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                        <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-sm">
-                            <ShieldCheck className="w-6 h-6 text-red-600" strokeWidth={1.5} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 md:mb-10 max-w-4xl mx-auto">
+                    <div className="bg-gray-50 p-6 md:p-8 rounded-xl space-y-3 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <ShieldCheck className="w-5 h-5 text-red-600" strokeWidth={1.5} />
                         </div>
-                        <h4 className="text-xl font-semibold text-gray-900">India Headquarters</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed font-light">
-                            Situated in the heart of India, our main office drives innovation and manages core operations for our clients worldwide, serving as our primary R&D hub.
+                        <h4 className="text-lg font-semibold text-gray-900">India Headquarters</h4>
+                        <p className="text-gray-600 text-xs md:text-sm leading-relaxed font-light">
+                            Situated in the heart of India, our main office drives innovation and manages core operations for our clients worldwide.
                         </p>
                     </div>
-                    <div className="bg-gray-50 p-8 md:p-10 rounded-2xl space-y-4 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                        <div className="w-12 h-12 flex items-center justify-center bg-white rounded-full shadow-sm">
-                            <Building2 className="w-6 h-6 text-red-600" strokeWidth={1.5} />
+                    <div className="bg-gray-50 p-6 md:p-8 rounded-xl space-y-3 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <Building2 className="w-5 h-5 text-red-600" strokeWidth={1.5} />
                         </div>
-                        <h4 className="text-xl font-semibold text-gray-900">USA Regional Office</h4>
-                        <p className="text-gray-600 text-sm leading-relaxed font-light">
-                            Our US office supports North American clients, ensuring seamless communication, local project management, and strategic face-to-face collaboration.
+                        <h4 className="text-lg font-semibold text-gray-900">USA Regional Office</h4>
+                        <p className="text-gray-600 text-xs md:text-sm leading-relaxed font-light">
+                            Our US office supports North American clients, ensuring seamless communication and local project management.
                         </p>
                     </div>
                 </div>
 
                 {/* Grid Counters */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10 border-t border-gray-100 pt-16">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     {stats.map((stat, i) => (
                         <div
                             key={i}
-                            className="stat-card-simn p-6 flex flex-col items-center text-center space-y-4"
+                            className="stat-card-simn p-4 flex flex-col items-center text-center space-y-3"
                         >
                             {/* Icon */}
-                            <div className="p-4 bg-gray-50 rounded-full text-red-600">
+                            <div className="p-3 bg-gray-50 rounded-full text-red-600">
                                 {stat.icon}
                             </div>
 
                             <div className="space-y-1">
-                                <h3 className="text-3xl md:text-4xl lg:text-5xl font-light font-montserrat text-gray-900 tracking-tighter">
+                                <h3 className="text-2xl md:text-3xl lg:text-4xl font-light font-montserrat text-gray-900 tracking-tighter">
                                     <CountUpNumber 
                                         end={stat.value} 
                                         duration={2000} 
@@ -163,7 +163,7 @@ const SimnStats = () => {
                                         suffix={stat.suffix}
                                     />
                                 </h3>
-                                <p className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-montserrat font-bold text-gray-400">
+                                <p className="text-[9px] md:text-[10px] uppercase tracking-[0.3em] font-montserrat font-bold text-gray-400">
                                     {stat.label}
                                 </p>
                             </div>
