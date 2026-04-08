@@ -5,27 +5,27 @@ import { OTHER_PAGE_IMAGES } from '../../common/data';
 
 export default function InsightsHero() {
   return (
-    <section className="relative w-full py-20 flex items-center overflow-hidden bg-[#1a1a1a]">
-      {/* Background Image - We use an object-cover image placed to the right or full width with an overlay */}
+    <section className="relative w-full py-16 md:py-24 flex items-center overflow-hidden bg-[#1a1a1a] min-h-[400px] md:min-h-[500px]">
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
           src={OTHER_PAGE_IMAGES.insightsHero}
           alt="Desk Background" 
-          className="w-full h-full object-cover object-right opacity-60"
+          className="w-full h-full object-cover object-center md:object-right opacity-40 md:opacity-60"
         />
-        {/* Gradient overlay to ensure text readability on the left side */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111] via-[#111]/80 to-transparent"></div>
+        {/* Responsive Overlay: Darkness increases on mobile to ensure readability since text is centered over the image */}
+        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-[#111] via-[#111]/90 md:via-[#111]/80 to-transparent md:to-[#111]/20"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 relative z-10 flex">
-        {/* Left Content */}
-        <div className="w-full max-w-2xl text-left">
+      <div className="max-w-7xl mx-auto w-full px-6 lg:px-12 relative z-10">
+        {/* Centered on mobile, left-aligned on desktop */}
+        <div className="w-full max-w-2xl text-center md:text-left flex flex-col items-center md:items-start">
           <motion.h2 
             initial={{ opacity: 0, y: -40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-[54px] font-normal text-white leading-[1.1] tracking-tight mb-2 font-inter"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-normal text-white leading-[1.2] md:leading-[1.1] tracking-tight mb-2 font-inter"
           >
             Wysele Insights:<br />
             Fueling Innovation
@@ -45,7 +45,7 @@ export default function InsightsHero() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-gray-200 text-lg md:text-[17px] font-light leading-relaxed max-w-xl mb-10"
+            className="text-gray-200 text-base md:text-lg font-light leading-relaxed max-w-xl mb-10"
           >
             Explore real-world strategies, expert perspectives, and digital breakthroughs designed to shape the future of your enterprise.
           </motion.p>

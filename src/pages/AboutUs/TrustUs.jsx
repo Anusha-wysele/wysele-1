@@ -29,21 +29,21 @@ const tabs = ["Technology", "Development", "Research"];
 const BAR_COLORS = {
     finances: "#c9dbd8",
     economy: "#8db8b2",
-    investment: "#1e2d3d",
+    investment: "#C9184A", // Updated to brand color
 };
 
 const LEGEND = [
-    { key: "finances", label: "Finances" },
-    { key: "economy", label: "Economy" },
-    { key: "investment", label: "Investment" },
+    { key: "finances", label: "Strategy" },
+    { key: "economy", label: "Innovation" },
+    { key: "investment", label: "Success" },
 ];
 
 const Y_LABELS = [50, 40, 30, 20, 10, 0];
 
 const tabDescriptions = {
-    Technology: "We leverage the latest SAP S/4HANA innovations and cloud architectures to build a resilient, high-performance digital core for your enterprise. Our approach integrates real-time analytics and intelligent automation to ensure your infrastructure is future-proof and scalable at every growth stage.",
-    Development: "Our agile development team handles complex SAP customizations and full-scale migrations with precision, ensuring seamless business continuity. We specialize in bespoke application development and backend optimizations that bridge the gap between legacy systems and modern digital requirements.",
-    Research: "Through deep market analysis and feasibility studies, we craft strategic roadmaps that ensure your technology investments deliver measurable ROI. Every decision is backed by comprehensive data audits and competitive benchmarking to minimize risk and maximize long-term operational efficiency."
+    Technology: "We leverage the latest SAP S/4HANA innovations and cloud architectures to build a resilient, high-performance digital core for your enterprise. Our approach integrates real-time analytics and intelligent automation to ensure your infrastructure is future-proof.",
+    Development: "Our agile development team handles complex SAP customizations and full-scale migrations with precision. We specialize in bespoke application development and backend optimizations that bridge the gap between legacy systems and modern requirements.",
+    Research: "Through deep market analysis and feasibility studies, we craft strategic roadmaps that ensure your technology investments deliver measurable ROI. Every decision is backed by comprehensive data audits and competitive benchmarking."
 };
 
 export default function TrustUs() {
@@ -61,7 +61,7 @@ export default function TrustUs() {
                     observer.unobserve(entry.target);
                 }
             },
-            { threshold: 0.2 }
+            { threshold: 0.1 }
         );
 
         if (sectionRef.current) {
@@ -90,7 +90,7 @@ export default function TrustUs() {
           justify-content: center;
           min-height: auto;
           background: #ffffff;
-          padding: 30px 48px;
+          padding: 60px 48px;
         }
 
         .bc-card {
@@ -98,12 +98,12 @@ export default function TrustUs() {
           align-items: center;
           padding: 0;
           gap: 100px;
-          max-width: 960px;
+          max-width: 1100px;
           width: 100%;
         }
 
         .bc-left {
-          flex: 0 0 250px;
+          flex: 0 0 320px;
           display: flex;
           flex-direction: column;
           gap: 18px;
@@ -111,11 +111,11 @@ export default function TrustUs() {
 
         .bc-left h1 {
           font-family: 'DM Sans', sans-serif;
-          font-size: 17px;
+          font-size: 15px;
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.5em;
-          color: #003366;
+          color: #111;
           margin-bottom: 8px;
         }
 
@@ -129,65 +129,58 @@ export default function TrustUs() {
           margin-bottom: 24px;
         }
 
-        .bc-main-title span {
-          color: #c51e2d;
-          display: inline-block;
-          position: relative;
-        }
-
-        .bc-main-title span::after {
-          content: '';
-          position: absolute;
-          bottom: 4px;
-          left: 0;
-          width: 100%;
-          height: 6px;
-          background: rgba(249, 212, 35, 0.2);
-          z-index: -1;
-        }
-
         .bc-left p {
           font-weight: 300;
-          font-size: 14px;
+          font-size: 15px;
           color: #666;
-          line-height: 1.65;
+          line-height: 1.6;
         }
 
         .bc-right {
           flex: 1;
           display: flex;
           flex-direction: column;
-          gap: 24px;
+          gap: 32px;
+          min-width: 0;
         }
 
         .bc-tabs {
           display: flex;
-          gap: 8px;
+          gap: 12px;
+          flex-wrap: wrap;
         }
 
         .bc-tab {
           font-family: 'DM Sans', sans-serif;
-          font-weight: 400;
-          font-size: 13px;
-          color: #666;
-          padding: 6px 16px;
-          border-radius: 6px;
+          font-weight: 500;
+          font-size: 14px;
+          color: #777;
+          padding: 8px 18px;
+          border-radius: 8px;
           cursor: pointer;
-          background: transparent;
-          border: none;
-          transition: background 0.15s;
+          background: #f8f9fa;
+          border: 1px solid transparent;
+          transition: all 0.2s;
         }
         .bc-tab:hover { background: #f0f0f0; }
         .bc-tab.active {
-          background: #e5e5e5;
-          font-weight: 500;
+          background: #ffffff;
+          border-color: #eee;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
           color: #1a1a1a;
+        }
+
+        .bc-chart-container {
+           width: 100%;
+           overflow-x: auto;
+           padding-bottom: 10px;
         }
 
         .bc-chart-wrap {
           display: flex;
-          gap: 12px;
+          gap: 20px;
           align-items: flex-end;
+          min-width: 600px;
         }
 
         .bc-chart-area {
@@ -200,23 +193,23 @@ export default function TrustUs() {
           left: 0;
           top: 0;
           bottom: 26px;
-          width: 28px;
+          width: 32px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-end;
-          padding-right: 4px;
+          padding-right: 8px;
         }
 
         .bc-y-label {
           font-size: 11px;
-          font-weight: 300;
-          color: #999;
+          font-weight: 400;
+          color: #bbb;
           line-height: 1;
         }
 
         .bc-chart-inner {
-          margin-left: 34px;
+          margin-left: 40px;
           position: relative;
         }
 
@@ -230,7 +223,7 @@ export default function TrustUs() {
         }
 
         .bc-grid-line {
-          border-top: 1px solid #ebebeb;
+          border-top: 1px solid #f2f2f2;
           width: 100%;
         }
 
@@ -245,12 +238,12 @@ export default function TrustUs() {
         .bc-year-group {
           display: flex;
           align-items: flex-end;
-          gap: 4px;
+          gap: 6px;
         }
 
         .bc-bar {
-          width: 19px;
-          border-radius: 0;
+          width: 22px;
+          border-radius: 4px 4px 0 0;
           opacity: 0;
           transform: scaleY(0);
           transform-origin: bottom;
@@ -266,9 +259,6 @@ export default function TrustUs() {
             opacity: 0;
             transform: scaleY(0);
           }
-          50% {
-            opacity: 1;
-          }
           100% {
             opacity: 1;
             transform: scaleY(1);
@@ -278,52 +268,85 @@ export default function TrustUs() {
         .bc-x-labels {
           display: flex;
           justify-content: space-around;
-          margin-top: 8px;
+          margin-top: 12px;
+          padding-left: 40px;
         }
 
         .bc-x-label {
-          font-size: 12px;
-          font-weight: 300;
+          font-size: 13px;
+          font-weight: 500;
           color: #999;
           text-align: center;
-          width: 68px;
+          width: 80px;
         }
 
         .bc-legend {
           display: flex;
           flex-direction: column;
-          gap: 12px;
-          padding-left: 6px;
-          padding-bottom: 28px;
-          align-self: center;
+          gap: 16px;
+          margin-left: 20px;
+          padding-bottom: 35px;
         }
 
         .bc-legend-item {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-size: 13px;
-          font-weight: 300;
-          color: #555;
+          gap: 10px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #444;
           white-space: nowrap;
         }
 
         .bc-legend-dot {
-          width: 11px;
-          height: 11px;
-          border-radius: 50%;
+          width: 12px;
+          height: 12px;
+          border-radius: 3px;
           flex-shrink: 0;
         }
 
-        @media (max-width: 680px) {
+        @media (max-width: 1024px) {
+           .bc-card { gap: 40px; }
+           .bc-left { flex: 0 0 280px; }
+        }
+
+        @media (max-width: 900px) {
+          .bc-wrap { padding: 80px 30px; }
           .bc-card {
             flex-direction: column;
-            padding: 32px 24px;
-            gap: 32px;
+            align-items: flex-start;
           }
           .bc-left {
             flex: unset;
+            width: 100%;
+            max-width: 600px;
           }
+          .bc-right {
+             width: 100%;
+          }
+          .bc-legend {
+             flex-direction: row;
+             margin-left: 0;
+             padding-bottom: 0;
+             margin-top: 20px;
+             order: 3;
+          }
+          .bc-chart-wrap {
+             flex-direction: column;
+             align-items: flex-start;
+             min-width: unset;
+             height: auto;
+          }
+          .bc-chart-area {
+             width: 100%;
+          }
+        }
+
+        @media (max-width: 480px) {
+           .bc-wrap { padding: 60px 20px; }
+           .bc-bars { justify-content: space-between; }
+           .bc-year-group { gap: 3px; }
+           .bc-bar { width: 14px; }
         }
       `}</style>
 
@@ -333,7 +356,7 @@ export default function TrustUs() {
                     {/* LEFT CONTENT */}
                     <div className="bc-left">
                         <h1>Trust the process &amp; grow your business</h1>
-                        <p>{tabDescriptions[activeTab]}</p>
+                        <p className="font-light">{tabDescriptions[activeTab]}</p>
                     </div>
 
                     {/* RIGHT */}
@@ -353,59 +376,61 @@ export default function TrustUs() {
                         </div>
 
                         {/* CHART */}
-                        <div className="bc-chart-wrap" key={animationKey}>
-                            <div className="bc-chart-area">
+                        <div className="bc-chart-container" key={animationKey}>
+                            <div className="bc-chart-wrap">
+                                <div className="bc-chart-area">
 
-                                {/* Y-axis */}
-                                <div className="bc-y-axis">
-                                    {Y_LABELS.map((v) => (
-                                        <span key={v} className="bc-y-label">{v}</span>
-                                    ))}
-                                </div>
-
-                                {/* Grid + Bars */}
-                                <div className="bc-chart-inner">
-                                    <div className="bc-grid">
+                                    {/* Y-axis */}
+                                    <div className="bc-y-axis">
                                         {Y_LABELS.map((v) => (
-                                            <div key={v} className="bc-grid-line" />
+                                            <span key={v} className="bc-y-label">{v}</span>
                                         ))}
                                     </div>
 
-                                    <div className="bc-bars" style={{ height: CHART_HEIGHT }} key={`bars-${animationKey}`}>
-                                        {chartData.map((d, yearIdx) => (
-                                            <div key={d.year} className="bc-year-group">
-                                                {["finances", "economy", "investment"].map((key, barIdx) => (
-                                                    <div
-                                                        key={key}
-                                                        className={`bc-bar${inView ? " animate" : ""}`}
-                                                        style={{
-                                                            height: (d[key] / MAX) * CHART_HEIGHT,
-                                                            background: BAR_COLORS[key],
-                                                            "--delay": `${(yearIdx * 3 + barIdx) * 0.1}s`,
-                                                        }}
-                                                    />
-                                                ))}
-                                            </div>
+                                    {/* Grid + Bars */}
+                                    <div className="bc-chart-inner">
+                                        <div className="bc-grid">
+                                            {Y_LABELS.map((v) => (
+                                                <div key={v} className="bc-grid-line" />
+                                            ))}
+                                        </div>
+
+                                        <div className="bc-bars" style={{ height: CHART_HEIGHT }} key={`bars-${animationKey}`}>
+                                            {chartData.map((d, yearIdx) => (
+                                                <div key={d.year} className="bc-year-group">
+                                                    {["finances", "economy", "investment"].map((key, barIdx) => (
+                                                        <div
+                                                            key={key}
+                                                            className={`bc-bar${inView ? " animate" : ""}`}
+                                                            style={{
+                                                                height: (d[key] / MAX) * CHART_HEIGHT,
+                                                                background: BAR_COLORS[key],
+                                                                "--delay": `${(yearIdx * 3 + barIdx) * 0.1}s`,
+                                                            }}
+                                                        />
+                                                    ))}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* X-axis */}
+                                    <div className="bc-x-labels">
+                                        {chartData.map((d) => (
+                                            <span key={d.year} className="bc-x-label">{d.year}</span>
                                         ))}
                                     </div>
                                 </div>
 
-                                {/* X-axis */}
-                                <div className="bc-x-labels">
-                                    {chartData.map((d) => (
-                                        <span key={d.year} className="bc-x-label">{d.year}</span>
+                                {/* LEGEND */}
+                                <div className="bc-legend">
+                                    {LEGEND.map(({ key, label }) => (
+                                        <div key={key} className="bc-legend-item">
+                                            <span className="bc-legend-dot" style={{ background: BAR_COLORS[key] }} />
+                                            {label}
+                                        </div>
                                     ))}
                                 </div>
-                            </div>
-
-                            {/* LEGEND */}
-                            <div className="bc-legend">
-                                {LEGEND.map(({ key, label }) => (
-                                    <div key={key} className="bc-legend-item">
-                                        <span className="bc-legend-dot" style={{ background: BAR_COLORS[key] }} />
-                                        {label}
-                                    </div>
-                                ))}
                             </div>
                         </div>
 

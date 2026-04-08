@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Menu from "./Menu";
@@ -100,15 +100,15 @@ function MegaMenu({ type, open, scrolled }) {
       animate={open ? "visible" : "hidden"}
       exit="exit"
       variants={menuVariants}
-      className={`fixed top-[60px] left-0 w-full backdrop-blur-[32px] z-[1000] overflow-hidden ${
+      className={`fixed top-[60px] left-0 w-full backdrop-blur-[32px] z-[1000] overflow-y-auto max-h-[calc(100vh-60px)] ${
         !scrolled 
           ? "bg-[rgba(10,10,15,0.98)] border-t border-b border-t-white/5 border-b-white/10 text-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]" 
           : "bg-white/98 border-t border-b border-t-gray-900/5 border-b-gray-900/8 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-[60px] py-10 grid grid-cols-[1fr_320px] gap-[60px] items-start">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-10 lg:px-[60px] py-6 md:py-10 grid grid-cols-1 lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_320px] gap-6 lg:gap-[60px] items-start">
         {/* Main Links */}
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
           {data.map((col) => (
             <motion.div key={col.category} variants={itemVariants}>
               <div className="text-[11px] font-extrabold tracking-[2px] uppercase text-[#fbbf24] mb-5">
@@ -153,9 +153,9 @@ function MegaMenu({ type, open, scrolled }) {
           ))}
         </div>
 
-        {/* Featured Section */}
+        {/* Featured Section — hidden on small screens */}
         <motion.div 
-          className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden flex flex-col justify-end p-[30px] bg-[#111] border border-white/10"
+          className="hidden lg:flex relative w-full aspect-[4/5] rounded-3xl overflow-hidden flex-col justify-end p-[30px] bg-[#111] border border-white/10"
           initial={{ opacity: 0, x: 20 }}
           animate={open ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -237,7 +237,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`w-full pl-4 pr-4 h-[60px] flex items-center justify-between fixed top-0 z-[990] ${bgClass} ${hidden ? "-translate-y-full" : "translate-y-0"
+        className={`w-full px-4 sm:px-6 h-[60px] flex items-center justify-between fixed top-0 z-[990] ${bgClass} ${hidden ? "-translate-y-full" : "translate-y-0"
           } ${transitionClass}`}
         style={{
           borderBottom: "0.5px solid transparent",
@@ -254,10 +254,9 @@ export default function Navbar() {
           <Logo scrolled={scrolled} />
         </div>
 
-        <nav
-          className="hidden md:flex items-center gap-10 ml-auto"
-        >
-          <div className="flex items-center gap-2">
+        {/* Desktop nav links — hidden on mobile */}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-10 ml-auto">
+          <div className="flex items-center gap-1 lg:gap-2">
             {NAV_LINKS.map((link) => {
               const isActive = link.path ? location.pathname === link.path : openDrop === link.dropdown;
               const isHovered = hoveredLink === link.label;
@@ -282,7 +281,7 @@ export default function Navbar() {
                         window.scrollTo(0, 0);
                       }
                     }}
-                    className="text-sm font-medium transition px-3 py-2 rounded-lg flex items-center gap-1.5"
+                    className="text-sm font-medium transition px-2 lg:px-3 py-2 rounded-lg flex items-center gap-1.5"
                     style={{ color: textColor }}
                   >
                     {link.label}
@@ -295,101 +294,24 @@ export default function Navbar() {
                   <motion.div
                     initial={false}
                     animate={{ 
-                      width: (isActive || isHovered) ? "calc(100% - 24px)" : "0%" 
+                      width: (isActive || isHovered) ? "calc(100% - 16px)" : "0%" 
                     }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute bottom-1 left-3 h-[1.5px] bg-[#4BDE7B]"
+                    className="absolute bottom-1 left-2 lg:left-3 h-[1.5px] bg-[#4BDE7B]"
                   />
                 </div>
               );
             })}
           </div>
-          {/* 2-line menu icon — visible on all screens */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            onMouseEnter={() => setHoveredLink("menuIcon")}
-            onMouseLeave={() => setHoveredLink(null)}
-            className="transition flex flex-col justify-center items-center ml-2 w-10 h-10 relative group"
-            style={{ color: textColor }}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            <div className="relative w-7 h-5 overflow-hidden">
-              <span
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  top: menuOpen ? "50%" : "30%",
-                  width: "100%",
-                  height: "1.5px",
-                  background: "currentColor",
-                  transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: menuOpen
-                    ? "rotate(45deg) translateY(-50%)"
-                    : `translateY(-50%) translateX(${!menuOpen && hoveredLink === "menuIcon" ? "100%" : "0"})`,
-                  opacity: !menuOpen && hoveredLink === "menuIcon" ? 0 : 1,
-                }}
-              />
-              {!menuOpen && (
-                <span
-                  style={{
-                    position: "absolute",
-                    left: "-100%",
-                    top: "30%",
-                    width: "100%",
-                    height: "1.5px",
-                    background: "currentColor",
-                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: `translateY(-50%) translateX(${hoveredLink === "menuIcon" ? "100%" : "0"})`,
-                    opacity: hoveredLink === "menuIcon" ? 1 : 0,
-                  }}
-                />
-              )}
-
-              <span
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  bottom: menuOpen ? "50%" : "30%",
-                  width: "100%",
-                  height: "1.5px",
-                  background: "currentColor",
-                  transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transitionDelay: !menuOpen && hoveredLink === "menuIcon" ? "0.1s" : "0s",
-                  transform: menuOpen
-                    ? "rotate(-45deg) translateY(50%)"
-                    : `translateY(50%) translateX(${!menuOpen && hoveredLink === "menuIcon" ? "100%" : "0"})`,
-                  opacity: !menuOpen && hoveredLink === "menuIcon" ? 0 : 1,
-                }}
-              />
-              {!menuOpen && (
-                <span
-                  style={{
-                    position: "absolute",
-                    left: "-100%",
-                    bottom: "30%",
-                    width: "100%",
-                    height: "1.5px",
-                    background: "currentColor",
-                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transitionDelay: hoveredLink === "menuIcon" ? "0.1s" : "0s",
-                    transform: `translateY(50%) translateX(${hoveredLink === "menuIcon" ? "100%" : "0"})`,
-                    opacity: hoveredLink === "menuIcon" ? 1 : 0,
-                  }}
-                />
-              )}
-            </div>
-          </button>
         </nav>
 
-        {/* Mobile-only fallback */}
+        {/* Hamburger — always visible (desktop + mobile) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          onMouseEnter={() => setHoveredLink("menuIconMobile")}
+          onMouseEnter={() => setHoveredLink("menuIcon")}
           onMouseLeave={() => setHoveredLink(null)}
-          className="md:hidden transition ml-auto w-10 h-10 relative flex items-center justify-center group"
-          style={{
-            color: textColor,
-          }}
+          className="transition flex flex-col justify-center items-center ml-2 md:ml-4 w-10 h-10 relative group flex-shrink-0"
+          style={{ color: textColor }}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           <div className="relative w-7 h-5 overflow-hidden">
@@ -404,8 +326,8 @@ export default function Navbar() {
                 transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                 transform: menuOpen
                   ? "rotate(45deg) translateY(-50%)"
-                  : `translateY(-50%) translateX(${!menuOpen && hoveredLink === "menuIconMobile" ? "100%" : "0"})`,
-                opacity: !menuOpen && hoveredLink === "menuIconMobile" ? 0 : 1,
+                  : `translateY(-50%) translateX(${!menuOpen && hoveredLink === "menuIcon" ? "100%" : "0"})`,
+                opacity: !menuOpen && hoveredLink === "menuIcon" ? 0 : 1,
               }}
             />
             {!menuOpen && (
@@ -418,12 +340,11 @@ export default function Navbar() {
                   height: "1.5px",
                   background: "currentColor",
                   transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transform: `translateY(-50%) translateX(${hoveredLink === "menuIconMobile" ? "100%" : "0"})`,
-                  opacity: hoveredLink === "menuIconMobile" ? 1 : 0,
+                  transform: `translateY(-50%) translateX(${hoveredLink === "menuIcon" ? "100%" : "0"})`,
+                  opacity: hoveredLink === "menuIcon" ? 1 : 0,
                 }}
               />
             )}
-
             <span
               style={{
                 position: "absolute",
@@ -433,11 +354,11 @@ export default function Navbar() {
                 height: "1.5px",
                 background: "currentColor",
                 transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                transitionDelay: !menuOpen && hoveredLink === "menuIconMobile" ? "0.1s" : "0s",
+                transitionDelay: !menuOpen && hoveredLink === "menuIcon" ? "0.1s" : "0s",
                 transform: menuOpen
                   ? "rotate(-45deg) translateY(50%)"
-                  : `translateY(50%) translateX(${!menuOpen && hoveredLink === "menuIconMobile" ? "100%" : "0"})`,
-                opacity: !menuOpen && hoveredLink === "menuIconMobile" ? 0 : 1,
+                  : `translateY(50%) translateX(${!menuOpen && hoveredLink === "menuIcon" ? "100%" : "0"})`,
+                opacity: !menuOpen && hoveredLink === "menuIcon" ? 0 : 1,
               }}
             />
             {!menuOpen && (
@@ -450,9 +371,9 @@ export default function Navbar() {
                   height: "1.5px",
                   background: "currentColor",
                   transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                  transitionDelay: hoveredLink === "menuIconMobile" ? "0.1s" : "0s",
-                  transform: `translateY(50%) translateX(${hoveredLink === "menuIconMobile" ? "100%" : "0"})`,
-                  opacity: hoveredLink === "menuIconMobile" ? 1 : 0,
+                  transitionDelay: hoveredLink === "menuIcon" ? "0.1s" : "0s",
+                  transform: `translateY(50%) translateX(${hoveredLink === "menuIcon" ? "100%" : "0"})`,
+                  opacity: hoveredLink === "menuIcon" ? 1 : 0,
                 }}
               />
             )}

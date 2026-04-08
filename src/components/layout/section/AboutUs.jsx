@@ -28,10 +28,23 @@ const textItems = [
 
 const LIQUID_EASE = [0.32, 0.72, 0, 1];
 
+function useWindowWidth() {
+    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+    useEffect(() => {
+        const handler = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return width;
+}
+
 export default function AboutUs() {
     const [cycleCount, setCycleCount] = useState(0);
     const [isInView, setIsInView] = useState(false);
     const containerRef = useRef(null);
+    const width = useWindowWidth();
+    const isMobile = width < 768;
+    const isTablet = width >= 768 && width < 1024;
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -44,13 +57,14 @@ export default function AboutUs() {
             { threshold: 0.1 }
         );
 
-        if (containerRef.current) {
-            observer.observe(containerRef.current);
+        const currentContainer = containerRef.current;
+        if (currentContainer) {
+            observer.observe(currentContainer);
         }
 
         return () => {
-            if (containerRef.current) {
-                observer.unobserve(containerRef.current);
+            if (currentContainer) {
+                observer.unobserve(currentContainer);
             }
         };
     }, []);
@@ -68,7 +82,6 @@ export default function AboutUs() {
     const activeIndex = cycleCount % images.length;
     const activeLineIndex = cycleCount % textItems.length;
 
-    // Orchestration Variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -91,10 +104,11 @@ export default function AboutUs() {
     };
 
     const imageWrapperVariants = {
-        hidden: { opacity: 0, x: -30, filter: "blur(10px)", scale: 0.95 },
+        hidden: { opacity: 0, x: isMobile ? 0 : -30, y: isMobile ? 30 : 0, filter: "blur(10px)", scale: 0.95 },
         visible: {
             opacity: 1,
             x: 0,
+            y: 0,
             filter: "blur(0px)",
             scale: 1,
             transition: { duration: 1.6, ease: LIQUID_EASE }
@@ -110,26 +124,27 @@ export default function AboutUs() {
             variants={containerVariants}
             style={{
                 display: 'grid',
-                gridTemplateColumns: '45fr 55fr',
-                minHeight: '85vh',
+                gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 1fr' : '45fr 55fr',
+                minHeight: isMobile ? 'auto' : '85vh',
                 background: '#fff',
-                overflow: 'hidden'
+                overflow: 'hidden',
             }}
         >
-            {/* Left Side - Image (Perfect Alignment) */}
+            {/* Left Side - Image */}
             <motion.div
                 variants={imageWrapperVariants}
                 style={{
                     position: 'relative',
                     overflow: 'hidden',
-                    padding: '41px 20px 40px 40px',
+                    padding: isMobile ? '24px 20px 16px 20px' : isTablet ? '30px 16px 30px 30px' : '41px 20px 40px 40px',
+                    minHeight: isMobile ? '280px' : isTablet ? '360px' : 'auto',
                 }}
             >
                 <div style={{
                     position: 'relative',
                     overflow: 'hidden',
                     width: '100%',
-                    height: '100%',
+                    height: isMobile ? '260px' : '100%',
                     borderRadius: '16px',
                     boxShadow: '0 25px 60px -15px rgba(0,0,0,0.12)',
                     background: '#fcfcfc',
@@ -176,11 +191,15 @@ export default function AboutUs() {
                 </div>
             </motion.div>
 
-            {/* Right Side - Content (Symmetrical Padding) */}
+            {/* Right Side - Content */}
             <div
                 style={{
                     background: '#ffffff',
-                    padding: '60px 80px 60px 40px',
+                    padding: isMobile
+                        ? '28px 20px 40px 20px'
+                        : isTablet
+                        ? '40px 30px 40px 24px'
+                        : '60px 80px 60px 40px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
@@ -196,7 +215,7 @@ export default function AboutUs() {
                     }}
                 >
                     <h2 style={{
-                        fontSize: '1.4rem',
+                        fontSize: isMobile ? '1.15rem' : '1.4rem',
                         fontWeight: 600,
                         color: '#111',
                         margin: 0,
@@ -220,9 +239,9 @@ export default function AboutUs() {
                 <motion.p
                     variants={itemVariants}
                     style={{
-                        fontSize: '0.9rem',
+                        fontSize: isMobile ? '0.82rem' : '0.9rem',
                         color: '#555',
-                        marginBottom: '45px',
+                        marginBottom: isMobile ? '28px' : '45px',
                         lineHeight: 1.8,
                         maxWidth: '580px',
                         fontFamily: 'Jost, sans-serif'
@@ -237,8 +256,8 @@ export default function AboutUs() {
                         position: 'relative',
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '35px',
-                        paddingLeft: '35px',
+                        gap: isMobile ? '24px' : '35px',
+                        paddingLeft: isMobile ? '24px' : '35px',
                     }}>
                     {/* Vertical Line System */}
                     <div style={{
@@ -252,14 +271,14 @@ export default function AboutUs() {
 
                     {/* Active Track Overlay */}
                     <motion.div
-                        animate={{ top: `${(activeLineIndex * 33.33) + (33.33 * 0.05)}%` }} // aligned to section
+                        animate={{ top: `${(activeLineIndex * 33.33) + (33.33 * 0.05)}%` }}
                         transition={{ duration: 0.8, ease: LIQUID_EASE }}
                         style={{
                             position: 'absolute',
                             left: 0,
-                            width: '1px', // ultra-thin
+                            width: '1px',
                             background: '#111',
-                            height: '30%', // slightly shorter for elegance
+                            height: '30%',
                             zIndex: 1
                         }}
                     />
@@ -274,16 +293,16 @@ export default function AboutUs() {
                                 variants={itemVariants}
                                 style={{
                                     display: 'flex',
-                                    gap: '24px',
+                                    gap: isMobile ? '16px' : '24px',
                                     alignItems: 'flex-start',
                                     transition: 'opacity 0.6s ease',
                                     opacity: isActive ? 1 : 0.35,
                                 }}
                             >
-                                {/* Icon Container (Perfect Circle/Square balance) */}
+                                {/* Icon Container */}
                                 <div style={{
-                                    width: '52px',
-                                    height: '52px',
+                                    width: isMobile ? '42px' : '52px',
+                                    height: isMobile ? '42px' : '52px',
                                     borderRadius: '10px',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -294,7 +313,7 @@ export default function AboutUs() {
                                     transition: 'all 0.6s ease'
                                 }}>
                                     <IconComponent
-                                        size={isActive ? 34 : 32}
+                                        size={isMobile ? (isActive ? 26 : 24) : (isActive ? 34 : 32)}
                                         color={isActive ? "#111" : "#aaa"}
                                         weight="thin"
                                         style={{ transition: 'all 0.6s ease' }}
@@ -314,7 +333,7 @@ export default function AboutUs() {
                                     </div>
 
                                     <h3 style={{
-                                        fontSize: '1rem',
+                                        fontSize: isMobile ? '0.9rem' : '1rem',
                                         fontWeight: 600,
                                         color: '#111',
                                         margin: '0 0 8px 0',
@@ -324,7 +343,7 @@ export default function AboutUs() {
                                     </h3>
 
                                     <p style={{
-                                        fontSize: '0.8rem',
+                                        fontSize: isMobile ? '0.75rem' : '0.8rem',
                                         lineHeight: 1.6,
                                         color: '#666',
                                         margin: 0,

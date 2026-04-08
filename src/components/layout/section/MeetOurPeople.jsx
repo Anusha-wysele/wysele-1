@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { teamMembers } from "../../common/data";
 import HeadingBracket from "../../common/HeadingBracket";
@@ -22,6 +22,16 @@ const containerVariants = {
     }
   }
 };
+
+function useWindowWidth() {
+    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+    useEffect(() => {
+        const handler = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return width;
+}
 
 const FacebookIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -65,6 +75,7 @@ function TeamCard({ member }) {
       className="w-full relative cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 bg-white"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={() => setHovered(!hovered)} // Toggle for mobile touch
     >
       <div className="flex flex-col h-full bg-transparent">
 
@@ -82,7 +93,7 @@ function TeamCard({ member }) {
         {/* Dark Info Box */}
         <div
           className="bg-[#353a40] w-full relative overflow-hidden"
-          style={{ minHeight: "110px" }}
+          style={{ minHeight: "100px" }}
         >
           {/* Inner Border */}
           <div className="absolute inset-[6px] border border-gray-400/30 pointer-events-none z-20" />
@@ -96,7 +107,7 @@ function TeamCard({ member }) {
             <h3 style={{
               color: "#C4A478",
               fontFamily: "Lora, Georgia, serif",
-              fontSize: "1.1rem",
+              fontSize: "1rem",
               fontWeight: 400,
               marginBottom: "4px",
               letterSpacing: "0.5px"
@@ -106,11 +117,11 @@ function TeamCard({ member }) {
             <p style={{
               color: "#ffffff",
               fontFamily: "Inter, sans-serif",
-              fontSize: "0.85rem",
+              fontSize: "0.75rem",
               fontWeight: 600,
               letterSpacing: "0.5px"
             }}>
-              {member.role || "Lawyer"}
+              {member.role}
             </p>
           </motion.div>
 
@@ -126,8 +137,8 @@ function TeamCard({ member }) {
                 aria-label={social.label}
                 className="flex items-center justify-center text-[#C4A478] hover:text-white hover:bg-[#C4A478] transition-colors duration-200"
                 style={{
-                  width: "38px",
-                  height: "38px",
+                  width: "36px",
+                  height: "36px",
                   border: "1px solid rgba(196,164,120,0.45)",
                   background: "transparent",
                   cursor: "pointer",
@@ -155,15 +166,18 @@ function TeamCard({ member }) {
 }
 
 export default function MeetOurPeople() {
+  const width = useWindowWidth();
+  const isMobile = width < 768;
+
   return (
-    <section className="py-8 px-6 lg:px-12 overflow-hidden flex flex-col justify-center">
+    <section className="py-12 md:py-20 px-6 lg:px-12 overflow-hidden flex flex-col justify-center bg-white">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
-          className="flex flex-col items-center text-center mb-8"
+          className="flex flex-col items-center text-center mb-12 md:mb-16"
         >
           <motion.div 
             variants={fadeUpVariants}
@@ -171,19 +185,25 @@ export default function MeetOurPeople() {
               display: "flex", 
               alignItems: "center", 
               justifyContent: "center", 
-              gap: "18px", 
+              gap: isMobile ? "12px" : "18px", 
               width: "100%",
               marginBottom: "16px"
             }}
           >
-            <HeadingBracket size={48} style={{ transform: "translate(40px, -20px)" }} />
+            <HeadingBracket size={isMobile ? 36 : 48} style={{ transform: isMobile ? "translate(24px, -12px)" : "translate(40px, -20px)" }} />
             <h2 
-              className="text-3xl lg:text-4xl font-inter font-medium text-[#111] tracking-tight"
+              className="text-2xl md:text-3xl lg:text-4xl font-inter font-medium text-[#111] tracking-tight"
               style={{ margin: 0 }}
             >
               Meet Our People
             </h2>
           </motion.div>
+          <motion.p
+            variants={fadeUpVariants}
+            className="text-gray-500 text-sm md:text-base max-w-2xl"
+          >
+            Our dedicated team of professionals committed to delivering excellence and innovation in every project we undertake.
+          </motion.p>
         </motion.div>
 
         <motion.div
@@ -191,7 +211,7 @@ export default function MeetOurPeople() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
         >
           {teamMembers.map((member, idx) => (
             <TeamCard key={idx} member={member} />

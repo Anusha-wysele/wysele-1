@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { industryImages } from "../../common/data";
 import { fadeSlideUp, staggerContainer, viewportSettings } from "../../common/animations";
@@ -184,114 +184,24 @@ const industries = industriesBase.map((ind, idx) => ({
     img: industryImages[idx]?.src || null,
 }));
 
-const styles = {
-    wrapper: {
-        fontFamily: "'Jost', sans-serif",
-        background: "#ffffff",
-        color: "#2c3e50",
-        height: "auto",
-        padding: "30px 40px",
-        display: "flex",
-        flexDirection: "column",
-        boxSizing: "border-box",
-        overflow: "hidden",
-    },
-    sectionTitle: {
-        fontFamily: "'Inter Tight', sans-serif",
-        fontSize: "1.4rem",
-        fontWeight: 700,
-        color: "#1e2d40",
-        marginBottom: 0,
-        letterSpacing: "-0.5px",
-    },
-    titleBar: {
-        width: 40,
-        height: 3,
-        background: "#c0392b",
-        marginBottom: 4,
-    },
-    layout: {
-        display: "grid",
-        gridTemplateColumns: "280px 1fr",
-        gap: 40,
-        flex: 1,
-        overflow: "hidden",
-        alignItems: "start",
-    },
-    accordion: {
-        borderTop: "1px solid #dde2e8",
-    },
-    accItem: {
-        borderBottom: "1px solid #dde2e8",
-        cursor: "pointer",
-    },
-    accHeader: {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "4px 4px",
-        userSelect: "none",
-    },
-    accTitle: {
-        fontFamily: "'Montserrat', sans-serif",
-        fontSize: "1rem",
-        transition: "color 0.2s",
-    },
-    plusIcon: {
-        position: "relative",
-        width: 20,
-        height: 20,
-        flexShrink: 0,
-    },
-    underline: {
-        height: 3,
-        background: "#1e2d40",
-        width: 56,
-        margin: "10px 0 18px",
-    },
-    panelTitle: {
-        fontSize: "1.35rem",
-        fontWeight: 700,
-        color: "#1e2d40",
-        marginBottom: 14,
-    },
-    panelDesc: {
-        fontSize: "0.93rem",
-        lineHeight: 1.75,
-        color: "#6b7a8d",
-        fontWeight: 400,
-        marginBottom: 28,
-    },
-    tagsWrap: {
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 8,
-        marginBottom: 28,
-    },
-};
-
-const fadeUpVariants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: {
-        opacity: 1, y: 0,
-        transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
-    }
-};
-
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.1,
-        }
-    }
-};
+function useWindowWidth() {
+    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+    useEffect(() => {
+        const handler = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handler);
+        return () => window.removeEventListener('resize', handler);
+    }, []);
+    return width;
+}
 
 function PlusIcon({ active }) {
     return (
-        <div style={styles.plusIcon}>
+        <div style={{
+            position: "relative",
+            width: 20,
+            height: 20,
+            flexShrink: 0,
+        }}>
             <span style={{
                 position: "absolute", background: "#c0392b", borderRadius: 1,
                 top: "50%", left: "50%", width: 14, height: 2,
@@ -313,8 +223,8 @@ function Tag({ label }) {
         <motion.span
             whileHover={{ scale: 1.05, borderColor: "#c0392b", color: "#c0392b" }}
             style={{
-                fontSize: 11, fontWeight: 600, letterSpacing: "0.6px", textTransform: "uppercase",
-                padding: "5px 14px", border: `1px solid #dde2e8`, color: "#6b7a8d",
+                fontSize: 10, fontWeight: 600, letterSpacing: "0.6px", textTransform: "uppercase",
+                padding: "4px 10px", border: `1px solid #dde2e8`, color: "#6b7a8d",
                 borderRadius: 2, cursor: "default", transition: "all 0.2s",
             }}
         >
@@ -323,7 +233,7 @@ function Tag({ label }) {
     );
 }
 
-function ContentPanel({ industry }) {
+function ContentPanel({ industry, isMobile }) {
     const { Icon, img } = industry;
 
     return (
@@ -334,18 +244,18 @@ function ContentPanel({ industry }) {
             exit="exit"
             style={{ display: "flex", flexDirection: "column" }}
         >
-            {/* Image Section - From LEFT to RIGHT */}
             <div style={{
                 width: "100%",
-                height: 160,
+                height: isMobile ? 180 : 220,
                 borderRadius: "20px",
                 overflow: "hidden",
                 position: "relative",
+                marginBottom: 20
             }}>
                 <motion.div
                     initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
                     animate={{ opacity: 1, clipPath: "inset(0 0 0 0)" }}
-                    transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
                     style={{
                         width: "100%",
                         height: "100%",
@@ -363,7 +273,6 @@ function ContentPanel({ industry }) {
                 </motion.div>
             </div>
 
-            {/* Text Content Section - From DOWN */}
             <motion.div
                 variants={{
                     hidden: { opacity: 0, y: 40 },
@@ -372,10 +281,10 @@ function ContentPanel({ industry }) {
                 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             >
-                <motion.div initial={{ width: 0 }} animate={{ width: 56 }} transition={{ duration: 0.8, delay: 0.3 }} style={styles.underline} />
-                <h2 style={styles.panelTitle}>{industry.title}</h2>
-                <p style={styles.panelDesc}>{industry.desc}</p>
-                <div style={styles.tagsWrap}>
+                <motion.div initial={{ width: 0 }} animate={{ width: 56 }} transition={{ duration: 0.8, delay: 0.3 }} style={{ height: 3, background: "#1e2d40", width: 56, margin: "0 0 18px" }} />
+                <h2 style={{ fontSize: isMobile ? "1.2rem" : "1.5rem", fontWeight: 700, color: "#1e2d40", marginBottom: 14 }}>{industry.title}</h2>
+                <p style={{ fontSize: "0.9rem", lineHeight: 1.75, color: "#6b7a8d", fontWeight: 400, marginBottom: 20 }}>{industry.desc}</p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
                     {industry.tags.map((tag) => (
                         <Tag key={tag} label={tag} />
                     ))}
@@ -388,16 +297,36 @@ function ContentPanel({ industry }) {
 export default function IndustriesWeServe() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const width = useWindowWidth();
+    const isMobile = width < 768;
+    const isTablet = width >= 768 && width < 1024;
 
     return (
-        <div style={styles.wrapper}>
+        <div style={{
+            fontFamily: "'Jost', sans-serif",
+            background: "#ffffff",
+            color: "#2c3e50",
+            height: "auto",
+            padding: isMobile ? "40px 20px" : "60px 40px",
+            display: "flex",
+            flexDirection: "column",
+            boxSizing: "border-box",
+            overflow: "hidden",
+        }}>
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 4 }}>
-                <HeadingBracket size={40} style={{ transform: "translate(32px, -10px)" }} />
+                <HeadingBracket size={isMobile ? 30 : 40} style={{ transform: isMobile ? "translate(24px, -8px)" : "translate(32px, -10px)" }} />
                 <motion.h1
                     initial={{ opacity: 0, y: -10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    style={styles.sectionTitle}
+                    style={{
+                        fontFamily: "'Inter Tight', sans-serif",
+                        fontSize: isMobile ? "1.2rem" : "1.6rem",
+                        fontWeight: 700,
+                        color: "#1e2d40",
+                        marginBottom: 0,
+                        letterSpacing: "-0.5px",
+                    }}
                 >
                     Industries we serve
                 </motion.h1>
@@ -407,34 +336,39 @@ export default function IndustriesWeServe() {
                 whileInView={{ width: 40 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                style={styles.titleBar}
+                style={{ width: 40, height: 3, background: "#c0392b", marginBottom: isMobile ? 24 : 40 }}
             />
 
-            <div style={styles.layout}>
+            <div style={{
+                display: "grid",
+                gridTemplateColumns: isMobile ? "1fr" : "280px 1fr",
+                gap: isMobile ? 30 : 60,
+                alignItems: "start",
+            }}>
                 {/* LEFT — Accordion */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={viewportSettings}
                     variants={staggerContainer}
-                    style={styles.accordion}
+                    style={{ borderTop: "1px solid #dde2e8", order: isMobile ? 2 : 1 }}
                 >
                     {industries.map((ind, i) => (
                         <motion.div
                             key={ind.name}
                             variants={fadeSlideUp}
-                            style={styles.accItem}
+                            style={{ borderBottom: "1px solid #dde2e8", cursor: "pointer" }}
                             onClick={() => setActiveIndex(i)}
                             onMouseEnter={() => setHoveredIndex(i)}
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
-                            <div style={styles.accHeader}>
+                            <div style={{ display: "flex", alignItems: "center", justifyBetween: "space-between", padding: "12px 4px", fontSize: "0.95rem" }}>
                                 <motion.span
                                     animate={{
                                         color: activeIndex === i ? "#c0392b" : hoveredIndex === i ? "#c0392b" : "#2c3e50",
                                         fontWeight: activeIndex === i ? 600 : 400
                                     }}
-                                    style={styles.accTitle}
+                                    style={{ flex: 1, fontFamily: "'Montserrat', sans-serif", transition: "color 0.2s" }}
                                 >
                                     {ind.name}
                                 </motion.span>
@@ -445,9 +379,9 @@ export default function IndustriesWeServe() {
                 </motion.div>
 
                 {/* RIGHT — Content Panel */}
-                <div style={{ position: "sticky", top: 0 }}>
+                <div style={{ position: "sticky", top: 80, order: isMobile ? 1 : 2 }}>
                     <AnimatePresence mode="wait">
-                        <ContentPanel key={activeIndex} industry={industries[activeIndex]} />
+                        <ContentPanel key={activeIndex} industry={industries[activeIndex]} isMobile={isMobile} />
                     </AnimatePresence>
                 </div>
             </div>
