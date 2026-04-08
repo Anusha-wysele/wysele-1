@@ -40,10 +40,10 @@ function BlogCardTextBelow({ post, isMobile }) {
       style={{ display: "flex", flexDirection: "column", cursor: "pointer" }}
     >
       {/* Top divider */}
-      <div style={{ height: "1px", background: "#c9cdd2", marginBottom: "14px" }} />
+      <div style={{ height: "1px", background: "#c9cdd2", marginBottom: "10px" }} />
 
       {/* Tall image */}
-      <div style={{ width: "100%", height: isMobile ? "180px" : "220px", overflow: "hidden", marginBottom: "14px" }}>
+      <div style={{ width: "100%", height: isMobile ? "180px" : "220px", overflow: "hidden", marginBottom: "10px" }}>
         <motion.img
           src={post.img}
           alt={post.title}
@@ -94,10 +94,10 @@ function BlogCardTextInside({ post, isMobile }) {
       style={{ display: "flex", flexDirection: "column", cursor: "pointer" }}
     >
       {/* Top divider */}
-      <div style={{ height: "1px", background: "#c9cdd2", marginBottom: "14px" }} />
+      <div style={{ height: "1px", background: "#c9cdd2", marginBottom: "10px" }} />
 
       {/* Shorter image — no overlay */}
-      <div style={{ width: "100%", height: isMobile ? "180px" : "160px", overflow: "hidden", marginBottom: "14px" }}>
+      <div style={{ width: "100%", height: isMobile ? "180px" : "160px", overflow: "hidden", marginBottom: "10px" }}>
         <motion.img
           src={post.img}
           alt={post.title}
@@ -152,7 +152,7 @@ export default function BlogsBanner() {
   return (
     <section style={{
       background: "#ffffff",
-      padding: isMobile ? "40px 20px" : "60px 60px",
+      padding: isMobile ? "30px 20px" : "45px 60px",
       fontFamily: "Inter, sans-serif",
     }}>
       {/* ── Header row ── */}
@@ -165,8 +165,8 @@ export default function BlogsBanner() {
           display: "grid",
           gridTemplateColumns: isMobile ? "1fr" : "1.2fr 1fr",
           alignItems: "flex-start",
-          gap: isMobile ? "24px" : "60px",
-          marginBottom: isMobile ? "32px" : "48px",
+          gap: isMobile ? "16px" : "40px",
+          marginBottom: isMobile ? "24px" : "32px",
         }}
       >
         <motion.div variants={fadeUp} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
@@ -199,7 +199,7 @@ export default function BlogsBanner() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={fadeUp}
-        style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: isMobile ? "32px" : "40px" }}
+        style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: isMobile ? "24px" : "30px" }}
       >
         {categories.map((cat) => {
           const isActive = cat === activeCategory;

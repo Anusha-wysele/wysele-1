@@ -170,14 +170,14 @@ export default function MeetOurPeople() {
   const isMobile = width < 768;
 
   return (
-    <section className="py-12 md:py-20 px-6 lg:px-12 overflow-hidden flex flex-col justify-center bg-white">
+    <section className="py-8 md:py-10 px-6 lg:px-12 overflow-hidden flex flex-col justify-center bg-white">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
-          className="flex flex-col items-center text-center mb-12 md:mb-16"
+          className="flex flex-col items-center text-center mb-10 md:mb-12"
         >
           <motion.div 
             variants={fadeUpVariants}
@@ -211,7 +211,7 @@ export default function MeetOurPeople() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
         >
           {teamMembers.map((member, idx) => (
             <TeamCard key={idx} member={member} />

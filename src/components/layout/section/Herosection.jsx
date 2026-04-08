@@ -77,19 +77,24 @@ export default function HeroSection() {
       </video>
 
       {/* Center Text Content */}
-      <div style={{
-        position: isMobile ? "relative" : "absolute",
-        inset: isMobile ? "auto" : 0,
-        zIndex: 2,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: isMobile ? "flex-start" : "center",
-        textAlign: "center",
-        padding: isMobile ? "40px 20px 60px" : "0 20px",
-        marginTop: isMobile ? "0px" : "-120px",
-        background: isMobile ? "#111" : "transparent",
-      }}>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+        style={{
+          position: isMobile ? "relative" : "absolute",
+          inset: isMobile ? "auto" : 0,
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: isMobile ? "flex-start" : "center",
+          textAlign: "center",
+          padding: isMobile ? "40px 20px 60px" : "0 20px",
+          marginTop: isMobile ? "0px" : "-120px",
+          background: isMobile ? "#111" : "transparent",
+        }}
+      >
         <h1 style={{
           fontSize: isMobile ? "2.2rem" : "clamp(3rem, 6vw, 5.5rem)",
           fontWeight: 400,
@@ -156,7 +161,7 @@ export default function HeroSection() {
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>
         </button>
-      </div>
+      </motion.div>
 
       {/* Grid Logos Section */}
       <div style={{

@@ -246,11 +246,11 @@ function ContentPanel({ industry, isMobile }) {
         >
             <div style={{
                 width: "100%",
-                height: isMobile ? 180 : 220,
+                height: isMobile ? 150 : 180,
                 borderRadius: "20px",
                 overflow: "hidden",
                 position: "relative",
-                marginBottom: 20
+                marginBottom: 15
             }}>
                 <motion.div
                     initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
@@ -307,7 +307,7 @@ export default function IndustriesWeServe() {
             background: "#ffffff",
             color: "#2c3e50",
             height: "auto",
-            padding: isMobile ? "40px 20px" : "60px 40px",
+            padding: isMobile ? "25px 20px" : "35px 40px",
             display: "flex",
             flexDirection: "column",
             boxSizing: "border-box",
@@ -336,7 +336,7 @@ export default function IndustriesWeServe() {
                 whileInView={{ width: 40 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                style={{ width: 40, height: 3, background: "#c0392b", marginBottom: isMobile ? 24 : 40 }}
+                style={{ width: 40, height: 3, background: "#c0392b", marginBottom: isMobile ? 16 : 24 }}
             />
 
             <div style={{
@@ -362,7 +362,7 @@ export default function IndustriesWeServe() {
                             onMouseEnter={() => setHoveredIndex(i)}
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
-                            <div style={{ display: "flex", alignItems: "center", justifyBetween: "space-between", padding: "12px 4px", fontSize: "0.95rem" }}>
+                            <div style={{ display: "flex", alignItems: "center", justifyBetween: "space-between", padding: "8px 4px", fontSize: "0.95rem" }}>
                                 <motion.span
                                     animate={{
                                         color: activeIndex === i ? "#c0392b" : hoveredIndex === i ? "#c0392b" : "#2c3e50",
