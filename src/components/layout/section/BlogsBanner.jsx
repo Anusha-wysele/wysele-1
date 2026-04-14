@@ -209,14 +209,25 @@ export default function BlogsBanner() {
               onClick={() => setActiveCategory(cat)}
               style={{
                 padding: isMobile ? "5px 14px" : "6px 18px",
-                borderRadius: "999px",
-                border: "1px solid",
-                borderColor: isActive ? "#111827" : "#9ca3af",
-                background: isActive ? "#111827" : "transparent",
-                color: isActive ? "#fff" : "#374151",
+                borderRadius: "6px",
+                border: "1px solid #C9184A",
+                background: isActive ? "#C9184A" : "transparent",
+                color: isActive ? "#fff" : "#111827",
                 fontSize: isMobile ? "12px" : "13px", fontWeight: 400, cursor: "pointer",
-                transition: "all 0.2s ease",
+                transition: "all 0.3s ease",
                 fontFamily: "Inter, sans-serif",
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.backgroundColor = "#C9184A";
+                  e.currentTarget.style.color = "#ffffff";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.color = "#111827";
+                }
               }}
             >
               {cat}
@@ -249,17 +260,36 @@ export default function BlogsBanner() {
           <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: isTablet ? "0px" : "130px", justifyContent: isTablet ? "center" : "flex-start", gridColumn: isTablet ? "span 2" : "auto", paddingTop: isTablet ? "20px" : "0" }}>
             <button
               style={{
-                width: "52px", height: "52px", borderRadius: "50%",
-                background: "#0d9488", border: "none",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: "pointer", flexShrink: 0,
-                boxShadow: "0 4px 14px rgba(13,148,136,0.35)",
-                transition: "background 0.2s ease",
+                color: "#111827",
+                backgroundColor: "transparent",
+                border: "1px solid #C9184A",
+                padding: "10px 24px",
+                borderRadius: "6px",
+                fontSize: "0.95rem",
+                fontWeight: "400",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "8px",
+                transition: "all 0.3s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "#0f766e")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#0d9488")}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C9184A", e.currentTarget.style.color = "#ffffff")}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = "#111827")}
             >
-              <ArrowRight size={22} color="#fff" strokeWidth={1.8} />
+              <span>View All</span>
+              <svg
+                width="16" height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ transition: "transform 0.3s ease" }}
+              >
+                <path d="M7 17L17 7M17 7H7M17 7V17" />
+              </svg>
             </button>
           </div>
         )}
@@ -270,18 +300,37 @@ export default function BlogsBanner() {
                 variants={fadeUp}
                 style={{
                     width: "100%",
-                    padding: "12px",
+                    padding: "12px 28px",
                     borderRadius: "6px",
                     background: "transparent",
-                    border: "1px solid #111827",
+                    border: "1px solid #C9184A",
                     color: "#111827",
-                    fontSize: "14px",
-                    fontWeight: 600,
+                    fontSize: "0.95rem",
+                    fontWeight: 400,
                     cursor: "pointer",
-                    marginTop: "10px"
+                    marginTop: "10px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    transition: "all 0.3s ease",
                 }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C9184A", e.currentTarget.style.color = "#ffffff")}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = "#111827")}
             >
-                View all articles
+                <span>View all articles</span>
+                <svg
+                    width="16" height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={{ transition: "transform 0.3s ease" }}
+                >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
             </motion.button>
         )}
       </motion.div>

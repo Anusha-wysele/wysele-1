@@ -2,22 +2,22 @@ import { useState, useEffect, useRef } from "react";
 
 const data = {
     Technology: [
-        { year: "2019", finances: 40, economy: 44, investment: 28 },
-        { year: "2020", finances: 22, economy: 32, investment: 36 },
-        { year: "2021", finances: 34, economy: 40, investment: 34 },
-        { year: "2022", finances: 44, economy: 40, investment: 30 },
+        { year: "2021", finances: 40, economy: 44, investment: 28 },
+        { year: "2022", finances: 22, economy: 32, investment: 36 },
+        { year: "2023", finances: 34, economy: 40, investment: 34 },
+        { year: "2024", finances: 44, economy: 40, investment: 30 },
     ],
     Development: [
-        { year: "2019", finances: 38, economy: 48, investment: 25 },
-        { year: "2020", finances: 30, economy: 42, investment: 38 },
-        { year: "2021", finances: 30, economy: 44, investment: 42 },
-        { year: "2022", finances: 46, economy: 36, investment: 28 },
+        { year: "2021", finances: 38, economy: 48, investment: 25 },
+        { year: "2022", finances: 30, economy: 42, investment: 38 },
+        { year: "2023", finances: 30, economy: 44, investment: 42 },
+        { year: "2024", finances: 46, economy: 36, investment: 28 },
     ],
     Research: [
-        { year: "2019", finances: 46, economy: 50, investment: 31 },
-        { year: "2020", finances: 26, economy: 37, investment: 41 },
-        { year: "2021", finances: 37, economy: 46, investment: 38 },
-        { year: "2022", finances: 50, economy: 45, investment: 36 },
+        { year: "2021", finances: 46, economy: 50, investment: 31 },
+        { year: "2022", finances: 26, economy: 37, investment: 41 },
+        { year: "2023", finances: 37, economy: 46, investment: 38 },
+        { year: "2024", finances: 50, economy: 45, investment: 36 },
     ],
 };
 

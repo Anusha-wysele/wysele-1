@@ -166,7 +166,6 @@ export default function Menu({ open, onClose }) {
               {[
                 { label: "Home", path: "/" },
                 { label: "About Us", path: "/about" },
-                { label: "Services", path: "/#services" },
                 { label: "Industries", path: "/#industries" },
                 { label: "Blogs", path: "/#blogs" },
                 { label: "Careers", path: "/careers" }
@@ -188,6 +187,48 @@ export default function Menu({ open, onClose }) {
                   onMouseLeave={e => { e.currentTarget.style.color = "#fff"; e.currentTarget.style.paddingLeft = "0"; }}
                 >
                   {link.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* SERVICES */}
+          <div style={{
+            marginBottom: 40,
+            opacity: open ? 1 : 0,
+            transform: open ? "translateY(0)" : "translateY(15px)",
+            transition: "all 0.6s ease 0.38s"
+          }}>
+            <h4 style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 20 }}>
+              Services
+            </h4>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              {[
+                "SAP Services",
+                "Salesforce Services",
+                "IT Infrastructure – SOC & NOC",
+                "IT Infrastructure Services",
+                "Cybersecurity Services",
+                "Enterprise Digital Transformation",
+                "Web Development",
+                "App Development"
+              ].map((service) => (
+                <button
+                  key={service}
+                  onClick={() => {
+                    navigate("/#services");
+                    onClose();
+                  }}
+                  style={{
+                    background: "none", border: "none", padding: 0,
+                    textAlign: "left", color: "#fff", fontSize: 15, fontWeight: 500,
+                    cursor: "pointer", transition: "all 0.3s ease",
+                    display: "flex", alignItems: "center", gap: 8
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = "#fbbf24"; e.currentTarget.style.paddingLeft = "8px"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "#fff"; e.currentTarget.style.paddingLeft = "0"; }}
+                >
+                  {service}
                 </button>
               ))}
             </div>

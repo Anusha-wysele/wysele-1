@@ -95,32 +95,45 @@ export default function HeroSection() {
           background: isMobile ? "#111" : "transparent",
         }}
       >
-        <h1 style={{
-          fontSize: isMobile ? "2.2rem" : "clamp(3rem, 6vw, 5.5rem)",
-          fontWeight: 400,
-          color: "#fff",
-          lineHeight: isMobile ? 1.2 : 1.05,
-          marginBottom: isMobile ? "16px" : "20px",
-          maxWidth: "1100px",
-          letterSpacing: "-0.01em"
-        }}>
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          style={{
+            fontSize: isMobile ? "2.2rem" : "clamp(3rem, 6vw, 5.5rem)",
+            fontWeight: 400,
+            color: "#fff",
+            lineHeight: isMobile ? 1.2 : 1.05,
+            marginBottom: isMobile ? "16px" : "20px",
+            maxWidth: "1100px",
+            letterSpacing: "-0.01em"
+          }}
+        >
           Driving Business Transformation <br className={isMobile ? "hidden" : "block"} />
-          <span style={{ display: "inline-block", marginTop: isMobile ? "0" : "5px" }}>with Tailored Digital Solutions</span>
-        </h1>
-        <p style={{
-          fontSize: isMobile ? "0.9rem" : "0.95rem",
-          color: "rgba(255,255,255,0.95)",
-          fontFamily: "Inter, sans-serif",
-          fontWeight: 400,
-          lineHeight: 1.6,
-          maxWidth: "750px",
-          marginBottom: isMobile ? "30px" : "36px",
-        }}>
+          <span style={{ display: "inline-block", marginTop: isMobile ? "0" : "5px" }}>with Tailored Digital & AI Solutions</span>
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+          style={{
+            fontSize: isMobile ? "0.9rem" : "0.95rem",
+            color: "rgba(255,255,255,0.95)",
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 400,
+            lineHeight: 1.6,
+            maxWidth: "750px",
+            marginBottom: isMobile ? "30px" : "36px",
+          }}
+        >
           A powerful foundation for enterprises to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance.
-        </p>
+        </motion.p>
 
         {/* Action Button */}
-        <button
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
           onMouseEnter={() => setBtnHover(true)}
           onMouseLeave={() => setBtnHover(false)}
           className="group"
@@ -160,7 +173,7 @@ export default function HeroSection() {
           >
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>
-        </button>
+        </motion.button>
       </motion.div>
 
       {/* Grid Logos Section */}

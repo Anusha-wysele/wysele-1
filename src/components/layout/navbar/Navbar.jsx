@@ -6,29 +6,45 @@ import Logo from "./Logo";
 
 // ─── Dropdown Data ──────────────────────────────────────────────────────────
 
+const SAP_SERVICES = [
+  { label: "SAP Consulting Services", desc: "Tailored SAP solutions to drive business efficiency and innovation.", icon: "⚙" },
+  { label: "SAP Signavio Solutions", desc: "Optimize business processes with advanced Signavio analytics.", icon: "📊" },
+  { label: "SAP Datasphere Support", desc: "Seamless data integration and management across your enterprise.", icon: "🗄" },
+  { label: "RISE with SAP", desc: "Accelerate your digital transformation with cloud-based SAP solutions.", icon: "🚀" },
+  { label: "BTP services", desc: "Enhance agility with SAP Business Technology Platform capabilities.", icon: "☁" },
+  { label: "SAP Integration Services", desc: "Connect SAP and non-SAP systems for seamless data flow.", icon: "🔗" },
+  { label: "SAP VIM & BRIM Services", desc: "Streamline invoicing and billing with automation using SAP solutions.", icon: "📋" },
+  { label: "Migration Services", desc: "Hassle-free SAP migration for smooth business continuity.", icon: "📦" },
+  { label: "SAP S/4 HANA Conversion Services", desc: "Upgrade to S/4HANA for enhanced speed and intelligence.", icon: "⚡" },
+  { label: "Gen AI Services", desc: "Unlock AI-driven insights and automation with SAP solutions.", icon: "🤖" },
+  { label: "SAP OpenText Services & Archiving Services", desc: "Secure, store, and manage enterprise documents efficiently.", icon: "📁" },
+  { label: "SAP BTP & API Management", desc: "Integrate and scale applications with SAP API tools.", icon: "🔌" },
+  { label: "Technical SAP Consulting Services", desc: "Expert guidance for optimizing your SAP landscape.", icon: "🛠" },
+  { label: "Master Data Governance (MDG) Services", desc: "Ensure data accuracy and consistency across your systems.", icon: "📊" },
+];
+
 const SERVICES = [
   {
-    category: "Product Design",
+    category: "SAP & Enterprise",
     items: [
-      { label: "UI/UX Design", desc: "User-centric interface design systems", icon: "✦" },
-      { label: "Strategy & Audit", desc: "Product discovery and UX research", icon: "◈" },
-      { label: "Prototyping", desc: "High-fidelity interactive prototypes", icon: "◉" },
+      { label: "SAP Services", desc: "Comprehensive SAP solutions including S/4HANA, BTP, and Migration", icon: "⬡", hasSubmenu: true },
+      { label: "Salesforce Services", desc: "Boost customer engagement with tailored Salesforce solutions", icon: "☁" },
+      { label: "Enterprise Digital Transformation", desc: "Future-proof your business with end-to-end digital transformation", icon: "⟳" },
     ],
   },
   {
-    category: "Engineering",
+    category: "Infrastructure & Security",
     items: [
-      { label: "Web Development", desc: "Modern full-stack web applications", icon: "⬡" },
-      { label: "Mobile Apps", desc: "Native iOS & Android development", icon: "◫" },
-      { label: "E-Commerce", desc: "Scalable online shopping experiences", icon: "⟳" },
+      { label: "IT Infrastructure – SOC & NOC", desc: "24/7 monitoring and security for your IT infrastructure", icon: "◈" },
+      { label: "IT Infrastructure Services", desc: "Scalable IT solutions to support business growth", icon: "◫" },
+      { label: "Cybersecurity Services", desc: "Protect your digital assets with cutting-edge security solutions", icon: "⌬" },
     ],
   },
   {
-    category: "Growth",
+    category: "Development",
     items: [
-      { label: "SEO & Content", desc: "Search engine optimization and strategy", icon: "⌬" },
-      { label: "Data Analytics", desc: "Custom dashboards and insights", icon: "📊" },
-      { label: "AI Integration", desc: "Language models and ML pipelines", icon: "🤖" },
+      { label: "Web Development", desc: "Build scalable, responsive, and high-performance web applications", icon: "✦" },
+      { label: "App Development", desc: "Create intuitive, feature-rich mobile experiences for iOS and Android", icon: "◉" },
     ],
   }
 ];
@@ -67,31 +83,96 @@ const FEATURED_CONTENT = {
 
 function MegaMenu({ type, open, scrolled }) {
   const data = type === "Services" ? SERVICES : TECHNOLOGIES;
-  const featured = FEATURED_CONTENT[type];
+  const [hoveredService, setHoveredService] = useState(null);
+  const submenuTimerRef = useRef(null);
+
+  const handleServiceEnter = (label) => {
+    clearTimeout(submenuTimerRef.current);
+    setHoveredService(label);
+  };
+
+  const handleServiceLeave = () => {
+    submenuTimerRef.current = setTimeout(() => {
+      setHoveredService(null);
+    }, 200);
+  };
+
+  const handleSubmenuEnter = () => {
+    clearTimeout(submenuTimerRef.current);
+  };
+
+  const handleSubmenuLeave = () => {
+    setHoveredService(null);
+  };
 
   const menuVariants = {
-    hidden: { opacity: 0, y: -20, pointerEvents: "none" },
+    hidden: { 
+      opacity: 0, 
+      scaleY: 0,
+      rotateX: -45,
+      transformOrigin: "top center",
+      pointerEvents: "none",
+      y: -50,
+      filter: "blur(15px)"
+    },
     visible: { 
       opacity: 1, 
-      y: 0, 
+      scaleY: 1,
+      rotateX: 0,
+      transformOrigin: "top center",
       pointerEvents: "auto",
+      y: 0,
+      filter: "blur(0px)",
       transition: { 
-        duration: 0.4, 
-        ease: [0.19, 1, 0.22, 1],
-        staggerChildren: 0.05,
-        delayChildren: 0.1
+        duration: 1.0, 
+        ease: [0.16, 1.0, 0.3, 1.0],
+        opacity: { duration: 0.6, delay: 0.15, ease: [0.16, 1.0, 0.3, 1.0] },
+        scaleY: { duration: 1.0, ease: [0.16, 1.0, 0.3, 1.0] },
+        rotateX: { duration: 1.0, ease: [0.16, 1.0, 0.3, 1.0] },
+        y: { duration: 1.0, ease: [0.16, 1.0, 0.3, 1.0] },
+        filter: { duration: 0.7, ease: [0.16, 1.0, 0.3, 1.0] },
+        staggerChildren: 0.08,
+        delayChildren: 0.35
       }
     },
     exit: { 
       opacity: 0, 
-      y: -10, 
-      transition: { duration: 0.2, ease: "easeIn" } 
+      scaleY: 0,
+      rotateX: -30,
+      transformOrigin: "top center",
+      y: -30,
+      filter: "blur(12px)",
+      transition: { 
+        duration: 0.5, 
+        ease: [0.4, 0, 0.2, 1],
+        opacity: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+        scaleY: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+        rotateX: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+        filter: { duration: 0.35, ease: [0.4, 0, 0.2, 1] }
+      } 
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } }
+    hidden: { 
+      opacity: 0, 
+      y: -30, 
+      scale: 0.85,
+      rotateX: -15,
+      filter: "blur(6px)"
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      rotateX: 0,
+      filter: "blur(0px)",
+      transition: { 
+        duration: 0.7,
+        ease: [0.16, 1.0, 0.3, 1.0],
+        filter: { duration: 0.6 }
+      } 
+    }
   };
 
   return (
@@ -100,83 +181,115 @@ function MegaMenu({ type, open, scrolled }) {
       animate={open ? "visible" : "hidden"}
       exit="exit"
       variants={menuVariants}
-      className={`fixed top-[60px] left-0 w-full backdrop-blur-[32px] z-[1000] overflow-y-auto max-h-[calc(100vh-60px)] ${
-        !scrolled 
-          ? "bg-[rgba(10,10,15,0.98)] border-t border-b border-t-white/5 border-b-white/10 text-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]" 
-          : "bg-white/98 border-t border-b border-t-gray-900/5 border-b-gray-900/8 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]"
-      }`}
+      style={{ 
+        perspective: "2000px",
+        transformStyle: "preserve-3d"
+      }}
+      className="fixed top-[60px] left-0 w-full backdrop-blur-lg z-[1000] bg-white border-b border-gray-200 shadow-[0_25px_80px_-20px_rgba(0,0,0,0.4)]"
     >
-      <div className="max-w-[1400px] mx-auto px-4 md:px-10 lg:px-[60px] py-6 md:py-10 grid grid-cols-1 lg:grid-cols-[1fr_280px] xl:grid-cols-[1fr_320px] gap-6 lg:gap-[60px] items-start">
-        {/* Main Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
-          {data.map((col) => (
-            <motion.div key={col.category} variants={itemVariants}>
-              <div className="text-[11px] font-extrabold tracking-[2px] uppercase text-[#fbbf24] mb-5">
-                {col.category}
-              </div>
-              <div className="flex flex-col gap-2">
-                {type === "Services" ? (
-                  col.items.map((it) => (
-                    <div 
-                      key={it.label} 
-                      className={`flex items-start gap-4 p-4 rounded-2xl cursor-pointer transition-all duration-300 border border-transparent hover:translate-x-2 ${
-                        !scrolled 
-                          ? "hover:bg-white/5 hover:border-white/10" 
-                          : "hover:bg-[rgba(251,191,36,0.08)] hover:border-[rgba(251,191,36,0.2)]"
-                      }`}
-                    >
-                      <div className="w-11 h-11 bg-[rgba(251,191,36,0.1)] rounded-xl flex items-center justify-center text-xl text-[#fbbf24] flex-shrink-0 transition-transform duration-300 hover:scale-110 hover:-rotate-[5deg]">
-                        {it.icon}
-                      </div>
-                      <div>
-                        <div className="text-[15px] font-semibold mb-1">{it.label}</div>
-                        <div className={`text-[12.5px] leading-[1.5] ${!scrolled ? "text-white/50" : "text-gray-500/80"}`}>
-                          {it.desc}
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <div className="flex flex-col gap-1">
-                    {col.items.map((t) => (
+      <div className="max-w-[1200px] mx-auto px-6 py-8">
+        {type === "Services" ? (
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {data.map((col) => (
+                <motion.div key={col.category} variants={itemVariants} className="space-y-4">
+                  <h3 className="text-xs font-bold tracking-wider uppercase text-gray-400 mb-4">
+                    {col.category}
+                  </h3>
+                  <div className="space-y-2">
+                    {col.items.map((item) => (
                       <div 
-                        key={t} 
-                        className="text-sm py-2.5 px-3.5 rounded-lg cursor-pointer transition-all duration-200 opacity-70 hover:opacity-100 hover:bg-[rgba(251,191,36,0.1)] hover:text-[#fbbf24] hover:translate-x-1.5 flex items-center gap-2.5 before:content-['→'] before:text-xs before:opacity-0 before:-translate-x-2.5 before:transition-all before:duration-300 hover:before:opacity-100 hover:before:translate-x-0"
+                        key={item.label}
+                        className="group relative p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer border border-transparent hover:border-gray-200"
+                        onMouseEnter={() => item.hasSubmenu && handleServiceEnter(item.label)}
+                        onMouseLeave={() => item.hasSubmenu && handleServiceLeave()}
                       >
-                        {t}
+                        <div className="flex items-start gap-3">
+                          <div className="text-lg mt-0.5 text-gray-400 group-hover:text-[#C9184A] transition-colors">
+                            {item.icon}
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-semibold text-gray-900 mb-1 group-hover:text-[#C9184A] transition-colors flex items-center gap-1">
+                              {item.label}
+                              {item.hasSubmenu && <span className="text-xs">→</span>}
+                            </div>
+                            <div className="text-xs text-gray-500 leading-relaxed">
+                              {item.desc}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* SAP Services Submenu */}
+                        {item.hasSubmenu && hoveredService === item.label && (
+                          <>
+                            {/* Invisible bridge to prevent gap */}
+                            <div 
+                              className="absolute left-full top-0 w-4 h-full z-40"
+                              onMouseEnter={handleSubmenuEnter}
+                              onMouseLeave={handleServiceLeave}
+                            />
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -10 }}
+                              className="absolute left-[calc(100%+8px)] top-0 w-[500px] bg-white rounded-lg shadow-2xl border border-gray-200 p-4 z-50"
+                              onMouseEnter={handleSubmenuEnter}
+                              onMouseLeave={handleSubmenuLeave}
+                            >
+                              <h4 className="text-xs font-bold tracking-wider uppercase text-gray-400 mb-3">SAP Services</h4>
+                              <div className="grid grid-cols-2 gap-2 max-h-[400px] overflow-y-auto">
+                                {SAP_SERVICES.map((sapService) => (
+                                  <div
+                                    key={sapService.label}
+                                    className="p-2 rounded-lg hover:bg-gray-50 transition-all duration-200 cursor-pointer border border-transparent hover:border-gray-200"
+                                  >
+                                    <div className="flex items-start gap-2">
+                                      <div className="text-sm mt-0.5 text-gray-400">
+                                        {sapService.icon}
+                                      </div>
+                                      <div>
+                                        <div className="text-xs font-semibold text-gray-900 mb-0.5">
+                                          {sapService.label}
+                                        </div>
+                                        <div className="text-[10px] text-gray-500 leading-relaxed">
+                                          {sapService.desc}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </motion.div>
+                          </>
+                        )}
                       </div>
                     ))}
                   </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Featured Section — hidden on small screens */}
-        <motion.div 
-          className="hidden lg:flex relative w-full aspect-[4/5] rounded-3xl overflow-hidden flex-col justify-end p-[30px] bg-[#111] border border-white/10"
-          initial={{ opacity: 0, x: 20 }}
-          animate={open ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <img 
-            src={featured.img} 
-            alt="Featured" 
-            className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-[600ms] hover:scale-105 hover:opacity-80" 
-          />
-          <div className="relative z-10">
-            <div className="text-[10px] font-bold uppercase text-[#fbbf24] mb-2 tracking-wider">
-              {featured.tag}
+                </motion.div>
+              ))}
             </div>
-            <div className="text-xl font-bold text-white mb-3 leading-[1.2]">
-              {featured.title}
-            </div>
-            <button className="inline-flex items-center gap-2 text-[13px] font-semibold text-white bg-white/10 backdrop-blur-[10px] py-2.5 px-5 rounded-full border border-white/10 transition-all duration-300 hover:bg-[#fbbf24] hover:text-black hover:border-[#fbbf24]">
-              Explore ↗
-            </button>
           </div>
-        </motion.div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {data.map((col) => (
+              <motion.div key={col.category} variants={itemVariants}>
+                <div className="text-xs font-bold tracking-wider uppercase text-gray-400 mb-4">
+                  {col.category}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {col.items.map((t) => (
+                    <div 
+                      key={t}
+                      className="text-xs px-3 py-1.5 rounded-full bg-gray-100 text-gray-700 hover:bg-[#C9184A] hover:text-white transition-all duration-200 cursor-pointer font-medium"
+                    >
+                      {t}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -196,7 +309,13 @@ export default function Navbar() {
     setOpenDrop(name);
   };
   const handleDropLeave = () => {
-    timerRef.current = setTimeout(() => setOpenDrop(null), 120);
+    timerRef.current = setTimeout(() => setOpenDrop(null), 300);
+  };
+  const handleMegaMenuEnter = () => {
+    clearTimeout(timerRef.current);
+  };
+  const handleMegaMenuLeave = () => {
+    setOpenDrop(null);
   };
 
   const location = useLocation();
@@ -383,12 +502,17 @@ export default function Navbar() {
 
       <AnimatePresence>
         {(openDrop === "Services" || openDrop === "Technologies") && (
-          <MegaMenu 
-            key={openDrop}
-            type={openDrop} 
-            open={!!openDrop} 
-            scrolled={scrolled} 
-          />
+          <div
+            onMouseEnter={handleMegaMenuEnter}
+            onMouseLeave={handleMegaMenuLeave}
+          >
+            <MegaMenu 
+              key={openDrop}
+              type={openDrop} 
+              open={!!openDrop} 
+              scrolled={scrolled} 
+            />
+          </div>
         )}
       </AnimatePresence>
 

@@ -246,7 +246,7 @@ function ContentPanel({ industry, isMobile }) {
         >
             <div style={{
                 width: "100%",
-                height: isMobile ? 150 : 180,
+                height: isMobile ? 180 : 240,
                 borderRadius: "20px",
                 overflow: "hidden",
                 position: "relative",

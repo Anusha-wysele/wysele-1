@@ -1,16 +1,20 @@
-import Faq from "./Faq";
-import AboutUs from "./AboutUs";
-import BlogsBanner from "./BlogsBanner";
-import Footer from "./Footer";
-import GetInTouch from "./GetinTouch";
-import Herosection from "./Herosection";
-import Industries from "./Industries";
-import InsightsHero from "./InsightsHero";
-import MeetOurPeople from "./MeetOurPeople";
+import React, { Suspense, lazy } from "react";
 import FadeUp from "../../common/FadeUp";
 import ScrollNavigation from "../navbar/ScrollNavigation";
 import LeftSidebar from "../navbar/LeftSidebar";
-import Services from "./Services";
+import Herosection from "./Herosection";
+
+// Lazy load below-the-fold sections
+const Services = lazy(() => import("./Services"));
+const AboutUs = lazy(() => import("./AboutUs"));
+const Industries = lazy(() => import("./Industries"));
+const InsightsHero = lazy(() => import("./InsightsHero"));
+const BlogsBanner = lazy(() => import("./BlogsBanner"));
+const MeetOurPeople = lazy(() => import("./MeetOurPeople"));
+const Faq = lazy(() => import("./Faq"));
+const GetInTouch = lazy(() => import("./GetinTouch"));
+const OurLocations = lazy(() => import("./OurLocations"));
+const Footer = lazy(() => import("./Footer"));
 
 const landingSections = [
     { id: "home", label: "Home", hideDot: true },
@@ -22,6 +26,7 @@ const landingSections = [
     { id: "team", label: "Our Team" },
     { id: "faq", label: "FAQ" },
     { id: "contact", label: "Get In Touch" },
+    { id: "locations", label: "Our Locations" },
     { id: "footer", label: "Footer", hideDot: true }
 ];
 
@@ -34,41 +39,46 @@ const LandingPages = () => {
                 <Herosection />
             </div>
 
-            <div id="services" distance={-10}>
-                <Services />
-            </div>
+            <Suspense fallback={<div className="h-[50vh]" />}>
+                <div id="services" distance={-10}>
+                    <Services />
+                </div>
 
-            <div id="about">
-                <AboutUs />
-            </div>
+                <div id="about">
+                    <AboutUs />
+                </div>
 
-            <FadeUp id="industries" distance={10}>
-                <Industries />
-            </FadeUp>
-            <FadeUp id="insights" distance={30}>
-                <InsightsHero />
-            </FadeUp>
+                <FadeUp id="industries" distance={10}>
+                    <Industries />
+                </FadeUp>
+                <FadeUp id="insights" distance={30}>
+                    <InsightsHero />
+                </FadeUp>
 
-            <FadeUp id="blogs" distance={30}>
-                <BlogsBanner />
-            </FadeUp>
+                <FadeUp id="blogs" distance={30}>
+                    <BlogsBanner />
+                </FadeUp>
 
-            <FadeUp id="team">
-                <MeetOurPeople />
-            </FadeUp>
+                <FadeUp id="team">
+                    <MeetOurPeople />
+                </FadeUp>
 
+                <FadeUp id="faq" distance={10}>
+                    <Faq />
+                </FadeUp>
 
-            <FadeUp id="faq" distance={10}>
-                <Faq />
-            </FadeUp>
+                <FadeUp id="contact" distance={30}>
+                    <GetInTouch />
+                </FadeUp>
 
-            <FadeUp id="contact" distance={30}>
-                <GetInTouch />
-            </FadeUp>
+                <FadeUp id="locations" distance={30}>
+                    <OurLocations />
+                </FadeUp>
 
-            <FadeUp id="footer" distance={30}>
-                <Footer />
-            </FadeUp>
+                <FadeUp id="footer" distance={30}>
+                    <Footer />
+                </FadeUp>
+            </Suspense>
         </div>
     )
 }

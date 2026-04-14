@@ -29,13 +29,13 @@ const SimnHero = () => {
                 />
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/50 md:bg-black/40" />
-                
+
                 {/* Content Overlay */}
-                <div className={`absolute inset-0 flex items-center ${isMobile ? 'pt-20' : ''}`}>
+                <div className={`absolute inset-0 flex items-end pb-25 md:pb-30 ${isMobile ? 'pt-20' : ''}`}>
                     <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 w-full">
                         <div className={`flex ${isMobile ? 'flex-col gap-10' : 'flex-row gap-8 items-end'}`}>
-                            
-                            <motion.div 
+
+                            <motion.div
                                 className={`flex gap-4 md:gap-6 items-start flex-1 ${isMobile ? 'pb-0' : 'pb-20'}`}
                                 initial={{ x: -100, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
@@ -43,14 +43,14 @@ const SimnHero = () => {
                             >
                                 {/* Animated Vertical Line */}
                                 {!isMobile && (
-                                    <motion.div 
+                                    <motion.div
                                         className="w-0.5 bg-red-600 flex-shrink-0 mt-12"
                                         initial={{ height: 0 }}
                                         animate={{ height: "150px" }}
                                         transition={{ duration: 1.5, ease: "easeOut" }}
                                     />
                                 )}
-                                
+
                                 {/* Text Content */}
                                 <div className="max-w-2xl">
                                     {/* Main Heading */}
@@ -59,7 +59,7 @@ const SimnHero = () => {
                                         Through<br />
                                         Strategic Innovation
                                     </h1>
-                                    
+
                                     {/* Description */}
                                     <p className="text-gray-200 text-sm md:text-lg leading-relaxed font-light">
                                         Welcome to Wysele. Founded on the principles of adaptability, client excellence, and data-driven insights, we are dedicated to delivering technology solutions that create sustainable growth and competitive advantage.
@@ -68,7 +68,7 @@ const SimnHero = () => {
                             </motion.div>
 
                             {/* Right Side - Vision, Mission, Values Box */}
-                            <motion.div 
+                            <motion.div
                                 className={`${isMobile ? 'w-full grid grid-cols-1 gap-6' : 'w-96 space-y-4'} p-0 md:p-6`}
                                 initial={{ x: isMobile ? 0 : 100, y: isMobile ? 50 : 0, opacity: 0 }}
                                 animate={{ x: 0, y: 0, opacity: 1 }}
@@ -80,7 +80,7 @@ const SimnHero = () => {
                                     <p className="text-gray-300 md:text-gray-200 text-[13px] md:text-sm leading-relaxed">
                                         To deliver cost-effective, cutting-edge solutions that help our clients achieve their goals. We continuously invest in R&D.
                                     </p>
-                                    <motion.div 
+                                    <motion.div
                                         className="absolute bottom-0 left-0 h-px bg-red-600"
                                         initial={{ width: 0 }}
                                         animate={{ width: "100%" }}
@@ -94,7 +94,7 @@ const SimnHero = () => {
                                     <p className="text-gray-300 md:text-gray-200 text-[13px] md:text-sm leading-relaxed">
                                         To be a trusted technology partner, collaborating with clients to achieve strategic objectives.
                                     </p>
-                                    <motion.div 
+                                    <motion.div
                                         className="absolute bottom-0 left-0 h-px bg-red-600"
                                         initial={{ width: 0 }}
                                         animate={{ width: "100%" }}

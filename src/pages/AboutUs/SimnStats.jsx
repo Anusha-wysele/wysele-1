@@ -121,23 +121,28 @@ const SimnStats = () => {
                 </div>
 
                 {/* Location Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 md:mb-10 max-w-4xl mx-auto">
-                    <div className="bg-gray-50 p-6 md:p-8 rounded-xl space-y-3 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-                        <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
-                            <ShieldCheck className="w-5 h-5 text-red-600" strokeWidth={1.5} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 md:mb-10 max-w-2xl mx-auto">
+                    <div className="bg-gray-50 p-5 md:p-6 rounded-xl space-y-2 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <ShieldCheck className="w-4 h-4 text-red-600" strokeWidth={1.5} />
                         </div>
-                        <h4 className="text-lg font-semibold text-gray-900">India Headquarters</h4>
-                        <p className="text-gray-600 text-xs md:text-sm leading-relaxed font-light">
-                            Situated in the heart of India, our main office drives innovation and manages core operations for our clients worldwide.
+                        <h4 className="text-base font-semibold text-gray-900">India Headquarters</h4>
+                        <p className="text-gray-600 text-[11px] md:text-xs leading-relaxed font-light">
+                            Wysele Technologies<br />
+                            #308 4th floor DSL Abacus IT Park,<br />
+                            Survey Colony, Industrial Development Area,<br />
+                            Uppal, Hyderabad, Telangana 500039.
                         </p>
                     </div>
-                    <div className="bg-gray-50 p-6 md:p-8 rounded-xl space-y-3 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-                        <div className="w-10 h-10 flex items-center justify-center bg-white rounded-full shadow-sm">
-                            <Building2 className="w-5 h-5 text-red-600" strokeWidth={1.5} />
+                    <div className="bg-gray-50 p-5 md:p-6 rounded-xl space-y-2 border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+                        <div className="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm">
+                            <Building2 className="w-4 h-4 text-red-600" strokeWidth={1.5} />
                         </div>
-                        <h4 className="text-lg font-semibold text-gray-900">USA Regional Office</h4>
-                        <p className="text-gray-600 text-xs md:text-sm leading-relaxed font-light">
-                            Our US office supports North American clients, ensuring seamless communication and local project management.
+                        <h4 className="text-base font-semibold text-gray-900">USA Regional Office</h4>
+                        <p className="text-gray-600 text-[11px] md:text-xs leading-relaxed font-light">
+                            Wysele Technologies<br />
+                            5900 Balcones Drive STE 100<br />
+                            Austin, TX 78731
                         </p>
                     </div>
                 </div>

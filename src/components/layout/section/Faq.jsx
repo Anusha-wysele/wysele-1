@@ -45,7 +45,7 @@ export default function Faq() {
 
   return (
     <section className="bg-white py-10 px-6 lg:px-12 w-full flex flex-col items-center font-inter">
-      <div className="max-w-3xl w-full flex flex-col items-center">
+      <div className="max-w-6xl w-full flex flex-col items-center">
 
         {/* FAQ Badge */}
         <div className="mb-6 rounded-full bg-[#e2e8f0] px-4 py-1.5 border border-[#cbd5e1] shadow-sm">
@@ -60,48 +60,93 @@ export default function Faq() {
           </h2>
         </div>
 
-        {/* Accordion */}
-        <div className="w-full">
-          <div className="border-t border-[#e2e8f0]" />
-          {faqItems.map((item) => {
-            const isOpen = openKey === item.key;
+        {/* Accordion - Two Column Layout */}
+        <div className="w-full flex flex-col lg:flex-row gap-8">
+          {/* Left Column */}
+          <div className="flex-1">
+            {faqItems.filter((_, index) => index % 2 === 0).map((item) => {
+              const isOpen = openKey === item.key;
 
-            return (
-              <div key={item.key} className="border-b border-[#e2e8f0]">
-                <button
-                  onClick={() => toggle(item.key)}
-                  className="w-full py-6 flex items-center justify-between text-left focus:outline-none"
-                >
-                  <span className="text-[17px] md:text-lg font-normal text-[#111827] pr-8">
-                    {item.question}
-                  </span>
-                  <motion.span
-                    animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="flex-shrink-0 text-[#111827]"
+              return (
+                <div key={item.key} className="border-b border-[#e2e8f0]">
+                  <button
+                    onClick={() => toggle(item.key)}
+                    className="w-full py-6 flex items-center justify-between text-left focus:outline-none"
                   >
-                    <Plus size={22} strokeWidth={1.5} />
-                  </motion.span>
-                </button>
-
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                    <span className="text-[17px] md:text-lg font-normal text-[#111827] pr-8">
+                      {item.question}
+                    </span>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
+                      className="flex-shrink-0 text-[#111827]"
                     >
-                      <p className="pb-6 text-[#4b5563] text-sm md:text-base leading-relaxed pr-8">
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+                      <Plus size={22} strokeWidth={1.5} />
+                    </motion.span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pb-6 text-[#4b5563] text-sm md:text-base leading-relaxed pr-8">
+                          {item.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Right Column */}
+          <div className="flex-1">
+            {faqItems.filter((_, index) => index % 2 === 1).map((item) => {
+              const isOpen = openKey === item.key;
+
+              return (
+                <div key={item.key} className="border-b border-[#e2e8f0]">
+                  <button
+                    onClick={() => toggle(item.key)}
+                    className="w-full py-6 flex items-center justify-between text-left focus:outline-none"
+                  >
+                    <span className="text-[17px] md:text-lg font-normal text-[#111827] pr-8">
+                      {item.question}
+                    </span>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="flex-shrink-0 text-[#111827]"
+                    >
+                      <Plus size={22} strokeWidth={1.5} />
+                    </motion.span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pb-6 text-[#4b5563] text-sm md:text-base leading-relaxed pr-8">
+                          {item.answer}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

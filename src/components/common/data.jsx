@@ -25,10 +25,21 @@ export const ABOUT_US_IMAGES = [
 ];
 
 export const OTHER_PAGE_IMAGES = {
-  simnHero: "https://images.pexels.com/photos/4427431/pexels-photo-4427431.jpeg",
-  founder: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+  simnHero: "https://images.pexels.com/photos/4427431/pexels-photo-4427431.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  founder: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
   insightsHero: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2000&auto=format&fit=crop",
   whoWeAre: "https://images.unsplash.com/photo-1758691737124-05c5bffe46f0?w=600&auto=format&fit=crop&q=60",
+  aboutUsTarget: "/target_bullseye.png",
+  aboutUsBackground: "https://images.pexels.com/photos/7691695/pexels-photo-7691695.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  visionBackground: "https://images.pexels.com/photos/8730283/pexels-photo-8730283.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  visionContentBackground: "https://images.pexels.com/photos/7108466/pexels-photo-7108466.jpeg?auto=compress&cs=tinysrgb&w=800",
+  objectiveBackground: "https://images.pexels.com/photos/5439369/pexels-photo-5439369.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  objectiveContentBackground: "https://images.pexels.com/photos/8133856/pexels-photo-8133856.jpeg?auto=compress&cs=tinysrgb&w=800",
+  goalBackground: "https://images.pexels.com/photos/8134189/pexels-photo-8134189.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  goalContentBackground: "https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&w=800",
+  futureBackground: "https://images.pexels.com/photos/8730289/pexels-photo-8730289.jpeg?auto=compress&cs=tinysrgb&w=1200",
+  futureContentBackground: "https://images.pexels.com/photos/5453901/pexels-photo-5453901.jpeg?auto=compress&cs=tinysrgb&w=800",
+  missionBg: "https://images.pexels.com/photos/8134162/pexels-photo-8134162.jpeg?auto=compress&cs=tinysrgb&w=800",
 };
 
 export const SERVICES_LIST = [
@@ -76,7 +87,7 @@ export const SERVICES_LIST = [
 
 
 export const industryImages = [
-  { src: 'https://images.unsplash.com/photo-1663303690597-4781f9a8b241?q=80&w=2749&auto=format&fit=crop', alt: 'Manufacturing' },
+  { src: 'https://plus.unsplash.com/premium_photo-1682144748274-add3d8ed04ea?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Manufacturing' },
   { src: 'https://plus.unsplash.com/premium_photo-1740717303215-49f8645e3fe4?q=80&w=1332&auto=format&fit=crop', alt: 'Utilities' },
   { src: 'https://images.unsplash.com/photo-1616622292851-ea257ac49a30?q=80&w=2431&auto=format&fit=crop', alt: 'Logistics' },
   { src: 'https://images.unsplash.com/photo-1622227922682-56c92e523e58?w=600&auto=format&fit=crop&q=60', alt: 'Pharmaceutical' },

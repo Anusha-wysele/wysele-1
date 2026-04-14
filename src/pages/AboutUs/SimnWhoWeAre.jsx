@@ -63,7 +63,7 @@ const SimnWhoWeAre = () => {
     return (
         <section 
             ref={sectionRef}
-            className="py-16 md:py-24 bg-white overflow-hidden flex flex-col justify-center relative"
+            className="py-8 md:py-12 bg-white overflow-hidden flex flex-col justify-center relative"
             style={{
                 backgroundImage: `url(${OTHER_PAGE_IMAGES.whoWeAre})`,
                 backgroundSize: 'cover',
@@ -72,7 +72,7 @@ const SimnWhoWeAre = () => {
             }}
         >
             {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/65"></div>
+            <div className="absolute inset-0 bg-black/20"></div>
             
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full font-montserrat relative z-10">
                 
@@ -116,7 +116,7 @@ const SimnWhoWeAre = () => {
                     </div>
 
                     {/* Column 3: Skills / Progress Bars */}
-                    <div className="lg:col-span-4 space-y-10 bg-black/20 p-8 md:p-10 rounded-xl backdrop-blur-sm border border-white/5">
+                    <div className="lg:col-span-4 space-y-10" style={{ marginTop: '-80px' }}>
                         {skills.map((skill, index) => (
                             <div key={index} className="space-y-3">
                                 <div className="flex justify-between items-end">

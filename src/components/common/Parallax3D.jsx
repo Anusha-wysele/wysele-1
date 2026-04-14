@@ -24,9 +24,9 @@ export const useMouseParallax = (multiplier = 4) => {
 };
 
 // Reusable Tilt Card wrapper combining perspective wrapper and animated children
-export const HoverTiltCard = React.forwardRef(({ 
-    children, 
-    style = {}, 
+export const HoverTiltCard = React.forwardRef(({
+    children,
+    style = {},
     className = "",
     tiltMultiplier = 8,
     glareOpacity = 0.1,

@@ -77,8 +77,8 @@ const ScrollNavigation = ({ sections }) => {
             <div className="flex items-center justify-center w-6 h-6 z-10">
               <div
                 className={`transition-all duration-500 rounded-full flex items-center justify-center ${showFull
-                    ? "w-6 h-6 border-[1.5px] border-[#C9184A] border-opacity-30 bg-transparent"
-                    : "w-2.5 h-2.5 bg-transparent border-[1.5px] border-gray-400/50 group-hover:bg-[#C9184A] group-hover:border-[#C9184A] group-hover:scale-125"
+                    ? "w-6 h-6 border-[1.5px] border-transparent bg-transparent"
+                    : "w-2.5 h-2.5 bg-transparent border-[1.5px] border-transparent group-hover:bg-[#C9184A] group-hover:border-[#C9184A] group-hover:scale-125"
                   }`}
               >
                 {showFull && <div className="w-2 h-2 bg-[#C9184A] rounded-full shadow-[0_0_8px_rgba(201,24,74,0.4)]"></div>}

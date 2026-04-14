@@ -139,6 +139,7 @@ export default function AboutUs() {
                     padding: isMobile ? '24px 20px 16px 20px' : isTablet ? '30px 16px 30px 30px' : '41px 20px 40px 40px',
                     minHeight: isMobile ? '280px' : isTablet ? '360px' : 'auto',
                 }}
+                className="group"
             >
                 <div style={{
                     position: 'relative',
@@ -170,6 +171,7 @@ export default function AboutUs() {
                                 initial={{ scale: 1.15 }}
                                 animate={{ scale: 1 }}
                                 transition={{ duration: 8, ease: "easeOut" }}
+                                className="transition-all duration-700 group-hover:grayscale-[30%]"
                                 style={{
                                     width: '100%',
                                     height: '100%',
@@ -178,6 +180,22 @@ export default function AboutUs() {
                                     willChange: 'transform'
                                 }}
                             />
+                            
+                            {/* Diagonal Overlay Transition - Top Left */}
+                            <div 
+                                className="absolute top-0 left-0 w-0 h-0 bg-black/10 transition-all duration-700 group-hover:w-full group-hover:h-full"
+                                style={{
+                                    clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+                                }}
+                            ></div>
+                            
+                            {/* Diagonal Overlay Transition - Bottom Right */}
+                            <div 
+                                className="absolute bottom-0 right-0 w-0 h-0 bg-black/10 transition-all duration-700 group-hover:w-full group-hover:h-full"
+                                style={{
+                                    clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
+                                }}
+                            ></div>
                         </motion.div>
                     </AnimatePresence>
 
@@ -360,3 +378,254 @@ export default function AboutUs() {
         </motion.div>
     );
 }
+
+
+// import React, { useState, useEffect } from 'react';
+// import { CaretRight, HandsClapping, Star } from '@phosphor-icons/react';
+// import { OTHER_PAGE_IMAGES } from '../../common/data';
+// import { motion, AnimatePresence } from 'framer-motion';
+// 
+// const tabs = [
+//     "Our Mission",
+//     "Our Vision",
+//     "Our Objective",
+//     "Our Goal",
+//     "Future Ventures"
+// ];
+// 
+// const tabContent = {
+//     "Our Mission": [
+//         {
+//             title: "Empowering Businesses",
+//             description: "We bridge the gap between talent and technology to help clients transition to seamless growth and innovation.",
+//             Icon: HandsClapping
+//         },
+//         {
+//             title: "Render Excellence",
+//             description: "Top-tier staffing and technology services that help companies propel business operations to an advanced degree.",
+//             Icon: Star
+//         }
+//     ],
+//     "Our Vision": [
+//         {
+//             title: "Global Leadership",
+//             description: "To be recognized as a leading force in modern digital transformation, driving innovation worldwide.",
+//             Icon: Star
+//         },
+//         {
+//             title: "Inspiring Trust",
+//             description: "Building transparent, reliable, and secure platforms that foster deep trust across enterprise ecosystems.",
+//             Icon: HandsClapping
+//         }
+//     ],
+//     "Our Objective": [
+//         {
+//             title: "Client Success",
+//             description: "Focusing on delivering measurable value and achieving long-term partnerships with clients.",
+//             Icon: HandsClapping
+//         },
+//         {
+//             title: "Operational Excellence",
+//             description: "Streamlining processes and workflows to ensure maximum efficiency and sustained competitive advantages.",
+//             Icon: Star
+//         }
+//     ],
+//     "Our Goal": [
+//         {
+//             title: "Sustainable Growth",
+//             description: "Ensuring consistent progress without compromising our core values or quality of service.",
+//             Icon: Star
+//         },
+//         {
+//             title: "Empowering Talent",
+//             description: "Creating a culture of continuous learning and organizational development to nurture next-gen digital leaders.",
+//             Icon: HandsClapping
+//         }
+//     ],
+//     "Future Ventures": [
+//         {
+//             title: "Emerging Technologies",
+//             description: "Exploring AI, cloud ecosystems, and advanced data analytics to stay ahead of the curve.",
+//             Icon: HandsClapping
+//         },
+//         {
+//             title: "Strategic Advisory",
+//             description: "Expanding our capabilities to navigate clients safely through complex future market disruptions.",
+//             Icon: Star
+//         }
+//     ]
+// };
+// 
+// export default function AboutUs() {
+//     const [activeTab, setActiveTab] = useState("Our Mission");
+// 
+//     // Preload all background images with tiered priority
+//     useEffect(() => {
+//         const tier1 = [
+//             OTHER_PAGE_IMAGES.aboutUsBackground,
+//             OTHER_PAGE_IMAGES.visionBackground,
+//             OTHER_PAGE_IMAGES.objectiveBackground,
+//             OTHER_PAGE_IMAGES.goalBackground,
+//             OTHER_PAGE_IMAGES.futureBackground
+//         ];
+// 
+//         const tier2 = [
+//             OTHER_PAGE_IMAGES.visionContentBackground,
+//             OTHER_PAGE_IMAGES.objectiveContentBackground,
+//             OTHER_PAGE_IMAGES.goalContentBackground,
+//             OTHER_PAGE_IMAGES.futureContentBackground,
+//             OTHER_PAGE_IMAGES.missionBg
+//         ];
+// 
+//         // Immediately load Tier 1 (Main Backgrounds)
+//         tier1.forEach((url) => {
+//             const img = new Image();
+//             img.src = url;
+//         });
+// 
+//         // Delay Tier 2 (Content Box Backgrounds) to give Tier 1 full priority
+//         const timer = setTimeout(() => {
+//             tier2.forEach((url) => {
+//                 const img = new Image();
+//                 img.src = url;
+//             });
+//         }, 800);
+// 
+//         return () => clearTimeout(timer);
+//     }, []);
+// 
+//     const content = tabContent[activeTab] || tabContent["Our Mission"];
+// 
+//     return (
+//         <section className="relative w-full min-h-[500px] bg-gray-800 flex">
+//             {/* Left Sidebar (Dark Background) */}
+//             <div className="w-[35%] min-w-[300px] h-full bg-transparent flex flex-col pt-48 pb-12 relative z-10">
+//                 {/* Badge */}
+//                 <div className="pl-28 pr-4 lg:pl-48 lg:pr-8 mb-6">
+//                     <span
+//                         className="bg-[#f27e1f] text-black font-medium text-[0.65rem] uppercase tracking-widest px-4 py-1 rounded-full inline-block"
+//                     >
+//                         Company Overview
+//                     </span>
+//                 </div>
+// 
+//                 {/* Vertical Menu */}
+//                 <ul className="w-full flex flex-col mt-auto mb-auto">
+//                     {tabs.map((tab, index) => {
+//                         const isActive = activeTab === tab;
+//                         return (
+//                             <li
+//                                 key={tab}
+//                                 onClick={() => setActiveTab(tab)}
+//                                 className="w-full cursor-pointer flex transition-all duration-200"
+//                             >
+//                                 {/* Invisible Spacer for Left Padding */}
+//                                 <div className="w-24 lg:w-44 flex-shrink-0"></div>
+// 
+//                                 {/* Highlightable Container starting from Arrow */}
+//                                 <div className={`
+//                                     flex items-center w-full pl-4 pr-4 lg:pr-8 py-3
+//                                     ${index === 0 ? 'border-t' : ''} border-b border-white/10
+//                                     ${isActive ? 'bg-[#f47d20] border-[#f47d20]' : 'bg-transparent hover:bg-white/5'}
+//                                 `}>
+//                                     <CaretRight
+//                                         weight="bold"
+//                                         size={12}
+//                                         className={`mr-3 ${isActive ? 'text-black' : 'text-white'}`}
+//                                     />
+//                                     <span
+//                                         className={`text-[0.85rem] font-medium tracking-[0.02em] ${isActive ? 'text-black' : 'text-white/90'}`}
+//                                     >
+//                                         {tab}
+//                                     </span>
+//                                 </div>
+//                             </li>
+//                         );
+//                     })}
+//                 </ul>
+//             </div>
+// 
+//             {/* Right Side Image Container */}
+//             <div className="w-[65%] self-stretch my-6 bg-white relative overflow-hidden rounded-l-md">
+//                 <AnimatePresence>
+//                     <motion.div
+//                         key={activeTab}
+//                         initial={{ opacity: 0 }}
+//                         animate={{ opacity: 1 }}
+//                         exit={{ opacity: 0 }}
+//                         transition={{ duration: 0.8 }}
+//                         className="absolute inset-0 w-full h-full"
+//                         style={{
+//                             backgroundImage: `url('${
+//                                 activeTab === "Our Vision" 
+//                                 ? OTHER_PAGE_IMAGES.visionBackground 
+//                                 : activeTab === "Our Objective" 
+//                                 ? OTHER_PAGE_IMAGES.objectiveBackground 
+//                                 : activeTab === "Our Goal" 
+//                                 ? OTHER_PAGE_IMAGES.goalBackground 
+//                                 : activeTab === "Future Ventures" 
+//                                 ? OTHER_PAGE_IMAGES.futureBackground 
+//                                 : OTHER_PAGE_IMAGES.aboutUsBackground
+//                             }')`,
+//                             backgroundSize: 'cover',
+//                             backgroundPosition: 'center',
+//                             backgroundRepeat: 'no-repeat',
+//                             zIndex: 1
+//                         }}
+//                     />
+//                 </AnimatePresence>
+//             </div>
+// 
+//             {/* Floating Overlapping Card */}
+//             <AnimatePresence mode="wait">
+//                 <motion.div
+//                     key={activeTab}
+//                     initial={{ opacity: 0, x: 50, y: '-50%' }}
+//                     animate={{ opacity: 1, x: 0, y: '-50%' }}
+//                     exit={{ opacity: 0, x: 50, y: '-50%' }}
+//                     transition={{ duration: 0.4, ease: "easeOut", delay: 0.4 }}
+//                     className="absolute top-[75%] left-[35%] w-[40%] max-w-[480px] shadow-xl text-white pt-8 pb-4 px-8 z-20 rounded-sm overflow-hidden flex flex-col"
+//                     style={{
+//                         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('${
+//                             activeTab === "Our Vision" 
+//                             ? OTHER_PAGE_IMAGES.visionContentBackground 
+//                             : activeTab === "Our Objective" 
+//                             ? OTHER_PAGE_IMAGES.objectiveContentBackground 
+//                             : activeTab === "Our Goal" 
+//                             ? OTHER_PAGE_IMAGES.goalContentBackground 
+//                             : activeTab === "Future Ventures" 
+//                             ? OTHER_PAGE_IMAGES.futureContentBackground 
+//                             : OTHER_PAGE_IMAGES.missionBg
+//                         }')`,
+//                         backgroundSize: 'cover',
+//                         backgroundPosition: 'center'
+//                     }}
+//                 >
+//                     <h3 className="text-2xl font-semibold mb-2 tracking-tight">{activeTab}</h3>
+//                     <div className="w-10 h-[2px] bg-white mb-6"></div>
+// 
+//                     <div className="flex flex-col gap-6">
+//                         {content.map((item, idx) => {
+//                             const Icon = item.Icon;
+//                             return (
+//                                 <div key={idx} className="flex gap-4 items-start">
+//                                     <div className="mt-1 flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full border border-white/80 bg-transparent">
+//                                         <Icon size={20} color="#fff" />
+//                                     </div>
+//                                     <div className="flex flex-col">
+//                                         <h4 className="text-lg font-semibold mb-1 tracking-tight">{item.title}</h4>
+//                                         <p className="text-white text-[0.85rem] leading-relaxed">
+//                                             {item.description}
+//                                         </p>
+//                                     </div>
+//                                 </div>
+//                             );
+//                         })}
+//                     </div>
+//                 </motion.div>
+//             </AnimatePresence>
+// 
+//         </section>
+//     );
+// }
+// 
