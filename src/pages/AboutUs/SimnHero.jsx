@@ -32,7 +32,7 @@ const SimnHero = () => {
 
                 {/* Content Overlay */}
                 <div className={`absolute inset-0 flex items-end pb-25 md:pb-30 ${isMobile ? 'pt-20' : ''}`}>
-                    <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 w-full">
+                    <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
                         <div className={`flex ${isMobile ? 'flex-col gap-10' : 'flex-row gap-8 items-end'}`}>
 
                             <motion.div

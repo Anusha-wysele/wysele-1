@@ -8,6 +8,7 @@ import ScrollProgressBar from "./components/common/ScrollProgressBar";
 // Lazy load pages for better performance
 const LandingPages = lazy(() => import("./components/layout/section/LandingPages"));
 const AboutPage = lazy(() => import("./pages/AboutUs/AboutPage"));
+const SapConsulting = lazy(() => import("./pages/OurServices/SapConsulting/SapHero"));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -19,6 +20,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<LandingPages />} />
           <Route path="/about/*" element={<AboutPage />} />
+          <Route path="/services/sap-consulting" element={<SapConsulting />} />
           <Route path="*" element={<h1 className="text-white">404 - Page Not Found</h1>} />
         </Routes>
       </Suspense>

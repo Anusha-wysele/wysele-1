@@ -171,7 +171,7 @@ export default function MeetOurPeople() {
 
   return (
     <section className="py-8 md:py-10 px-6 lg:px-12 overflow-hidden flex flex-col justify-center bg-white">
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full">
         <motion.div
           initial="hidden"
           whileInView="visible"

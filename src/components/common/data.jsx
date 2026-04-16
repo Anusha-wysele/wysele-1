@@ -24,6 +24,14 @@ export const ABOUT_US_IMAGES = [
   "https://images.pexels.com/photos/9301895/pexels-photo-9301895.jpeg",
 ];
 
+export const SERVICES_PAGE_IMAGES = {
+  sapConsulting: "https://images.pexels.com/photos/36765734/pexels-photo-36765734.jpeg",
+  sapTechnicalConsulting: "https://images.pexels.com/photos/8134086/pexels-photo-8134086.jpeg",
+  whyChooseWysele: "https://images.pexels.com/photos/6693664/pexels-photo-6693664.jpeg",
+  sapOverview: "https://cdn-ilbpmnp.nitrocdn.com/KuHVcqrYtSTIhSvMyjcyzrCVVNKQjXkn/assets/images/optimized/rev-d7e87a8/shvintech.com/wp-content/uploads/2025/03/final-design-870x640.jpg",
+  technicalConsulting: "https://images.pexels.com/photos/7693218/pexels-photo-7693218.jpeg",
+};
+
 export const OTHER_PAGE_IMAGES = {
   simnHero: "https://images.pexels.com/photos/4427431/pexels-photo-4427431.jpeg?auto=compress&cs=tinysrgb&w=1200",
   founder: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",

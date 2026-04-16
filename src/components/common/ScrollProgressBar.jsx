@@ -41,6 +41,8 @@ const ScrollProgressBar = () => {
                     opacity: isVisible ? 1 : 0,
                     scale: isVisible ? 1 : 0,
                 }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
                 style={{
                     position: 'fixed',
@@ -50,7 +52,9 @@ const ScrollProgressBar = () => {
                     height: '56px',
                     zIndex: 9999,
                     pointerEvents: isVisible ? 'auto' : 'none',
+                    cursor: 'pointer',
                 }}
+                onClick={scrollToTop}
             >
                 {/* SVG Progress Ring */}
                 <svg
@@ -61,6 +65,7 @@ const ScrollProgressBar = () => {
                         top: 0,
                         left: 0,
                         transform: 'rotate(-90deg)',
+                        pointerEvents: 'none',
                     }}
                 >
                     {/* Background Circle */}
@@ -90,8 +95,7 @@ const ScrollProgressBar = () => {
                 </svg>
 
                 {/* Button */}
-                <motion.button
-                    onClick={scrollToTop}
+                <div
                     style={{
                         position: 'absolute',
                         top: '50%',
@@ -102,14 +106,13 @@ const ScrollProgressBar = () => {
                         borderRadius: '50%',
                         background: '#10b981',
                         border: 'none',
-                        cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         boxShadow: '0 4px 20px rgba(16, 185, 129, 0.4)',
+                        transition: 'box-shadow 0.3s ease',
+                        pointerEvents: 'none',
                     }}
-                    whileHover={{ scale: 1.1, boxShadow: '0 6px 25px rgba(16, 185, 129, 0.6)' }}
-                    whileTap={{ scale: 0.95 }}
                 >
                     <svg
                         width="18"
@@ -123,7 +126,7 @@ const ScrollProgressBar = () => {
                     >
                         <path d="M12 19V5M5 12l7-7 7 7" />
                     </svg>
-                </motion.button>
+                </div>
             </motion.div>
         </>
     );

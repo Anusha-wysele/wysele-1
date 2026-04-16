@@ -103,7 +103,7 @@ const SimnStats = () => {
 
     return (
         <section ref={sectionRef} className="pb-8 md:pb-12 pt-0 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12">
                 
                 {/* Operating Locations Section */}
                 <div className="text-center mb-6 md:mb-10 space-y-4">

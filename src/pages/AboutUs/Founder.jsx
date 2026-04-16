@@ -24,7 +24,7 @@ const Founder = () => {
 
             {/* Second Section - What We Deliver */}
             <section className="bg-white pt-16 pb-8 md:pt-24 md:pb-10 px-6 md:px-12">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto">
                     <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
 
                         {/* Right Side (Higher Importance for Mobile) - Company Description */}
@@ -105,7 +105,7 @@ const Founder = () => {
 
             {/* Third Section - Meet Our Founder */}
             <section className="bg-white pt-8 pb-12 md:pt-10 px-6 md:px-12 lg:px-20">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto">
                     <div className={`flex flex-col lg:flex-row gap-16 lg:gap-24 items-center overflow-visible`}>
 
                         {/* Left Side - Founder Image */}

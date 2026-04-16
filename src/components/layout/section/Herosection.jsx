@@ -95,10 +95,7 @@ export default function HeroSection() {
           background: isMobile ? "#111" : "transparent",
         }}
       >
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+        <h1 
           style={{
             fontSize: isMobile ? "2.2rem" : "clamp(3rem, 6vw, 5.5rem)",
             fontWeight: 400,
@@ -109,9 +106,44 @@ export default function HeroSection() {
             letterSpacing: "-0.01em"
           }}
         >
-          Driving Business Transformation <br className={isMobile ? "hidden" : "block"} />
-          <span style={{ display: "inline-block", marginTop: isMobile ? "0" : "5px" }}>with Tailored Digital & AI Solutions</span>
-        </motion.h1>
+            <span className="inline-block overflow-hidden" style={{ height: '1.2em' }}>
+                {'Driving Business Transformation'.split('').map((char, idx) => (
+                    <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
+                        <motion.span
+                            className="inline-block"
+                            initial={{ y: '-100%', opacity: 0 }}
+                            animate={{ y: '0%', opacity: 1 }}
+                            transition={{ 
+                                duration: 0.4,
+                                delay: idx * 0.025 + 0.4,
+                                ease: [0.33, 1, 0.68, 1]
+                            }}
+                        >
+                            {char}
+                        </motion.span>
+                    </span>
+                ))}
+            </span>
+            <br className={isMobile ? "hidden" : "block"} />
+            <span className="inline-block overflow-hidden" style={{ height: '1.2em', marginTop: isMobile ? "0" : "5px" }}>
+                {'with Tailored Digital & AI Solutions'.split('').map((char, idx) => (
+                    <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
+                        <motion.span
+                            className="inline-block"
+                            initial={{ y: '-100%', opacity: 0 }}
+                            animate={{ y: '0%', opacity: 1 }}
+                            transition={{ 
+                                duration: 0.4,
+                                delay: (31 + idx) * 0.025 + 0.4,
+                                ease: [0.33, 1, 0.68, 1]
+                            }}
+                        >
+                            {char}
+                        </motion.span>
+                    </span>
+                ))}
+            </span>
+        </h1>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

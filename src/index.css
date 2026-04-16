@@ -10,10 +10,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @layer base {
@@ -43,3 +45,21 @@ body {
 button {
   @apply font-montserrat;
 }
+
+.bottom-fill::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 3px;
+  background-color: #C9184A;
+  transition: transform 0.5s ease-out;
+}
+
+.group:hover .bottom-fill::after {
+  transform: translateX(-50%) scaleX(1);
+}
+

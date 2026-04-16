@@ -74,7 +74,7 @@ const SimnWhoWeAre = () => {
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-black/20"></div>
             
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 w-full font-montserrat relative z-10">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 w-full font-montserrat relative z-10">
                 
                 {/* Section Title */}
                 <div className="text-center mb-12 md:mb-20 space-y-4">

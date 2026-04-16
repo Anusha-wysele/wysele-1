@@ -57,7 +57,7 @@ export default function GetInTouch() {
                 <div className={`absolute top-0 left-0 ${isMobile ? 'w-full h-[60%] rounded-b-[40px]' : 'w-[90%] md:w-[72%] h-[96%] rounded-tr-[50px] rounded-br-[150px] md:rounded-br-[250px] rounded-bl-[60px] md:rounded-bl-[80px]'} bg-gray-800`} />
             </div>
 
-            <div className={`relative z-10 w-full max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col md:flex-row h-full items-center ${isMobile ? 'gap-12' : 'md:items-stretch gap-0'}`}>
+            <div className={`relative z-10 w-full max-w-[1200px] 3xl:max-w-[1400px] 4xl:max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row h-full items-center ${isMobile ? 'gap-12' : 'md:items-stretch gap-0'}`}>
 
                 {/* Left Offset Content Box */}
                 <motion.div

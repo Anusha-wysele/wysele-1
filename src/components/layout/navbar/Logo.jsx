@@ -37,7 +37,7 @@ const Logo = () => {
                 <img
                     src={WYSELE_LOGOS.dark}
                     alt="Logo"
-                    className="w-24 bg-cover mx-auto"
+                    className="w-28 bg-cover mx-auto"
                 />
 
             </div>
