@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import Cylinders from '../../../components/common/Cylinders';
 
 const services = [
     { title: "SAP S/4HANA Migration and Upgrades", description: "Transitioning to SAP S/4HANA can be a game-changer, and our experts ensure that this migration is seamless. We guide you through every phase of the process, starting with comprehensive system analysis and planning, moving through the technical setup, and continuing with robust post-migration support to guarantee that your organization maximizes the benefits of the new system." },
@@ -32,14 +34,7 @@ const TechnicalConsulting = () => {
                     className="w-full h-[80vh] object-cover"
                 />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
-                {/* Bottom-left Cylinder - vertical */}
-                <div className="absolute bottom-0 left-0 w-12 h-32 rounded-full border border-white/30 bg-white/10" />
-                {/* Bottom-left Cylinder - horizontal */}
-                <div className="absolute bottom-0 left-0 w-32 h-12 rounded-full border border-white/30 bg-white/10" />
-                {/* Top-right Cylinder - horizontal */}
-                <div className="absolute top-0 right-0 w-32 h-12 rounded-full border border-white/30 bg-white/10" />
-                {/* Top-right Cylinder - vertical */}
-                <div className="absolute top-0 right-0 w-12 h-32 rounded-full border border-white/30 bg-white/10" />
+                <Cylinders />
                 <div className="absolute inset-0 flex items-center justify-center px-6 md:px-16">
                     <div className="w-full max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
                         <div className="w-full md:w-1/2 md:pl-32 lg:pl-48 xl:pl-64">
@@ -103,13 +98,37 @@ const TechnicalConsulting = () => {
 
                         <div className="w-1/2 relative">
                             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200"></div>
-                            <div className="space-y-4 pl-4">
+                            <div className="space-y-4 pl-8">
                                 {services.map((service, index) => (
-                                    <div key={index} className="relative border border-gray-200 rounded-lg p-3 bg-white hover:shadow-lg hover:shadow-black/30 hover:border-gray-400 transition-all duration-300 hover:-translate-y-1 overflow-hidden group">
-                                        <div className="absolute top-0 left-0 w-1 h-full bg-black rounded-l-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                        <h3 className="text-xs font-bold text-gray-900 mb-1">{service.title}</h3>
-                                        <p className="text-[11px] text-gray-600 leading-tight">{service.description}</p>
-                                    </div>
+                                    <motion.div
+                                        key={index}
+                                        className="relative flex items-center group cursor-pointer"
+                                        whileHover="hover"
+                                        initial="initial"
+                                    >
+                                        {/* + / Arrow indicator sitting on the vertical line */}
+                                        <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center z-10">
+                                            <span className="absolute text-gray-400 text-lg font-light transition-all duration-300 group-hover:opacity-0 group-hover:scale-0">+</span>
+                                            <ArrowRight className="absolute text-[#455982] opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300" size={16} />
+                                        </div>
+
+                                        {/* Card */}
+                                        <div className="relative border border-gray-200 rounded-lg p-3 transition-all duration-300 hover:-translate-y-1 overflow-hidden w-full">
+                                            {/* Sliding background overlay */}
+                                            <motion.div
+                                                variants={{
+                                                    initial: { clipPath: "inset(0 100% 0 0)" },
+                                                    hover: { clipPath: "inset(0 0 0 0)" }
+                                                }}
+                                                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                                                className="absolute inset-0 bg-[#455982] rounded-lg"
+                                            />
+                                            <div className="relative z-10">
+                                                <h3 className="text-xs font-bold text-gray-900 mb-1 group-hover:text-white transition-colors duration-300">{service.title}</h3>
+                                                <p className="text-[11px] text-gray-600 leading-tight group-hover:text-white/90 transition-colors duration-300">{service.description}</p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>

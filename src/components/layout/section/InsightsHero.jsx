@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { OTHER_PAGE_IMAGES } from '../../common/data';
+import Cylinders from '../../common/Cylinders';
 
 export default function InsightsHero() {
   return (
@@ -15,14 +16,7 @@ export default function InsightsHero() {
         />
         {/* Responsive Overlay: Darkness increases on mobile to ensure readability since text is centered over the image */}
         <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-[#111] via-[#111]/90 md:via-[#111]/80 to-transparent md:to-[#111]/20"></div>
-        {/* Bottom-left Cylinder - vertical */}
-        <div className="absolute bottom-0 left-0 w-12 h-32 rounded-full border border-white/30 bg-white/10" />
-        {/* Bottom-left Cylinder - horizontal */}
-        <div className="absolute bottom-0 left-0 w-32 h-12 rounded-full border border-white/30 bg-white/10" />
-        {/* Top-right Cylinder - horizontal */}
-        <div className="absolute top-0 right-0 w-32 h-12 rounded-full border border-white/30 bg-white/10" />
-        {/* Top-right Cylinder - vertical */}
-        <div className="absolute top-0 right-0 w-12 h-32 rounded-full border border-white/30 bg-white/10" />
+        <Cylinders />
       </div>
 
       <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full px-6 lg:px-12 relative z-10">

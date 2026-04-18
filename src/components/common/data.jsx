@@ -25,6 +25,9 @@ export const ABOUT_US_IMAGES = [
 ];
 
 export const SERVICES_PAGE_IMAGES = {
+  sapHero: "https://images.pexels.com/photos/8134086/pexels-photo-8134086.jpeg",
+  sapSignavioHero: "https://images.pexels.com/photos/7652465/pexels-photo-7652465.jpeg",
+  sapSignavioStrengths: "https://images.pexels.com/photos/4963354/pexels-photo-4963354.jpeg",
   sapConsulting: "https://images.pexels.com/photos/36765734/pexels-photo-36765734.jpeg",
   sapTechnicalConsulting: "https://images.pexels.com/photos/8134086/pexels-photo-8134086.jpeg",
   whyChooseWysele: "https://images.pexels.com/photos/6693664/pexels-photo-6693664.jpeg",

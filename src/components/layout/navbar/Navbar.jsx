@@ -556,7 +556,7 @@ import Logo from "./Logo";
  
 const SAP_SERVICES = [
   { label: "SAP Consulting Services", desc: "Expert strategy and implementation.", icon: "⚙", path: "/services/sap-consulting" },
-  { label: "SAP Signavio Solutions", desc: "Process mining and transformation.", icon: "📊", path: "/services" },
+  { label: "SAP Signavio Solutions", desc: "Process mining and transformation.", icon: "📊", path: "/services/sap-signavio" },
   { label: "SAP Datasphere Support", desc: "Modern unified data experience.", icon: "🗄", path: "/services" },
   { label: "RISE with SAP", desc: "Simplified path to cloud ERP.", icon: "🚀", path: "/services" },
   { label: "BTP services", desc: "Integration and application platform.", icon: "☁", path: "/services" },
@@ -579,7 +579,7 @@ const MEGA_MENU_DATA = {
       link: "/services"
     },
     items: [
-      { label: "SAP Services", desc: "Consulting, BTP, S/4HANA", icon: <Database size={18} />, path: "/services", sublinks: SAP_SERVICES },
+      { label: "SAP Services", desc: "Consulting, BTP, S/4HANA", icon: <Database size={18} />, path: "/sap-services", sublinks: SAP_SERVICES },
       { label: "Salesforce Services", desc: "CRM and multi-cloud solutions", icon: <CloudLightning size={18} />, path: "/services" },
       { label: "Cybersecurity", desc: "Modern protection for your enterprise", icon: <ShieldCheck size={18} />, path: "/services" },
       { label: "IT Infrastructure", desc: "Managed networks and data centers", icon: <Radio size={18} />, path: "/services" },
@@ -737,7 +737,13 @@ function MegaMenu({ type, open, onClose }) {
                     variants={itemVariants}
                     onMouseEnter={() => handleItemEnter(item)}
                     className={`group flex items-center justify-between p-3.5 rounded-xl cursor-pointer transition-all duration-300 ${isHovered ? 'bg-[#C9184A]/5' : 'hover:bg-gray-50'}`}
-                    onClick={() => { if (!hasSub) { navigate(item.path); onClose(); } }}
+                    onClick={() => { 
+                      if (item.path) {
+                        navigate(item.path);
+                        window.scrollTo(0, 0);
+                        onClose();
+                      }
+                    }}
                   >
                     <div className="flex items-center gap-3.5">
                       <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 ${isHovered ? 'bg-transparent text-[#C9184A] scale-110' : 'bg-transparent text-gray-700 group-hover:text-[#C9184A]'}`}>
