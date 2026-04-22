@@ -11,8 +11,8 @@ const SapOverview = () => {
     const words = "Unlock the Full Potential of SAP with Professional Consulting".split(" ");
 
     return (
-        <div className="bg-white py-6 px-6 md:px-16" ref={ref}>
-            <div className="flex items-center gap-12">
+        <div className="bg-white pt-6 pb-2" ref={ref}>
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 flex items-center gap-12">
                 <div className="w-1/2">
                 <h2 className="text-3xl font-semibold text-gray-900 mb-6 flex flex-wrap gap-x-2">
                     {words.map((word, i) => (

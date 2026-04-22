@@ -33,6 +33,22 @@ export const SERVICES_PAGE_IMAGES = {
   whyChooseWysele: "https://images.pexels.com/photos/6693664/pexels-photo-6693664.jpeg",
   sapOverview: "https://cdn-ilbpmnp.nitrocdn.com/KuHVcqrYtSTIhSvMyjcyzrCVVNKQjXkn/assets/images/optimized/rev-d7e87a8/shvintech.com/wp-content/uploads/2025/03/final-design-870x640.jpg",
   technicalConsulting: "https://images.pexels.com/photos/7693218/pexels-photo-7693218.jpeg",
+  sapDatasphereHero: "https://images.unsplash.com/photo-1758876202980-0a28b744fb24?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  sapDatasphereWhyChoose: "https://images.pexels.com/photos/8847200/pexels-photo-8847200.jpeg",
+  sapDatasphereWhyChooseLeft: "https://images.pexels.com/photos/36733304/pexels-photo-36733304.jpeg",
+  riseWithSapHero: "https://images.pexels.com/photos/8134165/pexels-photo-8134165.jpeg",
+  riseWithSapOverview: "https://images.pexels.com/photos/5273691/pexels-photo-5273691.jpeg",
+  howRiseWorkBg: "https://images.pexels.com/photos/5827789/pexels-photo-5827789.jpeg",
+  btpHero: "https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  btpEmpowerment: "https://images.pexels.com/photos/12927117/pexels-photo-12927117.jpeg",
+  btpAnalytics: "https://images.pexels.com/photos/7316661/pexels-photo-7316661.jpeg?auto=compress&cs=tinysrgb&w=800",
+  btpServiceHover: "https://images.pexels.com/photos/6285135/pexels-photo-6285135.jpeg",
+  btpAnalyticsHover: "https://images.pexels.com/photos/8353777/pexels-photo-8353777.jpeg",
+  btpCloudHover: "https://images.pexels.com/photos/5833242/pexels-photo-5833242.jpeg",
+  btpDataMgmtHover: "https://images.pexels.com/photos/7698802/pexels-photo-7698802.jpeg",
+  btpAiHover: "https://images.pexels.com/photos/5833772/pexels-photo-5833772.jpeg",
+  btpAppDevHover: "https://images.pexels.com/photos/6285085/pexels-photo-6285085.jpeg",
+  sapIntegrationHero: "https://images.pexels.com/photos/8134168/pexels-photo-8134168.jpeg",
 };
 
 export const OTHER_PAGE_IMAGES = {
@@ -51,48 +67,50 @@ export const OTHER_PAGE_IMAGES = {
   futureBackground: "https://images.pexels.com/photos/8730289/pexels-photo-8730289.jpeg?auto=compress&cs=tinysrgb&w=1200",
   futureContentBackground: "https://images.pexels.com/photos/5453901/pexels-photo-5453901.jpeg?auto=compress&cs=tinysrgb&w=800",
   missionBg: "https://images.pexels.com/photos/8134162/pexels-photo-8134162.jpeg?auto=compress&cs=tinysrgb&w=800",
+  industriesHero: "https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  contactHero: "https://images.pexels.com/photos/5453824/pexels-photo-5453824.jpeg?auto=compress&cs=tinysrgb&w=1600",
 };
 
 export const SERVICES_LIST = [
-  { 
-    title: "SAP Services", 
-    desc: "Comprehensive SAP solutions including Consulting, Signavio, Datasphere, RISE, BTP, Integration, Migration, MDG, and S/4HANA Conversion to drive enterprise transformation.", 
-    img: "https://thumbs.dreamstime.com/b/sap-business-process-automation-management-software-concept-businessman-typing-laptop-icons-including-gears-charts-325088207.jpg?w=768" 
+  {
+    title: "SAP Services",
+    desc: "Comprehensive SAP solutions including Consulting, Signavio, Datasphere, RISE, BTP, Integration, Migration, MDG, and S/4HANA Conversion to drive enterprise transformation.",
+    img: "https://thumbs.dreamstime.com/b/sap-business-process-automation-management-software-concept-businessman-typing-laptop-icons-including-gears-charts-325088207.jpg?w=768"
   },
-  { 
-    title: "Salesforce Services", 
-    desc: "Boost customer engagement with tailored Salesforce solutions.", 
-    img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80" 
+  {
+    title: "Salesforce Services",
+    desc: "Boost customer engagement with tailored Salesforce solutions.",
+    img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80"
   },
-  { 
-    title: "IT Infrastructure – SOC & NOC", 
-    desc: "24/7 monitoring and security for your IT infrastructure.", 
-    img: "https://media.istockphoto.com/id/1809659600/photo/modern-data-technology-center-server-racks-in-dark-room-with-vfx-visualization-concept-of.jpg?s=612x612&w=0&k=20&c=NXgxaKO42ojenr36s2bzRMxpm8JmOyItPq3ZVkdJsi0=" 
+  {
+    title: "IT Infrastructure – SOC & NOC",
+    desc: "24/7 monitoring and security for your IT infrastructure.",
+    img: "https://media.istockphoto.com/id/1809659600/photo/modern-data-technology-center-server-racks-in-dark-room-with-vfx-visualization-concept-of.jpg?s=612x612&w=0&k=20&c=NXgxaKO42ojenr36s2bzRMxpm8JmOyItPq3ZVkdJsi0="
   },
-  { 
-    title: "IT Infrastructure Services", 
-    desc: "Scalable IT solutions to support business growth.", 
-    img: "https://media.istockphoto.com/id/1460170484/photo/transportation-and-technology-concept-its-mobility-as-a-service-telecommunication-iot-ict.jpg?s=612x612&w=0&k=20&c=PqfiF9PlKXpeug9P2SM2W2aB2O_6a-JCc9Qb-109rjo=" 
+  {
+    title: "IT Infrastructure Services",
+    desc: "Scalable IT solutions to support business growth.",
+    img: "https://media.istockphoto.com/id/1460170484/photo/transportation-and-technology-concept-its-mobility-as-a-service-telecommunication-iot-ict.jpg?s=612x612&w=0&k=20&c=PqfiF9PlKXpeug9P2SM2W2aB2O_6a-JCc9Qb-109rjo="
   },
-  { 
-    title: "Cybersecurity Services", 
-    desc: "Protect your digital assets with cutting-edge security solutions.", 
-    img: "https://media.istockphoto.com/id/1435605327/photo/cybersecurity-concept-global-network-security-technology-business-people-protect-personal.jpg?s=612x612&w=0&k=20&c=9QvqAsfANdpsNcYdZ0WlMd5lKaTR9BvnTpFnrtGbV0s=" 
+  {
+    title: "Cybersecurity Services",
+    desc: "Protect your digital assets with cutting-edge security solutions.",
+    img: "https://media.istockphoto.com/id/1435605327/photo/cybersecurity-concept-global-network-security-technology-business-people-protect-personal.jpg?s=612x612&w=0&k=20&c=9QvqAsfANdpsNcYdZ0WlMd5lKaTR9BvnTpFnrtGbV0s="
   },
-  { 
-    title: "Enterprise Digital Transformation", 
-    desc: "Future-proof your business with end-to-end digital transformation.", 
-    img: "https://media.istockphoto.com/id/1550019855/photo/management-strategy-concept-process-of-business.jpg?s=612x612&w=0&k=20&c=gjTAinyRgwailWNrVS_pjnBo4pW_-CWCc6Ui-u-Fb9o=" 
+  {
+    title: "Enterprise Digital Transformation",
+    desc: "Future-proof your business with end-to-end digital transformation.",
+    img: "https://media.istockphoto.com/id/1550019855/photo/management-strategy-concept-process-of-business.jpg?s=612x612&w=0&k=20&c=gjTAinyRgwailWNrVS_pjnBo4pW_-CWCc6Ui-u-Fb9o="
   },
-  { 
-    title: "Web Development", 
-    desc: "Build scalable, responsive, and high-performance web applications tailored to your business needs.", 
-    img: "https://images.pexels.com/photos/41227/pexels-photo-41227.jpeg" 
+  {
+    title: "Web Development",
+    desc: "Build scalable, responsive, and high-performance web applications tailored to your business needs.",
+    img: "https://images.pexels.com/photos/41227/pexels-photo-41227.jpeg"
   },
-  { 
-    title: "App Development", 
-    desc: "Create intuitive, feature-rich mobile experiences for iOS and Android to engage your customers on the go.", 
-    img: "https://images.pexels.com/photos/7151031/pexels-photo-7151031.jpeg" 
+  {
+    title: "App Development",
+    desc: "Create intuitive, feature-rich mobile experiences for iOS and Android to engage your customers on the go.",
+    img: "https://images.pexels.com/photos/7151031/pexels-photo-7151031.jpeg"
   },
 ];
 
@@ -107,9 +125,21 @@ export const industryImages = [
   { src: 'https://plus.unsplash.com/premium_photo-1737623479045-a6a27357ffa9?q=80&w=715&auto=format&fit=crop', alt: 'Automotive' },
   { src: 'https://images.unsplash.com/photo-1626162953675-544bf5a61ca6?q=80&w=1332&auto=format&fit=crop', alt: 'Banking' },
   { src: 'https://images.unsplash.com/photo-1718005432979-8975123e6462?q=80&w=2213&auto=format&fit=crop', alt: 'Retail' },
-  { src: 'https://plus.unsplash.com/premium_photo-1706344618570-5b8d0a32c2ae?q=80&w=1170&auto=format&fit=crop', alt: 'Textiles' },
+  { src: 'https://images.unsplash.com/photo-1758270804188-8ca0b6d254bc?q=80&w=1175&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', alt: 'Textiles' },
   { src: 'https://images.unsplash.com/photo-1514203068512-5cc771e81765?q=80&w=1899&auto=format&fit=crop', alt: 'Mining' },
 ];
+
+export const MANUFACTURING_IMAGE = "https://images.pexels.com/photos/19233057/pexels-photo-19233057.jpeg";
+export const UTILITIES_IMAGE = "https://images.pexels.com/photos/33153799/pexels-photo-33153799.jpeg";
+export const LOGISTICS_IMAGE = "https://images.pexels.com/photos/31214218/pexels-photo-31214218.jpeg";
+export const PHARMA_IMAGE = "https://images.unsplash.com/photo-1644878601246-c4c3f8d3dc01?w=1600&auto=format&fit=crop&q=80";
+export const AGRIBUSINESS_IMAGE = "https://images.pexels.com/photos/14224704/pexels-photo-14224704.jpeg";
+export const AEROSPACE_IMAGE = "https://images.pexels.com/photos/7155378/pexels-photo-7155378.jpeg";
+export const AUTOMOTIVE_IMAGE = "https://images.pexels.com/photos/9702382/pexels-photo-9702382.jpeg";
+export const BANKING_IMAGE = "https://images.pexels.com/photos/5833860/pexels-photo-5833860.jpeg";
+export const RETAIL_IMAGE = "https://images.unsplash.com/photo-1771575521357-f6c9237fe16f?w=1600&auto=format&fit=crop&q=80";
+export const TEXTILES_IMAGE = "https://images.unsplash.com/photo-1682253398724-d1cfe17f4607?w=1600&auto=format&fit=crop&q=80";
+export const MINING_IMAGE = "https://images.pexels.com/photos/31472360/pexels-photo-31472360.jpeg";
 
 
 

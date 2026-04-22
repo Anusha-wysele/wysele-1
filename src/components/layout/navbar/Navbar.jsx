@@ -557,16 +557,16 @@ import Logo from "./Logo";
 const SAP_SERVICES = [
   { label: "SAP Consulting Services", desc: "Expert strategy and implementation.", icon: "⚙", path: "/services/sap-consulting" },
   { label: "SAP Signavio Solutions", desc: "Process mining and transformation.", icon: "📊", path: "/services/sap-signavio" },
-  { label: "SAP Datasphere Support", desc: "Modern unified data experience.", icon: "🗄", path: "/services" },
-  { label: "RISE with SAP", desc: "Simplified path to cloud ERP.", icon: "🚀", path: "/services" },
-  { label: "BTP services", desc: "Integration and application platform.", icon: "☁", path: "/services" },
-  { label: "SAP Integration Services", desc: "Seamless cross-system connectivity.", icon: "🔗", path: "/services" },
+  { label: "SAP Datasphere Support", desc: "Modern unified data experience.", icon: "🗄", path: "/services/sap-datasphere" },
+  { label: "RISE with SAP", desc: "Simplified path to cloud ERP.", icon: "🚀", path: "/services/rise-with-sap" },
+  { label: "BTP services", desc: "Integration and application platform.", icon: "☁", path: "/services/sap-btp" },
+  { label: "SAP Integration Services", desc: "Seamless cross-system connectivity.", icon: "🔗", path: "/services/sap-integration" },
   { label: "SAP VIM & BRIM Services", desc: "Digital billing and invoice management.", icon: "📋", path: "/services" },
   { label: "Migration Services", desc: "Secure data and system transition.", icon: "📦", path: "/services" },
   { label: "S/4 HANA Conversion", desc: "Intelligent ERP for the digital age.", icon: "⚡", path: "/services" },
   { label: "Gen AI Services", desc: "Next-gen AI for SAP workflows.", icon: "🤖", path: "/services" },
   { label: "Master Data Governance", desc: "Single source of truth for your data.", icon: "📊", path: "/services" },
-  { label: "SAP BTP & API Mgmt", desc: "Build, manage and scale APIs.", icon: "🔌", path: "/services" },
+  { label: "SAP BTP & API Mgmt", desc: "Build, manage and scale APIs.", icon: "🔌", path: "/services/sap-btp" },
   { label: "Technical Consulting", desc: "Deep technical SAP expertise.", icon: "🛠", path: "/services" },
   { label: "OpenText Services", desc: "Content and information management.", icon: "📁", path: "/services" },
 ];
@@ -598,15 +598,15 @@ const MEGA_MENU_DATA = {
     sidebar: {
       title: "Industries",
       desc: "Specialized expertise for industry-leading outcomes.",
-      link: "/#industries"
+      link: "/industries"
     },
     items: [
-      { label: "Manufacturing", desc: "Smart factories and IoT", icon: <Factory size={18} />, path: "/#industries" },
-      { label: "Banking & Finance", desc: "Secure and agile fintech", icon: <Landmark size={18} />, path: "/#industries" },
-      { label: "Retail & Commerce", desc: "Omnichannel customer success", icon: <ShoppingBag size={18} />, path: "/#industries" },
-      { label: "Logistics", desc: "Supply chain visibility", icon: <Truck size={18} />, path: "/#industries" },
-      { label: "Healthcare", desc: "Patient-centric digital health", icon: <HeartPulse size={18} />, path: "/#industries" },
-      { label: "Utilities", desc: "Energy efficiency and renewables", icon: <Zap size={18} />, path: "/#industries" },
+      { label: "Manufacturing", desc: "Smart factories and IoT", icon: <Factory size={18} />, path: "/industries" },
+      { label: "Banking & Finance", desc: "Secure and agile fintech", icon: <Landmark size={18} />, path: "/industries" },
+      { label: "Retail & Commerce", desc: "Omnichannel customer success", icon: <ShoppingBag size={18} />, path: "/industries" },
+      { label: "Logistics", desc: "Supply chain visibility", icon: <Truck size={18} />, path: "/industries" },
+      { label: "Healthcare", desc: "Patient-centric digital health", icon: <HeartPulse size={18} />, path: "/industries" },
+      { label: "Utilities", desc: "Energy efficiency and renewables", icon: <Zap size={18} />, path: "/industries" },
     ],
     featured: {
       tag: "Insight",
@@ -913,7 +913,7 @@ export default function Navbar() {
   const NAV_LINKS = [
     { label: "About Us", path: "/about" },
     { label: "Services", dropdown: "Services" },
-    { label: "Industries", dropdown: "Industries" },
+    { label: "Industries", path: "/industries" },
     { label: "Technologies", dropdown: "Technologies" },
     { label: "Careers", path: "/careers" },
   ];
@@ -925,18 +925,19 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`w-full px-4 sm:px-6 h-[68px] flex items-center justify-between fixed top-0 z-[990] ${bgClass} ${hidden ? "-translate-y-full" : "translate-y-0"} ${transitionClass}`}
+        className={`w-full h-[68px] fixed top-0 z-[990] ${bgClass} ${hidden ? "-translate-y-full" : "translate-y-0"} ${transitionClass}`}
       >
-        {/* Logo */}
-        <div
-          className="text-3xl font-light tracking-wider cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          <Logo scrolled={scrolled} />
-        </div>
+        <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full h-full flex items-center justify-between">
+          {/* Logo */}
+          <div
+            className="text-3xl font-light tracking-wider cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <Logo scrolled={scrolled} />
+          </div>
  
         {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-2 lg:gap-3 ml-52 mr-4">
+        <div className="hidden md:flex items-center gap-1 lg:gap-2 ml-10 mr-auto">
           {NAV_LINKS.map((link) => {
             const isActive = link.path ? location.pathname === link.path : openDrop === link.dropdown;
             const isHovered = hoveredLink === link.label;
@@ -964,7 +965,7 @@ export default function Navbar() {
                   className="text-sm font-semibold px-2 py-2 rounded-lg flex items-center gap-1.5 relative overflow-hidden"
                   style={{ color: textColor }}
                 >
-                  <span className="relative inline-block overflow-hidden" style={{ height: '1.2em' }}>
+                  <span className="relative inline-block overflow-hidden" style={{ height: '1.5em' }}>
                     {link.label.split('').map((char, idx) => (
                       <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
                         <motion.span
@@ -1117,6 +1118,7 @@ export default function Navbar() {
             />
           </div>
         </button>
+        </div>
       </nav>
  
       {/* Mega Menu Dropdown */}

@@ -27,8 +27,9 @@ export default function SapServices() {
           </div>
 
           {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-center px-6 lg:px-16 z-20">
-            <div className="max-w-xl">
+          <div className="absolute inset-0 flex flex-col justify-center z-20">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
+              <div className="max-w-xl">
               <motion.h1 
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -69,6 +70,7 @@ export default function SapServices() {
             </div>
           </div>
         </div>
+      </div>
         
         {/* Intro Content Section */}
         <SapServicesIntro />

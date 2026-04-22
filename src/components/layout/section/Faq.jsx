@@ -45,7 +45,7 @@ export default function Faq() {
 
   return (
     <section className="bg-white py-10 px-6 lg:px-12 w-full flex flex-col items-center font-inter">
-      <div className="max-w-6xl w-full flex flex-col items-center">
+      <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full">
 
         {/* FAQ Badge */}
         <div className="mb-6 rounded-full bg-[#e2e8f0] px-4 py-1.5 border border-[#cbd5e1] shadow-sm">

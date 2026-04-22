@@ -1,8 +1,9 @@
 import React, { Suspense, lazy } from "react";
 import FadeUp from "../../common/FadeUp";
 import ScrollNavigation from "../navbar/ScrollNavigation";
-import LeftSidebar from "../navbar/LeftSidebar";
 import Herosection from "./Herosection";
+import GetInTouch from "./GetinTouch";
+import Footer from "./Footer";
 
 // Lazy load below-the-fold sections
 const Services = lazy(() => import("./Services"));
@@ -12,9 +13,7 @@ const InsightsHero = lazy(() => import("./InsightsHero"));
 const BlogsBanner = lazy(() => import("./BlogsBanner"));
 const MeetOurPeople = lazy(() => import("./MeetOurPeople"));
 const Faq = lazy(() => import("./Faq"));
-const GetInTouch = lazy(() => import("./GetinTouch"));
 const OurLocations = lazy(() => import("./OurLocations"));
-const Footer = lazy(() => import("./Footer"));
 
 const landingSections = [
     { id: "home", label: "Home", hideDot: true },
@@ -34,7 +33,6 @@ const LandingPages = () => {
     return (
         <div style={{ background: "#fff" }}>
             <ScrollNavigation sections={landingSections} />
-            <LeftSidebar />
             <div id="home">
                 <Herosection />
             </div>
@@ -67,9 +65,9 @@ const LandingPages = () => {
                     <Faq />
                 </FadeUp>
 
-                <FadeUp id="contact" distance={30}>
+                <div id="contact">
                     <GetInTouch />
-                </FadeUp>
+                </div>
 
                 <FadeUp id="locations" distance={30}>
                     <OurLocations />

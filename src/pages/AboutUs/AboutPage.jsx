@@ -1,7 +1,6 @@
 import React, { useEffect, useState, Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import SimnHero from "./SimnHero";
-import LeftSidebar from "../../components/layout/navbar/LeftSidebar";
 
 // Lazy load below-the-fold components
 const WhatWeDo = lazy(() => import("./WhatWeDo"));
@@ -22,9 +21,6 @@ const AboutPage = () => {
 
     return (
         <div className="relative w-full bg-white min-h-screen font-oxygen">
-            {/* Left Sidebar with Home and Join Us buttons */}
-            <LeftSidebar />
-
             {/* 1. Full-width Material Hero */}
             <SimnHero />
 

@@ -23,8 +23,9 @@ const SapSignavioHero = () => {
             <Cylinders />
 
             {/* Content - left aligned on the shaded half, moved down */}
-            <div className="absolute inset-0 flex items-end px-10 lg:px-16 pb-20">
-                <div className="max-w-md">
+            <div className="absolute inset-0 flex items-end pb-20">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
+                    <div className="max-w-md">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -66,7 +67,8 @@ const SapSignavioHero = () => {
                 </div>
             </div>
         </div>
-    );
+    </div>
+);
 };
 
 export default SapSignavioHero;

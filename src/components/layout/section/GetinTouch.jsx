@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { MapPinArea as MapPinAreaIcon, Mailbox as MailboxIcon, WhatsappLogo as WhatsappLogoIcon, Phone as PhoneIcon, LinkedinLogo as LinkedinLogoIcon, InstagramLogo as InstagramLogoIcon, FacebookLogo as FacebookLogoIcon, YoutubeLogo as YoutubeLogoIcon } from "@phosphor-icons/react";
+import { MapPin, Mail, Phone, MessageCircle, Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
 
 function useWindowWidth() {
     const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -12,7 +12,7 @@ function useWindowWidth() {
     return width;
 }
 
-export default function GetInTouch() {
+const GetInTouch = () => {
     const [form, setForm] = useState({
         fullName: "",
         emailAddress: "",
@@ -42,242 +42,83 @@ export default function GetInTouch() {
 
             {/* Background Geometric Layers */}
             <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-                {/* Top Right Lightest Blue Block */}
                 <div className={`absolute top-0 right-0 ${isMobile ? 'w-full h-1/2' : 'w-[60%] h-[35%]'} bg-[#e3eff2]`} />
-
-                {/* Middle Right Light Cyan Diagonal Block */}
                 {!isMobile && (
                     <div className="absolute top-[20%] right-0 w-[55%] h-[55%] bg-[#c6e1e8]" style={{ clipPath: 'polygon(0 30%, 100% 0, 100% 100%, 0 100%)' }} />
                 )}
-
-                {/* Bottom Right Brand Triangle/Block */}
                 <div className={`absolute bottom-0 right-0 ${isMobile ? 'w-full h-1/4' : 'w-[50%] h-[40%]'} bg-[#C9184A]`} style={isMobile ? {} : { clipPath: 'polygon(100% 30%, 100% 100%, 0 100%)' }} />
-
-                {/* Main Dark Bubble Blob (Left) */}
                 <div className={`absolute top-0 left-0 ${isMobile ? 'w-full h-[60%] rounded-b-[40px]' : 'w-[90%] md:w-[72%] h-[96%] rounded-tr-[50px] rounded-br-[150px] md:rounded-br-[250px] rounded-bl-[60px] md:rounded-bl-[80px]'} bg-gray-800`} />
             </div>
 
-            <div className={`relative z-10 w-full max-w-[1200px] 3xl:max-w-[1400px] 4xl:max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row h-full items-center ${isMobile ? 'gap-12' : 'md:items-stretch gap-0'}`}>
+            <div className={`relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col md:flex-row h-full items-center ${isMobile ? 'gap-12' : 'md:items-stretch gap-0'}`}>
 
-                {/* Left Offset Content Box */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className={`w-full md:w-[55%] flex flex-col relative text-white justify-center ${isMobile ? 'text-center items-center' : ''}`}
-                >
+                {/* Left Side: Form */}
+                <div className={`w-full md:w-[55%] flex flex-col relative text-white justify-center ${isMobile ? 'text-center items-center' : ''}`}>
                     <div className="mb-6 md:mb-4">
-                        <span className="text-[10px] md:text-sm tracking-[0.2em] font-semibold text-gray-400 uppercase block mb-2">
-                            Wysele Technologies
-                        </span>
-                        <h2 className="text-3xl md:text-[3rem] font-bold leading-[1.1] mb-4 tracking-tight">
-                            Get In Touch
-                        </h2>
+                        <span className="text-[10px] md:text-sm tracking-[0.2em] font-semibold text-gray-400 uppercase block mb-2">Wysele Technologies</span>
+                        <h2 className="text-3xl md:text-[3rem] font-bold leading-[1.1] mb-4 tracking-tight">Get In Touch</h2>
                         <p className="text-white/90 text-sm md:text-[15px] font-light max-w-[480px] leading-relaxed hidden md:block">
                             Wysele Technologies LLP. Let us know how we can help with your software needs.
                         </p>
                     </div>
 
-                    {/* Integrated Form Component */}
                     <form onSubmit={handleSubmit} className={`flex flex-col gap-4 md:gap-5 max-w-[540px] w-full ${isMobile ? 'px-0' : 'mb-3'}`}>
-                        {/* Row 1: Full Name & Email */}
                         <div className="flex flex-col md:flex-row gap-4 md:gap-5 w-full">
-                            <div className="relative w-full md:w-1/2">
-                                <input
-                                    type="text"
-                                    name="fullName"
-                                    value={form.fullName}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Full Name"
-                                    className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors"
-                                />
-                            </div>
-                            <div className="relative w-full md:w-1/2">
-                                <input
-                                    type="email"
-                                    name="emailAddress"
-                                    value={form.emailAddress}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Email Address"
-                                    className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors"
-                                />
-                            </div>
+                            <input type="text" name="fullName" value={form.fullName} onChange={handleChange} required placeholder="Full Name" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
+                            <input type="email" name="emailAddress" value={form.emailAddress} onChange={handleChange} required placeholder="Email Address" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
                         </div>
-
-                        {/* Row 2: Phone & Location */}
                         <div className="flex flex-col md:flex-row gap-4 md:gap-5 w-full">
-                            <div className="relative w-full md:w-1/2">
-                                <input
-                                    type="tel"
-                                    name="phoneNumber"
-                                    value={form.phoneNumber}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Phone Number"
-                                    className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors"
-                                />
-                            </div>
-                            <div className="relative w-full md:w-1/2">
-                                <input
-                                    type="text"
-                                    name="location"
-                                    value={form.location}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Location"
-                                    className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors"
-                                />
-                            </div>
+                            <input type="tel" name="phoneNumber" value={form.phoneNumber} onChange={handleChange} required placeholder="Phone Number" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
+                            <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="Location" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
                         </div>
-
-                        {/* Row 4: Message */}
-                        <div className="relative w-full mt-2">
-                            <textarea
-                                name="message"
-                                value={form.message}
-                                onChange={handleChange}
-                                required
-                                placeholder="Message"
-                                className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors resize-none h-[42px]"
-                            />
-                        </div>
-
-                        {/* Row 5: Checkbox */}
+                        <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors resize-none h-[42px]" />
+                        
                         <div className="flex items-start gap-3 w-full mt-2 text-left">
-                            <input
-                                type="checkbox"
-                                name="confirm"
-                                id="mobile-confirm-checkbox"
-                                checked={form.confirm}
-                                onChange={handleChange}
-                                required
-                                className="mt-1 w-3.5 h-3.5 rounded border-white/50 bg-transparent text-gray-800 cursor-pointer"
-                            />
-                            <label htmlFor="mobile-confirm-checkbox" className="text-[11px] md:text-[13px] leading-tight text-white/80 font-light cursor-pointer mt-[2px]">
+                            <input type="checkbox" name="confirm" id="confirm-checkbox" checked={form.confirm} onChange={handleChange} required className="mt-1" />
+                            <label htmlFor="confirm-checkbox" className="text-[11px] md:text-[13px] text-white/80 font-light cursor-pointer">
                                 I confirm, I have read and agree to wysele Privacy Policy and consent to sharing my information.
                             </label>
                         </div>
 
-                        {/* Submit Button */}
-                        <button
-                            type="submit"
-                            disabled={!form.confirm}
-                            className={`mt-4 md:mt-5 group border px-8 py-3 rounded-[6px] text-base md:text-[1.1rem] font-normal transition-all duration-300 inline-flex items-center justify-center gap-2 self-center md:self-start overflow-hidden ${
-                                form.confirm 
-                                    ? "border-[#C9184A] bg-[#C9184A] md:bg-transparent hover:bg-[#C9184A] text-white cursor-pointer" 
-                                    : "border-white/20 bg-transparent text-white/40 cursor-not-allowed"
-                            }`}
-                        >
-                            <span className="relative z-10">{sent ? "Sent" : "Submit"}</span>
-                            {!sent ? (
-                                <svg
-                                    width="16" height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className={`transition-transform duration-300 flex-shrink-0 relative z-10 ${form.confirm ? "group-hover:rotate-45" : ""}`}
-                                >
-                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                                </svg>
-                            ) : (
-                                <span className="text-white relative z-10">✓</span>
-                            )}
+                        <button type="submit" disabled={!form.confirm} className={`mt-4 px-8 py-3 rounded text-base font-medium transition-all ${form.confirm ? "bg-[#C9184A] text-white" : "bg-white/10 text-white/40 cursor-not-allowed"}`}>
+                            {sent ? "Sent" : "Submit"}
                         </button>
                     </form>
-                </motion.div>
-
-                {/* Right Overlapping White Card */}
-                <div className="w-full md:w-[45%] flex items-center justify-center md:justify-end">
-                    <motion.div
-                        initial={{ opacity: 0, x: isMobile ? 0 : 40, y: isMobile ? 40 : 0 }}
-                        whileInView={{ opacity: 1, x: 0, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-                        className="w-full max-w-[480px] bg-white rounded-[20px] md:rounded-tl-[60px] md:rounded-tr-[10px] md:rounded-br-[10px] md:rounded-bl-[10px] p-8 md:p-12 relative z-20"
-                        style={{
-                            boxShadow: isMobile ? "0 10px 40px rgba(0,0,0,0.1)" : "-20px 20px 60px -15px rgba(0, 0, 0, 0.15)"
-                        }}
-                    >
-                        <div className="flex flex-col gap-5 md:gap-6 text-[14px] md:text-[15px] font-medium text-black">
-
-                            {/* Heading */}
-                            <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-black mb-1 md:mb-[-5px]">Contact Us</h3>
-
-                            {/* ADDRESS Item */}
-                            <div className="flex items-start gap-4 md:gap-5">
-                                <div className="pt-1 flex-shrink-0">
-                                    <MapPinAreaIcon size={28} weight="thin" color="black" />
-                                </div>
-                                <div className="leading-snug pt-1 text-[13px] md:text-[15px]">
-                                    Wysele Technologies LLP<br />
-                                    #308 4th floor DSL Abacus IT Park,<br />
-                                    Survey Colony, Industrial Development Area,<br />
-                                    Uppal, Hyderabad, Telangana 500039.
-                                </div>
-                            </div>
-
-                            {/* EMAIL Item */}
-                            <div className="flex items-center gap-4 md:gap-5">
-                                <div className="flex-shrink-0">
-                                    <MailboxIcon size={28} weight="thin" color="black" />
-                                </div>
-                                <div className="text-[13px] md:text-[15px]">
-                                    info@wysele.com
-                                </div>
-                            </div>
-
-                            {/* WHATSAPP Item */}
-                            <div className="flex items-center gap-4 md:gap-5">
-                                <div className="flex-shrink-0">
-                                    <WhatsappLogoIcon size={28} weight="thin" color="black" />
-                                </div>
-                                <div className="text-[13px] md:text-[15px]">
-                                    +91 63057 53919
-                                </div>
-                            </div>
-
-                            {/* PHONE Item */}
-                            <div className="flex items-center gap-4 md:gap-5">
-                                <div className="flex-shrink-0 flex items-center justify-center -ml-1">
-                                    <PhoneIcon size={28} weight="thin" color="black" />
-                                </div>
-                                <div className="text-[13px] md:text-[15px]">
-                                    040-45276773
-                                </div>
-                            </div>
-
-                            {/* Socials Row */}
-                            <div className="flex items-center gap-4 pt-4 border-t border-gray-100 md:border-none">
-                                {[
-                                    { icon: LinkedinLogoIcon, label: "LinkedIn", url: "https://linkedin.com/company/wysele" },
-                                    { icon: InstagramLogoIcon, label: "Instagram", url: "https://instagram.com/wysele" },
-                                    { icon: FacebookLogoIcon, label: "Facebook", url: "https://facebook.com/wysele" },
-                                    { icon: YoutubeLogoIcon, label: "YouTube", url: "https://youtube.com/@wysele" }
-                                ].map((social) => (
-                                    <a 
-                                        key={social.label}
-                                        href={social.url} 
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label={social.label} 
-                                        className="hover:opacity-70 transition-opacity flex items-center justify-center p-1"
-                                    >
-                                        <social.icon size={28} weight="thin" color="black" />
-                                    </a>
-                                ))}
-                            </div>
-
-                        </div>
-                    </motion.div>
                 </div>
 
+                {/* Right Side: Contact Card */}
+                <div className="w-full md:w-[45%] flex items-center justify-center md:justify-end">
+                    <div className="w-full max-w-[480px] bg-white rounded-[20px] p-8 md:p-12 shadow-xl relative z-20">
+                        <h3 className="text-2xl md:text-3xl font-bold text-black mb-6">Contact Us</h3>
+                        <div className="flex flex-col gap-6">
+                            <div className="flex items-start gap-4">
+                                <MapPin size={24} className="text-black shrink-0" />
+                                <p className="text-sm text-black">Wysele Technologies LLP<br />#308 4th floor DSL Abacus IT Park, Hyderabad, 500039.</p>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <Mail size={24} className="text-black shrink-0" />
+                                <p className="text-sm text-black">info@wysele.com</p>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <MessageCircle size={24} className="text-black shrink-0" />
+                                <p className="text-sm text-black">+91 63057 53919</p>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <Phone size={24} className="text-black shrink-0" />
+                                <p className="text-sm text-black">040-45276773</p>
+                            </div>
+                            <div className="flex gap-4 pt-4 border-t border-gray-100">
+                                <Linkedin size={20} className="cursor-pointer hover:text-[#C9184A]" />
+                                <Instagram size={20} className="cursor-pointer hover:text-[#C9184A]" />
+                                <Facebook size={20} className="cursor-pointer hover:text-[#C9184A]" />
+                                <Youtube size={20} className="cursor-pointer hover:text-[#C9184A]" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     );
-}
+};
+
+export default GetInTouch;

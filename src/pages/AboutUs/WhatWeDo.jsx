@@ -12,7 +12,7 @@ const cards = [
 export default function WhatWeDo() {
     return (
         <section className="bg-white">
-            <div className="w-full">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
                 <div className="border-t border-b border-gray-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                     {cards.map((card, i) => (
                         <motion.div

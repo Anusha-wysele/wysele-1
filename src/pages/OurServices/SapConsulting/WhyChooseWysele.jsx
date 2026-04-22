@@ -40,7 +40,7 @@ const Card = ({ reason, stretch }) => (
 
 const WhyChooseWysele = () => (
     <div
-        className="h-[80vh] px-6 md:px-16 relative flex items-center"
+        className="h-[80vh] relative flex items-center"
         style={{
             backgroundImage: `url(${SERVICES_PAGE_IMAGES.whyChooseWysele})`,
             backgroundSize: 'cover',
@@ -48,7 +48,7 @@ const WhyChooseWysele = () => (
         }}
     >
         <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="relative z-10 max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
             <h2 className="text-xl font-light text-center mb-12 text-white">
                 Why Choose Wysele for SAP Consulting Services?
             </h2>

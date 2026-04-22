@@ -33,7 +33,7 @@ const Founder = () => {
                                 Transforming Complexity into Confident Solutions
                             </h2>
                             {/* Animated line */}
-                            <motion.div 
+                            <motion.div
                                 initial={{ width: 0 }}
                                 whileInView={{ width: "80px" }}
                                 viewport={{ once: false }}
@@ -125,23 +125,23 @@ const Founder = () => {
                                         alt="Brahmam Chowdary Murukonda - Founder & CEO"
                                         className="w-full h-[400px] md:h-[480px] object-cover transition-all duration-700 group-hover:grayscale-[30%]"
                                     />
-                                    
+
                                     {/* Diagonal Overlay Transition - Top Left */}
-                                    <div 
+                                    <div
                                         className="absolute top-0 left-0 w-0 h-0 bg-black/10 transition-all duration-700 group-hover:w-full group-hover:h-full"
                                         style={{
                                             clipPath: 'polygon(0 0, 100% 0, 0 100%)',
                                         }}
                                     ></div>
-                                    
+
                                     {/* Diagonal Overlay Transition - Bottom Right */}
-                                    <div 
+                                    <div
                                         className="absolute bottom-0 right-0 w-0 h-0 bg-black/10 transition-all duration-700 group-hover:w-full group-hover:h-full"
                                         style={{
                                             clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
                                         }}
                                     ></div>
-                                    
+
                                     {/* LinkedIn Icon Overlay */}
                                     <a
                                         href="https://www.linkedin.com/company/wyseletech/"
@@ -152,7 +152,7 @@ const Founder = () => {
                                     >
                                         <LinkedinLogo size={20} weight="fill" className="text-[#0077B5]" />
                                     </a>
-                                    
+
                                     {/* Name overlay */}
                                     <div className="absolute bottom-0 left-0 right-0 bg-[#C9184A] text-white p-6">
                                         <h3 className="text-xl font-medium tracking-tight">
@@ -172,7 +172,7 @@ const Founder = () => {
                                 <p className="text-red-600 text-lg font-medium mb-3">Founder, CEO</p>
 
                                 {/* Underline */}
-                                <motion.div 
+                                <motion.div
                                     initial={{ width: 0 }}
                                     whileInView={{ width: "64px" }}
                                     viewport={{ once: false }}

@@ -112,9 +112,9 @@ const FunctionalConsulting = () => {
 
     return (
         <div className="bg-white">
-            <div className="py-6 px-6 md:px-16">
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-3xl font-normal text-center mb-16 text-gray-900 flex flex-wrap justify-center gap-x-2" ref={headingRef}>
+            <div className="pt-2 pb-6">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
+                    <h2 className="text-3xl font-normal text-center mb-8 text-gray-900 flex flex-wrap justify-center gap-x-2" ref={headingRef}>
                         {headingWords.map((word, i) => (
                             <motion.span
                                 key={i}

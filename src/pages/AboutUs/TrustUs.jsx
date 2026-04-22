@@ -1,24 +1,24 @@
 import { useState, useEffect, useRef } from "react";
 
 const data = {
-    Technology: [
-        { year: "2021", finances: 40, economy: 44, investment: 28 },
-        { year: "2022", finances: 22, economy: 32, investment: 36 },
-        { year: "2023", finances: 34, economy: 40, investment: 34 },
-        { year: "2024", finances: 44, economy: 40, investment: 30 },
-    ],
-    Development: [
-        { year: "2021", finances: 38, economy: 48, investment: 25 },
-        { year: "2022", finances: 30, economy: 42, investment: 38 },
-        { year: "2023", finances: 30, economy: 44, investment: 42 },
-        { year: "2024", finances: 46, economy: 36, investment: 28 },
-    ],
-    Research: [
-        { year: "2021", finances: 46, economy: 50, investment: 31 },
-        { year: "2022", finances: 26, economy: 37, investment: 41 },
-        { year: "2023", finances: 37, economy: 46, investment: 38 },
-        { year: "2024", finances: 50, economy: 45, investment: 36 },
-    ],
+  Technology: [
+    { year: "2021", finances: 40, economy: 44, investment: 28 },
+    { year: "2022", finances: 22, economy: 32, investment: 36 },
+    { year: "2023", finances: 34, economy: 40, investment: 34 },
+    { year: "2024", finances: 44, economy: 40, investment: 30 },
+  ],
+  Development: [
+    { year: "2021", finances: 38, economy: 48, investment: 25 },
+    { year: "2022", finances: 30, economy: 42, investment: 38 },
+    { year: "2023", finances: 30, economy: 44, investment: 42 },
+    { year: "2024", finances: 46, economy: 36, investment: 28 },
+  ],
+  Research: [
+    { year: "2021", finances: 46, economy: 50, investment: 31 },
+    { year: "2022", finances: 26, economy: 37, investment: 41 },
+    { year: "2023", finances: 37, economy: 46, investment: 38 },
+    { year: "2024", finances: 50, economy: 45, investment: 36 },
+  ],
 };
 
 const MAX = 50;
@@ -27,60 +27,60 @@ const CHART_HEIGHT = 220;
 const tabs = ["Technology", "Development", "Research"];
 
 const BAR_COLORS = {
-    finances: "#c9dbd8",
-    economy: "#8db8b2",
-    investment: "#1e2d3d",
+  finances: "#c9dbd8",
+  economy: "#8db8b2",
+  investment: "#1e2d3d",
 };
 
 const LEGEND = [
-    { key: "finances", label: "Strategy" },
-    { key: "economy", label: "Innovation" },
-    { key: "investment", label: "Success" },
+  { key: "finances", label: "Strategy" },
+  { key: "economy", label: "Innovation" },
+  { key: "investment", label: "Success" },
 ];
 
 const Y_LABELS = [50, 40, 30, 20, 10, 0];
 
 const tabDescriptions = {
-    Technology: "We leverage the latest SAP S/4HANA innovations and cloud architectures to build a resilient, high-performance digital core for your enterprise. Our approach integrates real-time analytics and intelligent automation to ensure your infrastructure is future-proof.",
-    Development: "Our agile development team handles complex SAP customizations and full-scale migrations with precision. We specialize in bespoke application development and backend optimizations that bridge the gap between legacy systems and modern requirements.",
-    Research: "Through deep market analysis and feasibility studies, we craft strategic roadmaps that ensure your technology investments deliver measurable ROI. Every decision is backed by comprehensive data audits and competitive benchmarking."
+  Technology: "We leverage the latest SAP S/4HANA innovations and cloud architectures to build a resilient, high-performance digital core for your enterprise. Our approach integrates real-time analytics and intelligent automation to ensure your infrastructure is future-proof.",
+  Development: "Our agile development team handles complex SAP customizations and full-scale migrations with precision. We specialize in bespoke application development and backend optimizations that bridge the gap between legacy systems and modern requirements.",
+  Research: "Through deep market analysis and feasibility studies, we craft strategic roadmaps that ensure your technology investments deliver measurable ROI. Every decision is backed by comprehensive data audits and competitive benchmarking."
 };
 
 export default function TrustUs() {
-    const [activeTab, setActiveTab] = useState("Research");
-    const [animationKey, setAnimationKey] = useState(0);
-    const [inView, setInView] = useState(false);
-    const sectionRef = useRef(null);
-    const chartData = data[activeTab];
+  const [activeTab, setActiveTab] = useState("Research");
+  const [animationKey, setAnimationKey] = useState(0);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef(null);
+  const chartData = data[activeTab];
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setInView(true);
-                    observer.unobserve(entry.target);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(entry.target);
         }
+      },
+      { threshold: 0.1 }
+    );
 
-        return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
-        };
-    }, []);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-    const handleTabClick = (tab) => {
-        setActiveTab(tab);
-        setAnimationKey(prev => prev + 1);
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
+  }, []);
 
-    return (
-        <>
-            <style>{`
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    setAnimationKey(prev => prev + 1);
+  };
+
+  return (
+    <>
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
 
         .bc-wrap {
@@ -350,93 +350,93 @@ export default function TrustUs() {
         }
       `}</style>
 
-            <div className="bc-wrap" ref={sectionRef}>
-                <div className="bc-card">
+      <div className="bc-wrap" ref={sectionRef}>
+        <div className="bc-card">
 
-                    {/* LEFT CONTENT */}
-                    <div className="bc-left">
-                        <h1>Trust the process &amp; grow your business</h1>
-                        <p className="font-light">{tabDescriptions[activeTab]}</p>
-                    </div>
+          {/* LEFT CONTENT */}
+          <div className="bc-left">
+            <h1>Trust the process &amp; grow your business</h1>
+            <p className="font-light">{tabDescriptions[activeTab]}</p>
+          </div>
 
-                    {/* RIGHT */}
-                    <div className="bc-right">
+          {/* RIGHT */}
+          <div className="bc-right">
 
-                        {/* TABS */}
-                        <div className="bc-tabs">
-                            {tabs.map((tab) => (
-                                <button
-                                    key={tab}
-                                    className={`bc-tab${activeTab === tab ? " active" : ""}`}
-                                    onClick={() => handleTabClick(tab)}
-                                >
-                                    {tab}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* CHART */}
-                        <div className="bc-chart-container" key={animationKey}>
-                            <div className="bc-chart-wrap">
-                                <div className="bc-chart-area">
-
-                                    {/* Y-axis */}
-                                    <div className="bc-y-axis">
-                                        {Y_LABELS.map((v) => (
-                                            <span key={v} className="bc-y-label">{v}</span>
-                                        ))}
-                                    </div>
-
-                                    {/* Grid + Bars */}
-                                    <div className="bc-chart-inner">
-                                        <div className="bc-grid">
-                                            {Y_LABELS.map((v) => (
-                                                <div key={v} className="bc-grid-line" />
-                                            ))}
-                                        </div>
-
-                                        <div className="bc-bars" style={{ height: CHART_HEIGHT }} key={`bars-${animationKey}`}>
-                                            {chartData.map((d, yearIdx) => (
-                                                <div key={d.year} className="bc-year-group">
-                                                    {["finances", "economy", "investment"].map((key, barIdx) => (
-                                                        <div
-                                                            key={key}
-                                                            className={`bc-bar${inView ? " animate" : ""}`}
-                                                            style={{
-                                                                height: (d[key] / MAX) * CHART_HEIGHT,
-                                                                background: BAR_COLORS[key],
-                                                                "--delay": `${(yearIdx * 3 + barIdx) * 0.1}s`,
-                                                            }}
-                                                        />
-                                                    ))}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* X-axis */}
-                                    <div className="bc-x-labels">
-                                        {chartData.map((d) => (
-                                            <span key={d.year} className="bc-x-label">{d.year}</span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* LEGEND */}
-                                <div className="bc-legend">
-                                    {LEGEND.map(({ key, label }) => (
-                                        <div key={key} className="bc-legend-item">
-                                            <span className="bc-legend-dot" style={{ background: BAR_COLORS[key] }} />
-                                            {label}
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+            {/* TABS */}
+            <div className="bc-tabs">
+              {tabs.map((tab) => (
+                <button
+                  key={tab}
+                  className={`bc-tab${activeTab === tab ? " active" : ""}`}
+                  onClick={() => handleTabClick(tab)}
+                >
+                  {tab}
+                </button>
+              ))}
             </div>
-        </>
-    );
+
+            {/* CHART */}
+            <div className="bc-chart-container" key={animationKey}>
+              <div className="bc-chart-wrap">
+                <div className="bc-chart-area">
+
+                  {/* Y-axis */}
+                  <div className="bc-y-axis">
+                    {Y_LABELS.map((v) => (
+                      <span key={v} className="bc-y-label">{v}</span>
+                    ))}
+                  </div>
+
+                  {/* Grid + Bars */}
+                  <div className="bc-chart-inner">
+                    <div className="bc-grid">
+                      {Y_LABELS.map((v) => (
+                        <div key={v} className="bc-grid-line" />
+                      ))}
+                    </div>
+
+                    <div className="bc-bars" style={{ height: CHART_HEIGHT }} key={`bars-${animationKey}`}>
+                      {chartData.map((d, yearIdx) => (
+                        <div key={d.year} className="bc-year-group">
+                          {["finances", "economy", "investment"].map((key, barIdx) => (
+                            <div
+                              key={key}
+                              className={`bc-bar${inView ? " animate" : ""}`}
+                              style={{
+                                height: (d[key] / MAX) * CHART_HEIGHT,
+                                background: BAR_COLORS[key],
+                                "--delay": `${(yearIdx * 3 + barIdx) * 0.1}s`,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* X-axis */}
+                  <div className="bc-x-labels">
+                    {chartData.map((d) => (
+                      <span key={d.year} className="bc-x-label">{d.year}</span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* LEGEND */}
+                <div className="bc-legend">
+                  {LEGEND.map(({ key, label }) => (
+                    <div key={key} className="bc-legend-item">
+                      <span className="bc-legend-dot" style={{ background: BAR_COLORS[key] }} />
+                      {label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

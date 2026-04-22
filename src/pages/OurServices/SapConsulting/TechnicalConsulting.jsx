@@ -35,8 +35,8 @@ const TechnicalConsulting = () => {
                 />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
                 <Cylinders />
-                <div className="absolute inset-0 flex items-center justify-center px-6 md:px-16">
-                    <div className="w-full max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
                         <div className="w-full md:w-1/2 md:pl-32 lg:pl-48 xl:pl-64">
                             <h1 className="text-2xl md:text-3xl font-extralight text-white mb-4 flex flex-wrap gap-x-2" ref={heroHeadingRef}>
                                 {heroWords.map((word, i) => (
@@ -74,8 +74,8 @@ const TechnicalConsulting = () => {
                 ></div>
             </div>
 
-            <div className="py-16 px-6 md:px-16">
-                <div className="max-w-7xl mx-auto">
+            <div className="py-16">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
                     <div className="flex gap-16 items-start">
                         {/* Left side heading and description */}
                         <div className="w-1/2 sticky top-32">
@@ -102,7 +102,7 @@ const TechnicalConsulting = () => {
                                 {services.map((service, index) => (
                                     <motion.div
                                         key={index}
-                                        className="relative flex items-center group cursor-pointer"
+                                        className="relative flex items-center group"
                                         whileHover="hover"
                                         initial="initial"
                                     >

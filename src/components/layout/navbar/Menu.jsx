@@ -7,10 +7,10 @@ export default function Menu({ open, onClose }) {
 
   // Social icon helper
   const SocialIcon = ({ Icon }) => (
-    <a 
-      href="#" 
-      style={{ 
-        width: 32, height: 32, borderRadius: "50%", 
+    <a
+      href="#"
+      style={{
+        width: 32, height: 32, borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
         background: "rgba(156,163,175,0.2)", color: "#9ca3af",
         transition: "all 0.3s ease", textDecoration: "none"
@@ -60,7 +60,7 @@ export default function Menu({ open, onClose }) {
         }}
       >
         {/* FIXED HEADER: Logo, Close, and Intro */}
-        <div style={{ 
+        <div style={{
           padding: "30px 30px 20px",
           borderBottom: "1px solid rgba(255,255,255,0.05)",
           flexShrink: 0,
@@ -69,9 +69,9 @@ export default function Menu({ open, onClose }) {
           transition: "all 0.5s ease 0.1s"
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 25 }}>
-            <img 
-              src={WYSELE_LOGOS.white} 
-              alt="Wysele Logo" 
+            <img
+              src={WYSELE_LOGOS.white}
+              alt="Wysele Logo"
               style={{ width: 80, height: "auto" }}
             />
             <button
@@ -96,9 +96,9 @@ export default function Menu({ open, onClose }) {
         </div>
 
         {/* SCROLLABLE CONTENT */}
-        <div style={{ 
-          flex: 1, 
-          overflowY: "auto", 
+        <div style={{
+          flex: 1,
+          overflowY: "auto",
           padding: "25px 30px 40px",
           scrollbarWidth: "none", // Firefox
           msOverflowStyle: "none", // IE/Edge
@@ -115,12 +115,12 @@ export default function Menu({ open, onClose }) {
             transform: open ? "translateY(0)" : "translateY(20px)",
             transition: "all 0.6s ease 0.2s"
           }}>
-            <h3 style={{ 
+            <h3 style={{
               color: "#1e293b", fontSize: 16, fontWeight: 700, marginBottom: 12,
             }}>
               -DigitalExcellence
             </h3>
-            <p style={{ 
+            <p style={{
               color: "#475569", fontSize: 13, lineHeight: 1.5, fontStyle: "italic", marginBottom: 16,
             }}>
               &ldquo;The strategic partnership with Wysele has been transformative for our global operations. Their expertise in AI-driven analytics has not only optimized our workflow but also future-proofed our business model.&rdquo;
@@ -145,8 +145,8 @@ export default function Menu({ open, onClose }) {
             transform: open ? "translateY(0)" : "translateY(20px)",
             transition: "all 0.6s ease 0.3s"
           }}>
-            <img 
-              src={menuImage} 
+            <img
+              src={menuImage}
               alt="Our Office"
               style={{ width: "100%", height: 160, objectFit: "cover", display: "block" }}
             />
@@ -236,11 +236,11 @@ export default function Menu({ open, onClose }) {
 
           {/* Footer / Contact */}
           <div style={{
-             opacity: open ? 1 : 0,
-             transform: open ? "translateY(0)" : "translateY(15px)",
-             transition: "all 0.6s ease 0.4s"
+            opacity: open ? 1 : 0,
+            transform: open ? "translateY(0)" : "translateY(15px)",
+            transition: "all 0.6s ease 0.4s"
           }}>
-            <a 
+            <a
               href="mailto:contact@wysele.com"
               style={{
                 color: "#fff", fontSize: 16, fontWeight: 600, textDecoration: "none",
@@ -251,7 +251,7 @@ export default function Menu({ open, onClose }) {
             >
               contact@wysele.com
             </a>
-            
+
             <div style={{ display: "flex", gap: 10 }}>
               <SocialIcon Icon={Linkedin} />
               <SocialIcon Icon={Twitter} />

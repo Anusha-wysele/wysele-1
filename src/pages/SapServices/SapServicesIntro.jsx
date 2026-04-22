@@ -50,8 +50,8 @@ function TypewriterText({ text, speed = 40, delay = 0 }) {
 
 export default function SapServicesIntro() {
   return (
-    <section className="bg-white py-10 px-6 lg:px-16">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-10">
+      <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
 
         {/* Section Label */}
         <motion.div

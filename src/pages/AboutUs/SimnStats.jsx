@@ -9,7 +9,7 @@ const CountUpNumber = ({ end, duration, startTrigger, suffix = "" }) => {
 
     useEffect(() => {
         if (!startTrigger) return;
-        
+
         let start = 0;
         const endNum = parseInt(end.replace(/\D/g, ''));
         const totalSteps = 60;
@@ -104,7 +104,7 @@ const SimnStats = () => {
     return (
         <section ref={sectionRef} className="pb-8 md:pb-12 pt-0 bg-white overflow-hidden">
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12">
-                
+
                 {/* Operating Locations Section */}
                 <div className="text-center mb-6 md:mb-10 space-y-4">
                     <div className="flex flex-col items-center justify-center gap-2">
@@ -161,10 +161,10 @@ const SimnStats = () => {
 
                             <div className="space-y-1">
                                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-light font-montserrat text-gray-900 tracking-tighter">
-                                    <CountUpNumber 
-                                        end={stat.value} 
-                                        duration={2000} 
-                                        startTrigger={inView} 
+                                    <CountUpNumber
+                                        end={stat.value}
+                                        duration={2000}
+                                        startTrigger={inView}
                                         suffix={stat.suffix}
                                     />
                                 </h3>

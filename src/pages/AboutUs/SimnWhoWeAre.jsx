@@ -6,7 +6,7 @@ const CountUpNumber = ({ end, duration, startTrigger }) => {
 
     useEffect(() => {
         if (!startTrigger) return;
-        
+
         let start = 0;
         const totalSteps = 60;
         const increment = end / totalSteps;
@@ -61,7 +61,7 @@ const SimnWhoWeAre = () => {
     }, []);
 
     return (
-        <section 
+        <section
             ref={sectionRef}
             className="py-8 md:py-12 bg-white overflow-hidden flex flex-col justify-center relative"
             style={{
@@ -73,9 +73,9 @@ const SimnWhoWeAre = () => {
         >
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-black/20"></div>
-            
+
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 w-full font-montserrat relative z-10">
-                
+
                 {/* Section Title */}
                 <div className="text-center mb-12 md:mb-20 space-y-4">
                     <p className="text-[12px] md:text-sm uppercase tracking-[0.4em] font-bold text-red-500">
@@ -88,7 +88,7 @@ const SimnWhoWeAre = () => {
                         We combine structured frameworks with agile execution to accelerate time-to-value for your enterprise through precision-engineered implementations.
                     </p>
                 </div>
- 
+
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                     {/* Columns 1 & 2: Text content (Vision/Mission) */}
                     <div className="lg:col-span-8 space-y-10">
@@ -129,7 +129,7 @@ const SimnWhoWeAre = () => {
                                 </div>
                                 <div className="w-full h-1 bg-white/10 relative group overflow-hidden rounded-full">
                                     {/* Animated Progress Bar Fill */}
-                                    <div 
+                                    <div
                                         className="absolute top-0 left-0 h-full bg-red-600 transition-all duration-[2000ms] ease-in-out"
                                         style={{ width: inView ? `${skill.percentage}%` : '0%' }}
                                     >

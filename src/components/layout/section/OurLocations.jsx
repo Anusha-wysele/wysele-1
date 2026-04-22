@@ -47,7 +47,7 @@ const OurLocations = () => {
                 </p>
 
                 {/* Our Offices Section */}
-                <div className="w-full max-w-4xl 3xl:max-w-5xl 4xl:max-w-6xl">
+                <div className="w-full max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 text-center mb-1">
                         Our Offices
                     </h3>

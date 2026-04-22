@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import Cylinderr from '../../../components/common/Cylinderr';
 
 const services = [
     {
@@ -30,16 +31,17 @@ const services = [
 
 const SapSignavioServices = () => {
     return (
-        <section className="py-20 bg-gray-50">
-            <div className="max-w-7xl mx-auto px-6 md:px-16">
-                <div className="text-center mb-16">
+        <section className="pt-6 md:pt-8 pb-6 md:pb-8 bg-gray-50">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
+                <div className="text-center mb-8">
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4"
+                        className="text-2xl md:text-3xl font-normal text-gray-900 mb-2 flex items-center justify-center gap-4"
                     >
+                        <Cylinderr className="w-4 h-10 rounded-sm" />
                         Our SAP Signavio Services
                     </motion.h2>
                     <motion.p 
@@ -53,7 +55,7 @@ const SapSignavioServices = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {services.map((service, index) => (
                         <motion.div
                             key={index}
@@ -61,20 +63,20 @@ const SapSignavioServices = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="rounded-lg relative flex flex-col h-full overflow-hidden group shadow-lg cursor-pointer bg-gray-500"
+                            className="rounded-lg relative flex flex-col h-full overflow-hidden group shadow-md hover:shadow-xl cursor-pointer bg-[#1C1216]"
                         >
-                            {/* Visual Layer - Red Background (Animates to fill on hover) */}
-                            <div className="absolute top-5 left-5 right-0 bottom-0 bg-[#800000] rounded-tl-lg lg:rounded-br-lg transition-all duration-300 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:rounded-none z-10" />
+                            {/* Visual Layer - Colored Background (Animates to fill on hover) */}
+                            <div className="absolute top-5 left-5 right-0 bottom-0 bg-[#8B3A5E] border border-[#8B3A5E] rounded-tl-lg lg:rounded-br-lg transition-all duration-300 ease-in-out group-hover:top-0 group-hover:left-0 group-hover:rounded-none z-10" />
 
                             {/* Content Layout - Static structural padding to enforce height rigidly without reflow */}
                             <div className="pt-5 pl-5 relative z-20 flex flex-col h-full">
                                 
-                                {/* Content Inner - Translates visually on hover instantly matching the red background */}
+                                {/* Content Inner - Translates visually on hover instantly matching the plain background */}
                                 <div className="p-4 lg:p-5 flex-1 flex flex-col transition-transform duration-300 ease-in-out group-hover:-translate-x-5 group-hover:-translate-y-5">
-                                    <h3 className="text-[15px] font-semibold text-white mb-2 leading-tight">
+                                    <h3 className="text-[15px] font-semibold text-white mb-2 leading-tight transition-colors duration-300">
                                         {service.title}
                                     </h3>
-                                    <p className="text-white/80 text-[10.5px] leading-snug font-light mb-4 flex-1">
+                                    <p className="text-white/80 text-[10.5px] leading-snug font-normal mb-4 flex-1">
                                         {service.description}
                                     </p>
                                 </div>

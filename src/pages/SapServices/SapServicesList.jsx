@@ -33,13 +33,13 @@ const SAP_SERVICES = [
   {
     label: "SAP Datasphere Support",
     desc: "Modern unified data experience across the entire enterprise.",
-    path: "/services",
+    path: "/services/sap-datasphere",
     img: imgSapDatasphere,
   },
   {
     label: "RISE with SAP",
     desc: "Simplified, accelerated path to intelligent cloud ERP.",
-    path: "/services",
+    path: "/services/rise-with-sap",
     img: imgRiseWithSap,
   },
   {
@@ -108,7 +108,7 @@ export default function SapServicesList() {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-white py-16 px-6 lg:px-16 overflow-hidden">
+    <section className="bg-white py-16 overflow-hidden">
       <style>{`
         .product-card {
           width: 350px;
@@ -220,7 +220,7 @@ export default function SapServicesList() {
         }
       `}</style>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
         {/* Section Header */}
         <div className="flex items-center gap-3 mb-4">
           <span className="w-8 h-[1.5px] bg-[#C9184A]" />
@@ -248,7 +248,7 @@ export default function SapServicesList() {
                 <img src={service.img} alt={service.label} />
                 <div className="view-details-btn">View Details</div>
               </div>
-              
+
               <div className="stats-container">
                 <div className="product_name">{service.label}</div>
                 <div className="product_desc">{service.desc}</div>

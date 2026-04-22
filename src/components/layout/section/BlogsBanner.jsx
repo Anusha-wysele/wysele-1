@@ -17,13 +17,13 @@ const stagger = {
 };
 
 function useWindowWidth() {
-    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-    useEffect(() => {
-        const handler = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return width;
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return width;
 }
 
 // Card where text sits BELOW the image (odd cards — tall image)
@@ -293,45 +293,45 @@ export default function BlogsBanner() {
             </button>
           </div>
         )}
-        
+
         {/* Mobile View-All Button */}
         {isMobile && (
-            <motion.button
-                variants={fadeUp}
-                style={{
-                    width: "100%",
-                    padding: "12px 28px",
-                    borderRadius: "6px",
-                    background: "transparent",
-                    border: "1px solid #C9184A",
-                    color: "#111827",
-                    fontSize: "0.95rem",
-                    fontWeight: 400,
-                    cursor: "pointer",
-                    marginTop: "10px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
-                    transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C9184A", e.currentTarget.style.color = "#ffffff")}
-                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = "#111827")}
+          <motion.button
+            variants={fadeUp}
+            style={{
+              width: "100%",
+              padding: "12px 28px",
+              borderRadius: "6px",
+              background: "transparent",
+              border: "1px solid #C9184A",
+              color: "#111827",
+              fontSize: "0.95rem",
+              fontWeight: 400,
+              cursor: "pointer",
+              marginTop: "10px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              transition: "all 0.3s ease",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C9184A", e.currentTarget.style.color = "#ffffff")}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = "#111827")}
+          >
+            <span>View all articles</span>
+            <svg
+              width="16" height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ transition: "transform 0.3s ease" }}
             >
-                <span>View all articles</span>
-                <svg
-                    width="16" height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{ transition: "transform 0.3s ease" }}
-                >
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-            </motion.button>
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </motion.button>
         )}
       </motion.div>
     </section>

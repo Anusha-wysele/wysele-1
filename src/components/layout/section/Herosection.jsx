@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from "lucide-react";
 import HeroVideo from '../../../assets/Hero.mp4';
 
 const partnerSets = [
@@ -76,7 +77,7 @@ export default function HeroSection() {
         <source src={HeroVideo} type="video/mp4" />
       </video>
 
-      {/* Center Text Content */}
+      {/* Content Overlay */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -87,125 +88,103 @@ export default function HeroSection() {
           zIndex: 2,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: isMobile ? "flex-start" : "center",
-          textAlign: "center",
-          padding: isMobile ? "40px 20px 60px" : "0 20px",
-          marginTop: isMobile ? "0px" : "-120px",
+          textAlign: "left",
+          padding: isMobile ? "40px 20px 60px" : "0 5%",
+          marginTop: isMobile ? "0px" : "0",
           background: isMobile ? "#111" : "transparent",
         }}
       >
-        <h1 
-          style={{
-            fontSize: isMobile ? "2.2rem" : "clamp(3rem, 6vw, 5.5rem)",
-            fontWeight: 400,
-            color: "#fff",
-            lineHeight: isMobile ? 1.2 : 1.05,
-            marginBottom: isMobile ? "16px" : "20px",
-            maxWidth: "1100px",
-            letterSpacing: "-0.01em"
-          }}
-        >
-            <span className="inline-block overflow-hidden" style={{ height: '1.2em' }}>
-                {'Driving Business Transformation'.split('').map((char, idx) => (
-                    <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                        <motion.span
-                            className="inline-block"
-                            initial={{ y: '-100%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{ 
-                                duration: 0.4,
-                                delay: idx * 0.025 + 0.4,
-                                ease: [0.33, 1, 0.68, 1]
-                            }}
-                        >
-                            {char}
-                        </motion.span>
-                    </span>
-                ))}
-            </span>
-            <br className={isMobile ? "hidden" : "block"} />
-            <span className="inline-block overflow-hidden" style={{ height: '1.2em', marginTop: isMobile ? "0" : "5px" }}>
-                {'with Tailored Digital & AI Solutions'.split('').map((char, idx) => (
-                    <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                        <motion.span
-                            className="inline-block"
-                            initial={{ y: '-100%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{ 
-                                duration: 0.4,
-                                delay: (31 + idx) * 0.025 + 0.4,
-                                ease: [0.33, 1, 0.68, 1]
-                            }}
-                        >
-                            {char}
-                        </motion.span>
-                    </span>
-                ))}
-            </span>
-        </h1>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-          style={{
-            fontSize: isMobile ? "0.9rem" : "0.95rem",
-            color: "rgba(255,255,255,0.95)",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.6,
-            maxWidth: "750px",
-            marginBottom: isMobile ? "30px" : "36px",
-          }}
-        >
-          A powerful foundation for enterprises to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance.
-        </motion.p>
+        <div className="max-w-7xl w-full mx-auto">
+          <div className="max-w-3xl">
+            {/* Insights Tag */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-3 mb-8"
+            >
+              <div className="w-8 h-1.5 bg-[#FFD700]" />
+              <span className="text-white text-[10px] font-bold tracking-[0.3em] uppercase">Digital Excellence</span>
+            </motion.div>
 
-        {/* Action Button */}
-        <motion.button
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.8 }}
-          onMouseEnter={() => setBtnHover(true)}
-          onMouseLeave={() => setBtnHover(false)}
-          className="group"
-          style={{
-            color: "#ffffff",
-            backgroundColor: btnHover ? "#C9184A" : "transparent",
-            backdropFilter: "none",
-            border: "1px solid #C9184A",
-            padding: isMobile ? "12px 28px" : "10px 24px",
-            borderRadius: "6px",
-            fontSize: "0.95rem",
-            fontWeight: "400",
-            cursor: "pointer",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "8px",
-            transition: "all 0.3s ease",
-            position: "relative",
-            overflow: "hidden",
-          }}
-        >
-          <span style={{ position: "relative", zIndex: 10 }}>Get In Touch</span>
-          <svg
-            width="16" height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{
-              transition: "transform 0.3s ease",
-              transform: btnHover ? "rotate(45deg)" : "rotate(0deg)",
-              flexShrink: 0,
-            }}
-          >
-            <path d="M7 17L17 7M17 7H7M17 7V17" />
-          </svg>
-        </motion.button>
+            {/* Headline */}
+            <h1 
+              style={{
+                fontSize: isMobile ? "1.5rem" : "clamp(1.8rem, 3.8vw, 2.6rem)",
+                fontWeight: 500,
+                color: "#fff",
+                lineHeight: 1.1,
+                marginBottom: "24px",
+                letterSpacing: "-0.01em"
+              }}
+            >
+              Driving Business Transformation <br />
+              with Tailored Digital & AI Solutions
+            </h1>
+
+            {/* Description with Accent Line */}
+            <div className="flex gap-5 mb-10">
+              <div className="w-[1px] bg-[#FFD700] shrink-0" />
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                style={{
+                  fontSize: isMobile ? "0.85rem" : "0.9rem",
+                  color: "rgba(255,255,255,0.85)",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 300,
+                  lineHeight: 1.6,
+                  maxWidth: "520px",
+                }}
+              >
+                A powerful foundation for enterprises to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance.
+              </motion.p>
+            </div>
+
+            {/* Action Button */}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+              onMouseEnter={() => setBtnHover(true)}
+              onMouseLeave={() => setBtnHover(false)}
+              className="group"
+              style={{
+                color: "#000",
+                backgroundColor: "#FFD700",
+                padding: isMobile ? "14px 32px" : "12px 28px",
+                fontSize: "0.85rem",
+                fontWeight: "700",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "12px",
+                transition: "all 0.3s ease",
+                border: "none",
+              }}
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              <span>Get In Touch</span>
+              <motion.div
+                animate={{ x: btnHover ? 5 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ArrowRight size={16} />
+              </motion.div>
+            </motion.button>
+          </div>
+        </div>
       </motion.div>
 
       {/* Grid Logos Section */}
