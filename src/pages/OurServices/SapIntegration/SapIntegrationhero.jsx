@@ -1,9 +1,9 @@
 import React from "react";
-import { SERVICES_PAGE_IMAGES } from "../../components/common/data";
+import { SERVICES_PAGE_IMAGES } from "../../../components/common/data";
 
 import { motion } from "framer-motion";
 import { Star, Play, CheckCircle } from "lucide-react";
-import Cylinders from "../../components/common/Cylinders";
+import Cylinders from "../../../components/common/Cylinders";
 
 const SapIntegrationhero = () => {
   return (

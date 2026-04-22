@@ -3,8 +3,8 @@ import SapIntegrationhero from "./SapIntegrationhero";
 import Sapintegrationservices from "./Sapintegrationservices";
 import SapIntegrationbusiness from "./SapIntegrationbusiness";
 import SapIntegrationhelp from "./SapIntegrationhelp";
-import GetInTouch from "../../components/layout/section/GetinTouch";
-import Footer from "../../components/layout/section/Footer";
+import GetInTouch from "../../../components/layout/section/GetinTouch";
+import Footer from "../../../components/layout/section/Footer";
 
 const SapIntegrationPage = () => {
   return (

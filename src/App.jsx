@@ -15,7 +15,7 @@ const SapDatasphere = lazy(() => import("./pages/OurServices/SapDatasphere/SapDa
 const RiseWithSap = lazy(() => import("./pages/OurServices/RiseWithsap/RiseWithSapPage"));
 const SapServices = lazy(() => import("./pages/SapServices/SapServiceshero"));
 const SapBtp = lazy(() => import("./pages/OurServices/BtpServices/SapBtp"));
-const SapIntegration = lazy(() => import("./pages/SapIntegration/SapIntegrationPage"));
+const SapIntegration = lazy(() => import("./pages/OurServices/SapIntegration/SapIntegrationPage"));
 const IndustriesPage = lazy(() => import("./pages/Industries/IndustriesPage"));
 const ContactPage = lazy(() => import("./pages/ContactUs/ContactPage"));
 
