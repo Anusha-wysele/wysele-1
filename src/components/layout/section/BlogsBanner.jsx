@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { blogPosts } from "../../common/data";
 import HeadingBracket from "../../common/HeadingBracket";
+import Button from "../../common/Button";
 
 const categories = ["All", "Organisation", "Innovation", "Technology", "Culture", "AI"];
 
@@ -258,80 +259,22 @@ export default function BlogsBanner() {
         {/* Action arrow - hidden on mobile, shown on tablet/desktop */}
         {!isMobile && (
           <div style={{ display: "flex", alignItems: "flex-end", paddingBottom: isTablet ? "0px" : "130px", justifyContent: isTablet ? "center" : "flex-start", gridColumn: isTablet ? "span 2" : "auto", paddingTop: isTablet ? "20px" : "0" }}>
-            <button
-              style={{
-                color: "#111827",
-                backgroundColor: "transparent",
-                border: "1px solid #C9184A",
-                padding: "10px 24px",
-                borderRadius: "6px",
-                fontSize: "0.95rem",
-                fontWeight: "400",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C9184A", e.currentTarget.style.color = "#ffffff")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = "#111827")}
-            >
-              <span>View All</span>
-              <svg
-                width="16" height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{ transition: "transform 0.3s ease" }}
-              >
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </button>
+            <Button 
+              text="View All"
+              onClick={() => {}}
+            />
           </div>
         )}
 
         {/* Mobile View-All Button */}
         {isMobile && (
-          <motion.button
-            variants={fadeUp}
-            style={{
-              width: "100%",
-              padding: "12px 28px",
-              borderRadius: "6px",
-              background: "transparent",
-              border: "1px solid #C9184A",
-              color: "#111827",
-              fontSize: "0.95rem",
-              fontWeight: 400,
-              cursor: "pointer",
-              marginTop: "10px",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-              transition: "all 0.3s ease",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#C9184A", e.currentTarget.style.color = "#ffffff")}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "transparent", e.currentTarget.style.color = "#111827")}
-          >
-            <span>View all articles</span>
-            <svg
-              width="16" height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ transition: "transform 0.3s ease" }}
-            >
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </motion.button>
+          <div className="w-full mt-2">
+            <Button 
+              text="View all articles"
+              onClick={() => {}}
+              className="w-full"
+            />
+          </div>
         )}
       </motion.div>
     </section>

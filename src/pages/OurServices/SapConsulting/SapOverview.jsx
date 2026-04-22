@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import Button from '../../../components/common/Button';
 
 const SapOverview = () => {
     const navigate = useNavigate();
@@ -29,12 +30,10 @@ const SapOverview = () => {
                 <p className="text-base text-gray-700 leading-relaxed mb-8">
                     In the fast-paced world of business technology, leveraging expert consulting services can be the key to fully harnessing the capabilities of SAP solutions. Our consultants will work closely with your team to identify opportunities for improvement, optimize processes, and drive tangible results. Don't just adapt—thrive with the right strategies and insights to elevate your business to new heights.
                 </p>
-                <button
+                <Button 
+                    text="Contact Us"
                     onClick={() => navigate('/contact')}
-                    className="px-6 py-2 bg-[#C9184A] text-white font-semibold rounded-full hover:bg-gray-900 transition-all duration-300"
-                >
-                    Contact Us
-                </button>
+                />
                 </div>
                 <div className="w-1/2">
                     <img

@@ -48,14 +48,14 @@ export default function Faq() {
       <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full">
 
         {/* FAQ Badge */}
-        <div className="mb-6 rounded-full bg-[#e2e8f0] px-4 py-1.5 border border-[#cbd5e1] shadow-sm">
+        <div className="mb-6 mx-auto w-fit rounded-full bg-[#e2e8f0] px-4 py-1.5 border border-[#cbd5e1] shadow-sm">
           <span className="text-[11px] font-semibold uppercase tracking-widest text-[#475569]">FAQ</span>
         </div>
 
         {/* Title */}
-        <div style={{ display: "flex", alignItems: "center", gap: "20px", marginBottom: "64px" }}>
-          <HeadingBracket size={56} style={{ transform: "translate(40px, -20px)" }} />
-          <h2 className="text-4xl md:text-5xl font-medium text-[#111827] tracking-tight text-center">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", marginBottom: "40px" }}>
+          <HeadingBracket size={48} style={{ transform: "translate(30px, -15px)" }} />
+          <h2 className="text-3xl md:text-4xl font-medium text-[#111827] tracking-tight text-center">
             Your questions, our answers
           </h2>
         </div>

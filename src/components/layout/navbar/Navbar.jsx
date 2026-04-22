@@ -551,6 +551,7 @@ import {
 } from "lucide-react";
 import Menu from "./Menu";
 import Logo from "./Logo";
+import Button from "../../common/Button";
  
 // ─── Mega Menu Data ──────────────────────────────────────────────────────────
  
@@ -710,15 +711,12 @@ function MegaMenu({ type, open, onClose }) {
               </p>
             </div>
            
-            <button
+            <Button 
+              text="EXPLORE"
+              variant="secondary"
               onClick={() => { navigate(data.sidebar.link); onClose(); }}
-              className="group flex items-center gap-2 text-[10px] font-bold text-gray-700 hover:text-[#C9184A] transition-colors border border-gray-100 bg-white px-4 py-2.5 rounded-full w-fit shadow-xs"
-            >
-              EXPLORE
-              <div className="w-5 h-5 rounded-full bg-gray-900 text-white flex items-center justify-center group-hover:bg-[#C9184A] transition-colors">
-                <ChevronRight size={10} />
-              </div>
-            </button>
+              className="!px-5 !py-2.5"
+            />
           </div>
  
           {/* Section 2: Dropdown Links (Middle) */}
@@ -1021,55 +1019,13 @@ export default function Navbar() {
         </div>
 
         {/* Contact Us Button */}
-        <button
-          onClick={() => navigate("/contact")}
-          onMouseEnter={() => setHoveredLink("contact")}
-          onMouseLeave={() => setHoveredLink(null)}
-          className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full border border-[#C9184A] bg-[#C9184A] text-sm font-semibold text-white hover:bg-gray-900 hover:border-gray-900 transition-all duration-300 ml-auto mr-8 overflow-hidden"
-        >
-          <span className="relative inline-block overflow-hidden" style={{ height: '1.2em' }}>
-            {'Contact Us'.split('').map((char, idx) => (
-              <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                <motion.span
-                  className="inline-block"
-                  initial={false}
-                  animate={{ 
-                    y: hoveredLink === "contact" ? '100%' : '0%',
-                    opacity: hoveredLink === "contact" ? 0 : 1
-                  }}
-                  transition={{ 
-                    duration: 0.4,
-                    delay: idx * 0.025,
-                    ease: [0.33, 1, 0.68, 1]
-                  }}
-                >
-                  {char}
-                </motion.span>
-                <motion.span
-                  className="inline-block absolute left-0 top-0"
-                  initial={false}
-                  animate={{ 
-                    y: hoveredLink === "contact" ? '0%' : '-100%',
-                    opacity: hoveredLink === "contact" ? 1 : 0
-                  }}
-                  transition={{ 
-                    duration: 0.4,
-                    delay: idx * 0.025,
-                    ease: [0.33, 1, 0.68, 1]
-                  }}
-                >
-                  {char}
-                </motion.span>
-              </span>
-            ))}
-          </span>
-          <motion.div
-            animate={{ scale: hoveredLink === "contact" ? 1.3 : 1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ArrowRight size={16} />
-          </motion.div>
-        </button>
+        <div className="hidden md:block ml-auto mr-8">
+          <Button 
+            text="Contact Us"
+            onClick={() => navigate("/contact")}
+            className="!px-5 !py-2.5"
+          />
+        </div>
 
         {/* LinkedIn Icon */}
         <a

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { OTHER_PAGE_IMAGES } from '../../common/data';
 import Cylinders from '../../common/Cylinders';
+import Button from '../../common/Button';
 
 export default function InsightsHero() {
   return (
@@ -22,46 +23,50 @@ export default function InsightsHero() {
       <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full px-6 lg:px-12 relative z-10">
         {/* Centered on mobile, left-aligned on desktop */}
         <div className="w-full max-w-2xl text-center md:text-left flex flex-col items-center md:items-start">
+          {/* Top Tag */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-8"
+          >
+            <div className="w-8 h-1 bg-[#FFD700]" />
+            <span className="text-white text-[10px] font-bold tracking-[0.3em] uppercase">Enterprise Perspectives</span>
+          </motion.div>
+
           <motion.h2 
-            initial={{ opacity: 0, y: -40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-normal text-white leading-[1.2] md:leading-[1.1] tracking-tight mb-2 font-inter"
+            className="text-3xl md:text-[2.6rem] font-medium text-white leading-[1.1] tracking-tight mb-8 font-inter"
           >
             Wysele Insights:<br />
             Fueling Innovation
           </motion.h2>
 
-          {/* Yellow divider line */}
-          <motion.div 
-            initial={{ width: 0 }}
-            whileInView={{ width: 60 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.4, ease: "easeInOut" }}
-            className="h-[3px] bg-[#eab308] mt-3 mb-4"
+
+
+          {/* Description with Accent Line */}
+          <div className="flex gap-5 mb-10 text-left">
+            <div className="w-[1px] bg-[#FFD700] shrink-0" />
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-gray-200 text-base md:text-lg font-light leading-relaxed max-w-xl"
+            >
+              Explore real-world strategies, expert perspectives, and digital breakthroughs designed to shape the future of your enterprise.
+            </motion.p>
+          </div>
+
+          <Button 
+            text="Latest News"
+            onClick={() => {}}
+            icon={<ArrowUpRight size={16} />}
           />
-
-          <motion.p 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-gray-200 text-base md:text-lg font-light leading-relaxed max-w-xl mb-10"
-          >
-            Explore real-world strategies, expert perspectives, and digital breakthroughs designed to shape the future of your enterprise.
-          </motion.p>
-
-          <motion.button 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="group inline-flex items-center gap-2 bg-transparent hover:bg-[#C9184A] text-white px-5 py-2.5 border border-[#C9184A] rounded-[6px] text-sm font-normal transition-all duration-300"
-          >
-            Latest News
-            <ArrowUpRight size={18} strokeWidth={1.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </motion.button>
         </div>
       </div>
     </section>

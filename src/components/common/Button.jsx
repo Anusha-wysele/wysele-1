@@ -1,24 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
-export default function Button({ text = "Explore", onClick }) {
+const Button = ({ 
+    text = "Get In Touch", 
+    onClick, 
+    className = "", 
+    icon = <ArrowRight size={16} />,
+    variant = "primary",
+    type = "button",
+    disabled = false
+}) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
-        <button
+        <motion.button
+            type={type}
+            disabled={disabled}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             onClick={onClick}
-            className="relative group flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-md bg-slate-400/60 border border-gray-400/50 text-white text-xs tracking-widest uppercase font-bold hover:bg-red-800/70 transition-all duration-300 backdrop-blur-md"
-            style={{ overflow: 'hidden' }}
+            className={`group inline-flex items-center justify-center gap-3 px-6 py-2.5 md:px-7 md:py-3 
+                       text-[11px] md:text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 border-none
+                       ${variant === "primary" ? "bg-[#FFD700] text-black" : "bg-white text-black"} 
+                       ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
+                       ${className}`}
         >
-            {/* Default Text */}
-            <span className="flex items-center gap-1.5 transition-all duration-500 group-hover:-translate-y-full group-hover:opacity-0 absolute">
-                {text}
-            </span>
-
-            {/* Hover Text */}
-            <span className="flex items-center gap-1.5 transition-all duration-500 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
-                {text}
-                <span style={{ display: 'inline-block', transform: 'rotate(-45deg)' }}>
-                    →
-                </span>
-            </span>
-        </button>
+            <span className="relative z-10">{text}</span>
+            {icon && (
+                <motion.div
+                    animate={{ x: isHovered ? 5 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="relative z-10 flex items-center"
+                >
+                    {icon}
+                </motion.div>
+            )}
+        </motion.button>
     );
-}
+};
+
+export default Button;

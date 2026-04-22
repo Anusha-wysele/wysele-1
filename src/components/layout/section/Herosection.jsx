@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from "lucide-react";
 import HeroVideo from '../../../assets/Hero.mp4';
+import Button from '../../common/Button';
 
 const partnerSets = [
   [
@@ -38,6 +40,7 @@ function useWindowWidth() {
 }
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
   const [btnHover, setBtnHover] = useState(false);
   const width = useWindowWidth();
@@ -145,44 +148,15 @@ export default function HeroSection() {
             </div>
 
             {/* Action Button */}
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-              onMouseEnter={() => setBtnHover(true)}
-              onMouseLeave={() => setBtnHover(false)}
-              className="group"
-              style={{
-                color: "#000",
-                backgroundColor: "#FFD700",
-                padding: isMobile ? "14px 32px" : "12px 28px",
-                fontSize: "0.85rem",
-                fontWeight: "700",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "12px",
-                transition: "all 0.3s ease",
-                border: "none",
-              }}
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              <span>Get In Touch</span>
-              <motion.div
-                animate={{ x: btnHover ? 5 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ArrowRight size={16} />
-              </motion.div>
-            </motion.button>
+            <div className="mt-4">
+              <Button 
+                text="Get In Touch"
+                onClick={() => {
+                  navigate('/contact');
+                  window.scrollTo(0, 0);
+                }}
+              />
+            </div>
           </div>
         </div>
       </motion.div>

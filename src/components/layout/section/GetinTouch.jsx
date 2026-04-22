@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, MessageCircle, Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
+import Button from '../../common/Button';
 
 function useWindowWidth() {
     const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -80,9 +81,12 @@ const GetInTouch = () => {
                             </label>
                         </div>
 
-                        <button type="submit" disabled={!form.confirm} className={`mt-4 px-8 py-3 rounded text-base font-medium transition-all ${form.confirm ? "bg-[#C9184A] text-white" : "bg-white/10 text-white/40 cursor-not-allowed"}`}>
-                            {sent ? "Sent" : "Submit"}
-                        </button>
+                        <Button 
+                            type="submit" 
+                            disabled={!form.confirm} 
+                            text={sent ? "Sent" : "Submit"}
+                            className="mt-4 w-fit"
+                        />
                     </form>
                 </div>
 
