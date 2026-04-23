@@ -44,9 +44,10 @@ const SapIntegrationhero = () => {
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-4 leading-tight tracking-tight"
             >
               Seamless <span className="text-yellow-400">SAP Integration</span> for a <span className="text-yellow-400 font-medium">Connected Business</span>
@@ -54,9 +55,10 @@ const SapIntegrationhero = () => {
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-white/80 text-xs md:text-sm font-light leading-relaxed mb-8 max-w-xl"
             >
               In today’s interconnected business landscape, integrating your SAP systems with various applications, platforms, and services is essential for improving operational efficiency. At Wysele, we provide robust SAP Integration Services tailored to connect your SAP environment with your entire business ecosystem.
@@ -64,9 +66,10 @@ const SapIntegrationhero = () => {
 
             {/* Features */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-wrap items-center gap-5 md:gap-8"
             >
               <div className="flex items-center gap-2 text-white/90 text-[10px] md:text-xs font-medium">

@@ -18,6 +18,8 @@ const SapBtp = lazy(() => import("./pages/OurServices/BtpServices/SapBtp"));
 const SapIntegration = lazy(() => import("./pages/OurServices/SapIntegration/SapIntegrationPage"));
 const IndustriesPage = lazy(() => import("./pages/Industries/IndustriesPage"));
 const ContactPage = lazy(() => import("./pages/ContactUs/ContactPage"));
+const SapVimPage = lazy(() => import("./pages/OurServices/SapVimbrim/SapVimPage"));
+const SapMigrationPage = lazy(() => import("./pages/OurServices/MigrationServices/SapMigrationPage"));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -36,6 +38,8 @@ export default function App() {
           <Route path="/services/rise-with-sap" element={<RiseWithSap />} />
           <Route path="/services/sap-btp" element={<SapBtp />} />
           <Route path="/services/sap-integration" element={<SapIntegration />} />
+          <Route path="/services/sap-vim-brim" element={<SapVimPage />} />
+          <Route path="/services/sap-migration" element={<SapMigrationPage />} />
           <Route path="/sap-services" element={<SapServices />} />
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/contact" element={<ContactPage />} />

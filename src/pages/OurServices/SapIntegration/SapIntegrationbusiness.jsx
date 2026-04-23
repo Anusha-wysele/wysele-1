@@ -35,9 +35,14 @@ const SapIntegrationBusiness = () => {
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 text-left">
                 {/* Main Heading */}
                 <motion.h2 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        visible: { opacity: 1, y: 0 }
+                    }}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.1, margin: "-50px" }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-xl md:text-2xl lg:text-3xl font-medium text-black mb-10 tracking-tight max-w-4xl leading-tight"
                 >
                     Connected SAP Integration for <br className="hidden md:block" /> Unified Business Operations
@@ -48,10 +53,14 @@ const SapIntegrationBusiness = () => {
                     {contentBlocks.map((block, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            variants={{
+                                hidden: { opacity: 0, y: 40 },
+                                visible: { opacity: 1, y: 0 }
+                            }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: false, amount: 0.1, margin: "-50px" }}
+                            transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.215, 0.610, 0.355, 1.000] }}
                             className="flex flex-col h-full group"
                         >
                             <p className="text-gray-600 text-sm md:text-base font-light leading-relaxed mb-10 flex-grow border-l border-[#C9184A]/30 pl-6 py-1">

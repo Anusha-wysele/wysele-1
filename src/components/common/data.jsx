@@ -49,6 +49,8 @@ export const SERVICES_PAGE_IMAGES = {
   btpAiHover: "https://images.pexels.com/photos/5833772/pexels-photo-5833772.jpeg",
   btpAppDevHover: "https://images.pexels.com/photos/6285085/pexels-photo-6285085.jpeg",
   sapIntegrationHero: "https://images.pexels.com/photos/8134168/pexels-photo-8134168.jpeg",
+  sapIntegrationServices: "https://images.pexels.com/photos/8134073/pexels-photo-8134073.jpeg",
+  sapMigrationHero: "https://images.pexels.com/photos/6803551/pexels-photo-6803551.jpeg?auto=compress&cs=tinysrgb&w=1600",
 };
 
 export const OTHER_PAGE_IMAGES = {
@@ -69,7 +71,40 @@ export const OTHER_PAGE_IMAGES = {
   missionBg: "https://images.pexels.com/photos/8134162/pexels-photo-8134162.jpeg?auto=compress&cs=tinysrgb&w=800",
   industriesHero: "https://images.pexels.com/photos/15893881/pexels-photo-15893881.jpeg?auto=compress&cs=tinysrgb&w=1600",
   contactHero: "https://images.pexels.com/photos/5453824/pexels-photo-5453824.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  sapVim1: "https://images.pexels.com/photos/7691730/pexels-photo-7691730.jpeg",
+  sapVim2: "https://images.pexels.com/photos/7691751/pexels-photo-7691751.jpeg"
 };
+
+export const INDUSTRIES_HERO_SLIDER = [
+  OTHER_PAGE_IMAGES.industriesHero,
+  "https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg",
+  "https://images.pexels.com/photos/32743215/pexels-photo-32743215.jpeg",
+  "https://images.pexels.com/photos/32503741/pexels-photo-32503741.jpeg",
+  "https://images.pexels.com/photos/4993793/pexels-photo-4993793.jpeg"
+];
+
+export const INDUSTRIES_HERO_CONTENT = [
+  {
+    title: "Transforming Industries with Wysele Solutions",
+    desc: "We drive industry transformation through digital innovation, delivering tailored solutions that enable operational excellence and sustained business growth."
+  },
+  {
+    title: "Driving Innovation Across Industries with Wysele",
+    desc: "We empower businesses with cutting-edge digital solutions, helping them enhance efficiency, adapt to change, and achieve long-term growth."
+  },
+  {
+    title: "Enabling Business Excellence Through Wysele Solutions",
+    desc: "We deliver tailored digital strategies that streamline operations, improve performance, and accelerate transformation across industries."
+  },
+  {
+    title: "Reimagining Industries with Wysele Expertise",
+    desc: "We help organizations embrace innovation and modern technologies to optimize processes and unlock new opportunities for growth."
+  },
+  {
+    title: "Empowering Enterprises with Digital Transformation",
+    desc: "We provide scalable and intelligent solutions that drive efficiency, foster innovation, and support sustainable business success."
+  }
+];
 
 export const SERVICES_LIST = [
   {
