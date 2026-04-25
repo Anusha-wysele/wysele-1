@@ -204,19 +204,19 @@ export default function Menu({ open, onClose }) {
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {[
-                "SAP Services",
-                "Salesforce Services",
-                "IT Infrastructure – SOC & NOC",
-                "IT Infrastructure Services",
-                "Cybersecurity Services",
-                "Enterprise Digital Transformation",
-                "Web Development",
-                "App Development"
+                { label: "SAP Services", path: "/sap-services" },
+                { label: "Salesforce Services", path: "/#services" },
+                { label: "IT Infrastructure – SOC & NOC", path: "/#services" },
+                { label: "IT Infrastructure Services", path: "/#services" },
+                { label: "Cybersecurity Services", path: "/#services" },
+                { label: "Enterprise Digital Transformation", path: "/#services" },
+                { label: "Web Development", path: "/services/web-development" },
+                { label: "App Development", path: "/services/web-development" }
               ].map((service) => (
                 <button
-                  key={service}
+                  key={service.label}
                   onClick={() => {
-                    navigate("/#services");
+                    navigate(service.path);
                     onClose();
                   }}
                   style={{
@@ -228,7 +228,7 @@ export default function Menu({ open, onClose }) {
                   onMouseEnter={e => { e.currentTarget.style.color = "#fbbf24"; e.currentTarget.style.paddingLeft = "8px"; }}
                   onMouseLeave={e => { e.currentTarget.style.color = "#fff"; e.currentTarget.style.paddingLeft = "0"; }}
                 >
-                  {service}
+                  {service.label}
                 </button>
               ))}
             </div>

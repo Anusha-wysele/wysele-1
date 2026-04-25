@@ -21,7 +21,7 @@ const IndustriesPage = () => {
     <main className="bg-white">
       <IndustriesHero />
       <IndustriesNav />
-      
+
       <div className="space-y-0">
         <Suspense fallback={<div className="h-20" />}>
           <div id="manufacturing"><Manufacturing /></div>

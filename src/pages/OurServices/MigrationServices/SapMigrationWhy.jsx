@@ -30,9 +30,9 @@ export default function SapMigrationWhy() {
         <section className="py-8 bg-white overflow-hidden">
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20">
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-                    
+
                     {/* Left Side: Transform Box / Image */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -42,25 +42,25 @@ export default function SapMigrationWhy() {
                         <div className="relative rounded-[1.5rem] overflow-hidden p-6 md:pt-10 md:px-8 md:pb-5 shadow-2xl group min-h-[400px] flex flex-col">
                             {/* Decorative background image with full visibility */}
                             <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
-                                <img 
-                                    src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" 
-                                    alt="Transformation" 
+                                <img
+                                    src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+                                    alt="Transformation"
                                     className="w-full h-full object-cover"
                                 />
                                 {/* Subtle gradient for text readability without solid color overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                             </div>
-                            
+
                             <div className="flex-grow" /> {/* Spacer to push content down */}
-                            
+
                             <div className="relative z-10 text-white">
                                 <h3 className="text-xl md:text-2xl font-bold mb-4 leading-tight">
                                     Ready to Transform Your Enterprise?
                                 </h3>
-                                <p className="text-white text-xs md:text-sm mb-6 leading-relaxed font-light">
+                                <p className="text-white text-xs md:text-sm mb-6 leading-relaxed font-normal">
                                     Join industry leaders who have successfully modernized their SAP landscape with Wysele's specialized migration frameworks.
                                 </p>
-                                
+
                                 <ul className="space-y-6 mb-12">
                                     <li className="flex items-center gap-4">
                                         <div className="bg-white/10 p-2 rounded-full">
@@ -96,10 +96,10 @@ export default function SapMigrationWhy() {
                             <h2 className="text-2xl md:text-4xl font-light text-gray-900 mb-8 tracking-tight">
                                 Why Choose <span className="font-bold text-[#800000]">Wysele</span>?
                             </h2>
-                            
+
                             <div className="space-y-5">
                                 {WHY_CHOOSE_POINTS.map((point, index) => (
-                                    <motion.div 
+                                    <motion.div
                                         key={index}
                                         initial={{ opacity: 0, x: 20 }}
                                         whileInView={{ opacity: 1, x: 0 }}
@@ -116,7 +116,7 @@ export default function SapMigrationWhy() {
                                             <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-0.5">
                                                 {point.title}
                                             </h4>
-                                            <p className="text-gray-600 text-[10px] leading-relaxed font-light max-w-lg">
+                                            <p className="text-gray-800 text-[10px] leading-relaxed font-normal max-w-lg">
                                                 {point.desc}
                                             </p>
                                         </div>

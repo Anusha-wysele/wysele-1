@@ -63,7 +63,7 @@ const SapSignavioStrengths = () => {
                                         <div className="shrink-0 flex items-center justify-center transition-transform duration-300 ease-out group-hover:-rotate-45">
                                             {item.icon}
                                         </div>
-                                        <p className="text-sm text-gray-600 leading-relaxed font-light">
+                                        <p className="text-sm text-gray-800 leading-relaxed font-normal">
                                             {item.text}
                                         </p>
                                     </motion.li>

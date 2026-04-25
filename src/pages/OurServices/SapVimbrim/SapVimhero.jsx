@@ -91,10 +91,10 @@ export default function SapVimhero() {
               </h1>
 
               <div className="space-y-4">
-                <p className="text-gray-500 text-xs md:text-sm font-light leading-relaxed">
+                <p className="text-gray-700 text-xs md:text-sm font-normal leading-relaxed">
                   {VIM_BRIM_CONTENT[currentSlide].desc1}
                 </p>
-                <p className="text-gray-400 text-xs md:text-sm font-light leading-relaxed">
+                <p className="text-gray-600 text-xs md:text-sm font-normal leading-relaxed">
                   {VIM_BRIM_CONTENT[currentSlide].desc2}
                 </p>
               </div>

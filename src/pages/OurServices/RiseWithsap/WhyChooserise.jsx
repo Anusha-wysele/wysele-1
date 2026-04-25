@@ -53,7 +53,7 @@ const WhyChooserise = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-gray-500 font-light z-10"
+                        className="text-gray-700 font-normal z-10"
                     >
                         A dedicated partnership to minimize risk while maximizing your transformation impact
                     </motion.p>
@@ -89,7 +89,7 @@ const WhyChooserise = () => {
                                         {item.title}
                                     </h3>
                                 </div>
-                                <p className="mt-2 text-[12px] text-gray-500 font-light leading-relaxed">
+                                <p className="mt-2 text-[12px] text-gray-700 font-normal leading-relaxed">
                                     {item.description}
                                 </p>
                             </motion.div>

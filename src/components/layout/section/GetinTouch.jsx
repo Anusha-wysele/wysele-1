@@ -42,10 +42,10 @@ const GetInTouch = () => {
         <section id="contact" className={`w-full ${isMobile ? 'h-auto py-16' : 'h-[95vh] max-h-[700px] min-h-[450px]'} bg-white relative flex items-center justify-center overflow-hidden font-inter`}>
 
             {/* Background Geometric Layers */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+            <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden" data-aos="fade-up">
                 <div className={`absolute top-0 right-0 ${isMobile ? 'w-full h-1/2' : 'w-[60%] h-[35%]'} bg-[#e3eff2]`} />
                 {!isMobile && (
-                    <div className="absolute top-[20%] right-0 w-[55%] h-[55%] bg-[#c6e1e8]" style={{ clipPath: 'polygon(0 30%, 100% 0, 100% 100%, 0 100%)' }} />
+                    <div className="absolute top-[20%] right-0 w-[55%] h-[55%] bg-[#c6e1e8]" style={{ clipPath: 'polygon(0 30%, 100% 0, 100% 100%, 0 100%)' }} data-aos="fade-up" />
                 )}
                 <div className={`absolute bottom-0 right-0 ${isMobile ? 'w-full h-1/4' : 'w-[50%] h-[40%]'} bg-[#C9184A]`} style={isMobile ? {} : { clipPath: 'polygon(100% 30%, 100% 100%, 0 100%)' }} />
                 <div className={`absolute top-0 left-0 ${isMobile ? 'w-full h-[60%] rounded-b-[40px]' : 'w-[90%] md:w-[72%] h-[96%] rounded-tr-[50px] rounded-br-[150px] md:rounded-br-[250px] rounded-bl-[60px] md:rounded-bl-[80px]'} bg-gray-800`} />
@@ -54,7 +54,7 @@ const GetInTouch = () => {
             <div className={`relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col md:flex-row h-full items-center ${isMobile ? 'gap-12' : 'md:items-stretch gap-0'}`}>
 
                 {/* Left Side: Form */}
-                <div className={`w-full md:w-[55%] flex flex-col relative text-white justify-center ${isMobile ? 'text-center items-center' : ''}`}>
+                <div className={`w-full md:w-[55%] flex flex-col relative text-white justify-center ${isMobile ? 'text-center items-center' : ''}`} data-aos="fade-lefts">
                     <div className="mb-6 md:mb-4">
                         <span className="text-[10px] md:text-sm tracking-[0.2em] font-semibold text-gray-400 uppercase block mb-2">Wysele Technologies</span>
                         <h2 className="text-3xl md:text-[3rem] font-bold leading-[1.1] mb-4 tracking-tight">Get In Touch</h2>
@@ -73,7 +73,7 @@ const GetInTouch = () => {
                             <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="Location" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
                         </div>
                         <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors resize-none h-[42px]" />
-                        
+
                         <div className="flex items-start gap-3 w-full mt-2 text-left">
                             <input type="checkbox" name="confirm" id="confirm-checkbox" checked={form.confirm} onChange={handleChange} required className="mt-1" />
                             <label htmlFor="confirm-checkbox" className="text-[11px] md:text-[13px] text-white/80 font-light cursor-pointer">
@@ -81,9 +81,9 @@ const GetInTouch = () => {
                             </label>
                         </div>
 
-                        <Button 
-                            type="submit" 
-                            disabled={!form.confirm} 
+                        <Button
+                            type="submit"
+                            disabled={!form.confirm}
                             text={sent ? "Sent" : "Submit"}
                             className="mt-4 w-fit"
                         />
@@ -91,8 +91,8 @@ const GetInTouch = () => {
                 </div>
 
                 {/* Right Side: Contact Card */}
-                <div className="w-full md:w-[45%] flex items-center justify-center md:justify-end">
-                    <div className="w-full max-w-[480px] bg-white rounded-[20px] p-8 md:p-12 shadow-xl relative z-20">
+                <div className="w-full md:w-[45%] flex items-center justify-center md:justify-end" >
+                    <div className="w-full max-w-[480px] bg-white rounded-[20px] p-8 md:p-12 shadow-xl relative z-20" data-aos="fade-up">
                         <h3 className="text-2xl md:text-3xl font-bold text-black mb-6">Contact Us</h3>
                         <div className="flex flex-col gap-6">
                             <div className="flex items-start gap-4">

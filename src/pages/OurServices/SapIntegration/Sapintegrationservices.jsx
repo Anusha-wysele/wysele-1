@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-    Check, 
-    Share2, 
-    Cloud, 
-    Workflow, 
-    Zap, 
-    Database, 
-    Globe, 
+import {
+    Check,
+    Share2,
+    Cloud,
+    Workflow,
+    Zap,
+    Database,
+    Globe,
     ArrowUpRight,
     Users
 } from 'lucide-react';
@@ -59,26 +59,26 @@ const SapIntegrationServices = () => {
 
     return (
         <section className="w-full bg-white font-inter">
-            
+
             {/* Top Section: Split Layout (Image Left, Text Right) */}
             <div className="flex flex-col lg:flex-row w-full bg-[#0B0B0B] overflow-hidden border-b border-gray-800">
                 {/* Left: Image */}
                 <div className="w-full lg:w-[40%] h-[300px] lg:h-[450px] relative">
-                    <img 
-                        src={SERVICES_PAGE_IMAGES.sapIntegrationServices} 
-                        alt="Integration Excellence" 
+                    <img
+                        src={SERVICES_PAGE_IMAGES.sapIntegrationServices}
+                        alt="Integration Excellence"
                         className="absolute inset-0 w-full h-full object-cover grayscale-[10%]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-[#0B0B0B]/40" />
                 </div>
-                
+
                 {/* Right: Content */}
                 <div className="w-full lg:w-[60%] flex items-center p-10 md:p-16 lg:p-20 bg-[#0B0B0B] text-white">
                     <div className="max-w-xl">
                         <h2 className="text-2xl md:text-3xl font-normal mb-6 tracking-tight leading-tight">
                             Our Integration Services
                         </h2>
-                        
+
                         <p className="text-white text-sm md:text-base font-light opacity-90 leading-relaxed mb-8">
                             We help businesses seamlessly integrate their SAP systems with diverse platforms to ensure smooth data flow and efficient operations. At Wysele, we deliver reliable solutions that enhance system communication, reduce complexity, and create a connected ecosystem that supports scalability and real-time decision-making.
                         </p>
@@ -104,7 +104,7 @@ const SapIntegrationServices = () => {
             {/* Bottom Section: Split Content (Bullets & Service Grid) */}
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 pt-12 pb-8">
                 <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
-                    
+
                     {/* Left: Core Capabilities */}
                     <div className="w-full lg:w-[30%]">
                         <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#C9184A] mb-6 block">Core Capabilities</span>

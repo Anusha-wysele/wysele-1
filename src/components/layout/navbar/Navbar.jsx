@@ -552,6 +552,7 @@ import {
 import Menu from "./Menu";
 import Logo from "./Logo";
 import Button from "../../common/Button";
+import { WEB_DEVELOPMENT_IMAGES } from "../../common/data";
  
 // ─── Mega Menu Data ──────────────────────────────────────────────────────────
  
@@ -584,8 +585,8 @@ const MEGA_MENU_DATA = {
       { label: "Salesforce Services", desc: "CRM and multi-cloud solutions", icon: <CloudLightning size={18} />, path: "/services" },
       { label: "Cybersecurity", desc: "Modern protection for your enterprise", icon: <ShieldCheck size={18} />, path: "/services" },
       { label: "IT Infrastructure", desc: "Managed networks and data centers", icon: <Radio size={18} />, path: "/services" },
-      { label: "Web Development", desc: "Scalable and secure web apps", icon: <Code size={18} />, path: "/services" },
-      { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services" },
+      { label: "Web Development", desc: "Scalable and secure web apps", icon: <Code size={18} />, path: "/services/web-development", img: WEB_DEVELOPMENT_IMAGES[0] },
+      { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services/web-development", img: WEB_DEVELOPMENT_IMAGES[1] },
     ],
     featured: {
       tag: "Case Study",
@@ -781,7 +782,7 @@ function MegaMenu({ type, open, onClose }) {
               className="relative h-full overflow-hidden ml-auto border-l border-white/5"
             >
               <img
-                src={data.featured.img}
+                src={hoveredItem?.img || data.featured.img}
                 alt="Featured"
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] hover:scale-110 opacity-70"
               />

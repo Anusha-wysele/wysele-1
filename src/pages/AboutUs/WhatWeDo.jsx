@@ -36,7 +36,7 @@ export default function WhatWeDo() {
                                 <h3 className="text-[1.05rem] font-medium mb-1.5 text-gray-900 group-hover:text-white transition-colors duration-300">
                                     {card.title}
                                 </h3>
-                                <p className="text-gray-600 text-[13px] leading-snug font-light group-hover:text-white transition-colors duration-300 line-clamp-3">
+                                <p className="text-black text-[14px] leading-relaxed font-medium group-hover:text-white transition-colors duration-300">
                                     {card.desc}
                                 </p>
                             </div>

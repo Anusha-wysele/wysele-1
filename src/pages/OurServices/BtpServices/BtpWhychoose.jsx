@@ -60,7 +60,7 @@ const BtpWhychoose = () => {
                             </h3>
 
                             {/* Description */}
-                            <p className="text-[12px] text-[#64748b] leading-relaxed pb-1">
+                            <p className="text-[12px] text-[#334155] leading-relaxed pb-1 font-normal">
                                 {item.desc}
                             </p>
                         </motion.div>

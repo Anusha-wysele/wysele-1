@@ -53,6 +53,18 @@ export const SERVICES_PAGE_IMAGES = {
   sapMigrationHero: "https://images.pexels.com/photos/6803551/pexels-photo-6803551.jpeg?auto=compress&cs=tinysrgb&w=1600",
 };
 
+export const WEB_DEVELOPMENT_IMAGES = [
+  "https://images.pexels.com/photos/34804004/pexels-photo-34804004.jpeg",
+  "https://images.pexels.com/photos/12200696/pexels-photo-12200696.jpeg",
+  "https://images.pexels.com/photos/34803970/pexels-photo-34803970.jpeg"
+];
+
+export const WEB_DEVELOPMENT_BG = "https://images.pexels.com/photos/17136612/pexels-photo-17136612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+
+export const WEB_SERVICES_OFFER_IMG = "https://images.pexels.com/photos/12200696/pexels-photo-12200696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+
+export const WEB_SERVICES_OFFER_IMG_2 = "https://images.pexels.com/photos/5077044/pexels-photo-5077044.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+
 export const OTHER_PAGE_IMAGES = {
   simnHero: "https://images.pexels.com/photos/4427431/pexels-photo-4427431.jpeg?auto=compress&cs=tinysrgb&w=1200",
   founder: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",

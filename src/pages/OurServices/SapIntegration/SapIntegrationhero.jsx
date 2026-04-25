@@ -20,7 +20,7 @@ const SapIntegrationhero = () => {
         />
         {/* Cinematic Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent z-10" />
-        
+
         {/* Decorative Cylinders */}
         <div className="absolute inset-0 z-15 [&>div]:!border-white/20">
           <Cylinders />

@@ -40,7 +40,7 @@ const Founder = () => {
                                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                                 className="h-[1px] bg-gray-900 mb-6"
                             />
-                            <p className="text-gray-600 text-[13px] md:text-[14px] leading-relaxed font-light">
+                            <p className="text-gray-800 text-[13px] md:text-[14px] leading-relaxed font-normal">
                                 Since its inception in 2021, Wysele has focused on bringing clarity and purpose to every challenge—prioritizing meaningful execution over noise and real impact over empty promises. Our approach is grounded in transparency, strong values, and a commitment to building lasting partnerships. At Wysele, success is defined by the long-term value we create and the trust we build with every client we serve. We operate at the intersection of technology and business strategy—helping organizations harness the full potential of SAP, cloud platforms, and AI-driven innovation. Our team of seasoned architects and consultants brings deep domain expertise, ensuring every solution we deliver is purposeful, scalable, and aligned with your long-term vision.
                             </p>
                         </div>
@@ -61,7 +61,7 @@ const Founder = () => {
                                         <h3 className="text-[15px] font-semibold mb-1 text-gray-900">
                                             Purpose-Driven Approach, Precision in Delivery
                                         </h3>
-                                        <p className="text-gray-600 text-[13px] md:text-sm leading-snug font-light">
+                                        <p className="text-gray-800 text-[13px] md:text-sm leading-snug font-normal">
                                             At Wysele, we focus on solving challenges before speaking—bringing clarity, speed, and effective execution. We prioritize outcomes over noise and action over hierarchy.
                                         </p>
                                     </div>
@@ -76,7 +76,7 @@ const Founder = () => {
                                         <h3 className="text-[15px] font-semibold mb-1 text-gray-900">
                                             Beyond IT — Building Trust That Endures
                                         </h3>
-                                        <p className="text-gray-600 text-[13px] md:text-sm leading-snug font-light">
+                                        <p className="text-gray-800 text-[13px] md:text-sm leading-snug font-normal">
                                             We don't just pursue clients—we cultivate long-term partnerships. Through ethical practices and transparent communication, we create trust that goes beyond agreements.
                                         </p>
                                     </div>
@@ -91,7 +91,7 @@ const Founder = () => {
                                         <h3 className="text-[15px] font-semibold mb-1 text-gray-900">
                                             Cloud. SAP. Innovation. Seamlessly Executed
                                         </h3>
-                                        <p className="text-gray-600 text-[13px] md:text-sm leading-snug font-light">
+                                        <p className="text-gray-800 text-[13px] md:text-sm leading-snug font-normal">
                                             From SAP ECC to S/4HANA and On-Premise to RISE, we simplify complex transitions. Our team leverages AWS, Azure, GCP, and modern app development.
                                         </p>
                                     </div>
@@ -181,13 +181,13 @@ const Founder = () => {
                                 />
 
                                 <div className="space-y-1 mb-8">
-                                    <p className="text-gray-600 text-[13px] md:text-[14px] leading-snug font-light">
+                                    <p className="text-gray-800 text-[13px] md:text-[14px] leading-snug font-normal">
                                         Brahmam is a seasoned technology leader with over 20 years of experience delivering enterprise-grade solutions across industries. With a strong foundation from his tenure at a leading multinational corporation, he has consistently driven large-scale digital transformation initiatives and optimized mission-critical systems.
                                     </p>
-                                    <p className="text-gray-600 text-[13px] md:text-[14px] leading-snug font-light">
+                                    <p className="text-gray-800 text-[13px] md:text-[14px] leading-snug font-normal">
                                         As an accomplished SAP Technical and Functional Architect, Brahmam specializes in integrating Artificial Intelligence (AI) with SAP ecosystems to build intelligent, data-driven enterprises. His expertise lies in transforming traditional ERP systems into smart platforms that enable automation, real-time insights, and predictive decision-making.
                                     </p>
-                                    <p className="text-gray-600 text-[13px] md:text-[14px] leading-snug font-light">
+                                    <p className="text-gray-800 text-[13px] md:text-[14px] leading-snug font-normal">
                                         He focuses on aligning business strategy with technology execution—helping organizations enhance efficiency, reduce operational complexity, and scale with confidence. Under his leadership, the organization is committed to delivering innovative, high-impact solutions that convert complex enterprise challenges into measurable business outcomes.
                                     </p>
                                 </div>

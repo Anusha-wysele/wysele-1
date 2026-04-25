@@ -34,7 +34,7 @@ const SapIntegrationBusiness = () => {
         <section className="pt-12 pb-24 bg-white font-inter">
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 text-left">
                 {/* Main Heading */}
-                <motion.h2 
+                <motion.h2
                     variants={{
                         hidden: { opacity: 0, y: 30 },
                         visible: { opacity: 1, y: 0 }
@@ -66,7 +66,7 @@ const SapIntegrationBusiness = () => {
                             <p className="text-gray-600 text-sm md:text-base font-light leading-relaxed mb-10 flex-grow border-l border-[#C9184A]/30 pl-6 py-1">
                                 {block.description}
                             </p>
-                            
+
                             <ul className="space-y-4">
                                 {block.points.map((point, pIdx) => (
                                     <li key={pIdx} className="flex items-start gap-3 group/item cursor-default">

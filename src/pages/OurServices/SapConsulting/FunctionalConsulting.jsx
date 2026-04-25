@@ -145,7 +145,7 @@ const FunctionalConsulting = () => {
                             <h3 className="text-sm font-bold mb-2 text-gray-900">
                                 {service.title}
                             </h3>
-                            <p className="text-xs leading-relaxed text-gray-500">
+                            <p className="text-xs leading-relaxed text-gray-700 font-normal">
                                 {service.description}
                             </p>
                         </motion.div>
@@ -221,7 +221,7 @@ const FunctionalConsulting = () => {
                                                 <h3 className="text-sm font-bold text-gray-900 mb-2">
                                                     {step.title}
                                                 </h3>
-                                                <p className="text-xs text-gray-600 leading-snug">
+                                                <p className="text-xs text-gray-800 leading-snug font-normal">
                                                     {step.description}
                                                 </p>
                                             </motion.div>

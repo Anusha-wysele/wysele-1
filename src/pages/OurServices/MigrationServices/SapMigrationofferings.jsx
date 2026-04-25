@@ -77,7 +77,7 @@ export default function SapMigrationofferings() {
                             <div className="absolute left-4 md:left-10 lg:left-16 w-32 md:w-40 lg:w-44 h-56 md:h-72 lg:h-80 border-2 border-white/40 rounded-[2.5rem] z-0" />
 
                             {/* Horizontal Content Box - Absolutely Positioned for Precision */}
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, x: 20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: false, amount: 0.3 }}
@@ -87,7 +87,7 @@ export default function SapMigrationofferings() {
                                 <h3 className="text-lg md:text-xl font-bold text-white mb-3 leading-tight">
                                     Expert-Led Migrations for a Smooth Digital Transition
                                 </h3>
-                                <p className="text-xs md:text-sm text-gray-100 leading-relaxed font-light">
+                                <p className="text-xs md:text-sm text-gray-100 leading-relaxed font-normal">
                                     In the fast-paced digital landscape of today, businesses must leverage the latest SAP solutions to remain competitive. Our SAP Migration Services enable enterprises to transition smoothly from legacy systems to modern SAP environments, ensuring minimal disruption and maximizing operational efficiency.
                                 </p>
                             </motion.div>
@@ -214,7 +214,7 @@ export default function SapMigrationofferings() {
                                 <h4 className="text-sm font-bold text-gray-900 mb-3 tracking-tight">
                                     {item.title}
                                 </h4>
-                                <p className="text-[11px] text-gray-600 leading-relaxed font-light">
+                                <p className="text-[11px] text-gray-800 leading-relaxed font-normal">
                                     {item.desc}
                                 </p>
                             </div>

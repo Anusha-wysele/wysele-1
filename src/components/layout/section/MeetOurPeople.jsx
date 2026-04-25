@@ -24,13 +24,13 @@ const containerVariants = {
 };
 
 function useWindowWidth() {
-    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-    useEffect(() => {
-        const handler = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return width;
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  return width;
 }
 
 const FacebookIcon = () => (
@@ -179,19 +179,19 @@ export default function MeetOurPeople() {
           variants={containerVariants}
           className="flex flex-col items-center text-center mb-10 md:mb-12"
         >
-          <motion.div 
+          <motion.div
             variants={fadeUpVariants}
-            style={{ 
-              display: "flex", 
-              alignItems: "center", 
-              justifyContent: "center", 
-              gap: isMobile ? "12px" : "18px", 
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: isMobile ? "12px" : "18px",
               width: "100%",
               marginBottom: "16px"
             }}
           >
             <HeadingBracket size={isMobile ? 36 : 48} style={{ transform: isMobile ? "translate(24px, -12px)" : "translate(40px, -20px)" }} />
-            <h2 
+            <h2
               className="text-2xl md:text-3xl lg:text-4xl font-inter font-medium text-[#111] tracking-tight"
               style={{ margin: 0 }}
             >
