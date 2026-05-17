@@ -20,8 +20,16 @@ export default function LoadingScreen({ onDone }) {
     }, 150);
 
     // Timing for cinematic transition
-    const tExit = setTimeout(() => setLoading(false), 3800);
-    const tDone = setTimeout(() => onDone(), 5200);
+    const tExit = setTimeout(() => {
+      console.log("LoadingScreen: setLoading(false)");
+      setLoading(false);
+    }, 3800);
+    const tDone = setTimeout(() => {
+      console.log("LoadingScreen: calling onDone()");
+      onDone();
+    }, 5200);
+
+    console.log("LoadingScreen: Timers started");
 
     return () => {
       clearInterval(interval);

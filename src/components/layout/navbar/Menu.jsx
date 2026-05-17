@@ -205,10 +205,10 @@ export default function Menu({ open, onClose }) {
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {[
                 { label: "SAP Services", path: "/sap-services" },
-                { label: "Salesforce Services", path: "/#services" },
+                { label: "Salesforce Services", path: "/services/salesforce" },
                 { label: "IT Infrastructure – SOC & NOC", path: "/#services" },
-                { label: "IT Infrastructure Services", path: "/#services" },
-                { label: "Cybersecurity Services", path: "/#services" },
+                { label: "IT Infrastructure Services", path: "/services/itinfrastructure" },
+                { label: "Cybersecurity Services", path: "/services/cybersecurityhome" },
                 { label: "Enterprise Digital Transformation", path: "/#services" },
                 { label: "Web Development", path: "/services/web-development" },
                 { label: "App Development", path: "/services/web-development" }
