@@ -1,9 +1,45 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Linkedin, Twitter, Facebook, X } from "lucide-react";
 import { menuImage, WYSELE_LOGOS } from "../../common/data";
 
+const SAP_SERVICES_LIST = [
+  { label: "SAP Consulting Services", path: "/services/sap-consulting" },
+  { label: "SAP Signavio Solutions", path: "/services/sap-signavio" },
+  { label: "SAP Datasphere Support", path: "/services/sap-datasphere" },
+  { label: "RISE with SAP", path: "/services/rise-with-sap" },
+  { label: "BTP services", path: "/services/sap-btp" },
+  { label: "SAP Integration Services", path: "/services/sap-integration" },
+  { label: "SAP VIM & BRIM Services", path: "/services/sap-vim-brim" },
+  { label: "Migration Services", path: "/services/sap-migration" },
+  { label: "S/4 HANA Conversion", path: "/services/sap-s4hana" },
+  { label: "Gen AI Services", path: "/services/sap-genai" },
+  { label: "Master Data Governance", path: "/services/sap-masterdata" },
+  { label: "SAP BTP & API Mgmt", path: "/services/sap-btp-api-management" },
+  { label: "Technical Consulting", path: "/services/sap-technical-consulting" },
+  { label: "OpenText Services", path: "/services/sap-opentext" }
+];
+
 export default function Menu({ open, onClose }) {
   const navigate = useNavigate();
+  const [sapServicesOpen, setSapServicesOpen] = useState(false);
+
+  const navButtonStyle = {
+    background: "none", border: "none", padding: 0,
+    textAlign: "left", color: "#fff", fontSize: 15, fontWeight: 500,
+    cursor: "pointer", transition: "all 0.3s ease",
+    display: "flex", alignItems: "center", gap: 8
+  };
+
+  const handleNavMouseEnter = e => {
+    e.currentTarget.style.color = "#fbbf24";
+    e.currentTarget.style.paddingLeft = "8px";
+  };
+
+  const handleNavMouseLeave = e => {
+    e.currentTarget.style.color = "#fff";
+    e.currentTarget.style.paddingLeft = "0";
+  };
 
   // Social icon helper
   const SocialIcon = ({ Icon }) => (
@@ -163,32 +199,116 @@ export default function Menu({ open, onClose }) {
               Navigation
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-              {[
-                { label: "Home", path: "/" },
-                { label: "About Us", path: "/about" },
-                { label: "Industries", path: "/#industries" },
-                { label: "Blogs", path: "/#blogs" },
-                { label: "Careers", path: "/careers" }
-              ].map((link) => (
+              {/* Home */}
+              <button
+                onClick={() => { navigate("/"); onClose(); window.scrollTo(0, 0); }}
+                style={navButtonStyle}
+                onMouseEnter={handleNavMouseEnter}
+                onMouseLeave={handleNavMouseLeave}
+              >
+                Home
+              </button>
+
+              {/* About Us */}
+              <button
+                onClick={() => { navigate("/about"); onClose(); window.scrollTo(0, 0); }}
+                style={navButtonStyle}
+                onMouseEnter={handleNavMouseEnter}
+                onMouseLeave={handleNavMouseLeave}
+              >
+                About Us
+              </button>
+
+              {/* SAP Services dropdown accordion */}
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 <button
-                  key={link.label}
-                  onClick={() => {
-                    navigate(link.path);
-                    onClose();
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={() => setSapServicesOpen(!sapServicesOpen)}
                   style={{
                     background: "none", border: "none", padding: 0,
-                    textAlign: "left", color: "#fff", fontSize: 15, fontWeight: 500,
+                    textAlign: "left", color: sapServicesOpen ? "#fbbf24" : "#fff",
+                    fontSize: 15, fontWeight: 500,
                     cursor: "pointer", transition: "all 0.3s ease",
-                    display: "flex", alignItems: "center", gap: 8
+                    display: "flex", alignItems: "center", gap: 8,
+                    width: "100%"
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.color = "#fbbf24"; e.currentTarget.style.paddingLeft = "8px"; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = "#fff"; e.currentTarget.style.paddingLeft = "0"; }}
+                  onMouseEnter={handleNavMouseEnter}
+                  onMouseLeave={e => {
+                    if (!sapServicesOpen) e.currentTarget.style.color = "#fff";
+                    e.currentTarget.style.paddingLeft = "0";
+                  }}
                 >
-                  {link.label}
+                  <span>SAP Services</span>
+                  <span style={{
+                    fontSize: 10,
+                    transform: sapServicesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s ease",
+                    opacity: 0.6
+                  }}>▼</span>
                 </button>
-              ))}
+
+                <div style={{
+                  maxHeight: sapServicesOpen ? "450px" : "0px",
+                  opacity: sapServicesOpen ? 1 : 0,
+                  overflowY: "auto",
+                  transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+                  paddingLeft: 16,
+                  marginTop: sapServicesOpen ? 10 : 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                  scrollbarWidth: "none"
+                }}>
+                  {SAP_SERVICES_LIST.map((subService) => (
+                    <button
+                      key={subService.label}
+                      onClick={() => {
+                        navigate(subService.path);
+                        onClose();
+                        window.scrollTo(0, 0);
+                      }}
+                      style={{
+                        background: "none", border: "none", padding: 0,
+                        textAlign: "left", color: "#9ca3af", fontSize: 13.5, fontWeight: 400,
+                        cursor: "pointer", transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.color = "#fbbf24"; e.currentTarget.style.paddingLeft = "6px"; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = "#9ca3af"; e.currentTarget.style.paddingLeft = "0"; }}
+                    >
+                      • {subService.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Industries */}
+              <button
+                onClick={() => { navigate("/industries"); onClose(); window.scrollTo(0, 0); }}
+                style={navButtonStyle}
+                onMouseEnter={handleNavMouseEnter}
+                onMouseLeave={handleNavMouseLeave}
+              >
+                Industries
+              </button>
+
+              {/* Blogs */}
+              <button
+                onClick={() => { navigate("/blogs"); onClose(); window.scrollTo(0, 0); }}
+                style={navButtonStyle}
+                onMouseEnter={handleNavMouseEnter}
+                onMouseLeave={handleNavMouseLeave}
+              >
+                Blogs
+              </button>
+
+              {/* Careers */}
+              <button
+                onClick={() => { navigate("/careers"); onClose(); window.scrollTo(0, 0); }}
+                style={navButtonStyle}
+                onMouseEnter={handleNavMouseEnter}
+                onMouseLeave={handleNavMouseLeave}
+              >
+                Careers
+              </button>
             </div>
           </div>
 
@@ -206,12 +326,10 @@ export default function Menu({ open, onClose }) {
               {[
                 { label: "SAP Services", path: "/sap-services" },
                 { label: "Salesforce Services", path: "/services/salesforce" },
-                { label: "IT Infrastructure – SOC & NOC", path: "/#services" },
                 { label: "IT Infrastructure Services", path: "/services/itinfrastructure" },
                 { label: "Cybersecurity Services", path: "/services/cybersecurityhome" },
-                { label: "Enterprise Digital Transformation", path: "/#services" },
                 { label: "Web Development", path: "/services/web-development" },
-                { label: "App Development", path: "/services/web-development" }
+                { label: "App Development", path: "/services/app-development" }
               ].map((service) => (
                 <button
                   key={service.label}

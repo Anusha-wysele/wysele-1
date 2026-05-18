@@ -19,6 +19,6 @@ const WebDevelopmentPage = () => {
             <Footer />
         </main>
     );
-}
+};
 
 export default WebDevelopmentPage;
