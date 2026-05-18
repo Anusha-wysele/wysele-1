@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, MessageCircle, Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
 import Button from '../../common/Button';
+import jobService from '../../../services/jobService';
 
 function useWindowWidth() {
     const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -23,6 +24,7 @@ const GetInTouch = () => {
         confirm: false
     });
     const [sent, setSent] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const width = useWindowWidth();
     const isMobile = width < 768;
 
@@ -31,11 +33,30 @@ const GetInTouch = () => {
         setForm((f) => ({ ...f, [name]: type === "checkbox" ? checked : value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSent(true);
-        setTimeout(() => setSent(false), 3000);
-        setForm({ fullName: "", emailAddress: "", phoneNumber: "", location: "", message: "", confirm: false });
+        try {
+            setIsSubmitting(true);
+            
+            const payload = {
+                full_name: form.fullName,
+                email: form.emailAddress,
+                phone_number: form.phoneNumber,
+                location: form.location,
+                message: form.message
+            };
+
+            await jobService.createContact(payload);
+            
+            setSent(true);
+            setTimeout(() => setSent(false), 5000);
+            setForm({ fullName: "", emailAddress: "", phoneNumber: "", location: "", message: "", confirm: false });
+        } catch (error) {
+            console.error('Failed to submit contact form:', error);
+            alert('Failed to send message. Please try again later.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -83,8 +104,8 @@ const GetInTouch = () => {
 
                         <Button
                             type="submit"
-                            disabled={!form.confirm}
-                            text={sent ? "Sent" : "Submit"}
+                            disabled={!form.confirm || isSubmitting}
+                            text={isSubmitting ? "Sending..." : sent ? "Sent" : "Submit"}
                             className="mt-4 w-fit"
                         />
                     </form>
