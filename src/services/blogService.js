@@ -22,7 +22,7 @@ const blogService = {
       const response = await api.get(`/blogs/${blogId}/`);
       return response.data;
     } catch (error) {
-      if (error.status === 404 || error.message.includes('404')) {
+      if (error.status === 404 || error.message.includes('404') || error.message.includes('Failed to fetch')) {
         const response = await api.get(`/blogs/${blogId}`);
         return response.data;
       }
@@ -39,7 +39,7 @@ const blogService = {
       const response = await api.post('/blogs/', blogData);
       return response.data;
     } catch (error) {
-      if (error.message.includes('400') || error.message.includes('404')) {
+      if (error.message.includes('400') || error.message.includes('404') || error.message.includes('Failed to fetch')) {
         const response = await api.post('/blogs', blogData);
         return response.data;
       }
@@ -56,7 +56,7 @@ const blogService = {
       const response = await api.put(`/blogs/${blogId}/`, blogData);
       return response.data;
     } catch (error) {
-      if (error.status === 404 || error.message.includes('404')) {
+      if (error.status === 404 || error.message.includes('404') || error.message.includes('Failed to fetch')) {
         const response = await api.put(`/blogs/${blogId}`, blogData);
         return response.data;
       }
@@ -78,9 +78,9 @@ const blogService = {
       const response = await api.delete(`/blogs/${blogId}/`);
       return response.data;
     } catch (error) {
-      // Check for 404 via the status property or the message
-      if (error.status === 404 || error.message.includes('404')) {
-        console.warn(`Initial delete attempt for blog ${blogId} failed with 404, trying without trailing slash...`);
+      // Check for 404 or fetch failure (CORS on preflight)
+      if (error.status === 404 || error.message.includes('404') || error.message.includes('Failed to fetch')) {
+        console.warn(`Initial delete attempt for blog ${blogId} failed, trying without trailing slash...`);
         const response = await api.delete(`/blogs/${blogId}`);
         return response.data;
       }

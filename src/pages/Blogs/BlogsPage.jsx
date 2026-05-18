@@ -74,8 +74,6 @@ const BlogsPage = () => {
               backgroundPosition: 'center',
             }}
           >
-            {/* Subtle gradient to blend into the image on mobile */}
-            <div className="absolute inset-0 bg-black/10 md:hidden"></div>
           </div>
         </div>
 
@@ -84,12 +82,12 @@ const BlogsPage = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: "circOut" }}
-            className="w-full max-w-full flex flex-col justify-center items-center text-center"
+            className="w-full max-w-full flex flex-col justify-center items-center text-center mt-24 md:mt-32"
           >
             <div className="flex flex-wrap items-center justify-center gap-2 mb-3 text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">
              
-              <span className="w-2 h-3 rounded-full bg-[#ffcc00]"></span>
-              <span className="text-[#C9184A] font-bold">Technology Insights</span>
+              <span className="w-2 h-3 rounded-full bg-[#800000]"></span>
+              <span className="text-[#ffcc00] font-bold text-sm">Technology Insights</span>
             </div>
 
             <div className="w-12 h-[2px] bg-[#C9184A] mb-6 mx-auto"></div>
@@ -106,14 +104,12 @@ const BlogsPage = () => {
               of modern enterprises.
             </p>
 
-            {/* <button className="group flex items-center gap-3 text-sm font-semibold text-gray-900 uppercase tracking-[0.2em]">
-              Read Article
-              <span className="transition-transform duration-300 group-hover:translate-x-2">
-                →
-              </span>
-            </button> */}
-
-           
+            <button 
+              onClick={() => document.getElementById('blog-grid')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-3 bg-[#C9184A] text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all rounded-none"
+            >
+              Explore Insights
+            </button>
           </motion.div>
         </div>
       </section>
