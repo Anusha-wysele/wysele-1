@@ -258,6 +258,19 @@ export const teamMembers = [
     name: "Sarah Steiner",
     role: "Director of Digital Strategy",
     bio: "Redefining digital goals for our partners by leveraging deep analytics and a human-centric approach to complex problem-solving.",
-    img: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&w=600",
   },
 ];
+
+export const saps4image = {
+  hero: "https://images.pexels.com/photos/7652453/pexels-photo-7652453.jpeg",
+  assessment: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop",
+  conversion: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
+  optimization: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop",
+};
+
+export const genAiOfferingsImages = {
+  automation: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&auto=format&fit=crop",
+  chatbots: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format&fit=crop",
+  analytics: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+  content: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format&fit=crop"
+};

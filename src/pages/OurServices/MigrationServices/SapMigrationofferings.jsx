@@ -11,6 +11,7 @@ import {
     ArrowsLeftRight,
     ArrowsMerge
 } from "@phosphor-icons/react";
+import { useState, useEffect } from 'react';
 
 const MIGRATION_SERVICES = [
     { title: "Software Migration", color: "#E11D48", icon: <Code size={24} /> },
@@ -55,6 +56,21 @@ const itemVariants = (angle, radius) => ({
 });
 
 export default function SapMigrationofferings() {
+    const [radius, setRadius] = useState(160);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setRadius(120);
+            } else {
+                setRadius(160);
+            }
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <section className="pt-0 pb-8 bg-white overflow-hidden">
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20">
@@ -122,7 +138,6 @@ export default function SapMigrationofferings() {
                             {/* Orbiting Circles */}
                             {MIGRATION_SERVICES.map((service, index) => {
                                 const angle = (index * (360 / MIGRATION_SERVICES.length)) - 90;
-                                const radius = 160;
 
                                 return (
                                     <motion.div

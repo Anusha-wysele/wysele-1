@@ -40,7 +40,7 @@ const Card = ({ reason, stretch }) => (
 
 const WhyChooseWysele = () => (
     <div
-        className="h-[80vh] relative flex items-center"
+        className="min-h-[80vh] py-16 lg:h-auto relative flex items-center"
         style={{
             backgroundImage: `url(${SERVICES_PAGE_IMAGES.whyChooseWysele})`,
             backgroundSize: 'cover',
@@ -53,15 +53,8 @@ const WhyChooseWysele = () => (
                 Why Choose Wysele for SAP Consulting Services?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {reasons.slice(0, 3).map((reason, index) => (
-                    <Card key={index} reason={reason} />
-                ))}
-            </div>
-            <div className="flex justify-center gap-4 mt-4 items-stretch">
-                {reasons.slice(3).map((reason, index) => (
-                    <div key={index} className="w-full flex" style={{maxWidth: 'calc(33.333% - 8px)'}}>
-                        <Card reason={reason} stretch />
-                    </div>
+                {reasons.map((reason, index) => (
+                    <Card key={index} reason={reason} stretch={true} />
                 ))}
             </div>
         </div>

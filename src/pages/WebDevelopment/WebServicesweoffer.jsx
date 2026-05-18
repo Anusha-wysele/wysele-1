@@ -83,7 +83,7 @@ export default function WebServicesweoffer() {
                             {/* Base Image (Monochrome Workspace - Restored to 16/9) */}
                             <motion.div 
                                 initial={{ opacity: 0, x: 0, y: 20 }}
-                                whileInView={{ opacity: 1, x: 60, y: 0 }}
+                                whileInView={{ opacity: 1, x: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : 60, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 1.2, ease: "easeOut" }}
                                 className="relative z-0 overflow-hidden rounded-sm shadow-xl border border-gray-100 aspect-[16/9] w-full"
@@ -100,10 +100,14 @@ export default function WebServicesweoffer() {
                             {/* Overlapping Top Image (MacBook Pro - Floating Layer) */}
                             <motion.div 
                                 initial={{ opacity: 0, x: 20, y: 60 }}
-                                whileInView={{ opacity: 1, x: -20, y: 40 }}
+                                whileInView={{ 
+                                    opacity: 1, 
+                                    x: typeof window !== 'undefined' && window.innerWidth < 768 ? 0 : -20, 
+                                    y: typeof window !== 'undefined' && window.innerWidth < 768 ? 20 : 40 
+                                }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 1.2, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
-                                className="absolute bottom-[-40px] left-[-20px] w-full aspect-[16/9] z-10 overflow-hidden rounded-sm shadow-2xl"
+                                className="absolute bottom-[-20px] md:bottom-[-40px] left-0 md:left-[-20px] w-full aspect-[16/9] z-10 overflow-hidden rounded-sm shadow-2xl"
                             >
                                 <img 
                                     src={WEB_SERVICES_OFFER_IMG_2} 

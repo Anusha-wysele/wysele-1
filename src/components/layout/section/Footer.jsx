@@ -69,7 +69,7 @@ export default function Footer() {
                 whileInView={{ opacity: 1, y: 0, x: "-50%" }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -bottom-10 left-1/2 text-[15vw] font-bold text-white/[0.06] select-none pointer-events-none whitespace-nowrap"
+                className="absolute -bottom-6 md:-bottom-10 left-1/2 text-[12vw] md:text-[15vw] font-bold text-white/[0.04] md:text-white/[0.06] select-none pointer-events-none whitespace-nowrap"
             >
                 WYSELE
             </motion.div>

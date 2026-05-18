@@ -25,7 +25,7 @@ const RiseWithsaphero = () => {
     };
 
     return (
-        <section className="sticky top-[68px] z-0 w-full h-[calc(100vh-68px)] overflow-hidden">
+        <section className="sticky top-[68px] z-0 w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] overflow-hidden py-12 lg:py-0">
             {/* Background Image Area */}
             <div className="absolute inset-0">
                 <motion.img
@@ -47,7 +47,7 @@ const RiseWithsaphero = () => {
 
             {/* Main text content */}
             <motion.div
-                className="absolute inset-0 flex flex-col justify-end px-10 md:px-20 pb-4 max-w-5xl"
+                className="relative lg:absolute inset-0 flex flex-col justify-end px-10 md:px-20 pb-8 lg:pb-4 max-w-5xl"
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
@@ -106,7 +106,7 @@ const RiseWithsaphero = () => {
                         <motion.p
                             key={i}
                             variants={fadeIn}
-                            className={`text-sm text-white/80 leading-relaxed ${border ? 'border-l border-white/20 pl-4' : ''}`}
+                            className={`text-sm text-white/80 leading-relaxed ${border ? 'md:border-l md:border-white/20 md:pl-4' : ''}`}
                         >
                             {text}
                         </motion.p>

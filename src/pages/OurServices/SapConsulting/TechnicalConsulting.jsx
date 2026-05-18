@@ -76,9 +76,9 @@ const TechnicalConsulting = () => {
 
             <div className="py-16">
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
-                    <div className="flex gap-16 items-start">
+                    <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                         {/* Left side heading and description */}
-                        <div className="w-1/2 sticky top-32">
+                        <div className="w-full lg:w-1/2 lg:sticky lg:top-32">
                             <h2 className="text-3xl font-normal text-gray-900 mb-6 flex flex-wrap gap-x-2" ref={servicesHeadingRef}>
                                 {servicesWords.map((word, i) => (
                                     <motion.span
@@ -96,7 +96,7 @@ const TechnicalConsulting = () => {
                             </p>
                         </div>
 
-                        <div className="w-1/2 relative">
+                        <div className="w-full lg:w-1/2 relative">
                             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200"></div>
                             <div className="space-y-4 pl-8">
                                 {services.map((service, index) => (

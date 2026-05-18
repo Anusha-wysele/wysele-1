@@ -218,7 +218,7 @@
 //                             </div>
 //                           </div>
 //                         </div>
-                        
+
 //                         {/* SAP Services Submenu */}
 //                         {item.hasSubmenu && hoveredService === item.label && (
 //                           <>
@@ -553,9 +553,9 @@ import Menu from "./Menu";
 import Logo from "./Logo";
 import Button from "../../common/Button";
 import { WEB_DEVELOPMENT_IMAGES } from "../../common/data";
- 
+
 // ─── Mega Menu Data ──────────────────────────────────────────────────────────
- 
+
 const SAP_SERVICES = [
   { label: "SAP Consulting Services", desc: "Expert strategy and implementation.", icon: "⚙", path: "/services/sap-consulting" },
   { label: "SAP Signavio Solutions", desc: "Process mining and transformation.", icon: "📊", path: "/services/sap-signavio" },
@@ -565,14 +565,14 @@ const SAP_SERVICES = [
   { label: "SAP Integration Services", desc: "Seamless cross-system connectivity.", icon: "🔗", path: "/services/sap-integration" },
   { label: "SAP VIM & BRIM Services", desc: "Digital billing and invoice management.", icon: "📋", path: "/services/sap-vim-brim" },
   { label: "Migration Services", desc: "Secure data and system transition.", icon: "📦", path: "/services/sap-migration" },
-  { label: "S/4 HANA Conversion", desc: "Intelligent ERP for the digital age.", icon: "⚡", path: "/services" },
-  { label: "Gen AI Services", desc: "Next-gen AI for SAP workflows.", icon: "🤖", path: "/services" },
-  { label: "Master Data Governance", desc: "Single source of truth for your data.", icon: "📊", path: "/services" },
-  { label: "SAP BTP & API Mgmt", desc: "Build, manage and scale APIs.", icon: "🔌", path: "/services/sap-btp" },
-  { label: "Technical Consulting", desc: "Deep technical SAP expertise.", icon: "🛠", path: "/services" },
-  { label: "OpenText Services", desc: "Content and information management.", icon: "📁", path: "/services" },
+  { label: "S/4 HANA Conversion", desc: "Intelligent ERP for the digital age.", icon: "⚡", path: "/services/sap-s4hana" },
+  { label: "Gen AI Services", desc: "Next-gen AI for SAP workflows.", icon: "🤖", path: "/services/sap-genai" },
+  { label: "Master Data Governance", desc: "Single source of truth for your data.", icon: "📊", path: "/services/sap-masterdata" },
+  { label: "SAP BTP & API Mgmt", desc: "Build, manage and scale APIs.", icon: "🔌", path: "/services/sap-btp-api-management" },
+  { label: "Technical Consulting", desc: "Deep technical SAP expertise.", icon: "🛠", path: "/services/sap-technical-consulting" },
+  { label: "OpenText Services", desc: "Content and information management.", icon: "📁", path: "/services/sap-opentext" },
 ];
- 
+
 const MEGA_MENU_DATA = {
   Services: {
     sidebar: {
@@ -586,7 +586,7 @@ const MEGA_MENU_DATA = {
       { label: "Cybersecurity", desc: "Modern protection for your enterprise", icon: <ShieldCheck size={18} />, path: "/services" },
       { label: "IT Infrastructure", desc: "Managed networks and data centers", icon: <Radio size={18} />, path: "/services" },
       { label: "Web Development", desc: "Scalable and secure web apps", icon: <Code size={18} />, path: "/services/web-development", img: WEB_DEVELOPMENT_IMAGES[0] },
-      { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services/web-development", img: WEB_DEVELOPMENT_IMAGES[1] },
+      { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services/app-development", img: WEB_DEVELOPMENT_IMAGES[1] },
     ],
     featured: {
       tag: "Case Study",
@@ -641,32 +641,32 @@ const MEGA_MENU_DATA = {
     }
   }
 };
- 
+
 // ─── Mega Menu Component ─────────────────────────────────────────────────────
- 
+
 function MegaMenu({ type, open, onClose }) {
   const navigate = useNavigate();
   const data = MEGA_MENU_DATA[type];
   const [hoveredItem, setHoveredItem] = useState(null);
   const leaveTimerRef = useRef(null);
- 
+
   if (!data) return null;
- 
+
   const handleItemEnter = (item) => {
     clearTimeout(leaveTimerRef.current);
     setHoveredItem(item);
   };
- 
+
   const handleItemLeave = () => {
     leaveTimerRef.current = setTimeout(() => {
       setHoveredItem(null);
     }, 150);
   };
- 
+
   const handlePanelEnter = () => {
     clearTimeout(leaveTimerRef.current);
   };
- 
+
   const menuVariants = {
     hidden: { opacity: 0, y: -10 },
     visible: {
@@ -680,12 +680,12 @@ function MegaMenu({ type, open, onClose }) {
     },
     exit: { opacity: 0, y: -5, transition: { duration: 0.2 } }
   };
- 
+
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 }
   };
- 
+
   return (
     <>
       <style>{`
@@ -694,13 +694,13 @@ function MegaMenu({ type, open, onClose }) {
         .sublinks-scroll::-webkit-scrollbar-thumb { background: rgba(201, 24, 74, 0.2); border-radius: 10px; }
         .sublinks-scroll::-webkit-scrollbar-thumb:hover { background: rgba(201, 24, 74, 0.4); }
       `}</style>
-     
+
       <motion.div
         initial="hidden"
         animate={open ? "visible" : "hidden"}
         exit="exit"
         variants={menuVariants}
-        className="fixed top-[68px] left-0 w-full bg-white z-[1000] border-b border-gray-100 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden"
+        className="fixed top-[112px] left-0 w-full bg-white z-[1000] border-b border-gray-100 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden"
       >
         <div className="max-w-[1440px] mx-auto flex" onMouseLeave={handleItemLeave}>
           {/* Section 1: Sidebar (Left) */}
@@ -711,15 +711,15 @@ function MegaMenu({ type, open, onClose }) {
                 {data.sidebar.desc}
               </p>
             </div>
-           
-            <Button 
+
+            <Button
               text="EXPLORE"
               variant="secondary"
               onClick={() => { navigate(data.sidebar.link); onClose(); }}
               className="!px-5 !py-2.5"
             />
           </div>
- 
+
           {/* Section 2: Dropdown Links (Middle) */}
           <div
             className="w-[300px] lg:w-[360px] p-6 border-r border-gray-50 bg-white shrink-0 h-[480px]"
@@ -729,14 +729,14 @@ function MegaMenu({ type, open, onClose }) {
               {data.items.map((item) => {
                 const isHovered = hoveredItem?.label === item.label;
                 const hasSub = !!item.sublinks;
- 
+
                 return (
                   <motion.div
                     key={item.label}
                     variants={itemVariants}
                     onMouseEnter={() => handleItemEnter(item)}
                     className={`group flex items-center justify-between p-3.5 rounded-xl cursor-pointer transition-all duration-300 ${isHovered ? 'bg-[#C9184A]/5' : 'hover:bg-gray-50'}`}
-                    onClick={() => { 
+                    onClick={() => {
                       if (item.path) {
                         navigate(item.path);
                         window.scrollTo(0, 0);
@@ -771,7 +771,7 @@ function MegaMenu({ type, open, onClose }) {
               <p className="text-[10px] text-gray-500 pl-4 mt-2">Connect with our specialists for a free consultation.</p>
             </div>
           </div>
- 
+
           {/* Section 3 & 4: Dynamic Sublinks & Image Panel */}
           <div className="flex-grow flex h-[480px] bg-gray-950 relative overflow-hidden" onMouseEnter={handlePanelEnter}>
             {/* Background Image Container */}
@@ -787,7 +787,7 @@ function MegaMenu({ type, open, onClose }) {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] hover:scale-110 opacity-70"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
-             
+
               <AnimatePresence mode="wait">
                 {!hoveredItem?.sublinks && (
                   <motion.div
@@ -817,7 +817,7 @@ function MegaMenu({ type, open, onClose }) {
                 )}
               </AnimatePresence>
             </motion.div>
- 
+
             {/* Sublinks Panel (Beside Dropdown Links, Overlaying Dynamic Area) */}
             <AnimatePresence>
               {hoveredItem?.sublinks && (
@@ -836,7 +836,7 @@ function MegaMenu({ type, open, onClose }) {
                       </h4>
                       <h3 className="text-2xl font-bold text-gray-900 tracking-tight">Technical Portfolio</h3>
                     </div>
-                   
+
                     <div className="flex-grow overflow-y-auto pr-6 sublinks-scroll">
                       <div className="grid grid-cols-2 gap-x-8 gap-y-3 pb-6">
                         {hoveredItem.sublinks.map((sub, idx) => (
@@ -867,8 +867,8 @@ function MegaMenu({ type, open, onClose }) {
     </>
   );
 }
- 
- 
+
+
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -878,26 +878,26 @@ export default function Navbar() {
   const [openDrop, setOpenDrop] = useState(null);
   const [hoveredLink, setHoveredLink] = useState(null);
   const timerRef = useRef(null);
- 
+
   const handleDropEnter = (name) => {
     clearTimeout(timerRef.current);
     setOpenDrop(name);
   };
- 
+
   const handleDropLeave = () => {
     timerRef.current = setTimeout(() => setOpenDrop(null), 300);
   };
- 
+
   const handleMegaMenuEnter = () => {
     clearTimeout(timerRef.current);
   };
- 
+
   const handleMegaMenuLeave = () => {
     setOpenDrop(null);
   };
- 
+
   const isAbout = location.pathname.startsWith("/about");
- 
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -908,176 +908,259 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isAbout]);
- 
+
   const NAV_LINKS = [
     { label: "About Us", path: "/about" },
     { label: "Services", dropdown: "Services" },
     { label: "Industries", path: "/industries" },
-    { label: "Technologies", dropdown: "Technologies" },
     { label: "Careers", path: "/careers" },
   ];
- 
+
   const textColor = "#111827";
-  const bgClass = "bg-white shadow-sm";
-  const transitionClass = hidden ? "transition-none" : "transition-transform duration-500 ease-in-out";
- 
+  const bgClass = "bg-white border-b border-gray-100 shadow-sm";
+  const transitionClass = "transition-all duration-300 ease-in-out";
+
   return (
     <>
-      <nav
-        className={`w-full h-[68px] fixed top-0 z-[990] ${bgClass} ${hidden ? "-translate-y-full" : "translate-y-0"} ${transitionClass}`}
+      {/* Top Info Bar */}
+      <motion.div
+        initial={{ y: 0, opacity: 1 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="w-full bg-white fixed top-0 z-[991] border-b border-gray-100 overflow-hidden"
+        style={{ height: '44px' }}
       >
-        <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full h-full flex items-center justify-between">
-          {/* Logo */}
-          <div
-            className="text-3xl font-light tracking-wider cursor-pointer"
+        {/* Grid Background Pattern */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(75,222,123,0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(75,222,123,0.07) 1px, transparent 1px)
+            `,
+            backgroundSize: '28px 28px',
+          }}
+        />
+        {/* Shimmer scan line */}
+        <motion.div
+          className="absolute inset-y-0 w-[120px] pointer-events-none"
+          style={{
+            background: 'linear-gradient(90deg, transparent, rgba(75,222,123,0.08), transparent)',
+          }}
+          animate={{ x: ['-120px', '110vw'] }}
+          transition={{ duration: 4, repeat: Infinity, repeatDelay: 3, ease: 'linear' }}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 h-full hidden md:grid md:grid-cols-[auto_1fr] items-center gap-12 relative z-10">
+
+          {/* Logo on Top Bar - Small */}
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="cursor-pointer flex-shrink-0"
+            style={{ transform: 'scale(0.65)', transformOrigin: 'left center' }}
             onClick={() => navigate("/")}
           >
-            <Logo scrolled={scrolled} />
-          </div>
- 
-        {/* Desktop Nav Links */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-2 ml-10 mr-auto">
-          {NAV_LINKS.map((link) => {
-            const isActive = link.path ? location.pathname === link.path : openDrop === link.dropdown;
-            const isHovered = hoveredLink === link.label;
- 
-            return (
-              <div
-                key={link.label}
-                className="relative"
-                onMouseEnter={() => {
-                  if (link.dropdown) handleDropEnter(link.dropdown);
-                  setHoveredLink(link.label);
-                }}
-                onMouseLeave={() => {
-                  if (link.dropdown) handleDropLeave();
-                  setHoveredLink(null);
-                }}
+            <Logo white={false} />
+          </motion.div>
+
+          {/* Info Items Grid */}
+          <div className="flex items-center justify-end gap-0">
+            {[
+              {
+                icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+                text: "Hyderabad, Telangana, India"
+              },
+              {
+                icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+                text: "Mon–Sat  9:00–18:00  |  Sunday CLOSED"
+              },
+              {
+                icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" /></svg>,
+                text: "+91 9391 558 580"
+              }
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: -14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center"
               >
-                <button
-                  onClick={() => {
-                    if (link.path) {
-                      navigate(link.path);
-                      window.scrollTo(0, 0);
-                    }
-                  }}
-                  className="text-sm font-semibold px-2 py-2 rounded-lg flex items-center gap-1.5 relative overflow-hidden"
-                  style={{ color: textColor }}
-                >
-                  <span className="relative inline-block overflow-hidden" style={{ height: '1.5em' }}>
-                    {link.label.split('').map((char, idx) => (
-                      <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                        <motion.span
-                          className="inline-block"
-                          initial={false}
-                          animate={{ 
-                            y: isHovered ? '100%' : '0%',
-                            opacity: isHovered ? 0 : 1
-                          }}
-                          transition={{ 
-                            duration: 0.4,
-                            delay: idx * 0.025,
-                            ease: [0.33, 1, 0.68, 1]
-                          }}
-                        >
-                          {char}
-                        </motion.span>
-                        <motion.span
-                          className="inline-block absolute left-0 top-0"
-                          initial={false}
-                          animate={{ 
-                            y: isHovered ? '0%' : '-100%',
-                            opacity: isHovered ? 1 : 0
-                          }}
-                          transition={{ 
-                            duration: 0.4,
-                            delay: idx * 0.025,
-                            ease: [0.33, 1, 0.68, 1]
-                          }}
-                        >
-                          {char}
-                        </motion.span>
-                      </span>
-                    ))}
-                  </span>
-                  {link.dropdown && (
-                    <span className={`text-[10px] opacity-40 transition-transform duration-300 ${openDrop === link.dropdown ? "rotate-180" : ""}`}>▼</span>
-                  )}
-                </button>
- 
-                {/* Animated Underline */}
+                {i > 0 && <div className="w-[1px] h-5 bg-gray-200 mx-6" />}
                 <motion.div
-                  initial={false}
-                  animate={{
-                    width: (isActive || isHovered) ? "calc(100% - 16px)" : "0%"
+                  className="flex items-center gap-2.5 group cursor-default"
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.span
+                    className="text-[#4BDE7B] flex-shrink-0"
+                    whileHover={{ scale: 1.2, rotate: 5 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                  >
+                    {item.icon}
+                  </motion.span>
+                  <span
+                    className="text-[10.5px] font-medium tracking-[0.055em] text-gray-500 group-hover:text-gray-800 transition-colors duration-300 whitespace-nowrap"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    {item.text}
+                  </span>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      <nav
+        className={`w-full py-2 fixed z-[990] ${bgClass} transition-all duration-300`}
+        style={{ top: '44px' }}
+      >
+        <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full h-full flex items-center justify-between">
+          {/* Desktop Nav Links - Left Aligned */}
+          <div className="hidden md:flex items-center gap-0.5 lg:gap-1 mr-auto">
+            {NAV_LINKS.map((link) => {
+              const isActive = link.path ? location.pathname === link.path : openDrop === link.dropdown;
+              const isHovered = hoveredLink === link.label;
+
+              return (
+                <div
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={() => {
+                    if (link.dropdown) handleDropEnter(link.dropdown);
+                    setHoveredLink(link.label);
                   }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute bottom-1 left-2 h-[2px] bg-[#4BDE7B]"
-                />
-              </div>
-            );
-          })}
-        </div>
+                  onMouseLeave={() => {
+                    if (link.dropdown) handleDropLeave();
+                    setHoveredLink(null);
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      if (link.path) {
+                        navigate(link.path);
+                        window.scrollTo(0, 0);
+                      }
+                    }}
+                    className="text-[11px] uppercase font-medium px-2 py-1 rounded-lg flex items-center gap-1.5 relative overflow-hidden"
+                    style={{ color: textColor }}
+                  >
+                    <span className="relative inline-block overflow-hidden" style={{ height: '1.5em' }}>
+                      {link.label.split('').map((char, idx) => (
+                        <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
+                          <motion.span
+                            className="inline-block"
+                            initial={false}
+                            animate={{
+                              y: isHovered ? '100%' : '0%',
+                              opacity: isHovered ? 0 : 1
+                            }}
+                            transition={{
+                              duration: 0.4,
+                              delay: idx * 0.025,
+                              ease: [0.33, 1, 0.68, 1]
+                            }}
+                          >
+                            {char}
+                          </motion.span>
+                          <motion.span
+                            className="inline-block absolute left-0 top-0"
+                            initial={false}
+                            animate={{
+                              y: isHovered ? '0%' : '-100%',
+                              opacity: isHovered ? 1 : 0
+                            }}
+                            transition={{
+                              duration: 0.4,
+                              delay: idx * 0.025,
+                              ease: [0.33, 1, 0.68, 1]
+                            }}
+                          >
+                            {char}
+                          </motion.span>
+                        </span>
+                      ))}
+                    </span>
+                    {link.dropdown && (
+                      <span className={`text-[10px] opacity-40 transition-transform duration-300 ${openDrop === link.dropdown ? "rotate-180" : ""}`}>▼</span>
+                    )}
+                  </button>
 
-        {/* Contact Us Button */}
-        <div className="hidden md:block ml-auto mr-8">
-          <Button 
-            text="Contact Us"
-            onClick={() => navigate("/contact")}
-            className="!px-5 !py-2.5"
-          />
-        </div>
+                  {/* Animated Underline */}
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      width: (isActive || isHovered) ? "calc(100% - 16px)" : "0%"
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="absolute -bottom-1 left-2 h-[2px] bg-[#4BDE7B]"
+                  />
+                </div>
+              );
+            })}
+          </div>
 
-        {/* LinkedIn Icon */}
-        <a
-          href="https://www.linkedin.com/company/wysele"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 hover:border-[#0A66C2] hover:bg-[#0A66C2] text-gray-700 hover:text-white transition-all duration-300 ml-7 mr-4"
-          onMouseEnter={() => setHoveredLink("linkedin")}
-          onMouseLeave={() => setHoveredLink(null)}
-        >
-          <Linkedin size={18} />
-        </a>
- 
-        {/* Hamburger Menu Icon */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          onMouseEnter={() => setHoveredLink("menuIcon")}
-          onMouseLeave={() => setHoveredLink(null)}
-          className="transition flex flex-col justify-center items-center ml-4 w-10 h-10 relative group"
-          style={{ color: textColor }}
-        >
-          <div className="relative w-7 h-5 overflow-hidden">
-            <span
-              style={{
-                position: "absolute",
-                left: 0,
-                top: menuOpen ? "50%" : "30%",
-                width: "100%",
-                height: "1.5px",
-                background: "currentColor",
-                transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: menuOpen ? "rotate(45deg) translateY(-50%)" : `translateY(-50%)`,
-              }}
-            />
-            <span
-              style={{
-                position: "absolute",
-                left: 0,
-                bottom: menuOpen ? "50%" : "30%",
-                width: "100%",
-                height: "1.5px",
-                background: "currentColor",
-                transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: menuOpen ? "rotate(-45deg) translateY(50%)" : `translateY(50%)`,
-              }}
+          {/* Contact Us Button */}
+          <div className="hidden md:block ml-auto mr-8">
+            <Button
+              text="Contact Us"
+              onClick={() => navigate("/contact")}
+              className="!px-5 !py-2.5"
             />
           </div>
-        </button>
+
+          {/* LinkedIn Icon */}
+          <a
+            href="https://www.linkedin.com/company/wysele"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 hover:border-[#0A66C2] hover:bg-[#0A66C2] text-gray-700 hover:text-white transition-all duration-300 ml-7 mr-4"
+            onMouseEnter={() => setHoveredLink("linkedin")}
+            onMouseLeave={() => setHoveredLink(null)}
+          >
+            <Linkedin size={18} />
+          </a>
+
+          {/* Hamburger Menu Icon */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            onMouseEnter={() => setHoveredLink("menuIcon")}
+            onMouseLeave={() => setHoveredLink(null)}
+            className="transition flex flex-col justify-center items-center ml-4 w-10 h-10 relative group"
+            style={{ color: textColor }}
+          >
+            <div className="relative w-7 h-5 overflow-hidden">
+              <span
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  top: menuOpen ? "50%" : "30%",
+                  width: "100%",
+                  height: "1.5px",
+                  background: "currentColor",
+                  transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                  transform: menuOpen ? "rotate(45deg) translateY(-50%)" : `translateY(-50%)`,
+                }}
+              />
+              <span
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  bottom: menuOpen ? "50%" : "30%",
+                  width: "100%",
+                  height: "1.5px",
+                  background: "currentColor",
+                  transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                  transform: menuOpen ? "rotate(-45deg) translateY(50%)" : `translateY(50%)`,
+                }}
+              />
+            </div>
+          </button>
         </div>
       </nav>
- 
+
       {/* Mega Menu Dropdown */}
       <AnimatePresence>
         {openDrop && (
@@ -1094,10 +1177,9 @@ export default function Navbar() {
           </div>
         )}
       </AnimatePresence>
- 
+
       <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }
- 
- 
+

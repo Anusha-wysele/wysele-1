@@ -73,7 +73,7 @@ const SapIntegrationServices = () => {
                 </div>
 
                 {/* Right: Content */}
-                <div className="w-full lg:w-[60%] flex items-center p-10 md:p-16 lg:p-20 bg-[#0B0B0B] text-white">
+                <div className="w-full lg:w-[60%] flex items-center px-6 py-12 md:p-16 lg:p-20 bg-[#0B0B0B] text-white">
                     <div className="max-w-xl">
                         <h2 className="text-2xl md:text-3xl font-normal mb-6 tracking-tight leading-tight">
                             Our Integration Services

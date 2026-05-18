@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
-const Button = ({ 
-    text = "Get In Touch", 
-    onClick, 
-    className = "", 
+const Button = ({
+    text = "Get In Touch",
+    onClick,
+    className = "",
     icon = <ArrowRight size={16} />,
     variant = "primary",
     type = "button",
@@ -25,7 +25,7 @@ const Button = ({
             onMouseLeave={() => setIsHovered(false)}
             onClick={onClick}
             className={`group inline-flex items-center justify-center gap-3 px-6 py-2.5 md:px-7 md:py-3 
-                       text-[11px] md:text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 border-none
+                       text-[10px] md:text-[10px] font-medium tracking-[0.1em] uppercase transition-all duration-300 rounded-full
                        ${variant === "primary" ? "bg-[#FFD700] text-black" : "bg-white text-black"} 
                        ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}
                        ${className}`}

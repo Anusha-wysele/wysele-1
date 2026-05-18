@@ -5,7 +5,7 @@ import Cylinders from '../../../components/common/Cylinders';
 
 const SapDatahero = () => {
     return (
-        <div className="w-full h-screen overflow-hidden relative">
+        <div className="w-full min-h-screen lg:h-screen overflow-hidden relative">
             {/* Full screen background image */}
             <img
                 src={SERVICES_PAGE_IMAGES.sapDatasphereHero}

@@ -154,7 +154,7 @@ const FunctionalConsulting = () => {
 
                 {/* SAP Consulting Process Section */}
                 <div className="mt-20" ref={processRef}>
-                    <div className="flex items-start gap-8">
+                    <div className="flex flex-col lg:flex-row items-start gap-8">
                         {/* Left side heading */}
                         <div className="flex-shrink-0 mt-16">
                             <h2 className="text-2xl font-light text-gray-900 leading-tight">
@@ -168,11 +168,11 @@ const FunctionalConsulting = () => {
                         <div className="flex-grow">
                             <div className="relative">
                                 {/* Base gray line */}
-                                <div className="absolute top-6 h-0.5 bg-gray-300" style={{ left: '10%', right: '10%' }}></div>
+                                <div className="hidden lg:block absolute top-6 h-0.5 bg-gray-300" style={{ left: '10%', right: '10%' }}></div>
                                 
                                 {/* Animated green progress line */}
                                 <motion.div 
-                                    className="absolute top-6 h-0.5 bg-[#4BDE7B]" 
+                                    className="hidden lg:block absolute top-6 h-0.5 bg-[#4BDE7B]" 
                                     style={{ left: '10%' }}
                                     initial={{ width: '0%' }}
                                     animate={{ 
@@ -188,7 +188,7 @@ const FunctionalConsulting = () => {
                                 />
                                 
                                 {/* Steps */}
-                                <div className="grid grid-cols-5 gap-4">
+                                <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
                                     {processSteps.map((step, index) => {
                                         const isActive = index <= activeStep;
                                         return (

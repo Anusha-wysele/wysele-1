@@ -164,7 +164,7 @@ export default function SapBrimservices() {
 
                         {/* Thumbnails and Navigation */}
                         <div className="mt-auto">
-                            <div className="grid grid-cols-3 gap-4 mb-8">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4 mb-8">
                                 {BRIM_SERVICES.map((service, idx) => (
                                     <button
                                         key={service.id}

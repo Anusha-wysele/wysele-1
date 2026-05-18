@@ -149,7 +149,7 @@ const IndustrySection = ({ title, description, image, tags, features, reversed }
 
           {/* Image Column */}
           <div className="w-full md:w-1/2 md:mt-4">
-            <div className="sticky top-40">
+            <div className="md:sticky md:top-40">
               <motion.div 
                 className="relative group w-full aspect-[16/9] overflow-hidden shadow-2xl shadow-gray-100 cursor-crosshair"
                 variants={reversed ? imageVariantsLeft : imageVariantsRight}

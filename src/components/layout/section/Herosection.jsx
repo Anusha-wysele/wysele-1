@@ -81,7 +81,7 @@ export default function HeroSection() {
       </video>
 
       {/* Content Overlay */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
@@ -113,7 +113,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Headline */}
-            <h1 
+            <h1
               style={{
                 fontSize: isMobile ? "1.5rem" : "clamp(1.8rem, 3.8vw, 2.6rem)",
                 fontWeight: 500,
@@ -130,7 +130,7 @@ export default function HeroSection() {
             {/* Description with Accent Line */}
             <div className="flex gap-5 mb-10">
               <div className="w-[1px] bg-[#FFD700] shrink-0" />
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
@@ -149,7 +149,7 @@ export default function HeroSection() {
 
             {/* Action Button */}
             <div className="mt-4">
-              <Button 
+              <Button
                 text="Get In Touch"
                 onClick={() => {
                   navigate('/contact');

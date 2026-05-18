@@ -13,8 +13,8 @@ const SapOverview = () => {
 
     return (
         <div className="bg-white pt-6 pb-2" ref={ref}>
-            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 flex items-center gap-12">
-                <div className="w-1/2">
+            <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 flex flex-col lg:flex-row items-center gap-12">
+                <div className="w-full lg:w-1/2">
                 <h2 className="text-3xl font-semibold text-gray-900 mb-6 flex flex-wrap gap-x-2">
                     {words.map((word, i) => (
                         <motion.span
@@ -35,7 +35,7 @@ const SapOverview = () => {
                     onClick={() => navigate('/contact')}
                 />
                 </div>
-                <div className="w-1/2">
+                <div className="w-full lg:w-1/2">
                     <img
                         src={SERVICES_PAGE_IMAGES.sapOverview}
                         alt="SAP Overview"

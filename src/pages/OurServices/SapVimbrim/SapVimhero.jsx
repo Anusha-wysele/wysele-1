@@ -32,11 +32,11 @@ export default function SapVimhero() {
   }, [VIM_BRIM_CONTENT.length]);
 
   return (
-    <section className="relative w-full h-screen bg-white overflow-hidden">
-      <div className="flex h-full w-full">
-        
+    <section className="relative w-full min-h-screen lg:h-screen bg-white overflow-hidden">
+      <div className="flex flex-col lg:flex-row h-full w-full">
+
         {/* Left Side: Image Slider (50%) */}
-        <div className="w-1/2 h-full relative overflow-hidden bg-gray-900">
+        <div className="w-full lg:w-1/2 h-[45vh] lg:h-full relative overflow-hidden bg-gray-900">
           <AnimatePresence initial={false}>
             <motion.img
               key={currentSlide}
@@ -45,9 +45,9 @@ export default function SapVimhero() {
               initial={{ opacity: 0, scale: 1 }}
               animate={{ opacity: 1, scale: 1.1 }}
               exit={{ opacity: 0, scale: 1.15 }}
-              transition={{ 
+              transition={{
                 opacity: { duration: 2.5, ease: "easeInOut" },
-                scale: { duration: 10, ease: "linear" } 
+                scale: { duration: 10, ease: "linear" }
               }}
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
@@ -72,7 +72,7 @@ export default function SapVimhero() {
         </div>
 
         {/* Right Side: Content Slider (50%) */}
-        <div className="w-1/2 h-full relative flex items-end pb-12 bg-white px-12 md:px-20 lg:px-32">
+        <div className="w-full lg:w-1/2 h-auto lg:h-full relative flex items-end pb-12 bg-white px-6 md:px-20 lg:px-32 pt-12 lg:pt-0">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}

@@ -24,7 +24,7 @@ export default function SapMigrationhero() {
     ];
 
     return (
-        <section className="relative w-full h-screen overflow-hidden font-sans">
+        <section className="relative w-full min-h-screen lg:h-screen overflow-hidden font-sans">
             <img 
                 src={SERVICES_PAGE_IMAGES.sapMigrationHero} 
                 alt="SAP Migration" 

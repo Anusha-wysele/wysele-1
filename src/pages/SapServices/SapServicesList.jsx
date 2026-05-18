@@ -111,7 +111,8 @@ export default function SapServicesList() {
     <section className="bg-white py-16 overflow-hidden">
       <style>{`
         .product-card {
-          width: 350px;
+          width: 100%;
+          max-width: 350px;
           height: 280px;
           position: relative;
           background: #fff;

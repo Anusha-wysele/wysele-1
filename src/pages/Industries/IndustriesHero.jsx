@@ -47,7 +47,7 @@ const IndustriesHero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden m-0 p-0 bg-black font-inter">
+    <section className="relative w-full min-h-screen lg:h-screen overflow-hidden m-0 p-0 bg-black font-inter">
       {/* Background Image Slider */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <AnimatePresence initial={false}>
@@ -73,7 +73,7 @@ const IndustriesHero = () => {
         <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 h-full relative">
           
           {/* Top Left Content: Heading, Arrow & Progress */}
-          <div className="absolute top-[45%] left-6 md:left-12 lg:left-20 max-w-2xl w-full h-[400px]">
+          <div className="absolute top-[25%] md:top-[45%] left-6 md:left-12 lg:left-20 max-w-2xl w-full h-auto md:h-[400px]">
             <AnimatePresence>
               <motion.div 
                 key={currentImageIndex}
@@ -124,7 +124,7 @@ const IndustriesHero = () => {
           </div>
 
           {/* Bottom Left: Tags */}
-          <div className="absolute bottom-12 left-6 md:left-12 lg:left-20 w-fit h-12">
+          <div className="absolute bottom-32 md:bottom-12 left-6 md:left-12 lg:left-20 w-fit h-auto">
             <AnimatePresence>
               <motion.div
                 key={currentImageIndex}
@@ -134,7 +134,7 @@ const IndustriesHero = () => {
                 transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
                 className="absolute inset-0"
               >
-                <div className="flex gap-3">
+                <div className="flex flex-wrap gap-3">
                   {heroContent[currentImageIndex].tags.map((tag, i) => (
                     <span key={i} className="px-4 py-1.5 rounded-full border border-white/20 text-[10px] text-white/90 backdrop-blur-md hover:bg-white hover:text-black transition-colors cursor-default whitespace-nowrap uppercase tracking-wider">
                       {tag}
@@ -146,7 +146,7 @@ const IndustriesHero = () => {
           </div>
 
           {/* Bottom Center/Right: Description */}
-          <div className="absolute bottom-12 left-[40%] md:left-[35%] lg:left-[30%] max-w-sm w-full h-12">
+          <div className="absolute bottom-8 md:bottom-12 left-6 right-6 md:left-[35%] lg:left-[30%] max-w-sm w-auto h-auto">
             <AnimatePresence>
               <motion.p
                 key={currentImageIndex}

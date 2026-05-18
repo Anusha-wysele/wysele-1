@@ -116,7 +116,7 @@ const SimnWhoWeAre = () => {
                     </div>
 
                     {/* Column 3: Skills / Progress Bars */}
-                    <div className="lg:col-span-4 space-y-10" style={{ marginTop: '-80px' }}>
+                    <div className="lg:col-span-4 space-y-10 lg:mt-[-80px]">
                         {skills.map((skill, index) => (
                             <div key={index} className="space-y-3">
                                 <div className="flex justify-between items-end">

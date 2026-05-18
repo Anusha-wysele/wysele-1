@@ -3,14 +3,14 @@ import { WYSELE_LOGOS } from "../../common/data";
 
 const Logo = () => {
     const [hover, setHover] = useState(false);
-    
+
     return (
-        <div 
+        <div
             className="w-full flex items-center justify-center"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div 
+            <div
                 className="text-center relative overflow-hidden group"
                 style={{
                     transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
@@ -18,7 +18,7 @@ const Logo = () => {
                 }}
             >
                 {/* Shine layer */}
-                <div 
+                <div
                     style={{
                         position: "absolute",
                         top: 0,
@@ -33,11 +33,11 @@ const Logo = () => {
                         pointerEvents: "none"
                     }}
                 />
-                
+
                 <img
                     src={WYSELE_LOGOS.dark}
                     alt="Logo"
-                    className="w-28 bg-cover mx-auto"
+                    className="w-20 bg-cover mx-auto"
                 />
 
             </div>
@@ -45,4 +45,4 @@ const Logo = () => {
     );
 };
 
-export default Logo;
+export default Logo;

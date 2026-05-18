@@ -1,7 +1,10 @@
 import React from 'react';
 import WebDevelopmenthero from './WebDevelopmenthero';
 import WebServicesweoffer from './WebServicesweoffer';
-import WebDevBenefits from './WebDevBenefits';
+import WebDevelopmentProcess from './WebDevelopmectprocess';
+import WebDevelopmentShowcase from './WebDevelopmentShowcase';
+import WebDevelopmentBenifits from './WebDevelopmentBenifits';
+import WebDevelopmentwhychoose from './WebDevelopmentwhychoose';
 import Footer from '../../components/layout/section/Footer';
 
 const WebDevelopmentPage = () => {
@@ -9,11 +12,13 @@ const WebDevelopmentPage = () => {
         <main className="bg-white">
             <WebDevelopmenthero />
             <WebServicesweoffer />
-            <WebDevBenefits />
-            {/* Additional sections can be added here later */}
+            <WebDevelopmentProcess />
+            <WebDevelopmentShowcase />
+            <WebDevelopmentBenifits />
+            <WebDevelopmentwhychoose />
             <Footer />
         </main>
     );
-};
+}
 
 export default WebDevelopmentPage;

@@ -15,7 +15,7 @@ const BtpHero = () => {
     };
 
     return (
-        <section className="relative w-full h-screen overflow-hidden bg-black text-white">
+        <section className="relative w-full min-h-screen lg:h-screen overflow-hidden bg-black text-white">
             {/* Background Image Container */}
             <div className="absolute inset-0">
                 <img

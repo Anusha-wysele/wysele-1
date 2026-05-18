@@ -5,7 +5,7 @@ import Cylinders from '../../../components/common/Cylinders';
 
 const SapSignavioHero = () => {
     return (
-        <div className="w-full h-screen overflow-hidden relative">
+        <div className="w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] overflow-hidden relative flex flex-col pt-[68px] lg:pt-0">
             {/* Full screen image */}
             <img
                 src={SERVICES_PAGE_IMAGES.sapSignavioHero}
@@ -23,7 +23,7 @@ const SapSignavioHero = () => {
             <Cylinders />
 
             {/* Content - left aligned on the shaded half, moved down */}
-            <div className="absolute inset-0 flex items-end pb-20">
+            <div className="relative lg:absolute inset-0 flex items-end pb-20 flex-1">
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
                     <div className="max-w-md">
                     <motion.h1

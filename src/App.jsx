@@ -21,6 +21,13 @@ const ContactPage = lazy(() => import("./pages/ContactUs/ContactPage"));
 const SapVimPage = lazy(() => import("./pages/OurServices/SapVimbrim/SapVimPage"));
 const SapMigrationPage = lazy(() => import("./pages/OurServices/MigrationServices/SapMigrationPage"));
 const WebDevelopment = lazy(() => import("./pages/WebDevelopment/WebDevelopmentpages"));
+const AppDevelopment = lazy(() => import("./pages/AppDeveiopment/AppDevelopmentpsges"));
+const SapS4hanaPage = lazy(() => import("./pages/OurServices/SapS4hana/SapS4pages"));
+const SapGenaiPage = lazy(() => import("./pages/OurServices/SapGenai/SapGenaipages"));
+const SapMasterPage = lazy(() => import("./pages/OurServices/SapMasterdata/SapMasterPage"));
+const SapBtpApiPage = lazy(() => import("./pages/OurServices/SapBtpapimanagement/Sapbtpapipage"));
+const SapTechnicalConsultingPage = lazy(() => import("./pages/OurServices/SapTechnicalconsulting/SapTechnicalconsultingpage"));
+const SapOpentextPage = lazy(() => import("./pages/OurServices/SapOpentext/SapOpentextpage"));
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -42,6 +49,13 @@ export default function App() {
           <Route path="/services/sap-vim-brim" element={<SapVimPage />} />
           <Route path="/services/sap-migration" element={<SapMigrationPage />} />
           <Route path="/services/web-development" element={<WebDevelopment />} />
+          <Route path="/services/app-development" element={<AppDevelopment />} />
+          <Route path="/services/sap-s4hana" element={<SapS4hanaPage />} />
+          <Route path="/services/sap-genai" element={<SapGenaiPage />} />
+          <Route path="/services/sap-masterdata" element={<SapMasterPage />} />
+          <Route path="/services/sap-btp-api-management" element={<SapBtpApiPage />} />
+          <Route path="/services/sap-technical-consulting" element={<SapTechnicalConsultingPage />} />
+          <Route path="/services/sap-opentext" element={<SapOpentextPage />} />
           <Route path="/sap-services" element={<SapServices />} />
           <Route path="/industries" element={<IndustriesPage />} />
           <Route path="/contact" element={<ContactPage />} />

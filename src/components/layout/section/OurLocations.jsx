@@ -28,14 +28,14 @@ const OurLocations = () => {
     const currentOffice = offices[activeOffice];
 
     return (
-        <section className="w-full relative overflow-hidden" style={{ height: '100vh' }}>
+        <section className="w-full relative overflow-hidden min-h-screen lg:h-screen">
             {/* Map Background */}
             <div className="absolute inset-0 z-0">
                 <RealisticGlobe />
             </div>
 
             {/* Content Overlay - All within map space */}
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 md:px-8">
+            <div className="relative lg:absolute inset-0 z-20 flex flex-col items-center justify-center px-4 md:px-8 py-12 lg:py-0">
                 {/* Heading */}
                 <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-2">
                     Reach Out to Our <span className="text-[#C9184A]">Global Team</span>
@@ -83,7 +83,7 @@ const OurLocations = () => {
 
                     {/* Office Details and Map - Single Box */}
                     <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden">
-                        <div className="flex flex-col lg:flex-row" style={{ height: '240px' }}>
+                        <div className="flex flex-col lg:flex-row h-auto lg:h-[240px]">
                             {/* Left Side - Office Details */}
                             <div className="lg:w-1/2 p-4 flex flex-col justify-between">
                                 <div>
@@ -150,7 +150,7 @@ const OurLocations = () => {
                             <div className="hidden lg:block w-px bg-gray-300"></div>
 
                             {/* Right Side - Google Maps */}
-                            <div className="lg:w-1/2 h-full">
+                            <div className="lg:w-1/2 h-[200px] lg:h-full">
                                 <iframe
                                     key={activeOffice}
                                     src={activeOffice === 'india' 

@@ -4,7 +4,7 @@ import { OTHER_PAGE_IMAGES } from "../../components/common/data";
 
 const ContactHero = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden m-0 p-0">
+    <section className="relative w-full min-h-screen lg:h-screen overflow-hidden m-0 p-0">
       {/* Full-width Background Image Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <img

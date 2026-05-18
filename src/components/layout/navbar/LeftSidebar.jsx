@@ -28,7 +28,7 @@ const LeftSidebar = () => {
   };
 
   return (
-    <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col gap-1 items-start">
+    <div className="fixed left-0 top-1/2 transform -translate-y-1/2 z-[100] hidden md:flex flex-col gap-1 items-start">
       {buttons.map((btn) => {
         const Icon = btn.icon;
         return (

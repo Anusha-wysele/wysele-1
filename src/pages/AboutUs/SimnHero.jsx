@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { OTHER_PAGE_IMAGES } from '../../components/common/data';
 
-function useWindowWidth() {
-    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-    useEffect(() => {
-        const handler = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return width;
-}
-
 const SimnHero = () => {
     const heroImage = OTHER_PAGE_IMAGES.simnHero;
-    const width = useWindowWidth();
-    const isMobile = width < 768;
-    const isTablet = width >= 768 && width < 1024;
 
     return (
         <section className="relative w-full bg-white overflow-hidden">
             {/* Background Image */}
-            <div className={`relative w-full ${isMobile ? 'h-[85vh]' : 'h-screen'} overflow-hidden`}>
+            <div className="relative w-full h-[85vh] md:h-screen overflow-hidden">
                 <img
                     src={heroImage}
                     alt="About Us"
@@ -31,25 +18,23 @@ const SimnHero = () => {
                 <div className="absolute inset-0 bg-black/50 md:bg-black/40" />
 
                 {/* Content Overlay */}
-                <div className={`absolute inset-0 flex items-end pb-25 md:pb-30 ${isMobile ? 'pt-20' : ''}`}>
+                <div className="absolute inset-0 flex items-end pb-25 md:pb-30 pt-20 md:pt-0">
                     <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
-                        <div className={`flex ${isMobile ? 'flex-col gap-10' : 'flex-row gap-8 items-end'}`}>
+                        <div className="flex flex-col md:flex-row gap-10 md:gap-8 items-end">
 
                             <motion.div
-                                className={`flex gap-4 md:gap-6 items-start flex-1 ${isMobile ? 'pb-0' : 'pb-20'}`}
+                                className="flex gap-4 md:gap-6 items-start flex-1 pb-0 md:pb-20"
                                 initial={{ x: -100, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                             >
                                 {/* Animated Vertical Line */}
-                                {!isMobile && (
-                                    <motion.div
-                                        className="w-0.5 bg-red-600 flex-shrink-0 mt-12"
-                                        initial={{ height: 0 }}
-                                        animate={{ height: "150px" }}
-                                        transition={{ duration: 1.5, ease: "easeOut" }}
-                                    />
-                                )}
+                                <motion.div
+                                    className="hidden md:block w-0.5 bg-red-600 flex-shrink-0 mt-12"
+                                    initial={{ height: 0 }}
+                                    animate={{ height: "150px" }}
+                                    transition={{ duration: 1.5, ease: "easeOut" }}
+                                />
 
                                 {/* Text Content */}
                                 <div className="max-w-2xl">
@@ -69,9 +54,10 @@ const SimnHero = () => {
 
                             {/* Right Side - Vision, Mission, Values Box */}
                             <motion.div
-                                className={`${isMobile ? 'w-full grid grid-cols-1 gap-6' : 'w-96 space-y-4'} p-0 md:p-6`}
-                                initial={{ x: isMobile ? 0 : 100, y: isMobile ? 50 : 0, opacity: 0 }}
-                                animate={{ x: 0, y: 0, opacity: 1 }}
+                                className="w-full md:w-96 grid grid-cols-1 gap-6 md:space-y-4 p-0 md:p-6"
+                                initial={{ y: 50, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                             >
                                 {/* Our Vision */}

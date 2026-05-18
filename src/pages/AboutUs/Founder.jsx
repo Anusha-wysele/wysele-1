@@ -5,19 +5,8 @@ import { TrainRegional, ChalkboardTeacher, FramerLogo, AirTrafficControl, SlackL
 import { OTHER_PAGE_IMAGES } from '../../components/common/data';
 import founderImg from '../../assets/image (2).png';
 
-function useWindowWidth() {
-    const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-    useEffect(() => {
-        const handler = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handler);
-        return () => window.removeEventListener('resize', handler);
-    }, []);
-    return width;
-}
-
 const Founder = () => {
-    const width = useWindowWidth();
-    // isMobile and isTablet are no longer needed as animations are now viewport-based
+    // Animations are now viewport-based using Framer Motion and Tailwind lg: modifiers
 
     return (
         <>
@@ -109,7 +98,7 @@ const Founder = () => {
                     <div className={`flex flex-col lg:flex-row gap-16 lg:gap-24 items-center overflow-visible`}>
 
                         {/* Left Side - Founder Image */}
-                        <div className="w-full lg:w-[40%] lg:translate-x-16">
+                        <div className="w-full lg:w-[40%] lg:pl-16">
                             <h2 className="text-2xl font-semibold text-red-600 mb-10 flex items-center gap-4">
                                 <FramerLogo size={36} weight="thin" />
                                 <span className="tracking-tight">Meet Our Founder</span>

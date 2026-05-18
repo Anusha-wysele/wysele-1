@@ -57,10 +57,10 @@ export default function WhatRisewithsap() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
-                            className="border border-gray-200 relative group"
+                            className="border border-gray-200 relative group md:mx-0 -mx-2"
                         >
                             {/* Outer background box that shrinks on hover */}
-                            <div className="absolute -inset-4 border-2 border-[#800000] opacity-30 group-hover:inset-0 transition-all duration-500 ease-out pointer-events-none" />
+                            <div className="hidden md:block absolute -inset-4 border-2 border-[#800000] opacity-30 group-hover:inset-0 transition-all duration-500 ease-out pointer-events-none" />
                             <div className="p-4 relative z-10">
                                 <h2 className="text-base font-semibold text-gray-900 leading-snug mb-2 tracking-tight">
                                     Driving the Next Era of{' '}
@@ -126,7 +126,7 @@ export default function WhatRisewithsap() {
             </div>
 
             {/* Overview image with text & cards overlay */}
-            <div className="mt-12 w-full relative h-96">
+            <div className="mt-12 w-full relative h-auto md:h-96">
                 {/* Background image & gradient layer (constrained to container) */}
                 <div className="absolute inset-0 overflow-hidden">
                     <motion.img
@@ -160,7 +160,7 @@ export default function WhatRisewithsap() {
                 </div>
 
                 {/* 3 cards overlay (Bottom - Spilling out) */}
-                <div className="absolute inset-x-0 top-[60%] z-20 w-full max-w-6xl mx-auto px-6 md:px-4">
+                <div className="relative md:absolute inset-x-0 top-0 md:top-[60%] z-20 w-full max-w-6xl mx-auto px-6 md:px-4 mt-8 md:mt-0">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Card 1 */}
                         <motion.div

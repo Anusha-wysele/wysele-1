@@ -40,7 +40,7 @@ const DataSupport = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, delay: 0.15, ease: [0.33, 1, 0.68, 1] }}
-                        className="w-full lg:w-1/2 grid grid-cols-2 gap-4"
+                        className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4"
                     >
                         {[
                             { label: "Continuous Monitoring", desc: "Proactive health checks to catch issues before they affect operations." },
