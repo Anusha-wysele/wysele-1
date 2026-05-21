@@ -1,21 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight, Calendar, TrendingUp } from 'lucide-react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
 import SapOverview from './SapOverview';
 import FunctionalConsulting from './FunctionalConsulting';
 import TechnicalConsulting from './TechnicalConsulting';
+import SapIntegrationsupport from './SapIntegrationsupport';
+import SapIndustriesweserve from './SapIndustriesweserve';
 import WhyChooseWysele from './WhyChooseWysele';
 import Footer from '../../../components/layout/section/Footer';
 
 const SapConsulting = () => {
+    const navigate = useNavigate();
     return (
         <>
-        <section className="relative min-h-[560px] lg:h-[600px] w-full overflow-hidden bg-[#D5E7B5] flex flex-col lg:flex-row">
-            {/* SVG ClipPath Definitions - Precision Path for Rounded-Tip Arrow */}
-            <svg width="0" height="0" className="absolute">
-                <defs>
-                    <clipPath id="exactArrowMask" clipPathUnits="objectBoundingBox">
-                        <path d="
+            <section className="relative min-h-[560px] lg:h-[600px] w-full overflow-hidden bg-[#D5E7B5] flex flex-col lg:flex-row">
+                {/* SVG ClipPath Definitions - Precision Path for Rounded-Tip Arrow */}
+                <svg width="0" height="0" className="absolute">
+                    <defs>
+                        <clipPath id="exactArrowMask" clipPathUnits="objectBoundingBox">
+                            <path d="
                             M 1,0
                             L 0.65,0
                             L 0.37,0.38
@@ -24,9 +29,9 @@ const SapConsulting = () => {
                             L 1,1
                             Z
                         " />
-                    </clipPath>
-                    <clipPath id="exactArrowBgMask" clipPathUnits="objectBoundingBox">
-                        <path d="
+                        </clipPath>
+                        <clipPath id="exactArrowBgMask" clipPathUnits="objectBoundingBox">
+                            <path d="
                             M 1,0
                             L 0.61,0
                             L 0.33,0.38
@@ -35,116 +40,109 @@ const SapConsulting = () => {
                             L 1,1
                             Z
                         " />
-                    </clipPath>
-                </defs>
-            </svg>
+                        </clipPath>
+                    </defs>
+                </svg>
 
-            {/* Content Area (Left Side) */}
-            <div className="relative w-full lg:w-[60%] h-full flex flex-col justify-end pb-8 px-4 lg:pl-4 xl:pl-6 lg:pr-4 py-16 lg:pb-10 z-20">
-                <div className="max-w-xl w-full">
-                    <h1 className="text-3xl lg:text-4xl font-semibold mb-8 leading-tight">
-                        <span className="text-gray-900 inline-block overflow-hidden" style={{ height: '1.2em' }}>
-                            {'Transform'.split('').map((char, idx) => (
-                                <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                                    <motion.span
-                                        className="inline-block"
-                                        initial={{ y: '-100%', opacity: 0 }}
-                                        animate={{ y: '0%', opacity: 1 }}
-                                        transition={{ duration: 0.4, delay: idx * 0.025, ease: [0.33, 1, 0.68, 1] }}
-                                    >
-                                        {char}
-                                    </motion.span>
-                                </span>
-                            ))}
-                        </span>
-                        <br />
-                        <span className="text-gray-900 inline-block overflow-hidden" style={{ height: '1.2em' }}>
-                            {'Your Business'.split('').map((char, idx) => (
-                                <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                                    <motion.span
-                                        className="inline-block"
-                                        initial={{ y: '-100%', opacity: 0 }}
-                                        animate={{ y: '0%', opacity: 1 }}
-                                        transition={{ duration: 0.4, delay: (9 + idx) * 0.025, ease: [0.33, 1, 0.68, 1] }}
-                                    >
-                                        {char}
-                                    </motion.span>
-                                </span>
-                            ))}
-                        </span>
-                        <br />
-                        <span className="text-[#C9184A] inline-block overflow-hidden" style={{ height: '1.2em' }}>
-                            {'with Expert Guidance'.split('').map((char, idx) => (
-                                <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
-                                    <motion.span
-                                        className="inline-block"
-                                        initial={{ y: '-100%', opacity: 0 }}
-                                        animate={{ y: '0%', opacity: 1 }}
-                                        transition={{ duration: 0.4, delay: (21 + idx) * 0.025, ease: [0.33, 1, 0.68, 1] }}
-                                    >
-                                        {char}
-                                    </motion.span>
-                                </span>
-                            ))}
-                        </span>
-                    </h1>
-                    
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}
-                        className="bg-white px-4 py-2 rounded-lg border border-gray-100 w-full relative z-10 mt-3"
-                    >
-                        <h3 className="text-[10px] font-bold text-[#C9184A] mb-0.5">WE GUIDE YOU!</h3>
-                        <h4 className="text-xs font-bold text-gray-900 mb-0.5">Elevate Your Business with SAP Expertise</h4>
-                        <p className="text-xs text-gray-600 leading-snug">
-                            Our consulting team helps you unlock the full potential of SAP solutions by identifying opportunities, streamlining processes, and driving measurable outcomes. With the right strategies and insights, we empower your business to move beyond adaptation and achieve lasting growth and performance.
-                        </p>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Visual Area (Right Side - Exact Geometry) */}
-            <div className="absolute right-0 top-0 h-full w-full lg:w-[min(1000px,70vw)] z-10 hidden lg:block opacity-90">
-                <div className="w-full h-full absolute inset-0">
-                    {/* Layer 1 — OUTER GEOMETRIC BORDER */}
-                    <div
-                        className="absolute inset-0 z-0 bg-[#800000]"
-                        style={{ clipPath: "url(#exactArrowBgMask)" }}
+                {/* Mobile Background Image and Overlay */}
+                <div className="absolute inset-0 block lg:hidden z-0">
+                    <img
+                        src={SERVICES_PAGE_IMAGES.sapHero}
+                        alt="SAP Consulting Team"
+                        className="w-full h-full object-cover"
                     />
-                    
-                    {/* Layer 2 — IMAGE + LABELS (Inner) */}
-                    <div
-                        className="absolute inset-0 overflow-hidden z-10"
-                        style={{ clipPath: "url(#exactArrowMask)" }}
-                    >
-                        <div className="relative w-full h-full">
-                            <img
-                                src={SERVICES_PAGE_IMAGES.sapHero}
-                                alt="SAP Consulting Team"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#D5E7B5]/90 via-transparent to-transparent" />
-                        </div>
+                    <div className="absolute inset-0 bg-black/65" />
+                </div>
+
+                {/* Content Area (Left Side) */}
+                <div className="relative w-full lg:w-[60%] h-full flex flex-col justify-end px-6 sm:px-12 lg:pl-16 lg:pr-10 pb-12 sm:pb-16 lg:pb-20 pt-28 sm:pt-32 z-20">
+                    <div className="max-w-xl w-full">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 25 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="text-3xl sm:text-4xl lg:text-[40px] font-bold mb-4 sm:mb-6 leading-tight text-white lg:text-gray-900"
+                        >
+                            SAP Consulting Services <br className="hidden sm:block" />
+                            That Improve <span className="text-[#C9184A]">Operations</span> and <span className="text-[#C9184A]">Business Growth</span>
+                        </motion.h1>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="space-y-3 sm:space-y-4"
+                        >
+                            <h4 className="text-sm sm:text-base font-bold text-white lg:text-gray-800">
+                                Expert SAP Consulting for Growing Businesses
+                            </h4>
+                            <p className="text-xs sm:text-sm text-white/80 lg:text-gray-600 leading-relaxed font-normal max-w-lg">
+                                Modern businesses need more than software implementation. They need SAP systems that improve workflows, reduce delays, support decision-making, and scale with business growth.
+                            </p>
+
+                            {/* Buttons Container */}
+                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                                <button
+                                    onClick={() => navigate('/contact')}
+                                    className="px-6 py-3 bg-[#FFB703] hover:bg-[#e0a100] text-gray-900 font-bold rounded-full text-xs sm:text-sm flex items-center justify-center gap-2 transition-all shadow-sm"
+                                >
+                                    Talk to an SAP Consultant
+                                    <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
+                                </button>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
-            </div>
-            
-            {/* Mobile Image Fallback Container */}
-            <div className="w-full h-[300px] relative z-10 lg:hidden block">
-                 <img
-                      src={SERVICES_PAGE_IMAGES.sapHero}
-                      alt="SAP Consulting Team"
-                      className="w-full h-full object-cover"
-                 />
-                 <div className="absolute inset-0 bg-gradient-to-t from-[#D5E7B5] to-transparent" />
-            </div>
-        </section>
-        <SapOverview />
-        <FunctionalConsulting />
-        <TechnicalConsulting />
-        <WhyChooseWysele />
-        <Footer />
+
+                {/* Visual Area (Right Side - Exact Geometry) */}
+                <div className="absolute right-0 top-0 h-full w-full lg:w-[min(1000px,70vw)] z-10 hidden lg:block opacity-90">
+                    <div className="w-full h-full absolute inset-0">
+                        {/* Layer 1 — OUTER GEOMETRIC BORDER */}
+                        <div
+                            className="absolute inset-0 z-0 bg-[#800000]"
+                            style={{ clipPath: "url(#exactArrowBgMask)" }}
+                        />
+
+                        {/* Layer 2 — IMAGE + LABELS (Inner) */}
+                        <div
+                            className="absolute inset-0 overflow-hidden z-10"
+                            style={{ clipPath: "url(#exactArrowMask)" }}
+                        >
+                            <div className="relative w-full h-full">
+                                <img
+                                    src={SERVICES_PAGE_IMAGES.sapHero}
+                                    alt="SAP Consulting Team"
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#D5E7B5]/90 via-transparent to-transparent" />
+                            </div>
+                        </div>
+
+                        {/* Layer 3 — FLOATING BADGE */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                            animate={{ opacity: 1, scale: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.6 }}
+                            className="absolute bottom-[10%] left-[28%] z-20 bg-white/95 backdrop-blur-md rounded-xl p-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100/50 flex items-center gap-3 w-[260px] pointer-events-none"
+                        >
+                            <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                                <TrendingUp className="w-5 h-5 text-emerald-600" />
+                            </div>
+                            <div>
+                                <h4 className="text-xs font-bold text-gray-900 leading-tight">Reliable SAP Solutions</h4>
+                                <p className="text-[10px] text-gray-500 font-medium mt-0.5">Better Processes. Stronger Growth.</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+            <SapOverview />
+            <FunctionalConsulting />
+            <TechnicalConsulting />
+            <SapIndustriesweserve />
+            <WhyChooseWysele />
+            <SapIntegrationsupport />
+            <Footer />
         </>
     );
 };

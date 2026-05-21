@@ -128,6 +128,10 @@ const MEGA_MENU_DATA = {
 
       { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services/app-development", img: WEB_DEVELOPMENT_IMAGES[1] },
 
+      { label: "IoT Services", desc: "Smart connected solutions", icon: <Cpu size={18} />, path: "/services/iot-services" },
+
+      { label: "AI/ML Services", desc: "Enterprise intelligence solutions", icon: <Brain size={18} />, path: "/services/aiml-services" },
+
     ],
 
     featured: {
@@ -378,17 +382,19 @@ function MegaMenu({ type, open, onClose }) {
 
 
 
-            <Button
+            {type !== "Services" && (
+              <Button
 
-              text="EXPLORE"
+                text="EXPLORE"
 
-              variant="secondary"
+                variant="secondary"
 
-              onClick={() => { navigate(data.sidebar.link); onClose(); }}
+                onClick={() => { navigate(data.sidebar.link); onClose(); }}
 
-              className="!px-5 !py-2.5"
+                className="!px-5 !py-2.5"
 
-            />
+              />
+            )}
 
           </div>
 
@@ -398,13 +404,13 @@ function MegaMenu({ type, open, onClose }) {
 
           <div
 
-            className="w-[300px] lg:w-[360px] p-6 border-r border-gray-50 bg-white shrink-0 h-[480px]"
+            className="w-[300px] lg:w-[360px] pt-6 pb-4 px-6 border-r border-gray-50 bg-white shrink-0 h-[480px] flex flex-col"
 
             onMouseEnter={handlePanelEnter}
 
           >
 
-            <div className="space-y-1">
+            <div className="space-y-1 flex-grow overflow-y-auto pr-2 sublinks-scroll">
 
               {data.items.map((item) => {
 
@@ -486,7 +492,7 @@ function MegaMenu({ type, open, onClose }) {
 
             </div>
 
-            <div className="mt-8 pt-6 border-t border-gray-50">
+            <div className="mt-4 pt-3 border-t border-gray-50 shrink-0">
 
               <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest pl-4">Need help?</span>
 
@@ -981,9 +987,8 @@ export default function Navbar() {
 
 
       <nav
-
+        id="main-navbar"
         className={`w-full py-2 fixed z-[990] ${bgClass} transition-all duration-300 top-0 md:top-[44px]`}
-
       >
 
         <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full h-full flex items-center justify-between">

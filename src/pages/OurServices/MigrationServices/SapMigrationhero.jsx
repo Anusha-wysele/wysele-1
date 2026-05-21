@@ -24,12 +24,16 @@ export default function SapMigrationhero() {
     ];
 
     return (
-        <section className="relative w-full min-h-screen lg:h-screen overflow-hidden font-sans">
+        <section className="relative w-full min-h-screen flex items-center overflow-hidden font-sans bg-black">
+            {/* Background Image */}
             <img 
                 src={SERVICES_PAGE_IMAGES.sapMigrationHero} 
                 alt="SAP Migration" 
-                className="w-full h-full object-cover object-center"
+                className="absolute inset-0 w-full h-full object-cover object-center z-0"
             />
+            
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/60 sm:bg-black/40 z-10" />
             
             {/* Decorative Cylinders */}
             <Cylinders />
@@ -41,7 +45,7 @@ export default function SapMigrationhero() {
             ></div>
 
             {/* Content Container */}
-            <div className="absolute inset-0 flex items-center pt-24 z-20">
+            <div className="relative z-20 w-full pt-32 pb-24 sm:pt-40 sm:pb-32">
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 w-full">
                     <div className="max-w-3xl">
                         {/* Main Title */}
@@ -49,7 +53,7 @@ export default function SapMigrationhero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="text-3xl md:text-4xl lg:text-5xl font-light text-white mb-4 leading-tight tracking-tight"
+                            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 leading-tight tracking-tight"
                         >
                             Seamless SAP Migration for Modern Enterprises
                         </motion.h1>
@@ -59,7 +63,7 @@ export default function SapMigrationhero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                            className="text-base md:text-lg text-gray-200 mb-6 font-light max-w-2xl"
+                            className="text-base md:text-lg text-white mb-6 font-normal max-w-2xl"
                         >
                             Adapt to the evolving digital landscape with advanced SAP solutions
                         </motion.p>
@@ -77,9 +81,9 @@ export default function SapMigrationhero() {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.5, delay: 0.4 + (idx * 0.1) }}
-                                    className="flex items-center gap-3 text-gray-300 text-xs md:text-sm font-light"
+                                    className="flex items-center gap-3 text-white text-xs md:text-sm font-medium"
                                 >
-                                    <div className="w-1 h-1 rounded-full bg-[#FFB703]" />
+                                    <div className="w-1.5 h-1.5 rounded-full bg-[#FFB703]" />
                                     <span>{bullet}</span>
                                 </motion.div>
                             ))}

@@ -2,78 +2,93 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
 import Cylinders from '../../../components/common/Cylinders';
+import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const SapDatahero = () => {
+    const navigate = useNavigate();
+
     return (
-        <div className="w-full min-h-screen lg:h-screen overflow-hidden relative">
+        <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[68px] lg:pt-0">
             {/* Full screen background image */}
             <img
                 src={SERVICES_PAGE_IMAGES.sapDatasphereHero}
-                alt="SAP Datasphere"
-                className="w-full h-full object-cover"
+                alt="SAP Landscape Support"
+                className="absolute inset-0 w-full h-full object-cover object-[70%] lg:object-center z-0"
             />
 
-            {/* Bottom black gradient overlay */}
-            <div
-                className="absolute inset-0"
-                style={{
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.65) 40%, transparent 70%)'
-                }}
-            />
+            {/* Left to right gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-transparent z-10" />
 
             {/* Decorative Cylinders */}
             <Cylinders />
 
-            {/* Content anchored at the bottom center */}
-            <div className="absolute inset-0 flex flex-col items-center justify-end pb-12">
-                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full flex flex-col items-center">
+            {/* Content Container */}
+            <div className="relative z-20 w-full pb-4 md:pb-6 lg:pb-8 pt-32">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
+                    <div className="max-w-2xl text-left flex flex-col gap-3">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
+                            className="text-2xl sm:text-3xl lg:text-[38px] font-semibold text-white leading-tight tracking-tight"
+                        >
+                            Continuous SAP Landscape Support and Enhancement
+                        </motion.h1>
 
-                {/* Heading centered */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
-                    className="text-xl lg:text-2xl font-normal text-white text-center leading-tight mb-8"
-                >
-                    Continuous SAP Datasphere Support &amp; Enhancement
-                </motion.h1>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.15, ease: [0.33, 1, 0.68, 1] }}
+                            className="text-base sm:text-lg lg:text-xl font-bold text-white/95 leading-snug"
+                        >
+                            Keep Your SAP Environment Stable, Secure, and Optimized
+                        </motion.h2>
 
-                {/* Row: paragraphs 1 and 2 side by side */}
-                <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
-                        className="text-xs text-white/80 leading-relaxed"
-                    >
-                        At Wysele, we go beyond initial implementation by delivering continuous SAP Datasphere support services that help organizations maintain high-performing, reliable, and scalable data environments.
-                    </motion.p>
+                        <div className="flex flex-col gap-2.5 text-xs sm:text-sm text-white/80 leading-relaxed font-light">
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
+                            >
+                                Wysele provides continuous SAP landscape support and enhancement services that help businesses maintain stable, high-performing, and future-ready SAP environments.
+                            </motion.p>
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.7, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
-                        className="text-xs text-white/80 leading-relaxed border-l border-white/20 pl-4"
-                    >
-                        SAP Datasphere enables businesses to unify, manage, and leverage their data across systems, ensuring seamless access to accurate and meaningful insights. Our approach focuses on proactive monitoring, issue resolution, and performance enhancement to keep your platform running efficiently.
-                    </motion.p>
-                </div>
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.45, ease: [0.33, 1, 0.68, 1] }}
+                            >
+                                Our SAP consultants work closely with organizations to monitor system health, optimize workflows, improve user experience, strengthen security, and support changing operational requirements. From SAP system monitoring and performance optimization to enhancement services and technical support, we help businesses reduce downtime, improve operational visibility, and maintain reliable SAP operations across departments.
+                            </motion.p>
 
-                {/* Divider */}
-                <div className="w-full max-w-5xl h-[0.5px] bg-white/15 mb-6" />
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.7, delay: 0.6, ease: [0.33, 1, 0.68, 1] }}
+                            >
+                                Whether your organization uses SAP S/4HANA, SAP ECC, SAP cloud environments, or integrated enterprise applications, our SAP support specialists ensure your systems remain secure, responsive, and aligned with business goals.
+                            </motion.p>
+                        </div>
 
-                {/* Paragraph 3 centered full width */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                    className="text-xs text-white/70 leading-relaxed text-center max-w-3xl"
-                >
-                    Whether your objective is to strengthen data management, improve system performance, or scale your data ecosystem with evolving business demands, our SAP Datasphere solutions are designed to ensure long-term efficiency, flexibility, and alignment with your organizational goals.
-                </motion.p>
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.7, delay: 0.75, ease: [0.33, 1, 0.68, 1] }}
+                            className="pt-2"
+                        >
+                            <button
+                                onClick={() => navigate('/contact')}
+                                className="px-6 py-3.5 bg-[#E11D48] hover:bg-[#BE123C] text-white font-semibold rounded-lg text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-lg w-fit group/btn"
+                            >
+                                Talk to Our SAP Support Team
+                                <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" strokeWidth={2.5} />
+                            </button>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

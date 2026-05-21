@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-    Database, 
-    FileText, 
-    ShieldCheck, 
+import {
+    Database,
+    FileText,
+    ShieldCheck,
     MapTrifold,
     Lightbulb
 } from '@phosphor-icons/react';
@@ -64,7 +64,7 @@ export default function SapOpentextsolutions() {
         <section className="relative z-10 w-full bg-[#f9f9fb] pt-10 pb-10">
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
                 <div className="text-center mb-8">
-                    <motion.h2 
+                    <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}

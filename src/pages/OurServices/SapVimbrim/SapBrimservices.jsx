@@ -94,16 +94,16 @@ export default function SapBrimservices() {
 
                     {/* Left: Main Feature Card */}
                     <div className="lg:col-span-7">
-                        <div className="relative group rounded-none overflow-hidden aspect-[16/10] shadow-2xl bg-gray-900">
+                        <div className="relative group rounded-none overflow-hidden aspect-[4/3] sm:aspect-[16/10] shadow-2xl bg-gray-900">
                             <AnimatePresence initial={false}>
                                 <motion.div
                                     key={activeIndex}
-                                    initial={{ opacity: 0, scale: 1.05 }}
+                                    initial={{ opacity: 0, scale: 1.02 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 1.1 }}
+                                    exit={{ opacity: 0, scale: 1.02 }}
                                     transition={{
-                                        opacity: { duration: 1.2, ease: "easeInOut" },
-                                        scale: { duration: 1.5, ease: [0.16, 1, 0.3, 1] }
+                                        duration: 0.6,
+                                        ease: "easeInOut"
                                     }}
                                     className="absolute inset-0 w-full h-full"
                                 >
@@ -112,22 +112,25 @@ export default function SapBrimservices() {
                                         alt={currentService.title}
                                         className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                    {/* Black Color Overlay */}
+                                    <div className="absolute inset-0 bg-black/40" />
+                                    {/* Dark Gradient Overlay for Text Readability */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
 
-                                    <div className="absolute bottom-8 left-8 right-8 text-center md:text-left">
+                                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 text-left">
                                         <motion.h3
-                                            initial={{ opacity: 0, y: 20 }}
+                                            initial={{ opacity: 0, y: 15 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.8, delay: 0.3 }}
-                                            className="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight"
+                                            transition={{ duration: 0.5, delay: 0.15 }}
+                                            className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-4 leading-tight"
                                         >
                                             {currentService.title}
                                         </motion.h3>
                                         <motion.p
-                                            initial={{ opacity: 0, y: 20 }}
+                                            initial={{ opacity: 0, y: 15 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.8, delay: 0.4 }}
-                                            className="text-gray-200 text-xs md:text-sm max-w-xl leading-relaxed"
+                                            transition={{ duration: 0.5, delay: 0.25 }}
+                                            className="text-gray-200 text-[10px] sm:text-xs md:text-sm max-w-xl leading-relaxed"
                                         >
                                             {currentService.description}
                                         </motion.p>
@@ -142,41 +145,51 @@ export default function SapBrimservices() {
 
                         {/* Static Info Box Container */}
                         <div className="mb-8">
-                            <div className="bg-[#f8f9fa] border border-black rounded-none p-5 md:p-6 relative overflow-hidden max-w-xl lg:max-w-lg min-h-[120px] flex flex-col justify-center">
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={activeIndex}
-                                        initial={{ opacity: 0, x: 10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: -10 }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
-                                    >
-                                        <h4 className="text-base font-bold text-gray-900 mb-1">
-                                            {nextService.sideTitle}
-                                        </h4>
-                                        <p className="text-gray-500 text-[11px] leading-relaxed">
-                                            {nextService.sideDesc}
-                                        </p>
-                                    </motion.div>
-                                </AnimatePresence>
+                            <div 
+                                onClick={nextSlide}
+                                className="bg-[#f8f9fa] border border-black rounded-none p-5 md:p-6 relative overflow-hidden max-w-xl lg:max-w-lg min-h-[120px] flex items-center justify-between cursor-pointer group transition-all duration-300 hover:bg-[#800000] hover:border-[#800000]"
+                            >
+                                <div className="flex-1 pr-4">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={activeIndex}
+                                            initial={{ opacity: 0, y: 8 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -8 }}
+                                            transition={{ duration: 0.25, ease: "easeInOut" }}
+                                        >
+                                            <h4 className="text-base font-bold text-gray-900 group-hover:text-white transition-colors duration-300 mb-1">
+                                                {nextService.sideTitle}
+                                            </h4>
+                                            <p className="text-gray-500 group-hover:text-gray-200 transition-colors duration-300 text-[11px] leading-relaxed">
+                                                {nextService.sideDesc}
+                                            </p>
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                                <div className="shrink-0 flex items-center justify-center w-8 h-8 rounded-full border border-black/20 group-hover:border-white/40 group-hover:bg-white group-hover:text-[#800000] transition-all duration-300">
+                                    <ArrowRight className="w-4 h-4 text-gray-900 group-hover:text-[#800000] transition-colors duration-300" />
+                                </div>
                             </div>
                         </div>
 
                         {/* Thumbnails and Navigation */}
                         <div className="mt-auto">
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4 mb-8">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6 sm:mb-8">
                                 {BRIM_SERVICES.map((service, idx) => (
                                     <button
                                         key={service.id}
                                         onClick={() => setActiveIndex(idx)}
-                                        className={`relative rounded-none overflow-hidden aspect-video transition-all duration-300 ${activeIndex === idx ? 'ring-4 ring-[#FFB703] scale-105' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'}`}
+                                        className={`relative rounded-none p-2 sm:p-3 border transition-all duration-300 flex items-center justify-center min-h-[48px] sm:min-h-[56px]
+                                            ${activeIndex === idx 
+                                                ? 'bg-[#800000] text-white border-[#800000] shadow-md' 
+                                                : 'bg-[#f8f9fa] text-gray-800 border-gray-200 hover:bg-gray-100 hover:border-gray-300'
+                                            }
+                                        `}
                                     >
-                                        <img src={service.image} className="w-full h-full object-cover" alt="" />
-                                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                                            <span className="text-[10px] font-black text-white uppercase tracking-tighter">
-                                                {service.tag}
-                                            </span>
-                                        </div>
+                                        <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-wider text-center leading-tight">
+                                            {service.tag}
+                                        </span>
                                     </button>
                                 ))}
                             </div>

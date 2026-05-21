@@ -3,73 +3,63 @@ import { motion } from 'framer-motion';
 import { 
     ArrowsOut, 
     Stack, 
-    RocketLaunch, 
     CurrencyCircleDollar, 
     Heartbeat,
-    Check,
     Lightbulb
 } from '@phosphor-icons/react';
 
 const benefits = [
     {
-        title: "Flexibility",
-        subtitle: "– Scale on Your Terms",
-        description: "Choose from public, private, or hybrid cloud deployment models to align with your business needs. RISE with SAP ensures your IT landscape adapts seamlessly as your organization grows and evolves.",
+        title: "Flexible Infrastructure",
+        subtitle: "Scale on Your Terms",
+        description: "RISE with SAP supports public, private, or hybrid cloud environments based on business requirements and operational goals. This flexibility allows organizations to scale operations without disrupting existing workflows.",
         bullets: [
-            "Flexible cloud deployment options",
-            "Scalable infrastructure for business growth",
-            "Easy adaptation to changing demands"
+            "Scalable cloud infrastructure",
+            "Flexible deployment options",
+            "Better operational adaptability",
+            "Support for business growth"
         ],
         impact: "Improved scalability and operational flexibility with future-ready infrastructure.",
         icon: <ArrowsOut size={22} weight="light" className="text-gray-700" />
     },
     {
-        title: "Reduced Complexity",
-        subtitle: "– Simplify Your IT Landscape",
-        description: "Unify your systems with an integrated suite of tools designed to work seamlessly together. RISE with SAP reduces operational complexity, enabling teams to focus on strategic priorities.",
+        title: "Simplified IT Environment",
+        subtitle: "Simplify Your IT Landscape",
+        description: "Managing multiple systems and disconnected platforms can increase operational complexity. RISE with SAP helps businesses simplify enterprise environments through integrated tools and connected business processes.",
         bullets: [
-            "Integrated tools and solutions",
-            "Streamlined system management",
-            "Reduced dependency on multiple platforms"
+            "Reduced infrastructure complexity",
+            "Easier system management",
+            "Improved operational efficiency",
+            "Better process coordination"
         ],
         impact: "Simplified operations with enhanced efficiency and reduced IT overhead.",
         icon: <Stack size={22} weight="light" className="text-gray-700" />
     },
     {
-        title: "Accelerated Innovation",
-        subtitle: "– Innovate with Confidence",
-        description: "Leverage advanced technologies like AI, IoT, and machine learning to drive innovation and smarter decision-making across your organization.",
+        title: "Improved Business Agility",
+        subtitle: "Adapt and Thrive",
+        description: "Businesses must respond quickly to market changes, operational challenges, and customer expectations. RISE with SAP helps organizations improve flexibility and operational responsiveness through scalable enterprise solutions.",
         bullets: [
-            "AI-driven insights and automation",
-            "Support for emerging technologies",
-            "Faster innovation cycles"
-        ],
-        impact: "Enhanced innovation capabilities and stronger competitive advantage.",
-        icon: <RocketLaunch size={22} weight="light" className="text-gray-700" />
-    },
-    {
-        title: "Cost Optimization",
-        subtitle: "– Maximize Value, Minimize Costs",
-        description: "Transition to cloud-based systems that optimize resources and reduce operational expenses while maintaining high performance and reliability.",
-        bullets: [
-            "Reduced infrastructure costs",
-            "Efficient resource utilization",
-            "Automation-driven savings"
-        ],
-        impact: "Lower operational costs with improved resource efficiency.",
-        icon: <CurrencyCircleDollar size={22} weight="light" className="text-gray-700" />
-    },
-    {
-        title: "Agility and Resilience",
-        subtitle: "– Adapt and Thrive",
-        description: "Stay responsive in a dynamic business environment with scalable solutions that support rapid change and continuous growth.",
-        bullets: [
-            "Quick response to market changes",
-            "Scalable and resilient systems",
-            "Continuous business adaptability"
+            "Faster response to operational changes",
+            "Improved business continuity",
+            "Better operational resilience",
+            "Increased process flexibility"
         ],
         impact: "Greater business agility with long-term resilience and stability.",
         icon: <Heartbeat size={22} weight="light" className="text-gray-700" />
+    },
+    {
+        title: "Cost Optimization",
+        subtitle: "Maximize Value, Minimize Costs",
+        description: "Cloud-based operations help organizations reduce infrastructure costs while improving resource utilization and operational efficiency.",
+        bullets: [
+            "Lower infrastructure expenses",
+            "Improved resource management",
+            "Reduced operational overhead",
+            "Better cost visibility"
+        ],
+        impact: "Lower operational costs with improved resource efficiency.",
+        icon: <CurrencyCircleDollar size={22} weight="light" className="text-gray-700" />
     }
 ];
 
@@ -89,24 +79,17 @@ const RiseBenifits = () => {
                     </motion.h2>
                 </div>
 
-                {/* Using a grid configuration that wraps the 5 cards cleanly */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-5 justify-center">
-                    {benefits.map((item, index) => {
-                        // Center the final 2 items on Desktop by pushing the 4th item (index 3) to start at column 2.
-                        const gridAlignment = index === 3 ? "lg:col-start-2 lg:col-span-2" : "lg:col-span-2";
-                        // Center the 5th item (index 4) on tablet/MD screens where grid is 2-cols
-                        const tabletAlignment = index === 4 ? "md:col-span-2 md:w-[calc(50%-10px)] md:mx-auto lg:w-auto" : "";
-                        
-                        return (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`group flex flex-col h-full relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#800000] transition-colors duration-500 ${gridAlignment} ${tabletAlignment}`}
-                            >
-
+                {/* Using a grid configuration that fits 4 cards cleanly */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 justify-center">
+                    {benefits.map((item, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="group flex flex-col h-full relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-[#800000] transition-colors duration-500"
+                        >
                             <div className="p-4 lg:p-5 flex flex-col flex-grow">
                                 {/* Icon Header */}
                                 <div className="flex items-center gap-3 mb-3">
@@ -118,7 +101,7 @@ const RiseBenifits = () => {
                                             {item.title}
                                         </h3>
                                         <p className="text-[10px] font-semibold text-[#800000] tracking-wide uppercase mt-1">
-                                            {item.subtitle.replace('– ', '')}
+                                            {item.subtitle}
                                         </p>
                                     </div>
                                 </div>
@@ -150,8 +133,7 @@ const RiseBenifits = () => {
                                 </div>
                             </div>
                         </motion.div>
-                        );
-                    })}
+                    ))}
                 </div>
             </div>
         </section>

@@ -1,11 +1,8 @@
 import React, { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import Button from '../../../components/common/Button';
 
 const SapOverview = () => {
-    const navigate = useNavigate();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -27,13 +24,14 @@ const SapOverview = () => {
                         </motion.span>
                     ))}
                 </h2>
-                <p className="text-base text-gray-700 leading-relaxed mb-8">
-                    In the fast-paced world of business technology, leveraging expert consulting services can be the key to fully harnessing the capabilities of SAP solutions. Our consultants will work closely with your team to identify opportunities for improvement, optimize processes, and drive tangible results. Don't just adapt—thrive with the right strategies and insights to elevate your business to new heights.
-                </p>
-                <Button 
-                    text="Contact Us"
-                    onClick={() => navigate('/contact')}
-                />
+                <div className="text-base text-gray-700 leading-relaxed space-y-4 mb-8">
+                    <p>
+                        Wysele delivers SAP consulting services designed to help organizations implement, optimize, migrate, and manage SAP environments with confidence. From SAP S/4HANA implementation to cloud migration and process optimization, our consultants help businesses simplify operations while improving visibility across teams.
+                    </p>
+                    <p>
+                        Whether you're planning a fresh SAP rollout, upgrading legacy systems, or improving existing workflows, our team helps you move forward with clarity and measurable outcomes.
+                    </p>
+                </div>
                 </div>
                 <div className="w-full lg:w-1/2">
                     <img

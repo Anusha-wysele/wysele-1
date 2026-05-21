@@ -24,7 +24,7 @@ const CybersecurityHero = () => {
 
 
         {/* Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-20 md:pt-24">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-15 md:pt-20">
           <div className="w-full lg:w-1/2 lg:max-w-2xl pr-4 lg:pr-8">
             {/* <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -40,7 +40,7 @@ const CybersecurityHero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="text-2xl md:text-3xl lg:text-4xl font-normal text-white leading-[1.1] mb-8 drop-shadow-lg"
+              className="text-2xl md:text-3xl lg:text-4xl font-normal text-white leading-[1.1] mb-5 drop-shadow-lg"
             >
               Protect Your Business{" "}
               <span className="text-white">
@@ -52,34 +52,21 @@ const CybersecurityHero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              className="space-y-8"
+              className="space-y-6"
             >
-              <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
-                End-to-end cybersecurity solutions to safeguard your data, systems, and operations from modern attacks.
+              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
+                Protect business systems, networks, and cloud environments from cyber threats, unauthorized access, and security vulnerabilities.
+              </p>
+              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
+                Detect and reduce risks related to malware, ransomware, phishing attacks, and sensitive data exposure.
+              </p>
+              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
+                Strengthen cybersecurity through risk assessment, vulnerability management, and continuous threat monitoring services.
+              </p>
+              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
+                Secure applications, infrastructure, and enterprise operations to support business continuity and operational stability.
               </p>
 
-              <ul className="grid grid-cols-1 gap-y-4">
-                {[
-                  "Advanced Threat Detection & Prevention",
-                  "24/7 Security Monitoring & Response",
-                  "Data Protection & Encryption",
-                  "Network & Endpoint Security",                  // "Cloud security solutions designed for scalable and secure digital environments",
-                  // "Fast incident response and recovery to minimize downtime and business impact"
-                ].map((item, index) => (
-                  <motion.li  
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                    className="flex items-center gap-4 text-gray-200 text-base md:text-lg bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(201,24,74,0.15)] hover:-translate-y-0.5"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-[#C9184A]/20 flex items-center justify-center flex-shrink-0">
-                      <div className="w-2 h-2 rounded-full bg-[#C9184A] shadow-[0_0_10px_rgba(201,24,74,1)]" />
-                    </div>
-                    <span className="font-light">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
             </motion.div>
 
 
@@ -95,3 +82,4 @@ const CybersecurityHero = () => {
 };
 
 export default CybersecurityHero;
+

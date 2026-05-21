@@ -20,8 +20,8 @@ const DataSupport = () => {
                         <div className="flex items-center gap-3 mb-6">
                             <Cylinderr className="w-4 h-10 rounded-sm" />
                             <h2 className="text-2xl md:text-3xl font-normal text-gray-900 leading-tight">
-                                Comprehensive SAP Datasphere<br />
-                                <span className="font-semibold">Support &amp; Optimization</span>
+                                Comprehensive SAP Support and<br />
+                                <span className="font-semibold">Optimization Services</span>
                             </h2>
                         </div>
 
@@ -29,9 +29,14 @@ const DataSupport = () => {
                         <div className="w-12 h-[1.5px] bg-gray-300 mb-6" />
 
                         {/* Description */}
-                        <p className="text-gray-600 text-sm leading-relaxed font-light">
-                            Our commitment to your success extends beyond implementation. We offer ongoing support services to ensure your SAP Datasphere environment remains efficient and effective. This includes continuous monitoring, troubleshooting, and optimization, ensuring that your data management platform evolves with your business needs while remaining scalable and aligned with your organizational objectives.
-                        </p>
+                        <div className="flex flex-col gap-4 text-gray-700 text-sm leading-relaxed font-light">
+                            <p>
+                                Businesses rely on SAP systems to manage finance, supply chain, procurement, inventory, operations, reporting, and customer processes. Even minor system issues can impact productivity, delay operations, and reduce overall efficiency.
+                            </p>
+                            <p>
+                                Wysele delivers comprehensive SAP support services designed to help organizations maintain uninterrupted business operations while improving system reliability and user experience.
+                            </p>
+                        </div>
                     </motion.div>
 
                     {/* Right side — decorative visual block */}
@@ -54,7 +59,7 @@ const DataSupport = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
-                                className="p-5 border border-gray-100 rounded-lg bg-gray-50 hover:shadow-md hover:border-gray-200 transition-all duration-300"
+                                className="p-5 border border-gray-200 rounded-lg bg-gray-50 hover:shadow-md hover:border-gray-300 transition-all duration-300"
                             >
                                 <h3 className="text-base font-semibold text-gray-900 mb-2 tracking-tight">{item.label}</h3>
                                 <p className="text-sm text-gray-600 leading-relaxed font-light">{item.desc}</p>

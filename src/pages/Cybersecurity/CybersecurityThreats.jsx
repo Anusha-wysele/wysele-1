@@ -11,31 +11,31 @@ import {
 const threats = [
   {
     title: "Malware & Ransomware",
-    desc: "Advanced protection against malicious software designed to infiltrate, damage, or lock your critical systems for ransom. We deploy AI-driven behavioral analysis to stop zero-day attacks.",
+    desc: "Malicious software can damage systems, restrict operational access, and affect business continuity. Wysele helps organizations improve protection against malware and ransomware attacks through threat monitoring and system security measures.",
     icon: <Bug className="w-6 h-6" />,
     image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Phishing Attacks",
-    desc: "Defending against deceptive communications that attempt to steal sensitive information through spoofed emails and websites. Our email security layer filters 99.9% of malicious links.",
+    desc: " Fraudulent emails and deceptive communication attempts are commonly used to gain unauthorized access to sensitive information. Wysele helps businesses strengthen email security and improve protection against phishing risks.",
     icon: <MailWarning className="w-6 h-6" />,
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "Data Breaches",
-    desc: "Securing your most valuable data assets from unauthorized access, theft, and accidental exposure. We implement end-to-end encryption and strict access controls.",
+    desc: "Unauthorized access to business information can affect operations, customer trust, and compliance requirements. We help organizations improve data protection through secure access management and operational security controls.",
     icon: <Database className="w-6 h-6" />,
     image: "https://images.pexels.com/photos/5380655/pexels-photo-5380655.jpeg",
   },
   {
     title: "Insider Threats",
-    desc: "Monitoring and mitigating risks from within the organization. Our UBA (User Behavior Analytics) detects anomalies in employee activity to prevent data exfiltration.",
+    desc: "Internal security risks can affect operational environments when sensitive information is misused or unauthorized activities occur within the organization. We help businesses monitor unusual behavior and improve internal security visibility.",
     icon: <Users className="w-6 h-6" />,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
   },
   {
     title: "DDoS Attacks",
-    desc: "Ensuring business continuity by absorbing and filtering massive traffic spikes designed to overwhelm and crash your network with our global scrubbing centers.",
+    desc: "Distributed denial-of-service attacks can disrupt operational availability and affect online platforms. We help businesses improve infrastructure stability and maintain operational continuity during high-volume traffic attacks. ",
     icon: <Zap className="w-6 h-6" />,
     image: "https://images.pexels.com/photos/8720586/pexels-photo-8720586.jpeg",
   }
@@ -79,38 +79,35 @@ const CybersecurityThreats = () => {
                 </span>
               </div>
 
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-900 mb-8 leading-[1.1] tracking-normal">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-900 mb-3 leading-[1.1] tracking-normal">
                 Threats We{" "}
                 <span className="font-normal text-[#800000]">
-                  Protect
+                  Help
                 </span>{" "}
-                Against
+                Businesses Reduce
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-1">
 
                 <div className="flex items-start space-y-2 gap-3">
                   <div className="w-[5px] h-10 bg-[#ffcc00] mt-1"></div>
 
                   <p className="text-gray-600 text-sm leading-[2] font-normal max-w-lg">
-                    Detect, prevent, and neutralize sophisticated cyber threats before they disrupt business operations.
-                  </p>
+                    Modern businesses face evolving cyber risks that can disrupt operations, expose sensitive data, and impact customer confidence, making strong cybersecurity protection essential.                  </p>
                 </div>
 
                 <div className="flex items-start space-y-2 gap-3">
                   <div className="w-[5px] h-10 bg-[#ffcc00] mt-1"></div>
 
                   <p className="text-gray-600 text-sm leading-[2] font-normal max-w-lg">
-                    Protect critical systems and enterprise infrastructure from malware, ransomware, phishing attacks, and data breaches.
-                  </p>
+                    From ransomware attacks to unauthorized system access, cyber threats continue to grow in complexity and can affect organizations of every size and industry.                  </p>
                 </div>
 
                 <div className="flex items-start space-y-2 gap-3">
                   <div className="w-[5px] h-10 bg-[#ffcc00] mt-1"></div>
 
                   <p className="text-gray-600 text-sm leading-[2] font-normal max-w-lg">
-                    Ensure uninterrupted business continuity through proactive monitoring and advanced defense strategies.
-                  </p>
+                    Protecting digital infrastructure, business applications, and confidential information is critical for maintaining secure and uninterrupted business operations.                  </p>
                 </div>
 
               </div>

@@ -10,7 +10,7 @@ const ConsultationPopup = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +24,7 @@ const ConsultationPopup = () => {
     setFormData({ name: '', email: '', mobile_number: '', message: '' });
     setIsSubmitted(false);
     setIsSubmitting(false);
-    
+
     if (isServicePage) {
       setIsOpen(false);
       setIsMinimized(false);
@@ -48,7 +48,7 @@ const ConsultationPopup = () => {
 
   const isBusinessEmail = (email) => {
     const freeDomains = [
-      'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 
+      'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
       'icloud.com', 'aol.com', 'live.com', 'msn.com', 'rediffmail.com'
     ];
     const domain = email.split('@')[1]?.toLowerCase();
@@ -57,7 +57,7 @@ const ConsultationPopup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!isBusinessEmail(formData.email)) {
       alert('Please use a valid business email address. Personal emails (Gmail, Yahoo, etc.) are not accepted.');
       return;
@@ -100,7 +100,7 @@ const ConsultationPopup = () => {
       <AnimatePresence>
         {isOpen && (
           <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -114,7 +114,7 @@ const ConsultationPopup = () => {
               exit={{ opacity: 0, y: 50, scale: 0.95 }}
               className="relative w-[95%] max-w-[600px] h-auto md:h-[400px] max-h-[90vh] bg-[#800000] overflow-y-auto md:overflow-hidden shadow-2xl flex flex-col md:flex-row rounded-none"
             >
-              <button 
+              <button
                 onClick={handleClose}
                 className="absolute top-3 right-3 z-50 p-1.5 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-colors shadow-lg"
               >
@@ -124,7 +124,7 @@ const ConsultationPopup = () => {
               {/* Left Side */}
               <div className="relative w-full min-h-[160px] md:min-h-0 md:h-auto md:w-[300px] bg-[#800000] p-6 flex flex-col justify-end overflow-hidden border-b md:border-b-0 md:border-r border-white/5 shrink-0">
                 <div className="relative z-10">
-                  <motion.h2 
+                  <motion.h2
                     initial={{ x: -10, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     className="text-[#ffcc00] text-3xl md:text-4xl font-  tracking-normal leading-none"
@@ -136,11 +136,11 @@ const ConsultationPopup = () => {
                   </p>
                 </div>
 
-                <motion.div 
+                <motion.div
                   className="absolute inset-0 w-full h-full pointer-events-none "
                 >
-                  <img 
-                    src="https://images.pexels.com/photos/8101969/pexels-photo-8101969.jpeg" 
+                  <img
+                    src="https://images.pexels.com/photos/8133862/pexels-photo-8133862.jpeg"
                     alt="Consultation"
                     className="w-full h-full object-cover"
                   />
@@ -159,7 +159,7 @@ const ConsultationPopup = () => {
                       className="w-full"
                     >
                       <h3 className="text-xl font- text-[#800000] leading-tight mb-1">
-                        Know More 
+                        Know More
                       </h3>
                       <p className="text-gray-500 text-[10px] font-bold uppercase tracking-wider mb-6">
                         Let's chat about our services.
@@ -167,34 +167,34 @@ const ConsultationPopup = () => {
 
                       <form onSubmit={handleSubmit} className="space-y-3">
                         <div className="space-y-2">
-                          <input 
+                          <input
                             required name="name" value={formData.name} onChange={handleChange}
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Full Name"
                           />
-                          <input 
+                          <input
                             required type="email" name="email" value={formData.email} onChange={handleChange}
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Email Address"
                           />
-                          <input 
+                          <input
                             required type="tel" name="mobile_number" value={formData.mobile_number} onChange={handleChange}
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Mobile Number"
                           />
-                          <input 
+                          <input
                             required type="name" name="company_name" value={formData.company_name} onChange={handleChange}
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Company"
                           />
-                          <textarea 
+                          <textarea
                             required name="message" value={formData.message} onChange={handleChange}
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none h-16 resize-none"
                             placeholder="How can we help?"
                           />
                         </div>
 
-                        <button 
+                        <button
                           type="submit"
                           disabled={isSubmitting}
                           className="w-full py-3 bg-[#800000] text-[#ffcc00] font-black uppercase text-[10px] tracking-[3px] hover:bg-gray-900 transition-all flex items-center justify-center gap-2 mt-4 shadow-lg"

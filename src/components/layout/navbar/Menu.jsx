@@ -329,7 +329,9 @@ export default function Menu({ open, onClose }) {
                 { label: "IT Infrastructure Services", path: "/services/itinfrastructure" },
                 { label: "Cybersecurity Services", path: "/services/cybersecurityhome" },
                 { label: "Web Development", path: "/services/web-development" },
-                { label: "App Development", path: "/services/app-development" }
+                { label: "App Development", path: "/services/app-development" },
+                { label: "IoT Services", path: "/services/iot-services" },
+                { label: "AI/ML Services", path: "/services/aiml-services" }
               ].map((service) => (
                 <button
                   key={service.label}

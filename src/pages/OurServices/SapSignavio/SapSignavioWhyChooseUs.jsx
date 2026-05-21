@@ -12,33 +12,33 @@ import {
 
 const reasons = [
     {
-        title: "Expertise and Experience",
-        description: "Our team possesses a wealth of experience in SAP Signavio and business process management. We excel at tailoring the platform to meet your specific business needs, ensuring that the implementation process is both seamless and effective, setting a strong foundation for long-term success.",
+        title: "Experienced SAP Process Experts",
+        description: "Our consultants bring deep expertise in SAP process transformation, workflow optimization, operational governance, and process intelligence solutions.",
         icon: <Lightbulb size={22} weight="regular" className="text-gray-900" />
     },
     {
-        title: "End-to-End Services",
-        description: "We offer a holistic suite of SAP Signavio services, encompassing everything from initial consulting and implementation to ongoing process optimization and support. Our commitment to partnership means we are by your side at every step of your journey, guiding you towards sustained success and continuous improvement.",
+        title: "End-to-End Process Transformation Support",
+        description: "From process analysis and implementation to optimization and governance, we provide complete SAP Signavio consulting and support services.",
         icon: <PuzzlePiece size={22} weight="regular" className="text-gray-900" />
     },
     {
         title: "Data-Driven Decision Making",
-        description: "By leveraging SAP Signavio’s robust process mining and analytics capabilities, we empower your organization to make smarter, data-driven decisions that lead to superior business outcomes. Our approach fosters a culture of analytical thinking, enabling you to respond proactively to emerging challenges and opportunities.",
+        description: "We help organizations use operational analytics and process intelligence to make smarter business decisions and improve workflow efficiency.",
         icon: <TrendUp size={22} weight="regular" className="text-gray-900" />
     },
     {
         title: "Collaboration and Transparency",
-        description: "We prioritize collaboration and transparency within your organization, ensuring that the process management framework is engaging and inclusive. SAP Signavio provides the necessary tools to keep all stakeholders informed and aligned, facilitating small wins that build momentum for broader organizational change.",
+        description: "Our process management approach improves collaboration, accountability, and operational visibility across teams and departments.",
         icon: <Handshake size={22} weight="regular" className="text-gray-900" />
     },
     {
-        title: "Scalability and Flexibility",
-        description: "Regardless of whether you are a small business or a large enterprise, SAP Signavio scales to accommodate your evolving needs. As your organization grows and your processes adapt, SAP Signavio remains a vital ally, facilitating ongoing optimization, automation, and continuous improvement.",
+        title: "Scalable and Flexible Solutions",
+        description: "Our SAP Signavio solutions are designed to scale with your business operations while supporting changing process requirements and long-term growth.",
         icon: <CornersOut size={22} weight="regular" className="text-gray-900" />
     },
     {
-        title: "Compliance and Governance",
-        description: "We ensure that your processes are optimized and compliant with relevant regulatory and industry standards. With SAP Signavio, we help you establish and maintain robust governance frameworks while driving process excellence through best practices and innovative solutions.",
+        title: "Governance and Compliance Support",
+        description: "We help you establish and maintain robust process compliance and governance frameworks while driving operational excellence through best practices.",
         icon: <Scales size={22} weight="regular" className="text-gray-900" />
     }
 ];
@@ -55,10 +55,10 @@ const SapSignavioWhyChooseUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-3xl md:text-4xl font-normal text-gray-900 mb-2 z-10 flex items-center justify-center gap-3"
+                        className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 z-10 flex items-center justify-center gap-3"
                     >
                         <Cylinderr className="w-4 h-10 rounded-sm" /> 
-                        Why Choose Us
+                        Why Businesses Choose Wysele for SAP Signavio Services
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}

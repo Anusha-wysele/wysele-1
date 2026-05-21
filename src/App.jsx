@@ -26,6 +26,8 @@ const SapVimPage = lazy(() => import("./pages/OurServices/SapVimbrim/SapVimPage"
 const SapMigrationPage = lazy(() => import("./pages/OurServices/MigrationServices/SapMigrationPage"));
 const WebDevelopment = lazy(() => import("./pages/WebDevelopment/WebDevelopmentpages"));
 const AppDevelopment = lazy(() => import("./pages/AppDeveiopment/AppDevelopmentpsges"));
+const IotPage = lazy(() => import("./pages/Iotservice/IotPage"));
+const Aimlpage = lazy(() => import("./pages/AiMlservices/Aimlpage"));
 const SapS4hanaPage = lazy(() => import("./pages/OurServices/SapS4hana/SapS4pages"));
 const SapGenaiPage = lazy(() => import("./pages/OurServices/SapGenai/SapGenaipages"));
 const SapMasterPage = lazy(() => import("./pages/OurServices/SapMasterdata/SapMasterPage"));
@@ -104,6 +106,8 @@ export default function App() {
             <Route path="/services/itinfrastructure" element={<Itinfrastructurepages />} />
             <Route path="/services/web-development" element={<WebDevelopment />} />
             <Route path="/services/app-development" element={<AppDevelopment />} />
+            <Route path="/services/iot-services" element={<IotPage />} />
+            <Route path="/services/aiml-services" element={<Aimlpage />} />
             <Route path="/services/sap-s4hana" element={<SapS4hanaPage />} />
             <Route path="/services/sap-genai" element={<SapGenaiPage />} />
             <Route path="/services/sap-masterdata" element={<SapMasterPage />} />

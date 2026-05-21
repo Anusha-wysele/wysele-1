@@ -4,28 +4,137 @@ import Cylinderr from '../../../components/common/Cylinderr';
 
 const services = [
     {
-        title: "Process Management and Optimization",
-        description: "Our experienced consultants will work closely with your team to facilitate the implementation and integration of SAP BTP within your existing infrastructure. We ensure that your systems communicate effectively across various applications and environments, which enables enhanced collaboration, smarter decision-making, and increased operational efficiency. This holistic approach not only streamlines your processes but also lays the groundwork for future technological advancements."
+        title: "Business Process Management and Optimization",
+        description: (
+            <div className="flex flex-col gap-2">
+                <p>
+                    As organizations grow, business processes often become fragmented across departments and systems. This can create workflow delays, operational inconsistencies, and limited process visibility.
+                </p>
+                <div className="mt-1">
+                    <p className="font-bold text-white mb-1">Key Benefits</p>
+                    <ul className="list-disc pl-3.5 space-y-0 text-white/90">
+                        <li>Improved process visibility</li>
+                        <li>Faster workflow execution</li>
+                        <li>Reduced operational inefficiencies</li>
+                        <li>Better cross-team collaboration</li>
+                        <li>Standardized operational processes</li>
+                        <li>Improved process consistency</li>
+                        <li>Increased operational transparency</li>
+                    </ul>
+                </div>
+            </div>
+        )
     },
     {
-        title: "Process Mining",
-        description: "In today’s data-driven landscape, effective data management is crucial. Our solutions focus on integrating diverse data sources—both internal and external—into a unified platform. We utilize real-time data flows, ensuring that critical information is always accessible, accurate, and actionable. By delivering deep insights through analytical tools, we empower your organization to make informed business decisions that drive growth and innovation."
+        title: "Process Mining and Operational Insights",
+        description: (
+            <div className="flex flex-col gap-2">
+                <p>
+                    Wysele provides SAP Signavio process mining services that help organizations analyze operational data, identify bottlenecks, and improve workflow performance.
+                </p>
+                <div className="mt-1">
+                    <p className="font-bold text-white mb-1">Our Process Mining Capabilities</p>
+                    <ul className="list-disc pl-3.5 space-y-0 text-white/90">
+                        <li>Process performance analysis</li>
+                        <li>Workflow monitoring and tracking</li>
+                        <li>Bottleneck identification</li>
+                        <li>KPI and operational reporting</li>
+                        <li>Compliance visibility</li>
+                        <li>Process efficiency analysis</li>
+                        <li>Data-driven operational insights</li>
+                        <li>Continuous workflow improvement</li>
+                    </ul>
+                </div>
+            </div>
+        )
     },
     {
-        title: "Process Automation",
-        description: "Leverage the capabilities of SAP Analytics Cloud to transform your data into meaningful insights. We provide tailored dashboards, visualizations, and reporting tools that allow for real-time analysis and performance tracking. Our goal is to enable your team to derive actionable intelligence from vast datasets, helping to uncover trends, identify opportunities, and improve strategic planning."
+        title: "Process Automation and Workflow Efficiency",
+        description: (
+            <div className="flex flex-col gap-2">
+                <p>
+                    Wysele helps organizations automate repetitive workflows using SAP Signavio automation capabilities designed to improve efficiency and operational performance.
+                </p>
+                <div className="mt-1">
+                    <p className="font-bold text-white mb-1">We support automation for:</p>
+                    <ul className="list-disc pl-3.5 space-y-0 text-white/90">
+                        <li>Approval workflows</li>
+                        <li>Process orchestration</li>
+                        <li>Operational task management</li>
+                        <li>Workflow standardization</li>
+                        <li>Business notifications</li>
+                        <li>Repetitive operational activities</li>
+                    </ul>
+                </div>
+            </div>
+        )
     },
     {
-        title: "Collaboration and Governance",
-        description: "Embrace the future of business with SAP’s AI and machine learning capabilities designed to automate processes and elevate customer experiences. We help you implement advanced AI solutions that analyze data patterns, predict trends, and deliver personalized insights. By leveraging these technologies, your organization can enhance operational efficiency, reduce costs, and achieve a competitive edge in the market."
+        title: "Collaboration and Process Governance",
+        description: (
+            <div className="flex flex-col gap-2">
+                <p>
+                    SAP Signavio helps businesses create transparent process environments that improve communication, accountability, and governance.
+                </p>
+                <p>
+                    Wysele supports organizations in building scalable governance frameworks that improve process visibility and operational alignment across the enterprise.
+                </p>
+                <div className="mt-1">
+                    <p className="font-bold text-white mb-1">We help businesses establish:</p>
+                    <ul className="list-disc pl-3.5 space-y-0 text-white/90">
+                        <li>Centralized process documentation</li>
+                        <li>Workflow accountability structures</li>
+                        <li>Governance and approval frameworks</li>
+                        <li>Standard operating procedures</li>
+                        <li>Cross-functional collaboration models</li>
+                        <li>Process ownership visibility</li>
+                    </ul>
+                </div>
+            </div>
+        )
     },
     {
         title: "Change Management and Continuous Improvement",
-        description: "Our team specializes in creating bespoke applications that cater to your unique business requirements. Utilizing SAP’s low-code and no-code development platforms, we streamline the application development process, enabling rapid deployment and easy scalability. Our solutions are designed not only to address immediate needs but also to evolve alongside your business, facilitating agility in a fast-changing environment."
+        description: (
+            <div className="flex flex-col gap-2">
+                <p>
+                    Digital transformation requires continuous adaptation as business requirements evolve. Wysele helps organizations implement structured change management and continuous process improvement strategies using SAP Signavio solutions.
+                </p>
+                <div className="mt-1">
+                    <p className="font-bold text-white mb-1">We help organizations:</p>
+                    <ul className="list-disc pl-3.5 space-y-0 text-white/90">
+                        <li>Improve operational flexibility</li>
+                        <li>Modernize legacy workflows</li>
+                        <li>Increase business agility</li>
+                        <li>Support process scalability</li>
+                        <li>Improve workflow efficiency</li>
+                        <li>Build continuous optimization strategies</li>
+                    </ul>
+                </div>
+            </div>
+        )
     },
     {
         title: "Integration with SAP S/4HANA",
-        description: "We recognize the importance of a robust cloud infrastructure for your SAP BTP environment. Our team will optimize your cloud setup to ensure peak performance and scalability, aligning it with your business goals. We offer ongoing monitoring, maintenance, and optimization services to enhance system reliability and security, allowing your organization to focus on innovation rather than infrastructure."
+        description: (
+            <div className="flex flex-col gap-2">
+                <p>
+                    Wysele provides SAP Signavio consulting services that support SAP S/4HANA transformation through process discovery, workflow analysis, operational alignment, and process optimization.
+                </p>
+                <div className="mt-1">
+                    <p className="font-bold text-white mb-1">SAP S/4HANA Support Areas</p>
+                    <ul className="list-disc pl-3.5 space-y-0 text-white/90">
+                        <li>Process discovery and mapping</li>
+                        <li>Transformation planning support</li>
+                        <li>Workflow optimization</li>
+                        <li>Process standardization</li>
+                        <li>Migration readiness analysis</li>
+                        <li>Operational alignment strategies</li>
+                        <li>Governance and compliance improvements</li>
+                    </ul>
+                </div>
+            </div>
+        )
     }
 ];
 
@@ -76,9 +185,9 @@ const SapSignavioServices = () => {
                                     <h3 className="text-[15px] font-semibold text-white mb-2 leading-tight transition-colors duration-300">
                                         {service.title}
                                     </h3>
-                                    <p className="text-white/80 text-[10.5px] leading-snug font-normal mb-4 flex-1">
+                                    <div className="text-white/80 text-[11.5px] leading-snug font-normal mb-4 flex-1">
                                         {service.description}
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>

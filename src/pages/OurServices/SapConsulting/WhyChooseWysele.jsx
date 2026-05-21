@@ -1,46 +1,62 @@
+import React from 'react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { Layers, Sliders, ClipboardList, TrendingUp, Settings } from 'lucide-react';
 
 const reasons = [
     {
-        title: "Expertise Across SAP Ecosystem",
-        description: "Our consultants bring deep expertise across a wide range of SAP solutions, including SAP S/4HANA, SuccessFactors, Ariba, Concur, and C/4HANA. Whether functional or technical, we provide the right specialists to meet your business needs."
+        title: "SAP Ecosystem Expertise",
+        description: "Our consultants bring experience across SAP S/4HANA, SAP Fiori, SAP Ariba, SAP Concur, SAP cloud solutions, and enterprise integration services.",
+        icon: <Layers className="w-5 h-5 text-[#C9184A]" strokeWidth={2} />
     },
     {
-        title: "Tailored Solutions",
-        description: "We understand that every business is unique. That's why we design customized SAP solutions aligned with your industry requirements, business goals, and operational challenges, ensuring maximum effectiveness."
+        title: "Customized Consulting Approach",
+        description: "We don't apply the same implementation strategy to every business. Our consulting model adapts to your industry, workflows, operational goals, and scalability requirements.",
+        icon: <Sliders className="w-5 h-5 text-[#C9184A]" strokeWidth={2} />
     },
     {
-        title: "Proven Track Record",
-        description: "Wysele has successfully delivered SAP projects across diverse industries, consistently driving process improvements and measurable results. Our experience reflects our ability to create real business impact."
+        title: "End-to-End Support",
+        description: "From planning and deployment to optimization and training, we provide complete SAP consulting support throughout the project lifecycle.",
+        icon: <ClipboardList className="w-5 h-5 text-[#C9184A]" strokeWidth={2} />
     },
     {
-        title: "End-to-End Services",
-        description: "From initial consultation and planning to implementation, support, and optimization, we offer complete SAP services. We act as your trusted partner throughout your entire SAP journey."
+        title: "Focus on Business Outcomes",
+        description: "Our goal is not just implementation. We focus on improving efficiency, reducing operational friction, and helping businesses gain measurable value from SAP investments.",
+        icon: <TrendingUp className="w-5 h-5 text-[#C9184A]" strokeWidth={2} />
     },
     {
-        title: "Continuous Support and Training",
-        description: "Our commitment doesn't end after implementation. We provide ongoing support, performance monitoring, and tailored training to help your team fully utilize SAP systems and continuously adapt to changing business needs."
+        title: "Ongoing Support and Optimization",
+        description: "SAP systems require continuous improvement. We provide ongoing support services that help businesses maintain system reliability and performance.",
+        icon: <Settings className="w-5 h-5 text-[#C9184A]" strokeWidth={2} />
     }
 ];
 
-const Card = ({ reason, stretch }) => (
-    <div
-        className={`rounded-lg overflow-hidden transition-all duration-300 group flex flex-col ${stretch ? 'h-full w-full' : ''}`}
-        style={{ backgroundColor: '#fff8e1' }}
-    >
-        <div className="h-1 w-full" style={{ backgroundColor: '#F59E0B' }} />
-        <div className="p-5 relative flex-1">
-            <h3 className="text-sm font-bold text-gray-900 mb-2">{reason.title}</h3>
-            <p className="text-xs text-gray-600 leading-relaxed">{reason.description}</p>
-            {/* Bottom fill bar */}
-            <div className="bottom-fill absolute bottom-0 left-0 w-full h-[3px]" />
+const Card = ({ reason }) => (
+    <div className="bg-[#FAF6EE] border border-neutral-200/50 rounded-none p-5 hover:shadow-lg transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+        {/* Sliding soft translucent black overlay from top to bottom */}
+        <div className="absolute inset-0 bg-black/10 -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 pointer-events-none" />
+        
+        <div className="relative z-10 flex flex-col h-full">
+            {/* Top Header: Icon & Title in a row */}
+            <div className="flex items-center gap-3 mb-4 text-left">
+                <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-red-50/50 flex items-center justify-center">
+                    {reason.icon}
+                </div>
+                <h3 className="text-xs sm:text-[13px] font-bold text-gray-900 leading-snug">
+                    {reason.title}
+                </h3>
+            </div>
+            
+            {/* Description: Centered text */}
+            <p className="text-[11px] sm:text-xs text-gray-700 leading-relaxed font-normal text-left sm:text-center mt-auto">
+                {reason.description}
+            </p>
         </div>
     </div>
 );
 
 const WhyChooseWysele = () => (
     <div
-        className="min-h-[80vh] py-16 lg:h-auto relative flex items-center"
+        className="min-h-[75vh] py-16 lg:h-auto relative flex items-center"
         style={{
             backgroundImage: `url(${SERVICES_PAGE_IMAGES.whyChooseWysele})`,
             backgroundSize: 'cover',
@@ -49,12 +65,15 @@ const WhyChooseWysele = () => (
     >
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
-            <h2 className="text-xl font-light text-center mb-12 text-white">
-                Why Choose Wysele for SAP Consulting Services?
+            {/* Title */}
+            <h2 className="text-xl sm:text-2xl font-bold text-center mb-12 text-white">
+                Why Businesses Choose Wysele for SAP Consulting
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            {/* 5-Column Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 {reasons.map((reason, index) => (
-                    <Card key={index} reason={reason} stretch={true} />
+                    <Card key={index} reason={reason} />
                 ))}
             </div>
         </div>

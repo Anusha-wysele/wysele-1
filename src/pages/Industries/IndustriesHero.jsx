@@ -49,7 +49,7 @@ const IndustriesHero = () => {
   return (
     <section className="relative w-full min-h-screen lg:h-screen overflow-hidden m-0 p-0 bg-black font-inter">
       {/* Background Image Slider */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         <AnimatePresence initial={false}>
           <motion.img
             key={currentImageIndex}
@@ -62,54 +62,72 @@ const IndustriesHero = () => {
               scale: { duration: 10, ease: "linear" } 
             }}
             alt={`Industry ${currentImageIndex}`}
-            className="absolute inset-0 w-full h-full object-fill block"
+            className="absolute inset-0 w-full h-full object-cover block"
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-black/10" />
+        {/* Dark Gradient Overlay for Maximum Text Contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/35 z-10" />
       </div>
 
       {/* Main UI Overlay */}
-      <div className="relative z-10 w-full h-full">
-        <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 h-full relative">
-          
-          {/* Top Left Content: Heading, Arrow & Progress */}
-          <div className="absolute top-[25%] md:top-[45%] left-6 md:left-12 lg:left-20 max-w-2xl w-full h-auto md:h-[400px]">
-            <AnimatePresence>
-              <motion.div 
-                key={currentImageIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2 }}
-                className="absolute inset-0"
-              >
-                {/* Sliding Heading */}
-                <motion.h1
-                  initial={{ x: -150, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-3xl md:text-4xl lg:text-[45px] font-light text-white leading-[1.05] mb-8 tracking-tight"
+      <div className="relative z-20 w-full min-h-screen lg:h-screen flex flex-col justify-end pt-24 pb-12 sm:pb-16 md:pb-20 lg:pb-24">
+        <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 w-full">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImageIndex}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { 
+                  opacity: 1,
+                  transition: { staggerChildren: 0.15, delayChildren: 0.1 }
+                },
+                exit: { opacity: 0, transition: { duration: 0.5 } }
+              }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end w-full"
+            >
+              {/* Left Column: Tags and Heading */}
+              <div className="lg:col-span-8 space-y-4 md:space-y-6">
+                {/* Tags */}
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                  }}
+                  className="flex flex-wrap gap-2"
                 >
-                  {heroContent[currentImageIndex].title.split(' ').map((word, i) => (
-                    <span key={i}>
-                      {word}{' '}
+                  {heroContent[currentImageIndex].tags.map((tag, i) => (
+                    <span key={i} className="px-3.5 py-1 rounded-full border border-white/20 text-[9px] font-bold text-white/90 backdrop-blur-sm hover:bg-white hover:text-black transition-colors cursor-default whitespace-nowrap uppercase tracking-widest">
+                      {tag}
                     </span>
                   ))}
+                </motion.div>
+
+                {/* Title */}
+                <motion.h1
+                  variants={{
+                    hidden: { opacity: 0, y: 25 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-[45px] font-light text-white leading-[1.1] tracking-tight max-w-3xl"
+                >
+                  {heroContent[currentImageIndex].title}
                 </motion.h1>
-                
-                <div className="flex flex-col gap-10">
-                  {/* Sliding Arrow */}
-                  <motion.div 
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.7, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="opacity-80 text-white"
-                  >
-                    <ArrowUpRight className="w-16 h-16 font-thin" strokeWidth={0.5} />
-                  </motion.div>
-                  
-                  {/* Static Progress Bar (Fades only) */}
-                  <div className="w-32 h-[1px] bg-white/20 relative overflow-hidden ml-12">
+
+                {/* Progress Bar & Arrow (Desktop/Tablet layout) */}
+                <motion.div 
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { duration: 0.6 } }
+                  }}
+                  className="hidden sm:flex items-center gap-6 pt-2"
+                >
+                  <div className="opacity-80 text-white">
+                    <ArrowUpRight className="w-10 h-10 font-thin" strokeWidth={0.5} />
+                  </div>
+                  <div className="w-32 h-[1px] bg-white/20 relative overflow-hidden">
                     <motion.div
                       key={currentImageIndex}
                       initial={{ width: "0%" }}
@@ -118,49 +136,35 @@ const IndustriesHero = () => {
                       className="absolute inset-y-0 left-0 bg-white/80"
                     />
                   </div>
+                </motion.div>
+              </div>
+
+              {/* Right Column: Description */}
+              <div className="lg:col-span-4 space-y-4 lg:pb-3">
+                <motion.p
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
+                  }}
+                  className="text-white/80 text-[11px] sm:text-xs md:text-xs font-normal leading-relaxed tracking-wide max-w-md lg:max-w-sm"
+                >
+                  {heroContent[currentImageIndex].desc}
+                </motion.p>
+                
+                {/* Progress Bar on Mobile (when sm:hidden) */}
+                <div className="sm:hidden w-28 h-[1px] bg-white/20 relative overflow-hidden pt-0.5">
+                  <motion.div
+                    key={currentImageIndex}
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 8, ease: "linear" }}
+                    className="absolute inset-y-0 left-0 bg-white/80"
+                  />
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </div>
 
-          {/* Bottom Left: Tags */}
-          <div className="absolute bottom-32 md:bottom-12 left-6 md:left-12 lg:left-20 w-fit h-auto">
-            <AnimatePresence>
-              <motion.div
-                key={currentImageIndex}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: 0.9, duration: 1, ease: "easeOut" }}
-                className="absolute inset-0"
-              >
-                <div className="flex flex-wrap gap-3">
-                  {heroContent[currentImageIndex].tags.map((tag, i) => (
-                    <span key={i} className="px-4 py-1.5 rounded-full border border-white/20 text-[10px] text-white/90 backdrop-blur-md hover:bg-white hover:text-black transition-colors cursor-default whitespace-nowrap uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Bottom Center/Right: Description */}
-          <div className="absolute bottom-8 md:bottom-12 left-6 right-6 md:left-[35%] lg:left-[30%] max-w-sm w-auto h-auto">
-            <AnimatePresence>
-              <motion.p
-                key={currentImageIndex}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: 1.2, duration: 1.2, ease: "easeOut" }}
-                className="absolute inset-0 text-white text-[11px] md:text-xs font-normal leading-relaxed tracking-wide"
-              >
-                {heroContent[currentImageIndex].desc}
-              </motion.p>
-            </AnimatePresence>
-          </div>
-
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

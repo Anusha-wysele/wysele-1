@@ -85,7 +85,6 @@ export default function Appdevelopmentprocess() {
     }, [nextSlide]);
 
     const currentService = PROCESS_STEPS[activeIndex];
-    const nextService = PROCESS_STEPS[(activeIndex + 1) % PROCESS_STEPS.length];
 
     return (
         <section className="py-10 bg-white overflow-hidden">
@@ -141,6 +140,7 @@ export default function Appdevelopmentprocess() {
                                         animate={{ opacity: 1, x: 0 }}
                                         exit={{ opacity: 0, x: -10 }}
                                         transition={{ duration: 0.5, ease: "easeOut" }}
+                                        className="pr-8"
                                     >
                                         <h4 className="text-base font-bold text-gray-900 mb-1">
                                             {currentService.title}
@@ -150,24 +150,32 @@ export default function Appdevelopmentprocess() {
                                         </p>
                                     </motion.div>
                                 </AnimatePresence>
+
+                                {/* Right Arrow */}
+                                <div onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 bg-[#800000] text-white hover:bg-[#600000] active:scale-95 transition-all duration-300 cursor-pointer">
+                                    <ArrowRight className="w-4 h-4" strokeWidth={2} />
+                                </div>
                             </div>
                         </div>
 
-                        {/* Thumbnails and Navigation */}
+                        {/* Thumbnails (Only boxes with step tags, no images) */}
                         <div className="mt-auto">
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 sm:gap-4 mb-8">
+                            <div className="grid grid-cols-3 gap-3 mb-8">
                                 {PROCESS_STEPS.map((service, idx) => (
                                     <button
                                         key={service.id}
                                         onClick={() => setActiveIndex(idx)}
-                                        className={`relative rounded-none overflow-hidden aspect-video transition-all duration-300 ${activeIndex === idx ? 'ring-4 ring-[#FFB703] scale-105' : 'opacity-40 grayscale hover:opacity-100 hover:grayscale-0'}`}
+                                        className={`relative rounded-none p-2 h-12 flex items-center justify-center transition-all duration-300 border ${
+                                            activeIndex === idx 
+                                                ? 'bg-[#800000] border-[#800000] text-white ring-2 ring-[#FFB703]' 
+                                                : 'bg-[#f8f9fa] border-gray-300 text-gray-800 hover:bg-gray-100 hover:border-gray-400'
+                                        }`}
                                     >
-                                        <img src={service.image} className="w-full h-full object-cover" alt="" />
-                                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                                            <span className="text-[10px] font-black text-white uppercase tracking-tighter">
-                                                {service.tag}
-                                            </span>
-                                        </div>
+                                        <span className={`text-[10px] font-black uppercase tracking-wider text-center ${
+                                            activeIndex === idx ? 'text-white' : 'text-gray-900'
+                                        }`}>
+                                            {service.tag}
+                                        </span>
                                     </button>
                                 ))}
                             </div>

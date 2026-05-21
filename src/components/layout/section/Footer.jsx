@@ -1,5 +1,5 @@
 import React from "react";
-import { Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
+import { Linkedin, Instagram, Facebook } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
@@ -15,8 +15,18 @@ export default function Footer() {
                             Wysele is one of India’s top SAP solution providers, delivering end-to-end digital transformation for enterprises globally.
                         </p>
                         <div className="flex gap-4">
-                            {[Linkedin, Instagram, Facebook, Youtube].map((Icon, i) => (
-                                <a key={i} href="#" className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors">
+                            {[
+                                { Icon: Linkedin, href: "https://www.linkedin.com/company/wysele" },
+                                { Icon: Instagram, href: "#" },
+                                { Icon: Facebook, href: "#" }
+                            ].map(({ Icon, href }, i) => (
+                                <a 
+                                    key={i} 
+                                    href={href} 
+                                    target={href !== "#" ? "_blank" : undefined} 
+                                    rel={href !== "#" ? "noopener noreferrer" : undefined} 
+                                    className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
+                                >
                                     <Icon size={20} className="text-white/60" />
                                 </a>
                             ))}

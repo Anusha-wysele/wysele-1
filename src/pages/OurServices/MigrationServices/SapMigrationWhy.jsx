@@ -47,7 +47,9 @@ export default function SapMigrationWhy() {
                                     alt="Transformation"
                                     className="w-full h-full object-cover"
                                 />
-                                {/* Subtle gradient for text readability without solid color overlay */}
+                                {/* Black Color Overlay */}
+                                <div className="absolute inset-0 bg-black/50" />
+                                {/* Subtle gradient for text readability */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                             </div>
 
@@ -116,7 +118,7 @@ export default function SapMigrationWhy() {
                                             <h4 className="text-xs md:text-sm font-bold text-gray-900 mb-0.5">
                                                 {point.title}
                                             </h4>
-                                            <p className="text-gray-800 text-[10px] leading-relaxed font-normal max-w-lg">
+                                            <p className="text-gray-950 text-xs md:text-[13px] leading-relaxed font-medium max-w-lg">
                                                 {point.desc}
                                             </p>
                                         </div>

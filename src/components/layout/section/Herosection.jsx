@@ -1,37 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from "lucide-react";
+import { motion } from 'framer-motion';
 import HeroVideo from '../../../assets/Hero.mp4';
 import Button from '../../common/Button';
 
-const partnerSets = [
-  [
-    <div key="p1" style={{ fontFamily: "Arial, sans-serif", fontWeight: 900, color: "white", fontSize: "1.1rem", letterSpacing: "1px", display: "flex", flexDirection: "column", alignItems: "center", fontStyle: "italic" }}><span>SCHNEIDER</span><div style={{ width: "100%", height: "2px", backgroundColor: "white", marginTop: "1px" }} /></div>,
-    <div key="p2" style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, color: "white", fontSize: "1.2rem", letterSpacing: "-0.5px" }}>job&talent</div>,
-    <div key="p3" style={{ fontFamily: "Impact, sans-serif", fontWeight: 400, color: "white", fontSize: "1.2rem", letterSpacing: "0.5px", textAlign: "center", lineHeight: 1.1 }}>WERNER<br /><span style={{ fontSize: "0.65rem", fontWeight: 400, letterSpacing: "2px", display: "block", marginTop: "2px" }}>ENTERPRISES</span></div>,
-    <div key="p4" style={{ fontFamily: "Helvetica, Arial, sans-serif", fontWeight: 600, color: "white", fontSize: "1.2rem", display: "flex", alignItems: "center", gap: "6px" }}>Naturgy<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: "4px" }}><path d="M11 12C11 12 17 2 22 2C22 10 18 12 11 12Z" fill="white" opacity="0.9" /><path d="M11 12C11 12 17 22 22 22C22 14 18 12 11 12Z" fill="white" opacity="0.6" /></svg></div>,
-    <div key="p5" style={{ fontFamily: "Arial, sans-serif", fontWeight: 600, color: "white", fontSize: "1.1rem", letterSpacing: "1px", position: "relative" }}>CMA CGM<div style={{ position: "absolute", top: "-6px", right: "-8px", width: "100%", height: "100%", borderTop: "2px solid rgba(255,255,255,0.7)", borderRight: "2px solid rgba(255,255,255,0.7)", borderRadius: "0 10px 0 0" }}></div></div>
-  ],
-  [
-    <div key="p6" style={{ fontFamily: "Verdana, sans-serif", fontWeight: 700, color: "white", fontSize: "1.1rem", letterSpacing: "2px", textTransform: "uppercase" }}>NVIDIA</div>,
-    <div key="p7" style={{ fontFamily: "Georgia, serif", fontWeight: 400, color: "white", fontSize: "1.2rem", fontStyle: "italic" }}>Salesforce</div>,
-    <div key="p8" style={{ fontFamily: "Arial, sans-serif", fontWeight: 800, color: "white", fontSize: "1.3rem", letterSpacing: "-1px" }}>ORACLE</div>,
-    <div key="p9" style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, color: "white", fontSize: "1.2rem", display: "flex", alignItems: "center", gap: "8px" }}><svg width="16" height="16" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" opacity="0.8" /></svg>Spotify</div>,
-    <div key="p10" style={{ fontFamily: "Courier New, monospace", fontWeight: 700, color: "white", fontSize: "1.2rem" }}>&lt;STRIPE/&gt;</div>
-  ],
-  [
-    <div key="p11" style={{ fontFamily: "Impact, sans-serif", fontWeight: 400, color: "white", fontSize: "1.3rem", letterSpacing: "1px" }}>TESLA</div>,
-    <div key="p12" style={{ fontFamily: "Arial, sans-serif", fontWeight: 600, color: "white", fontSize: "1.2rem" }}>Microsoft</div>,
-    <div key="p13" style={{ fontFamily: "Arial Black, sans-serif", fontWeight: 900, color: "white", fontSize: "1rem", letterSpacing: "-0.5px" }}>AMAZON</div>,
-    <div key="p14" style={{ fontFamily: "Inter, sans-serif", fontWeight: 300, color: "white", fontSize: "1.2rem", letterSpacing: "2px" }}>INTEL</div>,
-    <div key="p15" style={{ fontFamily: "Trebuchet MS, sans-serif", fontWeight: 700, color: "white", fontSize: "1.3rem", display: "flex", alignItems: "center" }}>CISCO<span style={{ color: "#4BDE7B", marginLeft: "2px" }}>.</span></div>
-  ]
-];
-
 function useWindowWidth() {
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
-  useEffect(() => {
+  React.useEffect(() => {
     const handler = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handler);
     return () => window.removeEventListener('resize', handler);
@@ -41,21 +16,11 @@ function useWindowWidth() {
 
 export default function HeroSection() {
   const navigate = useNavigate();
-  const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
-  const [btnHover, setBtnHover] = useState(false);
   const width = useWindowWidth();
   const isMobile = width < 768;
   const isTablet = width >= 768 && width < 1024;
 
   const numVisibleLogos = isMobile ? 3 : (isTablet ? 4 : 5);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPartnerIndex((prev) => (prev + 1) % partnerSets.length);
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div style={{
@@ -161,7 +126,7 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Grid Logos Section */}
+      {/* Bottom Grid Border Design (Logos Removed) */}
       <div style={{
         position: isMobile ? "relative" : "absolute",
         bottom: 0,
@@ -179,35 +144,8 @@ export default function HeroSection() {
             style={{
               flex: 1,
               borderRight: colIndex < numVisibleLogos - 1 ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
-              position: "relative",
-              overflow: "hidden",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              padding: "0 10px",
             }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentPartnerIndex}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                style={{
-                  position: "absolute",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
-                  height: "100%",
-                  transform: isMobile ? "scale(0.85)" : "scale(1)"
-                }}
-              >
-                {partnerSets[currentPartnerIndex][colIndex]}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+          />
         ))}
       </div>
     </div>

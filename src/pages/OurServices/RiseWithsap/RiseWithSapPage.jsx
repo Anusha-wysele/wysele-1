@@ -8,14 +8,14 @@ import Footer from '../../../components/layout/section/Footer';
 
 const RiseWithSapPage = () => {
     return (
-        <div className="pt-[68px]">
+        <main className="bg-white">
             <RiseWithsaphero />
             <WhatRisewithsap />
             <WhyChooserise />
             <RiseBenifits />
             <HowRisework />
             <Footer />
-        </div>
+        </main>
     );
 };
 

@@ -1,9 +1,82 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { industryImages } from "../../components/common/data";
 
 const IndustriesNav = () => {
   const [activeSection, setActiveSection] = useState("");
+  const [stickyTop, setStickyTop] = useState(68);
+  const scrollContainerRef = useRef(null);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      const navbar = document.getElementById("main-navbar") || document.querySelector("nav.fixed");
+      if (navbar) {
+        const rect = navbar.getBoundingClientRect();
+        setStickyTop(rect.bottom);
+      }
+    };
+
+    updateNavbarHeight();
+    const timer = setTimeout(updateNavbarHeight, 100);
+
+    window.addEventListener("resize", updateNavbarHeight);
+    window.addEventListener("scroll", updateNavbarHeight);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", updateNavbarHeight);
+      window.removeEventListener("scroll", updateNavbarHeight);
+    };
+  }, []);
+
+  // Update horizontal scroll indicators (fades)
+  const handleScrollIndicators = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScrollIndicators);
+      handleScrollIndicators();
+    }
+    window.addEventListener("resize", handleScrollIndicators);
+
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScrollIndicators);
+      }
+      window.removeEventListener("resize", handleScrollIndicators);
+    };
+  }, []);
+
+  // Scroll active tab into view
+  useEffect(() => {
+    if (activeSection) {
+      const activeBtn = scrollContainerRef.current?.querySelector(`.tab-btn-${activeSection}`);
+      if (activeBtn && scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        const containerWidth = container.offsetWidth;
+        const buttonLeft = activeBtn.offsetLeft;
+        const buttonWidth = activeBtn.offsetWidth;
+        
+        container.scrollTo({
+          left: buttonLeft - (containerWidth / 2) + (buttonWidth / 2),
+          behavior: "smooth"
+        });
+      }
+    }
+    // Re-verify indicators after smooth scroll finishes
+    const timer = setTimeout(handleScrollIndicators, 300);
+    return () => clearTimeout(timer);
+  }, [activeSection]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,8 +87,8 @@ const IndustriesNav = () => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // If the section's top is near the top of the viewport
-          if (rect.top <= 200) {
+          // Adjust intersection threshold based on header height
+          if (rect.top <= stickyTop + 85) {
             current = section;
           }
         }
@@ -25,12 +98,29 @@ const IndustriesNav = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [stickyTop]);
 
   return (
-    <nav className="sticky top-[68px] z-50 bg-white border-b border-gray-100 shadow-sm">
-      <div className="max-w-[1440px] mx-auto px-6">
-        <div className="flex items-center overflow-x-auto no-scrollbar py-0">
+    <nav 
+      className="sticky z-[900] bg-white border-b border-gray-100 shadow-sm py-1.5 md:py-2"
+      style={{ top: `${stickyTop}px` }}
+    >
+      <div className="max-w-[1440px] mx-auto px-4 md:px-6 relative">
+        {/* Left Fade Overlay */}
+        <div 
+          className={`absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none transition-opacity duration-300 z-30 ${showLeftArrow ? "opacity-100" : "opacity-0"}`} 
+        />
+        
+        {/* Right Fade Overlay */}
+        <div 
+          className={`absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none transition-opacity duration-300 z-30 ${showRightArrow ? "opacity-100" : "opacity-0"}`} 
+        />
+
+        {/* Scrollable container */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex items-center overflow-x-auto no-scrollbar py-1 relative scroll-smooth gap-1 md:gap-2"
+        >
           {industryImages.map((industry, index) => {
             const id = industry.alt.toLowerCase().split(' ')[0];
             const isActive = activeSection === id;
@@ -38,11 +128,11 @@ const IndustriesNav = () => {
             return (
               <React.Fragment key={industry.alt}>
                 <motion.button
-                  whileHover={{ backgroundColor: "#fafafa" }}
+                  whileHover={{ backgroundColor: isActive ? "" : "#fafafa" }}
                   onClick={() => {
                     const element = document.getElementById(id);
                     if (element) {
-                      const offset = 120;
+                      const offset = stickyTop + 55;
                       const bodyRect = document.body.getBoundingClientRect().top;
                       const elementRect = element.getBoundingClientRect().top;
                       const elementPosition = elementRect - bodyRect;
@@ -54,23 +144,18 @@ const IndustriesNav = () => {
                       });
                     }
                   }}
-                  className={`relative px-3.5 py-4 text-[12px] font-bold tracking-[0.05em] uppercase whitespace-nowrap transition-all duration-300 flex-shrink-0
-                    ${isActive ? 'bg-[#D4AF37] text-white' : 'text-gray-500 hover:text-gray-900'}`}
+                  className={`tab-btn-${id} relative px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-[11.5px] font-bold tracking-[0.05em] uppercase whitespace-nowrap transition-colors duration-300 flex-shrink-0 z-20 rounded-full
+                    ${isActive ? 'text-white' : 'text-gray-500 hover:text-gray-900'}`}
                 >
-                  {industry.alt}
-                  {/* Active Indicator Line if not using full box background */}
-                  {/* isActive && (
+                  <span className="relative z-20">{industry.alt}</span>
+                  {isActive && (
                     <motion.div 
                       layoutId="activeTab"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#C9184A]" 
+                      className="absolute inset-0 bg-[#D4AF37] rounded-full z-10 shadow-sm"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
                     />
-                  ) */}
+                  )}
                 </motion.button>
-                
-                {/* Border Line after each item except the last one */}
-                {index < industryImages.length - 1 && (
-                  <div className="h-3 w-[1px] bg-gray-200 flex-shrink-0 hidden md:block" />
-                )}
               </React.Fragment>
             );
           })}

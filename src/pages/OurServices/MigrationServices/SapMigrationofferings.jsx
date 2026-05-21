@@ -225,11 +225,11 @@ export default function SapMigrationofferings() {
                             <div className="w-[1px] h-10 bg-gradient-to-b from-[#800000] to-transparent opacity-30" />
 
                             {/* Content Box */}
-                            <div className="w-full bg-[#fcfcfc] border border-gray-100 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[160px] flex flex-col text-center">
-                                <h4 className="text-sm font-bold text-gray-900 mb-3 tracking-tight">
+                            <div className="w-full bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[170px] flex flex-col text-center">
+                                <h4 className="text-sm font-bold text-[#800000] mb-3 tracking-tight">
                                     {item.title}
                                 </h4>
-                                <p className="text-[11px] text-gray-800 leading-relaxed font-normal">
+                                <p className="text-xs text-gray-900 leading-relaxed font-medium">
                                     {item.desc}
                                 </p>
                             </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Settings, Target, Award, RefreshCw, Building2 } from 'lucide-react';
+import { Settings, Target, Award, RefreshCw, Building2, Check } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
 
@@ -57,27 +57,27 @@ const FunctionalConsulting = () => {
     const services = [
         {
             title: "SAP S/4HANA Implementation",
-            description: "We guide you through the transition to SAP's next-generation ERP suite, ensuring a thorough planning process that minimizes operational disruption. Our approach focuses on risk mitigation, data migration strategies, and user training, enabling a smooth and successful migration to the new system.",
+            description: "We help businesses implement SAP S/4HANA with structured planning, configuration, testing, and deployment support. Our implementation approach focuses on minimizing disruption while improving operational efficiency.",
             icon: <Settings size={40} strokeWidth={1} />
         },
         {
             title: "Business Process Optimization",
-            description: "We analyze and refine your core business processes—such as finance, supply chain, procurement, and human resources—through a data-driven approach. This helps identify bottlenecks, inefficiencies, and areas for improvement, ultimately driving operational efficiency and enhancing your overall productivity.",
+            description: "Our consultants analyze existing workflows across finance, procurement, inventory, sales, supply chain, and operations to identify process improvements and automation opportunities.",
             icon: <Target size={40} strokeWidth={1} />
         },
         {
-            title: "SAP Best Practices",
-            description: "We draw upon industry best practices and standardized configurations to accelerate your implementation process. By aligning your operations with proven methodologies, we help you reduce costs, improve system performance, and maximize your return on investment (ROI) in SAP technologies.",
+            title: "SAP Best Practices Alignment",
+            description: "We configure SAP environments based on industry best practices to improve productivity, reduce process inconsistencies, and support better decision-making.",
             icon: <Award size={40} strokeWidth={1} />
         },
         {
-            title: "Change Management",
-            description: "Navigating organizational change is crucial for success. We offer tailored change management strategies, including stakeholder engagement, communication plans, and training programs, to equip your team with the necessary skills and knowledge. This ensures that your organization successfully adapts to the new systems and processes.",
+            title: "Change Management and User Adoption",
+            description: "Successful SAP implementation depends on user adoption. We provide onboarding support, training programs, documentation, and transition planning to help teams adapt faster.",
             icon: <RefreshCw size={40} strokeWidth={1} />
         },
         {
-            title: "Industry-Specific Solutions",
-            description: "Our consultants possess in-depth experience in key industries, such as retail, manufacturing, finance, and healthcare. By understanding the unique challenges and needs of your sector, we deliver targeted solutions that align with your business environment and support your strategic goals.",
+            title: "Industry-Specific SAP Solutions",
+            description: "Different industries require different SAP strategies. We tailor consulting services based on business models, compliance requirements, operational workflows, and reporting needs.",
             icon: <Building2 size={40} strokeWidth={1} />
         }
     ];
@@ -85,34 +85,34 @@ const FunctionalConsulting = () => {
     const processSteps = [
         {
             number: "1",
-            title: "Consultation & Assessment",
-            description: "We initiate the process by thoroughly understanding your business objectives and challenges. This includes performing a detailed assessment to unearth areas for improvement and efficiency."
+            title: "Business Assessment",
+            description: "We evaluate your existing systems, operational challenges, and business goals to identify improvement opportunities."
         },
         {
             number: "2",
-            title: "Solution Design & Planning",
-            description: "In response to your specific needs, we craft a customized SAP solution designed to meet your business objectives. Our consultants produce a clear and actionable roadmap for the implementation, integration, and optimization phases."
+            title: "Solution Planning",
+            description: "We develop a practical SAP strategy tailored to your business objectives, operational workflows, growth plans, and implementation timelines."
         },
         {
             number: "3",
-            title: "Implementation & Integration",
-            description: "Our highly skilled team meticulously executes the SAP implementation, ensuring all systems are seamlessly integrated and configured according to your particular requirements."
+            title: "Implementation and Integration",
+            description: "We configure, deploy, and integrate SAP solutions while ensuring system stability and workflow continuity."
         },
         {
             number: "4",
-            title: "Training & Change Management",
-            description: "We provide extensive training programs and implement change management strategies to empower your team with the knowledge and tools they need to effectively engage with your new SAP systems."
+            title: "Training and Change Support",
+            description: "Teams receive onboarding support, documentation, and training sessions to improve user adoption and operational readiness."
         },
         {
             number: "5",
-            title: "Ongoing Support & Optimization",
-            description: "Our support doesn't end once the implementation is complete. We offer continuous assistance, regular performance monitoring, and optimization services to ensure your SAP systems are not only maintained but continually improved."
+            title: "Ongoing Optimization",
+            description: "After implementation, we continue monitoring system performance, resolving issues, and identifying optimization opportunities."
         }
     ];
 
     return (
         <div className="bg-white">
-            <div className="pt-2 pb-6">
+            <div className="pt-2 pb-1">
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
                     <h2 className="text-3xl font-normal text-center mb-8 text-gray-900 flex flex-wrap justify-center gap-x-2" ref={headingRef}>
                         {headingWords.map((word, i) => (
@@ -151,16 +151,84 @@ const FunctionalConsulting = () => {
                         </motion.div>
                     ))}
                 </div>
+            </div>
+        </div>
 
-                {/* SAP Consulting Process Section */}
-                <div className="mt-20" ref={processRef}>
+        {/* Challenges Section - Full Width */}
+            <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="bg-[#FFF5F5] py-12 md:py-16 mt-2 mb-6 border-y border-[#FFE3E3] w-full"
+            >
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                        {/* Left Side: Title & Description */}
+                        <div className="lg:col-span-5 space-y-4">
+                            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight">
+                                The Challenges Businesses <br className="hidden sm:block" />
+                                Face with SAP Adoption
+                            </h3>
+                            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
+                                Many organizations invest in SAP expecting better efficiency and visibility. But implementation delays, disconnected systems, poor user adoption, and outdated processes often reduce the expected value.
+                            </p>
+                        </div>
+                        
+                        {/* Right Side: Bullets Grid (2 Columns) */}
+                        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6 pt-1">
+                            {/* Column 1 */}
+                            <div className="space-y-4">
+                                {[
+                                    "Complex implementation planning",
+                                    "Data migration risks during upgrades",
+                                    "Low process visibility across departments",
+                                    "Manual workflows slowing operations"
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-3">
+                                        <div className="w-5 h-5 rounded-full bg-[#C9184A] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                                            <Check className="w-3 h-3 text-white" strokeWidth={3.5} />
+                                        </div>
+                                        <span className="text-xs sm:text-sm text-gray-700 font-medium leading-tight">
+                                            {item}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                            
+                            {/* Column 2 */}
+                            <div className="space-y-4">
+                                {[
+                                    "Limited internal SAP expertise",
+                                    "Integration issues with third-party platforms",
+                                    "Difficulty scaling systems as operations grow"
+                                ].map((item, i) => (
+                                    <div key={i} className="flex items-start gap-3">
+                                        <div className="w-5 h-5 rounded-full bg-[#C9184A] flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                                            <Check className="w-3 h-3 text-white" strokeWidth={3.5} />
+                                        </div>
+                                        <span className="text-xs sm:text-sm text-gray-700 font-medium leading-tight">
+                                            {item}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+
+            <div className="pt-2 pb-6">
+                <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
+                    {/* SAP Consulting Process Section */}
+                    <div className="mt-10" ref={processRef}>
                     <div className="flex flex-col lg:flex-row items-start gap-8">
                         {/* Left side heading */}
-                        <div className="flex-shrink-0 mt-16">
-                            <h2 className="text-2xl font-light text-gray-900 leading-tight">
-                                SAP<br />
-                                Consulting<br />
-                                Process
+                        <div className="flex-shrink-0 mt-16 lg:w-48">
+                            <h2 className="text-2xl font-normal text-gray-900 leading-tight">
+                                How Our<br />
+                                SAP Consulting<br />
+                                Process Works
                             </h2>
                         </div>
 

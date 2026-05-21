@@ -15,9 +15,9 @@ const BtpHero = () => {
     };
 
     return (
-        <section className="relative w-full min-h-screen lg:h-screen overflow-hidden bg-black text-white">
+        <section className="relative w-full min-h-[calc(100vh-68px)] lg:min-h-screen overflow-hidden bg-black text-white flex flex-col justify-center">
             {/* Background Image Container */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 z-0">
                 <img
                     src={SERVICES_PAGE_IMAGES.btpHero}
                     alt="SAP BTP Services"
@@ -25,13 +25,16 @@ const BtpHero = () => {
                 />
             </div>
 
-            {/* Subtle cinematic overlays removed as per previous request, but keeping shadow for legibility */}
-            <div className="absolute inset-0 bg-transparent pointer-events-none" />
+            {/* Black color overlay for text legibility */}
+            <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
 
-            <Cylinders />
+            {/* Cylinders Background Effect */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <Cylinders />
+            </div>
 
             {/* Reverting to Centered Content Design (as requested by 'how it is previous') */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-32 pb-4">
+            <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-24 sm:py-32 w-full flex-1">
                 <motion.div 
                     className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full flex flex-col items-center"
                     variants={staggerContainer}
@@ -39,26 +42,26 @@ const BtpHero = () => {
                     animate="visible"
                 >
                     {/* Minimal Label */}
-                    <motion.div variants={slideUp} className="mb-8">
-                         <span className="text-[10px] font-bold tracking-[0.5em] text-white/60 uppercase">
+                    <motion.div variants={slideUp} className="mb-6 md:mb-8">
+                         <span className="text-[10px] sm:text-xs font-bold tracking-[0.5em] text-white/70 uppercase">
                             Digital Transformation
                          </span>
                     </motion.div>
 
                     {/* Headline - Restored to original requested text */}
-                    <div className="mb-12">
+                    <div className="mb-10 md:mb-16">
                         <motion.h1 
                             variants={slideUp}
-                            className="text-2xl md:text-3xl font-light text-white tracking-tight leading-tight"
+                            className="text-4xl sm:text-5xl md:text-6xl font-light text-white tracking-tight leading-tight"
                         >
-                            Transform Your <br />
-                            Business with <br />
-                            <span className="text-[#800000]">SAP BTP</span>
+                            Transform Your <br className="hidden sm:block" />
+                            Business with <br className="hidden sm:block" />
+                            <span className="text-[#800000] font-semibold">SAP BTP</span>
                         </motion.h1>
                     </div>
 
                     {/* Horizontal Content Strip - Restoring Detailed Content */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 w-full">
                         {[
                             "At Wysele, we enable organizations to unlock the true value of their data by delivering robust SAP BTP solutions that drive innovation, improve efficiency, and support scalable growth.",
                             "SAP BTP brings together analytics, AI, and cloud capabilities into a unified ecosystem—helping businesses integrate systems, streamline processes, and gain meaningful data insights.",
@@ -69,8 +72,8 @@ const BtpHero = () => {
                                 variants={slideUp}
                                 className="flex flex-col items-center"
                             >
-                                <div className="h-[1px] w-8 bg-[#800000] mb-6" />
-                                <p className="text-[13px] text-white leading-relaxed font-light max-w-xs">
+                                <div className="h-[1px] w-12 md:w-8 bg-[#800000] mb-5 md:mb-6" />
+                                <p className="text-sm md:text-base text-white/90 leading-relaxed font-light max-w-[280px] md:max-w-xs">
                                     {text}
                                 </p>
                             </motion.div>
@@ -78,7 +81,6 @@ const BtpHero = () => {
                     </div>
                 </motion.div>
             </div>
-
         </section>
     );
 };

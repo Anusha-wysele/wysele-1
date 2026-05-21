@@ -15,11 +15,10 @@ const Cybersecurityhome = () => {
       </div>
       <CybersecurityServices />
       <CybersecurityThreats />
-       <CybersecurityWhyChooseUs />
+      <CybersecurityWhyChooseUs />
+      <CybersecurityProcess />
       <CybersecurityIndustries />
-     
-      {/* <CybersecurityProcess /> */}
-      <Footer/>
+      <Footer />
     </main>
   );
 };

@@ -1,24 +1,38 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Zap, Eye, Users, Server, Target } from 'lucide-react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
 import Cylinders from '../../../components/common/Cylinders';
 
 const services = [
-    { title: "SAP S/4HANA Migration and Upgrades", description: "Transitioning to SAP S/4HANA can be a game-changer, and our experts ensure that this migration is seamless. We guide you through every phase of the process, starting with comprehensive system analysis and planning, moving through the technical setup, and continuing with robust post-migration support to guarantee that your organization maximizes the benefits of the new system." },
-    { title: "Custom Development and Integration", description: "Our team specializes in creating custom solutions, including ABAP programming tailored to your specifications, Fiori app development for user-friendly interfaces, and SAP Cloud Platform integrations that connect disparate systems. We work closely with you to ensure our developments align perfectly with your unique operational requirements." },
-    { title: "SAP Infrastructure Management", description: "We design, deploy, and maintain high-performance SAP infrastructures that are secure, scalable, and optimized for efficiency. Our consultants leverage best practices and the latest technologies to ensure that your SAP systems perform at their best, adapting to the evolving landscape of your business." },
-    { title: "Data Migration", description: "Transitioning data from legacy systems can be daunting. We execute data migration strategies that ensure a smooth transition without data loss or integrity issues, maintaining the reliability and accuracy of your crucial business information." },
-    { title: "SAP Cloud Solutions", description: "As businesses increasingly adopt cloud technologies, we offer a range of cloud-based SAP solutions, including SAP Cloud Platform and SAP Business Technology Platform (BTP). Our solutions are designed to enhance flexibility and scalability, meeting the diverse demands of your growing organization." },
-    { title: "Performance Optimization", description: "Our consultants conduct thorough evaluations to identify performance bottlenecks within your SAP systems. We implement optimization strategies to improve response times and efficiency, enabling faster decision-making and improved overall productivity." }
+    { 
+        title: "SAP Migration and Upgrades", 
+        description: "We support secure SAP migrations and version upgrades, including SAP ECC to SAP S/4HANA transitions. Our migration strategy prioritizes data accuracy, continuity, and reduced downtime." 
+    },
+    { 
+        title: "Custom SAP Development", 
+        description: "Our team develops custom SAP applications, workflows, reports, and integrations that match your operational requirements and business processes." 
+    },
+    { 
+        title: "SAP Integration Services", 
+        description: "We help integrate SAP systems with CRM platforms, ERP tools, HR software, finance applications, eCommerce platforms, and third-party business tools." 
+    },
+    { 
+        title: "Data Migration Services", 
+        description: "Data quality plays a major role in SAP performance. We ensure structured data migration with validation, cleansing, mapping, and testing processes." 
+    },
+    { 
+        title: "SAP Cloud Solutions", 
+        description: "Wysele supports SAP cloud environments that improve flexibility, scalability, accessibility, and infrastructure efficiency for growing organizations." 
+    },
+    { 
+        title: "SAP Performance Optimization", 
+        description: "We monitor and optimize SAP systems to improve speed, usability, reporting accuracy, and operational efficiency." 
+    }
 ];
 
 const TechnicalConsulting = () => {
     const sectionRef = useRef(null);
-
-    const heroHeadingRef = useRef(null);
-    const isHeroHeadingInView = useInView(heroHeadingRef, { once: true, margin: "-80px" });
-    const heroWords = "Transform, Optimize, and Scale with SAP – The Wysele Way".split(" ");
 
     const servicesHeadingRef = useRef(null);
     const isServicesHeadingInView = useInView(servicesHeadingRef, { once: true, margin: "-80px" });
@@ -27,49 +41,71 @@ const TechnicalConsulting = () => {
     return (
         <div className="bg-white" ref={sectionRef}>
             {/* Full Width Image with Overlay Text */}
-            <div className="w-full relative">
+            <div className="w-full relative min-h-[90vh] lg:min-h-[75vh] flex items-center bg-black overflow-hidden py-16 lg:py-0">
                 <img
                     src={SERVICES_PAGE_IMAGES.technicalConsulting}
                     alt="Technical SAP Consulting"
-                    className="w-full h-[80vh] object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black opacity-50"></div>
+                <div className="absolute inset-0 bg-black/65"></div>
                 <Cylinders />
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-                        <div className="w-full md:w-1/2 md:pl-32 lg:pl-48 xl:pl-64">
-                            <h1 className="text-2xl md:text-3xl font-extralight text-white mb-4 flex flex-wrap gap-x-2" ref={heroHeadingRef}>
-                                {heroWords.map((word, i) => (
-                                    <motion.span
-                                        key={i}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={isHeroHeadingInView ? { opacity: 1, y: 0 } : {}}
-                                        transition={{ duration: 0.4, delay: i * 0.07, ease: [0.33, 1, 0.68, 1] }}
-                                    >
-                                        {word}
-                                    </motion.span>
-                                ))}
-                            </h1>
+
+                <div className="w-full max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    {/* Left Side Content: Heading & Description */}
+                    <div className="lg:col-span-5 text-left space-y-4">
+                        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight">
+                            Trusted by Businesses Looking for <br />
+                            Long-Term SAP Success
+                        </h1>
+                        <div className="text-xs sm:text-sm text-white/80 leading-relaxed space-y-3 font-normal">
+                            <p>
+                                Organizations choose Wysele because we focus on practical implementation strategies, operational clarity, and long-term system performance.
+                            </p>
+                            <p>
+                                Our SAP consultants work closely with internal teams to reduce project risks, improve communication, and support successful adoption across departments.
+                            </p>
                         </div>
-                        <div className="w-full md:w-1/2 text-left md:border-l md:border-white/20 md:pl-8 py-4">
-                            <div className="text-sm md:text-base text-white/90 leading-relaxed space-y-4">
-                                <p>
-                                    Whether you're implementing from the ground up, upgrading existing systems, or driving digital transformation,
-                                </p>
-                                <p>
-                                    Wysele delivers flexible, expert-led SAP solutions designed to streamline operations,
-                                </p>
-                                <p>
-                                    enhance performance, and create measurable business impact.
-                                </p>
+                    </div>
+
+                    {/* Right Side Content: 5 Badges in a Row */}
+                    <div className="lg:col-span-7 grid grid-cols-3 sm:grid-cols-5 gap-4 lg:gap-6 pt-4 lg:pt-0">
+                        {[
+                            {
+                                title: "Faster Implementation Support",
+                                icon: <Zap className="w-5 h-5 text-[#FFB703]" />
+                            },
+                            {
+                                title: "Improved Process Visibility",
+                                icon: <Eye className="w-5 h-5 text-[#FFB703]" />
+                            },
+                            {
+                                title: "Better User Adoption",
+                                icon: <Users className="w-5 h-5 text-[#FFB703]" />
+                            },
+                            {
+                                title: "Scalable SAP Environments",
+                                icon: <Server className="w-5 h-5 text-[#FFB703]" />
+                            },
+                            {
+                                title: "Long-Term Optimization Support",
+                                icon: <Target className="w-5 h-5 text-[#FFB703]" />
+                            }
+                        ].map((item, index) => (
+                            <div key={index} className="flex flex-col items-center text-center space-y-3">
+                                <div className="w-12 h-12 rounded-full border border-[#FFB703] bg-black/40 flex items-center justify-center shadow-md">
+                                    {item.icon}
+                                </div>
+                                <span className="text-[10px] sm:text-xs text-white font-medium leading-tight px-1 max-w-[120px]">
+                                    {item.title}
+                                </span>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
 
                 {/* Angled Color Accent at the bottom */}
                 <div
-                    className="absolute bottom-0 right-0 w-full h-32 sm:h-48 md:h-64 lg:h-80 bg-[#6b0d2b]/80 backdrop-blur-sm"
+                    className="absolute bottom-0 right-0 w-full h-32 sm:h-48 md:h-64 lg:h-80 bg-[#6b0d2b]/80 backdrop-blur-sm pointer-events-none"
                     style={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 0)' }}
                 ></div>
             </div>
@@ -91,9 +127,6 @@ const TechnicalConsulting = () => {
                                     </motion.span>
                                 ))}
                             </h2>
-                            <p className="text-sm text-gray-600 leading-relaxed">
-                                Wysele delivers comprehensive technical SAP consulting services designed to strengthen and future-proof your SAP landscape. From S/4HANA migrations and custom development to infrastructure management, data migration, and cloud solutions, our experts ensure seamless integration, optimal performance, and scalability across your systems. By combining deep technical expertise with industry best practices, Wysele helps streamline operations, enhance system efficiency, and empower your organization to adapt, innovate, and grow in an ever-evolving digital environment.
-                            </p>
                         </div>
 
                         <div className="w-full lg:w-1/2 relative">
@@ -125,7 +158,7 @@ const TechnicalConsulting = () => {
                                             />
                                             <div className="relative z-10">
                                                 <h3 className="text-xs font-bold text-gray-900 mb-1 group-hover:text-white transition-colors duration-300">{service.title}</h3>
-                                                <p className="text-[11px] text-gray-600 leading-tight group-hover:text-white/90 transition-colors duration-300">{service.description}</p>
+                                                <p className="text-xs text-gray-600 leading-relaxed group-hover:text-white/90 transition-colors duration-300">{service.description}</p>
                                             </div>
                                         </div>
                                     </motion.div>
