@@ -8,10 +8,26 @@ import MadhuImg from "../../../assets/Madhu.png";
 import ManikantaImg from "../../../assets/Manikanta.png";
 import SaiSudhaImg from "../../../assets/RajoliSaiSudha.jpg";
 import SatishImg from "../../../assets/Satish.png";
-import SamyuktaImg from "../../../assets/BodiliSamyukta.png";
+import SamyuktaImg from "../../../assets/BondiliSamyukta.png";
 import LegalAdvisorImg from "../../../assets/legaladvisor.png";
 
 const localTeamMembers = [
+  {
+    name: "Legal Advisor",
+    img: LegalAdvisorImg,
+  },
+  {
+    name: "Geethika Karrayoula",
+    img: GeethikaImg,
+  },
+  {
+    name: "Bondili Samyukta",
+    img: SamyuktaImg,
+  },
+  {
+    name: "Rajoli Sai Sudha",
+    img: SaiSudhaImg,
+  },
   {
     name: "Satish",
     img: SatishImg,
@@ -23,22 +39,6 @@ const localTeamMembers = [
   {
     name: "Manikanta",
     img: ManikantaImg,
-  },
-  {
-    name: "Geethika Karrayoula",
-    img: GeethikaImg,
-  },
-  {
-    name: "Rajoli Sai Sudha",
-    img: SaiSudhaImg,
-  },
-  {
-    name: "Bodili Samyukta",
-    img: SamyuktaImg,
-  },
-  {
-    name: "Legal Advisor",
-    img: LegalAdvisorImg,
   },
 ];
 
