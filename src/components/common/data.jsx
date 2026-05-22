@@ -260,6 +260,7 @@ export const teamMembers = [
     name: "Sarah Steiner",
     role: "Director of Digital Strategy",
     bio: "Redefining digital goals for our partners by leveraging deep analytics and a human-centric approach to complex problem-solving.",
+    img: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&w=600",
   },
 ];
 

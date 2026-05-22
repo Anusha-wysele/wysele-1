@@ -1,7 +1,46 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { teamMembers } from "../../common/data";
 import HeadingBracket from "../../common/HeadingBracket";
+
+
+import GeethikaImg from "../../../assets/GeethikaKarrayoula.jpg";
+import MadhuImg from "../../../assets/Madhu.png";
+import ManikantaImg from "../../../assets/Manikanta.png";
+import SaiSudhaImg from "../../../assets/RajoliSaiSudha.jpg";
+import SatishImg from "../../../assets/Satish.png";
+import SamyuktaImg from "../../../assets/BodiliSamyukta.png";
+import LegalAdvisorImg from "../../../assets/legaladvisor.png";
+
+const localTeamMembers = [
+  {
+    name: "Satish",
+    img: SatishImg,
+  },
+  {
+    name: "Madhu",
+    img: MadhuImg,
+  },
+  {
+    name: "Manikanta",
+    img: ManikantaImg,
+  },
+  {
+    name: "Geethika Karrayoula",
+    img: GeethikaImg,
+  },
+  {
+    name: "Rajoli Sai Sudha",
+    img: SaiSudhaImg,
+  },
+  {
+    name: "Bodili Samyukta",
+    img: SamyuktaImg,
+  },
+  {
+    name: "Legal Advisor",
+    img: LegalAdvisorImg,
+  },
+];
 
 const fadeUpVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -66,156 +105,210 @@ const socialIcons = [
 
 const TRANSITION = { duration: 0.35, ease: "easeInOut" };
 
-function TeamCard({ member }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      variants={fadeUpVariants}
-      className="w-full relative cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300 bg-white"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={() => setHovered(!hovered)} // Toggle for mobile touch
-    >
-      <div className="flex flex-col h-full bg-transparent">
-
-        {/* Image */}
-        <div className="w-full aspect-[4/5] relative overflow-hidden bg-[#f3f4f6]">
-          <motion.img
-            src={member.img}
-            alt={member.name}
-            className="w-full h-full object-cover object-center"
-            animate={{ scale: hovered ? 1.05 : 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          />
-        </div>
-
-        {/* Dark Info Box */}
-        <div
-          className="bg-[#353a40] w-full relative overflow-hidden"
-          style={{ minHeight: "100px" }}
-        >
-          {/* Inner Border */}
-          <div className="absolute inset-[6px] border border-gray-400/30 pointer-events-none z-20" />
-
-          {/* TEXT — fades out on hover */}
-          <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
-            animate={{ opacity: hovered ? 0 : 1 }}
-            transition={TRANSITION}
-          >
-            <h3 style={{
-              color: "#C4A478",
-              fontFamily: "Lora, Georgia, serif",
-              fontSize: "1rem",
-              fontWeight: 400,
-              marginBottom: "4px",
-              letterSpacing: "0.5px"
-            }}>
-              {member.name}
-            </h3>
-            <p style={{
-              color: "#ffffff",
-              fontFamily: "Inter, sans-serif",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              letterSpacing: "0.5px"
-            }}>
-              {member.role}
-            </p>
-          </motion.div>
-
-          {/* SOCIAL ICONS — fades in on hover */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center gap-3 px-4"
-            animate={{ opacity: hovered ? 1 : 0 }}
-            transition={TRANSITION}
-          >
-            {socialIcons.map((social, i) => (
-              <motion.button
-                key={social.label}
-                aria-label={social.label}
-                className="flex items-center justify-center text-[#C4A478] hover:text-white hover:bg-[#C4A478] transition-colors duration-200"
-                style={{
-                  width: "36px",
-                  height: "36px",
-                  border: "1px solid rgba(196,164,120,0.45)",
-                  background: "transparent",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                }}
-                animate={{
-                  opacity: hovered ? 1 : 0,
-                  y: hovered ? 0 : 6,
-                }}
-                transition={{
-                  duration: 0.3,
-                  delay: hovered ? i * 0.07 : 0,
-                  ease: "easeOut",
-                }}
-              >
-                {social.icon}
-              </motion.button>
-            ))}
-          </motion.div>
-        </div>
-
-      </div>
-    </motion.div>
-  );
-}
-
 export default function MeetOurPeople() {
   const width = useWindowWidth();
   const isMobile = width < 768;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (isHovered) {
+      const timer = setTimeout(() => {
+        setIsHovered(false);
+      }, 10000);
+      return () => clearTimeout(timer);
+    }
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % localTeamMembers.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isHovered]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const container = containerRef.current;
+    const containerWidth = container.offsetWidth;
+
+    // Determine target widths for calculation to prevent transition race conditions
+    const isMobileDevice = width < 768;
+    const isTablet = width >= 768 && width < 1024;
+    
+    let activeWidth, collapsedWidth;
+    if (isMobileDevice) {
+      activeWidth = Math.max(240, Math.min(300, width * 0.75));
+      collapsedWidth = Math.max(55, Math.min(80, width * 0.15));
+    } else if (isTablet) {
+      activeWidth = 350;
+      collapsedWidth = 90;
+    } else {
+      activeWidth = 450;
+      collapsedWidth = 110;
+    }
+    
+    const gap = 16; // gap-4 is 16px
+    const targetLeft = activeIndex * (collapsedWidth + gap);
+    const scrollTarget = targetLeft + (activeWidth / 2) - (containerWidth / 2);
+
+    container.scrollTo({
+      left: Math.max(0, scrollTarget),
+      behavior: "smooth"
+    });
+  }, [activeIndex, width]);
 
   return (
-    <section className="py-8 md:py-10 px-6 lg:px-12 overflow-hidden flex flex-col justify-center bg-white">
+    <section className="py-6 md:py-8 px-4 sm:px-6 lg:px-12 bg-white overflow-hidden flex flex-col justify-center">
       <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="flex flex-col items-center text-center mb-10 md:mb-12"
+          className="flex flex-col lg:flex-row gap-12 lg:gap-16 w-full"
         >
+          {/* Left Column */}
           <motion.div
             variants={fadeUpVariants}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: isMobile ? "12px" : "18px",
-              width: "100%",
-              marginBottom: "16px"
-            }}
+            className="lg:w-[30%] w-full flex flex-col justify-center text-center lg:text-left items-center lg:items-start"
           >
-            <HeadingBracket size={isMobile ? 36 : 48} style={{ transform: isMobile ? "translate(24px, -12px)" : "translate(40px, -20px)" }} />
-            <h2
-              className="text-2xl md:text-3xl lg:text-4xl font-inter font-medium text-[#111] tracking-tight"
-              style={{ margin: 0 }}
-            >
-              Meet Our People
-            </h2>
-          </motion.div>
-          <motion.p
-            variants={fadeUpVariants}
-            className="text-gray-500 text-sm md:text-base max-w-2xl"
-          >
-            Our dedicated team of professionals committed to delivering excellence and innovation in every project we undertake.
-          </motion.p>
-        </motion.div>
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-900/10 text-teal-950 text-xs font-semibold uppercase tracking-wider mb-6 w-fit">
+              <span>👥</span> Our Team
+            </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
-        >
-          {teamMembers.map((member, idx) => (
-            <TeamCard key={idx} member={member} />
-          ))}
+            {/* Heading with Bracket */}
+            <div className="relative mb-6">
+              <div className="absolute -left-10 -top-8 pointer-events-none opacity-40 hidden lg:block">
+                <HeadingBracket size={48} />
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-inter font-bold text-gray-900 tracking-tight leading-tight relative z-10 text-center lg:text-left">
+                Meet Our <br className="hidden lg:block" /> People
+              </h2>
+            </div>
+
+            {/* Description */}
+            <p className="text-gray-500 text-sm md:text-base leading-relaxed text-center lg:text-left max-w-md lg:max-w-none">
+              Our dedicated team of professionals is committed to delivering excellence and innovation in every project we undertake.
+            </p>
+          </motion.div>
+
+          {/* Right Column / Accordion Wrapper */}
+          <div className="lg:w-[70%] w-full flex flex-col gap-6">
+            <motion.div
+              ref={containerRef}
+              variants={fadeUpVariants}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="w-full flex flex-row gap-4 h-[420px] lg:h-[500px] overflow-x-auto scrollbar-none relative pb-2"
+            >
+              {localTeamMembers.map((member, idx) => {
+                const isActive = idx === activeIndex;
+                return (
+                  <div
+                    key={idx}
+                    id={`team-card-${idx}`}
+                    onMouseEnter={() => !isMobile && setActiveIndex(idx)}
+                    onClick={() => {
+                      setActiveIndex(idx);
+                      setIsHovered(true);
+                    }}
+                    className={`relative overflow-hidden rounded-[24px] cursor-pointer transition-all duration-500 ease-in-out shadow-sm hover:shadow-md flex-shrink-0 h-full ${
+                      isActive
+                        ? "w-[75vw] min-w-[240px] max-w-[300px] sm:max-w-none sm:w-[280px] md:w-[350px] lg:w-[450px]"
+                        : "w-[15vw] min-w-[55px] max-w-[80px] sm:max-w-none sm:w-[75px] md:w-[90px] lg:w-[110px]"
+                    }`}
+                  >
+                    {/* Image */}
+                    <img
+                      src={member.img}
+                      alt={member.name}
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
+                        isActive ? "scale-105 saturate-100" : "scale-100 saturate-50 brightness-75 hover:brightness-90"
+                      }`}
+                    />
+
+                    {/* Gradient Overlay */}
+                    <div
+                      className={`absolute inset-0 transition-all duration-500 ${
+                        isActive
+                          ? "bg-gradient-to-t from-black/90 via-black/40 to-black/10"
+                          : "bg-black/40"
+                      }`}
+                    />
+
+                    {/* Active Details (fades and slides up) */}
+                    <div
+                      className={`absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end text-left z-10 transition-all duration-500 delay-100 transform ${
+                        isActive
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4 pointer-events-none"
+                      }`}
+                    >
+                      <h3 className="text-lg sm:text-2xl md:text-3xl font-inter font-bold text-white mb-4 leading-tight break-words">
+                        {member.name}
+                      </h3>
+
+                      {/* Social icons */}
+                      <div className="flex gap-2.5">
+                        {socialIcons.map((social, i) => (
+                          <button
+                            key={social.label}
+                            aria-label={social.label}
+                            onClick={(e) => e.stopPropagation()} // Prevent card click trigger
+                            className="w-9 h-9 rounded-full border border-white/20 bg-white/5 hover:bg-white/20 hover:scale-105 active:scale-95 flex items-center justify-center text-white transition-all duration-200"
+                          >
+                            {social.icon}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Collapsed Badge (rotated -90deg, vertical layout) */}
+                    <div
+                      className={`absolute bottom-6 left-1/2 -translate-x-1/2 items-center justify-center transition-all duration-300 flex ${
+                        isActive ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"
+                      }`}
+                    >
+                      <div className="w-8 h-28 md:w-10 md:h-36 rounded-xl bg-black/70 backdrop-blur-sm border border-white/10 flex items-center justify-center shadow-lg">
+                        <span className="transform -rotate-90 origin-center whitespace-nowrap text-white text-[9px] md:text-sm font-semibold tracking-wider md:tracking-widest uppercase">
+                          {member.name}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
+
+            {/* Scroll Navigation Buttons Below */}
+            <div className="flex justify-center lg:justify-start items-center gap-4 mt-2">
+              <button
+                onClick={() => {
+                  setActiveIndex((prev) => (prev - 1 + localTeamMembers.length) % localTeamMembers.length);
+                  setIsHovered(true);
+                }}
+                className="w-11 h-11 rounded-full border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 text-gray-700 flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+                aria-label="Previous Team Member"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+              </button>
+
+              <button
+                onClick={() => {
+                  setActiveIndex((prev) => (prev + 1) % localTeamMembers.length);
+                  setIsHovered(true);
+                }}
+                className="w-11 h-11 rounded-full border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 text-gray-700 flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
+                aria-label="Next Team Member"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

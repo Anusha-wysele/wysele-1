@@ -37,7 +37,7 @@ const GetInTouch = () => {
         e.preventDefault();
         try {
             setIsSubmitting(true);
-            
+
             const payload = {
                 full_name: form.fullName,
                 email: form.emailAddress,
@@ -47,7 +47,7 @@ const GetInTouch = () => {
             };
 
             await jobService.createContact(payload);
-            
+
             setSent(true);
             setTimeout(() => setSent(false), 5000);
             setForm({ fullName: "", emailAddress: "", phoneNumber: "", location: "", message: "", confirm: false });
@@ -126,17 +126,23 @@ const GetInTouch = () => {
                             </div>
                             <div className="flex items-center gap-4">
                                 <MessageCircle size={24} className="text-black shrink-0" />
-                                <p className="text-sm text-black">+91 63057 53919</p>
+                                <p className="text-sm text-black">+91 9100042919</p>
                             </div>
                             <div className="flex items-center gap-4">
                                 <Phone size={24} className="text-black shrink-0" />
                                 <p className="text-sm text-black">040-45276773</p>
                             </div>
                             <div className="flex gap-4 pt-4 border-t border-gray-100">
-                                <Linkedin size={20} className="cursor-pointer hover:text-[#C9184A]" />
+                                <a
+                                    href="https://www.linkedin.com/company/wysele"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-black hover:text-[#C9184A] transition-colors"
+                                >
+                                    <Linkedin size={20} />
+                                </a>
                                 <Instagram size={20} className="cursor-pointer hover:text-[#C9184A]" />
                                 <Facebook size={20} className="cursor-pointer hover:text-[#C9184A]" />
-                                <Youtube size={20} className="cursor-pointer hover:text-[#C9184A]" />
                             </div>
                         </div>
                     </div>

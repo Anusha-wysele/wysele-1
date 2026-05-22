@@ -256,6 +256,42 @@ function MegaMenu({ type, open, onClose }) {
 
   const leaveTimerRef = useRef(null);
 
+  const [topPos, setTopPos] = useState(112);
+
+
+
+  useEffect(() => {
+
+    const updatePosition = () => {
+
+      const navbar = document.getElementById("main-navbar");
+
+      if (navbar) {
+
+        const rect = navbar.getBoundingClientRect();
+
+        setTopPos(rect.bottom);
+
+      }
+
+    };
+
+    updatePosition();
+
+    window.addEventListener("resize", updatePosition);
+
+    window.addEventListener("scroll", updatePosition);
+
+    return () => {
+
+      window.removeEventListener("resize", updatePosition);
+
+      window.removeEventListener("scroll", updatePosition);
+
+    };
+
+  }, []);
+
 
 
   if (!data) return null;
@@ -358,11 +394,13 @@ function MegaMenu({ type, open, onClose }) {
 
         variants={menuVariants}
 
-        className="fixed top-[112px] left-0 w-full bg-white z-[1000] border-b border-gray-100 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden"
+        className="fixed left-0 w-full bg-white z-[1000] border-b border-gray-100 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] overflow-hidden"
+
+        style={{ top: `${topPos}px` }}
 
       >
 
-        <div className="max-w-[1440px] mx-auto flex" onMouseLeave={handleItemLeave}>
+        <div className="w-full flex px-6 md:px-8 lg:px-16" onMouseLeave={handleItemLeave}>
 
           {/* Section 1: Sidebar (Left) */}
 
@@ -814,7 +852,7 @@ export default function Navbar() {
 
         animate={{ y: 0, opacity: 1 }}
 
-        className="w-full bg-white fixed top-0 z-[991] border-b border-gray-100 overflow-hidden hidden md:block"
+        className="w-full bg-teal-900 fixed top-0 z-[991] border-b border-teal-950 overflow-hidden hidden md:block"
 
         style={{ height: '44px' }}
 
@@ -822,7 +860,7 @@ export default function Navbar() {
 
         {/* Grid Background Pattern */}
 
-        <div
+        {/* <div
 
           className="absolute inset-0 pointer-events-none"
 
@@ -830,17 +868,17 @@ export default function Navbar() {
 
             backgroundImage: `
 
-              linear-gradient(rgba(75,222,123,0.07) 1px, transparent 1px),
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
 
-              linear-gradient(90deg, rgba(75,222,123,0.07) 1px, transparent 1px)
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
 
-            `,
+            `,
 
             backgroundSize: '28px 28px',
 
           }}
 
-        />
+        /> */}
 
         {/* Shimmer scan line */}
 
@@ -850,7 +888,7 @@ export default function Navbar() {
 
           style={{
 
-            background: 'linear-gradient(90deg, transparent, rgba(75,222,123,0.08), transparent)',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent)',
 
           }}
 
@@ -862,7 +900,7 @@ export default function Navbar() {
 
 
 
-        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-16 h-full hidden md:grid md:grid-cols-[auto_1fr] items-center gap-12 relative z-10">
+        <div className="w-full px-6 md:px-8 lg:px-16 h-full hidden md:grid md:grid-cols-[auto_1fr] items-center gap-12 relative z-10">
 
 
 
@@ -884,7 +922,7 @@ export default function Navbar() {
 
           >
 
-            <Logo white={false} />
+            <Logo white={true} />
 
           </motion.div>
 
@@ -913,7 +951,7 @@ export default function Navbar() {
 
                 icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" /></svg>,
 
-                text: "+91 9391 558 580"
+                text: "+91 9100042919"
 
               }
 
@@ -933,7 +971,7 @@ export default function Navbar() {
 
               >
 
-                {i > 0 && <div className="w-[1px] h-5 bg-gray-200 mx-6" />}
+                {i > 0 && <div className="w-[1px] h-5 bg-teal-800/60 mx-6" />}
 
                 <motion.div
 
@@ -961,9 +999,7 @@ export default function Navbar() {
 
                   <span
 
-                    className="text-[10.5px] font-medium tracking-[0.055em] text-gray-500 group-hover:text-gray-800 transition-colors duration-300 whitespace-nowrap"
-
-                    style={{ fontFamily: "'Inter', sans-serif" }}
+                    className="text-[10.5px] font-medium tracking-[0.055em] text-teal-100/90 group-hover:text-white transition-colors duration-300 whitespace-nowrap"
 
                   >
 
@@ -987,10 +1023,10 @@ export default function Navbar() {
 
       <nav
         id="main-navbar"
-        className={`w-full py-2 fixed z-[990] ${bgClass} transition-all duration-300 top-0 md:top-[44px]`}
+        className={`w-full fixed z-[990] ${bgClass} px-3 py-2 md:py-0 transition-all duration-300 top-0 md:top-[44px]`}
       >
 
-        <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full h-full flex items-center justify-between">
+        <div className="w-full h-full flex items-center justify-between">
 
           {/* Mobile Logo */}
 
@@ -1007,10 +1043,14 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => {
 
               const isActive = link.path
+
                 ? location.pathname === link.path
+
                 : (link.dropdown === "Services"
-                    ? (location.pathname.startsWith("/services/") || location.pathname === "/sap-services" || openDrop === "Services")
-                    : openDrop === link.dropdown);
+
+                  ? (location.pathname.startsWith("/services/") || location.pathname === "/sap-services" || openDrop === "Services")
+
+                  : openDrop === link.dropdown);
 
               const isHovered = hoveredLink === link.label;
 
@@ -1056,11 +1096,61 @@ export default function Navbar() {
 
                     }}
 
-                    className="text-[13px] uppercase font-medium px-2 py-1 rounded-lg flex items-center gap-1.5 relative overflow-hidden"
+                    className="text-[12px] uppercase font-medium px-5 py-4 flex items-center gap-1.5 relative"
 
                     style={{ color: textColor }}
 
                   >
+
+                    <AnimatePresence>
+
+                      {isHovered && !isActive && (
+
+                        <motion.span
+
+                          layoutId="navHoverBg"
+
+                          className="absolute inset-0 bg-red-100 border border-teal-100/50 -z-10"
+
+                          initial={{ opacity: 0, scale: 0.95 }}
+
+                          animate={{ opacity: 1, scale: 1 }}
+
+                          exit={{ opacity: 0, scale: 0.95 }}
+
+                          transition={{ type: "spring", stiffness: 380, damping: 30 }}
+
+                        />
+
+                      )}
+
+                    </AnimatePresence>
+
+
+
+                    <AnimatePresence>
+
+                      {isActive && (
+
+                        <motion.span
+
+                          layoutId="navActiveBg"
+
+                          className="absolute inset-0 bg-yellow-100   -z-10"
+
+                          initial={{ opacity: 0 }}
+
+                          animate={{ opacity: 1 }}
+
+                          exit={{ opacity: 0 }}
+
+                          transition={{ duration: 0.2 }}
+
+                        />
+
+                      )}
+
+                    </AnimatePresence>
 
                     <span className="relative inline-block overflow-hidden" style={{ height: '1.5em' }}>
 
@@ -1142,26 +1232,6 @@ export default function Navbar() {
 
                   </button>
 
-
-
-                  {/* Animated Underline */}
-
-                  <motion.div
-
-                    initial={false}
-
-                    animate={{
-
-                      width: (isActive || isHovered) ? "calc(100% - 16px)" : "0%"
-
-                    }}
-
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-
-                    className="absolute -bottom-1 left-2 h-[2px] bg-[#4BDE7B]"
-
-                  />
-
                 </div>
 
               );
@@ -1174,18 +1244,55 @@ export default function Navbar() {
 
           {/* Contact Us Button */}
 
-          <div className="hidden md:block ml-auto mr-8">
-
-            <Button
-
-              text="Contact Us"
-
-              onClick={() => navigate("/contact")}
-
-              className="!px-5 !py-2.5"
-
-            />
-
+          <div
+            className="hidden md:block ml-auto mr-8 relative"
+            onMouseEnter={() => setHoveredLink("Contact Us")}
+            onMouseLeave={() => setHoveredLink(null)}
+          >
+            <button
+              onClick={() => {
+                navigate("/contact");
+                window.scrollTo(0, 0);
+              }}
+              className="text-[12px] uppercase font-semibold px-6 py-4 flex items-center gap-1.5 relative bg-[#FFD700] hover:bg-[#fbbf24] text-black transition-colors duration-300"
+            >
+              <span className="relative inline-block overflow-hidden" style={{ height: '1.5em' }}>
+                {"Contact Us".split('').map((char, idx) => (
+                  <span key={idx} className="inline-block relative" style={{ width: char === ' ' ? '0.3em' : 'auto' }}>
+                    <motion.span
+                      className="inline-block"
+                      initial={false}
+                      animate={{
+                        y: hoveredLink === "Contact Us" ? '100%' : '0%',
+                        opacity: hoveredLink === "Contact Us" ? 0 : 1
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        delay: idx * 0.025,
+                        ease: [0.33, 1, 0.68, 1]
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                    <motion.span
+                      className="inline-block absolute left-0 top-0"
+                      initial={false}
+                      animate={{
+                        y: hoveredLink === "Contact Us" ? '0%' : '-100%',
+                        opacity: hoveredLink === "Contact Us" ? 1 : 0
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        delay: idx * 0.025,
+                        ease: [0.33, 1, 0.68, 1]
+                      }}
+                    >
+                      {char}
+                    </motion.span>
+                  </span>
+                ))}
+              </span>
+            </button>
           </div>
 
 

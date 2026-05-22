@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import HeroVideo from '../../../assets/Hero.mp4';
 import Button from '../../common/Button';
+
+const HERO_INDUSTRIES = [
+  { name: "Manufacturing", id: "manufacturing" },
+  { name: "Utilities", id: "utilities" },
+  { name: "Logistics", id: "logistics" },
+  { name: "Pharmaceutical", id: "pharmaceutical" },
+  { name: "Agribusiness", id: "agribusiness" },
+  { name: "Aerospace & Defense", id: "aerospace" },
+  { name: "Automotive", id: "automotive" },
+  { name: "Banking & Financial", id: "banking" },
+  { name: "Retail", id: "retail" },
+  { name: "Textiles", id: "textiles" },
+  { name: "Mining", id: "mining" },
+];
 
 function useWindowWidth() {
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -21,10 +35,25 @@ export default function HeroSection() {
   const isTablet = width >= 768 && width < 1024;
 
   const numVisibleLogos = isMobile ? 3 : (isTablet ? 4 : 5);
+  const [startIndex, setStartIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex((prev) => (prev + 1) % HERO_INDUSTRIES.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const visibleIndustries = Array.from({ length: numVisibleLogos }).map((_, colIndex) => {
+    const industryIndex = (startIndex + colIndex) % HERO_INDUSTRIES.length;
+    return HERO_INDUSTRIES[industryIndex];
+  });
 
   return (
     <div style={{
       width: isMobile ? "100%" : "calc(100% - 20px)",
+      height: "calc(100vh - 60px)",
       margin: isMobile ? "60px 0 0 0" : "60px 10px 30px 10px",
       position: "relative",
       overflow: "hidden",
@@ -36,10 +65,10 @@ export default function HeroSection() {
         playsInline
         style={{
           width: "100%",
-          height: isMobile ? "60vh" : "calc(100vh - 60px)",
+          height: "100%",
           objectFit: "cover",
           display: "block",
-          filter: "brightness(0.6) grayscale(0.2)",
+          filter: "brightness(0.75) grayscale(0.1)",
         }}
       >
         <source src={HeroVideo} type="video/mp4" />
@@ -51,17 +80,18 @@ export default function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
         style={{
-          position: isMobile ? "relative" : "absolute",
-          inset: isMobile ? "auto" : 0,
+          position: "absolute",
+          inset: 0,
           zIndex: 2,
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
-          justifyContent: isMobile ? "flex-start" : "center",
+          alignItems: "center",
+          justifyContent: "center",
           textAlign: "left",
-          padding: isMobile ? "40px 20px 60px" : "0 5%",
-          marginTop: isMobile ? "0px" : "0",
-          background: isMobile ? "#111" : "transparent",
+          padding: isMobile ? "24px 20px 84px" : "0 64px",
+          background: isMobile
+            ? "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%)"
+            : "transparent",
         }}
       >
         <div className="max-w-7xl w-full mx-auto">
@@ -71,7 +101,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-8"
+              className="flex items-center gap-3 mb-6 md:mb-8"
             >
               <div className="w-8 h-1.5 bg-[#FFD700]" />
               <span className="text-white text-[10px] font-bold tracking-[0.3em] uppercase">Digital Excellence</span>
@@ -80,11 +110,11 @@ export default function HeroSection() {
             {/* Headline */}
             <h1
               style={{
-                fontSize: isMobile ? "1.5rem" : "clamp(1.8rem, 3.8vw, 2.6rem)",
+                fontSize: isMobile ? "1.65rem" : "clamp(1.8rem, 3.8vw, 2.6rem)",
                 fontWeight: 500,
                 color: "#fff",
-                lineHeight: 1.1,
-                marginBottom: "24px",
+                lineHeight: 1.2,
+                marginBottom: "20px",
                 letterSpacing: "-0.01em"
               }}
             >
@@ -93,14 +123,14 @@ export default function HeroSection() {
             </h1>
 
             {/* Description with Accent Line */}
-            <div className="flex gap-5 mb-10">
+            <div className="flex gap-4 md:gap-5 mb-8 md:mb-10">
               <div className="w-[1px] bg-[#FFD700] shrink-0" />
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
                 style={{
-                  fontSize: isMobile ? "0.85rem" : "0.9rem",
+                  fontSize: isMobile ? "0.825rem" : "0.9rem",
                   color: "rgba(255,255,255,0.85)",
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 300,
@@ -113,7 +143,7 @@ export default function HeroSection() {
             </div>
 
             {/* Action Button */}
-            <div className="mt-4">
+            <div className="mt-2">
               <Button
                 text="Get In Touch"
                 onClick={() => {
@@ -126,27 +156,53 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Bottom Grid Border Design (Logos Removed) */}
+      {/* Bottom Grid Border Design showing Rotating Industries */}
       <div style={{
-        position: isMobile ? "relative" : "absolute",
+        position: "absolute",
         bottom: 0,
         left: 0,
         right: 0,
-        zIndex: 2,
+        zIndex: 3,
         display: "flex",
-        height: isMobile ? "60px" : "72px",
+        height: isMobile ? "54px" : "72px",
         borderTop: "1px solid rgba(255, 255, 255, 0.15)",
-        backgroundColor: isMobile ? "#111" : "transparent",
+        backgroundColor: isMobile ? "rgba(17, 24, 39, 0.6)" : "transparent",
+        backdropFilter: isMobile ? "blur(8px)" : "none",
       }}>
-        {Array.from({ length: numVisibleLogos }).map((_, colIndex) => (
-          <div
-            key={colIndex}
-            style={{
-              flex: 1,
-              borderRight: colIndex < numVisibleLogos - 1 ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
-            }}
-          />
-        ))}
+        {visibleIndustries.map((industry, colIndex) => {
+          return (
+            <div
+              key={colIndex}
+              style={{
+                flex: 1,
+                borderRight: colIndex < numVisibleLogos - 1 ? "1px solid rgba(255, 255, 255, 0.15)" : "none",
+                height: "100%",
+                position: "relative",
+                overflow: "hidden"
+              }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={industry.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  onClick={() => {
+                    navigate(`/industries#${industry.id}`);
+                    window.scrollTo(0, 0);
+                  }}
+                  whileHover={{ backgroundColor: "rgba(255, 215, 0, 0.08)" }}
+                  className="absolute inset-0 flex items-center justify-center px-1.5 sm:px-4 md:px-6 cursor-pointer group"
+                >
+                  <span className="text-white/85 group-hover:text-white font-semibold text-[10.5px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-wider uppercase transition-colors duration-300 whitespace-nowrap">
+                    {industry.name}
+                  </span>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

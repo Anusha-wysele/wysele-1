@@ -95,16 +95,16 @@ export default function Menu({ open, onClose }) {
           fontFamily: "'Inter', sans-serif"
         }}
       >
-        {/* FIXED HEADER: Logo, Close, and Intro */}
+        {/* FIXED HEADER: Logo and Close */}
         <div style={{
-          padding: "30px 30px 20px",
+          padding: "30px 30px 25px",
           borderBottom: "1px solid rgba(255,255,255,0.05)",
           flexShrink: 0,
           opacity: open ? 1 : 0,
           transform: open ? "translateY(0)" : "translateY(-10px)",
           transition: "all 0.5s ease 0.1s"
         }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 25 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <img
               src={WYSELE_LOGOS.white}
               alt="Wysele Logo"
@@ -123,12 +123,6 @@ export default function Menu({ open, onClose }) {
               <X size={22} strokeWidth={1.5} />
             </button>
           </div>
-          <p style={{
-            color: "#9ca3af", fontSize: 13, lineHeight: 1.5,
-            fontWeight: 400, letterSpacing: "0.01em"
-          }}>
-            We always aim to improve. Here&apos;s what some of our customers shared about their experience:
-          </p>
         </div>
 
         {/* SCROLLABLE CONTENT */}
@@ -144,56 +138,12 @@ export default function Menu({ open, onClose }) {
             div::-webkit-scrollbar { display: none; }
           `}</style>
 
-          {/* Testimonial Card */}
-          <div style={{
-            background: "#fff", borderRadius: 10, padding: "22px 20px", marginBottom: 30,
-            boxShadow: "0 15px 30px rgba(0,0,0,0.15)", opacity: open ? 1 : 0,
-            transform: open ? "translateY(0)" : "translateY(20px)",
-            transition: "all 0.6s ease 0.2s"
-          }}>
-            <h3 style={{
-              color: "#1e293b", fontSize: 16, fontWeight: 700, marginBottom: 12,
-            }}>
-              -DigitalExcellence
-            </h3>
-            <p style={{
-              color: "#475569", fontSize: 13, lineHeight: 1.5, fontStyle: "italic", marginBottom: 16,
-            }}>
-              &ldquo;The strategic partnership with Wysele has been transformative for our global operations. Their expertise in AI-driven analytics has not only optimized our workflow but also future-proofed our business model.&rdquo;
-            </p>
-            <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 14 }}>
-              <p style={{ color: "#1e293b", fontSize: 12, fontWeight: 700, marginBottom: 2 }}>
-                &mdash; Chief Technology Officer
-              </p>
-              <p style={{ color: "#1e293b", fontSize: 12, fontWeight: 700, marginBottom: 8 }}>
-                NexGen Global Solutions
-              </p>
-              <p style={{ color: "#fbbf24", fontSize: 11, fontWeight: 500 }}>
-                Scaling innovation across 42 regions
-              </p>
-            </div>
-          </div>
-
-          {/* Office Image */}
-          <div style={{
-            borderRadius: 8, overflow: "hidden", marginBottom: 35,
-            boxShadow: "0 12px 25px rgba(0,0,0,0.2)", opacity: open ? 1 : 0,
-            transform: open ? "translateY(0)" : "translateY(20px)",
-            transition: "all 0.6s ease 0.3s"
-          }}>
-            <img
-              src={menuImage}
-              alt="Our Office"
-              style={{ width: "100%", height: 160, objectFit: "cover", display: "block" }}
-            />
-          </div>
-
           {/* QUICK LINKS */}
           <div style={{
             marginBottom: 40,
             opacity: open ? 1 : 0,
             transform: open ? "translateY(0)" : "translateY(15px)",
-            transition: "all 0.6s ease 0.35s"
+            transition: "all 0.6s ease 0.2s"
           }}>
             <h4 style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 20 }}>
               Navigation
@@ -317,7 +267,7 @@ export default function Menu({ open, onClose }) {
             marginBottom: 40,
             opacity: open ? 1 : 0,
             transform: open ? "translateY(0)" : "translateY(15px)",
-            transition: "all 0.6s ease 0.38s"
+            transition: "all 0.6s ease 0.25s"
           }}>
             <h4 style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 20 }}>
               Services
@@ -354,11 +304,69 @@ export default function Menu({ open, onClose }) {
             </div>
           </div>
 
+          {/* Testimonial & Office Image Section */}
+          <div style={{
+            marginBottom: 40,
+            opacity: open ? 1 : 0,
+            transform: open ? "translateY(0)" : "translateY(15px)",
+            transition: "all 0.6s ease 0.3s"
+          }}>
+            <h4 style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 20 }}>
+              Client Feedback
+            </h4>
+            <p style={{
+              color: "#9ca3af", fontSize: 13, lineHeight: 1.5,
+              fontWeight: 400, letterSpacing: "0.01em", marginBottom: 20
+            }}>
+              We always aim to improve. Here&apos;s what some of our customers shared about their experience:
+            </p>
+
+            {/* Testimonial Card */}
+            <div style={{
+              background: "#fff", borderRadius: 10, padding: "22px 20px", marginBottom: 30,
+              boxShadow: "0 15px 30px rgba(0,0,0,0.15)"
+            }}>
+              <h3 style={{
+                color: "#1e293b", fontSize: 16, fontWeight: 700, marginBottom: 12,
+              }}>
+                -DigitalExcellence
+              </h3>
+              <p style={{
+                color: "#475569", fontSize: 13, lineHeight: 1.5, fontStyle: "italic", marginBottom: 16,
+              }}>
+                &ldquo;The strategic partnership with Wysele has been transformative for our global operations. Their expertise in AI-driven analytics has not only optimized our workflow but also future-proofed our business model.&rdquo;
+              </p>
+              <div style={{ borderTop: "1px solid #f1f5f9", paddingTop: 14 }}>
+                <p style={{ color: "#1e293b", fontSize: 12, fontWeight: 700, marginBottom: 2 }}>
+                  &mdash; Chief Technology Officer
+                </p>
+                <p style={{ color: "#1e293b", fontSize: 12, fontWeight: 700, marginBottom: 8 }}>
+                  NexGen Global Solutions
+                </p>
+                <p style={{ color: "#fbbf24", fontSize: 11, fontWeight: 500 }}>
+                  Scaling innovation across 42 regions
+                </p>
+              </div>
+            </div>
+
+            {/* Office Image */}
+            <div style={{
+              borderRadius: 8, overflow: "hidden",
+              boxShadow: "0 12px 25px rgba(0,0,0,0.2)"
+            }}>
+              <img
+                src={menuImage}
+                alt="Our Office"
+                style={{ width: "100%", height: 160, objectFit: "cover", display: "block" }}
+              />
+            </div>
+          </div>
+
           {/* Footer / Contact */}
           <div style={{
             opacity: open ? 1 : 0,
             transform: open ? "translateY(0)" : "translateY(15px)",
-            transition: "all 0.6s ease 0.4s"
+            transition: "all 0.6s ease 0.35s"
           }}>
             <a
               href="mailto:info@wysele.com"

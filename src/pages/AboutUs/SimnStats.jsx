@@ -51,13 +51,13 @@ const SimnStats = () => {
         },
         {
             icon: <HeadCircuit size={24} weight="thin" className="text-gray-700" />,
-            value: "60",
+            value: "100",
             suffix: "+",
             label: "Skilled Consultants"
         },
         {
             icon: <HandFist size={24} weight="thin" className="text-gray-700" />,
-            value: "25",
+            value: "20",
             suffix: "+",
             label: "Years Leadership"
         }

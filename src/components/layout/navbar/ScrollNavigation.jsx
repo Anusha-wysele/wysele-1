@@ -49,7 +49,7 @@ const ScrollNavigation = ({ sections }) => {
   };
 
   return (
-    <div className="fixed right-4 top-1/2 transform -translate-y-1/2 z-[100] flex flex-col gap-5 items-end">
+    <div className="hidden lg:flex fixed right-4 top-1/2 transform -translate-y-1/2 z-[100] flex-col gap-5 items-end">
       {sections.filter(s => !s.hideDot).map((section) => {
         const isActive = activeSection === section.id;
         const isHovered = hoveredSection === section.id;

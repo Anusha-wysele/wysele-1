@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { WYSELE_LOGOS } from "../../common/data";
 
-const Logo = () => {
+const Logo = ({ white = false }) => {
     const [hover, setHover] = useState(false);
 
     return (
@@ -35,7 +35,7 @@ const Logo = () => {
                 />
 
                 <img
-                    src={WYSELE_LOGOS.dark}
+                    src={white ? WYSELE_LOGOS.white : WYSELE_LOGOS.dark}
                     alt="Logo"
                     className="w-20 bg-cover mx-auto"
                 />

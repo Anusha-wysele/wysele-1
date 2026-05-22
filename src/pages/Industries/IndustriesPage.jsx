@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import IndustriesHero from "./IndustriesHero";
 import IndustriesNav from "./IndustriesNav";
 import Footer from "../../components/layout/section/Footer";
@@ -17,6 +18,31 @@ const Textiles = lazy(() => import("./IndusstriesTextiles"));
 const Mining = lazy(() => import("./IndustriesMining"));
 
 const IndustriesPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const navbar = document.getElementById("main-navbar") || document.querySelector("nav.fixed");
+          const offset = navbar ? navbar.getBoundingClientRect().bottom + 55 : 123;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
   return (
     <main className="bg-white">
       <IndustriesHero />
