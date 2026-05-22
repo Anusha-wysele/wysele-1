@@ -852,7 +852,7 @@ export default function Navbar() {
 
         animate={{ y: 0, opacity: 1 }}
 
-        className="w-full bg-teal-900 fixed top-0 z-[991] border-b border-teal-950 overflow-hidden hidden md:block"
+        className="w-full bg-black fixed top-0 z-[991] border-b border-teal-950 overflow-hidden hidden md:block"
 
         style={{ height: '44px' }}
 

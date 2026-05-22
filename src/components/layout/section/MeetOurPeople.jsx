@@ -9,35 +9,48 @@ import ManikantaImg from "../../../assets/Manikanta.png";
 import SaiSudhaImg from "../../../assets/RajoliSaiSudha.jpg";
 import SatishImg from "../../../assets/Satish.png";
 import SamyuktaImg from "../../../assets/BondiliSamyukta.png";
+import RamyaImg from "../../../assets/Ramya.jpeg";
 import LegalAdvisorImg from "../../../assets/legaladvisor.png";
 
 const localTeamMembers = [
   {
-    name: "Legal Advisor",
+    name: "Ravinder Rao Chirumamilla",
+    role: "Legal Advisor",
     img: LegalAdvisorImg,
   },
   {
     name: "Geethika Karrayoula",
+    role: "Director of Operations",
     img: GeethikaImg,
   },
   {
     name: "Bondili Samyukta",
+    role: "Project Manager",
     img: SamyuktaImg,
   },
   {
-    name: "Rajoli Sai Sudha",
+    name: "Ramya Goruganti",
+    role: "Admin & Facilities",
+    img: RamyaImg,
+  },
+  {
+    name: "Rajoli Saisudha",
+    role: "HR Manager",
     img: SaiSudhaImg,
   },
   {
-    name: "Satish",
-    img: SatishImg,
-  },
-  {
-    name: "Madhu",
+    name: "Madhu Megavath",
+    role: "Solution Architect",
     img: MadhuImg,
   },
   {
-    name: "Manikanta",
+    name: "Satish Thirumani",
+    role: "Digital Transformation Expert",
+    img: SatishImg,
+  },
+  {
+    name: "Sattu Manikanta",
+    role: "Sales Head",
     img: ManikantaImg,
   },
 ];
@@ -103,8 +116,6 @@ const socialIcons = [
   { icon: <DribbbleIcon />, label: "Dribbble" },
 ];
 
-const TRANSITION = { duration: 0.35, ease: "easeInOut" };
-
 export default function MeetOurPeople() {
   const width = useWindowWidth();
   const isMobile = width < 768;
@@ -133,7 +144,7 @@ export default function MeetOurPeople() {
     // Determine target widths for calculation to prevent transition race conditions
     const isMobileDevice = width < 768;
     const isTablet = width >= 768 && width < 1024;
-    
+
     let activeWidth, collapsedWidth;
     if (isMobileDevice) {
       activeWidth = Math.max(240, Math.min(300, width * 0.75));
@@ -145,7 +156,7 @@ export default function MeetOurPeople() {
       activeWidth = 450;
       collapsedWidth = 110;
     }
-    
+
     const gap = 16; // gap-4 is 16px
     const targetLeft = activeIndex * (collapsedWidth + gap);
     const scrollTarget = targetLeft + (activeWidth / 2) - (containerWidth / 2);
@@ -212,44 +223,43 @@ export default function MeetOurPeople() {
                       setActiveIndex(idx);
                       setIsHovered(true);
                     }}
-                    className={`relative overflow-hidden rounded-[24px] cursor-pointer transition-all duration-500 ease-in-out shadow-sm hover:shadow-md flex-shrink-0 h-full ${
-                      isActive
-                        ? "w-[75vw] min-w-[240px] max-w-[300px] sm:max-w-none sm:w-[280px] md:w-[350px] lg:w-[450px]"
-                        : "w-[15vw] min-w-[55px] max-w-[80px] sm:max-w-none sm:w-[75px] md:w-[90px] lg:w-[110px]"
-                    }`}
+                    className={`relative overflow-hidden rounded-[24px] cursor-pointer transition-all duration-500 ease-in-out shadow-sm hover:shadow-md flex-shrink-0 h-full ${isActive
+                      ? "w-[75vw] min-w-[240px] max-w-[300px] sm:max-w-none sm:w-[280px] md:w-[350px] lg:w-[450px]"
+                      : "w-[15vw] min-w-[55px] max-w-[80px] sm:max-w-none sm:w-[75px] md:w-[90px] lg:w-[110px]"
+                      }`}
                   >
                     {/* Image */}
                     <img
                       src={member.img}
                       alt={member.name}
-                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${
-                        isActive ? "scale-105 saturate-100" : "scale-100 saturate-50 brightness-75 hover:brightness-90"
-                      }`}
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${isActive ? "scale-105 saturate-100" : "scale-100 saturate-50 brightness-75 hover:brightness-90"
+                        }`}
                     />
 
                     {/* Gradient Overlay */}
                     <div
-                      className={`absolute inset-0 transition-all duration-500 ${
-                        isActive
-                          ? "bg-gradient-to-t from-black/90 via-black/40 to-black/10"
-                          : "bg-black/40"
-                      }`}
+                      className={`absolute inset-0 transition-all duration-500 ${isActive
+                        ? "bg-gradient-to-t from-black/90 via-black/40 to-black/10"
+                        : "bg-black/40"
+                        }`}
                     />
 
                     {/* Active Details (fades and slides up) */}
                     <div
-                      className={`absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end text-left z-10 transition-all duration-500 delay-100 transform ${
-                        isActive
-                          ? "opacity-100 translate-y-0"
-                          : "opacity-0 translate-y-4 pointer-events-none"
-                      }`}
+                      className={`absolute inset-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end text-left z-10 transition-all duration-500 delay-100 transform ${isActive
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4 pointer-events-none"
+                        }`}
                     >
-                      <h3 className="text-lg sm:text-2xl md:text-3xl font-inter font-bold text-white mb-4 leading-tight break-words">
+                      <h3 className="text-lg sm:text-2xl md:text-2xl font-inter font-medium text-white mb-1 leading-tight break-words">
                         {member.name}
                       </h3>
+                      <p className="text-xs sm:text-sm md:text-xs font-inter font-medium text-teal-300 mb-4 tracking-wide uppercase">
+                        {member.role}
+                      </p>
 
                       {/* Social icons */}
-                      <div className="flex gap-2.5">
+                      {/* <div className="flex gap-2.5">
                         {socialIcons.map((social, i) => (
                           <button
                             key={social.label}
@@ -260,21 +270,9 @@ export default function MeetOurPeople() {
                             {social.icon}
                           </button>
                         ))}
-                      </div>
+                      </div> */}
                     </div>
 
-                    {/* Collapsed Badge (rotated -90deg, vertical layout) */}
-                    <div
-                      className={`absolute bottom-6 left-1/2 -translate-x-1/2 items-center justify-center transition-all duration-300 flex ${
-                        isActive ? "opacity-0 scale-95 pointer-events-none" : "opacity-100 scale-100"
-                      }`}
-                    >
-                      <div className="w-8 h-28 md:w-10 md:h-36 rounded-xl bg-black/70 backdrop-blur-sm border border-white/10 flex items-center justify-center shadow-lg">
-                        <span className="transform -rotate-90 origin-center whitespace-nowrap text-white text-[9px] md:text-sm font-semibold tracking-wider md:tracking-widest uppercase">
-                          {member.name}
-                        </span>
-                      </div>
-                    </div>
                   </div>
                 );
               })}
@@ -291,7 +289,7 @@ export default function MeetOurPeople() {
                 aria-label="Previous Team Member"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
+                  <path d="M19 12H5M12 19l-7-7 7-7" />
                 </svg>
               </button>
 
@@ -304,7 +302,7 @@ export default function MeetOurPeople() {
                 aria-label="Next Team Member"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                  <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </button>
             </div>
