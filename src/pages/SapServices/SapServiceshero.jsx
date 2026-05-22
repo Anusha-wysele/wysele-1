@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../../components/layout/section/Footer';
-import sapServicesImg from '../../assets/SapSevices.jpg';
+import sapServicesImg from '../../assets/Sapservices.jpg';
 import SapServicesIntro from './SapServicesIntro';
 import SapServicesList from './SapServicesList';
 import Cylinders from '../../components/common/Cylinders';
