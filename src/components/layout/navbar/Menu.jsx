@@ -361,7 +361,7 @@ export default function Menu({ open, onClose }) {
             transition: "all 0.6s ease 0.4s"
           }}>
             <a
-              href="mailto:contact@wysele.com"
+              href="mailto:info@wysele.com"
               style={{
                 color: "#fff", fontSize: 16, fontWeight: 600, textDecoration: "none",
                 display: "block", marginBottom: 18, transition: "color 0.3s ease"
@@ -369,7 +369,7 @@ export default function Menu({ open, onClose }) {
               onMouseEnter={e => e.currentTarget.style.color = "#fbbf24"}
               onMouseLeave={e => e.currentTarget.style.color = "#fff"}
             >
-              contact@wysele.com
+              info@wysele.com
             </a>
 
             <div style={{ display: "flex", gap: 10 }}>

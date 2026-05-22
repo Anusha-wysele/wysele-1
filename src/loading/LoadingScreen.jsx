@@ -14,20 +14,20 @@ export default function LoadingScreen({ onDone }) {
           clearInterval(interval);
           return 100;
         }
-        const step = Math.floor(Math.random() * 6) + 2; 
+        const step = Math.floor(Math.random() * 8) + 4; 
         return Math.min(prev + step, 100);
       });
-    }, 150);
+    }, 80);
 
     // Timing for cinematic transition
     const tExit = setTimeout(() => {
       console.log("LoadingScreen: setLoading(false)");
       setLoading(false);
-    }, 3800);
+    }, 1800);
     const tDone = setTimeout(() => {
       console.log("LoadingScreen: calling onDone()");
       onDone();
-    }, 5200);
+    }, 2600);
 
     console.log("LoadingScreen: Timers started");
 
@@ -76,47 +76,64 @@ export default function LoadingScreen({ onDone }) {
               }}
               className="absolute inset-0 flex flex-col items-center justify-center z-40 pointer-events-auto"
             >
-              <div className="relative flex flex-col items-center">
+              <div className="relative flex flex-col items-center justify-center w-48 h-48 md:w-56 md:h-56">
                 
-                {/* Logo Focus Reveal */}
+                {/* 3D Atom Orbit 1 (Maroon) */}
+                <div className="absolute inset-0" style={{ transform: "rotateX(65deg) rotateY(0deg)" }}>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                    className="w-full h-full rounded-full border-[2.5px] border-white/5 border-t-[#800000] border-b-[#800000] shadow-[0_0_15px_rgba(128,0,0,0.5)]"
+                  />
+                </div>
+
+                {/* 3D Atom Orbit 2 (Gold) */}
+                <div className="absolute inset-0" style={{ transform: "rotateX(65deg) rotateY(60deg)" }}>
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                    className="w-full h-full rounded-full border-[2.5px] border-white/5 border-t-[#FFB703] border-b-[#FFB703] shadow-[0_0_15px_rgba(255,183,3,0.5)]"
+                  />
+                </div>
+
+                {/* 3D Atom Orbit 3 (White) */}
+                <div className="absolute inset-0" style={{ transform: "rotateX(65deg) rotateY(-60deg)" }}>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+                    className="w-full h-full rounded-full border-[2px] border-white/10 border-t-white border-b-white shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                  />
+                </div>
+
+                {/* Nucleus Energy Glow */}
                 <motion.div
-                  animate={{ 
-                    filter: `blur(${(100 - progress) / 6}px) drop-shadow(0 0 15px rgba(255,255,255,${progress / 200}))`,
-                    opacity: (progress / 100) + 0.1,
-                    scale: 0.98 + (progress / 400) // subtle breathe zoom
-                  }}
-                  transition={{ duration: 0.5 }}
-                  className="relative group overflow-hidden"
+                  animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.2, 0.4, 0.2] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute inset-10 md:inset-12 bg-white/10 rounded-full blur-xl"
+                />
+
+                {/* Center Logo */}
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.3, ease: "backOut" }}
+                  className="absolute z-10 flex items-center justify-center"
                 >
-                  {/* The actual logo - very small (w-28) */}
                   <img
                     src={WYSELE_LOGOS.white}
                     alt="Wysele"
-                    className="w-28 md:w-32 object-contain brightness-150 contrast-125"
+                    className="w-20 md:w-24 object-contain brightness-150 contrast-125"
                   />
-                  
-                  {/* Optical Glint - a single pass once nearly sharp */}
-                  {progress > 85 && (
-                    <motion.div 
-                      key="glint"
-                      initial={{ top: "-10%", opacity: 0 }}
-                      animate={{ top: "110%", opacity: 1 }}
-                      transition={{ duration: 1.2, ease: "easeInOut" }}
-                      className="absolute inset-x-0 h-[1.5px] bg-white/40 blur-[2px] z-50 pointer-events-none"
-                    />
-                  )}
                 </motion.div>
 
-                {/* Subtle light pulse behind logo */}
+                {/* Progress Text */}
                 <motion.div 
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ 
-                    opacity: [0.03, 0.06, 0.03],
-                    scale: [1, 1.1, 1] 
-                  }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute inset-0 bg-white rounded-full blur-[80px] -z-10"
-                />
+                  className="absolute -bottom-10 md:-bottom-12 text-white/60 text-[10px] md:text-xs tracking-[0.3em] font-mono"
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  LOADING {progress}%
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>

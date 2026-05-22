@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { OTHER_PAGE_IMAGES } from '../../common/data';
 import Cylinders from '../../common/Cylinders';
 import Button from '../../common/Button';
 
 export default function InsightsHero() {
+  const navigate = useNavigate();
   return (
     <section className="relative w-full py-16 md:py-24 flex items-center overflow-hidden bg-[#1a1a1a] min-h-[400px] md:min-h-[500px]">
       {/* Background Image */}
@@ -64,7 +66,7 @@ export default function InsightsHero() {
 
           <Button 
             text="Latest News"
-            onClick={() => {}}
+            onClick={() => navigate('/blogs')}
             icon={<ArrowUpRight size={16} />}
           />
         </div>

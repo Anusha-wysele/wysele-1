@@ -780,6 +780,8 @@ export default function Navbar() {
 
   const NAV_LINKS = [
 
+    { label: "Home", path: "/" },
+
     { label: "About Us", path: "/about" },
 
     { label: "Services", dropdown: "Services" },
@@ -903,11 +905,8 @@ export default function Navbar() {
               },
 
               {
-
-                icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-
-                text: "Mon–Sat  9:00–18:00  |  Sunday CLOSED"
-
+                icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+                text: "info@wysele.com"
               },
 
               {
@@ -1007,7 +1006,11 @@ export default function Navbar() {
 
             {NAV_LINKS.map((link) => {
 
-              const isActive = link.path ? location.pathname === link.path : openDrop === link.dropdown;
+              const isActive = link.path
+                ? location.pathname === link.path
+                : (link.dropdown === "Services"
+                    ? (location.pathname.startsWith("/services/") || location.pathname === "/sap-services" || openDrop === "Services")
+                    : openDrop === link.dropdown);
 
               const isHovered = hoveredLink === link.label;
 
@@ -1053,7 +1056,7 @@ export default function Navbar() {
 
                     }}
 
-                    className="text-[11px] uppercase font-medium px-2 py-1 rounded-lg flex items-center gap-1.5 relative overflow-hidden"
+                    className="text-[13px] uppercase font-medium px-2 py-1 rounded-lg flex items-center gap-1.5 relative overflow-hidden"
 
                     style={{ color: textColor }}
 

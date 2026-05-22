@@ -1,5 +1,7 @@
 
-// --- WYSELE LOGOS ---
+import IotHeroImg from '../../assets/IotHero.png';
+import AimlHeroImg from '../../assets/Aimlhero.jpg';
+import Saps4Img from '../../assets/Saps4.jpg';
 export const WYSELE_LOGOS = {
   dark: "https://wysele.com/wp-content/uploads/2025/02/wysele_dark.png",
   white: "https://wysele.com/wp-content/uploads/2025/02/logo1000.png",
@@ -122,17 +124,12 @@ export const SERVICES_LIST = [
   {
     title: "SAP Services",
     desc: "Comprehensive SAP solutions including Consulting, Signavio, Datasphere, RISE, BTP, Integration, Migration, MDG, and S/4HANA Conversion to drive enterprise transformation.",
-    img: "https://thumbs.dreamstime.com/b/sap-business-process-automation-management-software-concept-businessman-typing-laptop-icons-including-gears-charts-325088207.jpg?w=768"
+    img: Saps4Img
   },
   {
     title: "Salesforce Services",
     desc: "Boost customer engagement with tailored Salesforce solutions.",
-    img: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80"
-  },
-  {
-    title: "IT Infrastructure – SOC & NOC",
-    desc: "24/7 monitoring and security for your IT infrastructure.",
-    img: "https://media.istockphoto.com/id/1809659600/photo/modern-data-technology-center-server-racks-in-dark-room-with-vfx-visualization-concept-of.jpg?s=612x612&w=0&k=20&c=NXgxaKO42ojenr36s2bzRMxpm8JmOyItPq3ZVkdJsi0="
+    img: "https://images.pexels.com/photos/7709157/pexels-photo-7709157.jpeg"
   },
   {
     title: "IT Infrastructure Services",
@@ -145,9 +142,14 @@ export const SERVICES_LIST = [
     img: "https://media.istockphoto.com/id/1435605327/photo/cybersecurity-concept-global-network-security-technology-business-people-protect-personal.jpg?s=612x612&w=0&k=20&c=9QvqAsfANdpsNcYdZ0WlMd5lKaTR9BvnTpFnrtGbV0s="
   },
   {
-    title: "Enterprise Digital Transformation",
-    desc: "Future-proof your business with end-to-end digital transformation.",
-    img: "https://media.istockphoto.com/id/1550019855/photo/management-strategy-concept-process-of-business.jpg?s=612x612&w=0&k=20&c=gjTAinyRgwailWNrVS_pjnBo4pW_-CWCc6Ui-u-Fb9o="
+    title: "IoT Services",
+    desc: "End-to-end IoT solutions — from device integration and embedded systems to cloud connectivity and industry-specific IoT applications.",
+    img: IotHeroImg
+  },
+  {
+    title: "AI & ML Services",
+    desc: "Accelerate your business with AI strategy, machine learning, NLP, computer vision, predictive analytics, and intelligent automation.",
+    img: AimlHeroImg
   },
   {
     title: "Web Development",
