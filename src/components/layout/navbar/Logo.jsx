@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { WYSELE_LOGOS } from "../../common/data";
+import logoImg from "../../../assets/logo.png"
+import LogoWhiteImg from "../../../assets/LogoWhite.png";
 
 const Logo = ({ white = false }) => {
     const [hover, setHover] = useState(false);
@@ -14,30 +16,14 @@ const Logo = ({ white = false }) => {
                 className="text-center relative overflow-hidden group"
                 style={{
                     transition: "transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)",
-                    transform: hover ? "scale(1.05)" : "scale(1)",
                 }}
             >
-                {/* Shine layer */}
-                <div
-                    style={{
-                        position: "absolute",
-                        top: 0,
-                        left: "-100%",
-                        width: "50%",
-                        height: "100%",
-                        background: "linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent)",
-                        transform: "skewX(-25deg)",
-                        transition: hover ? "left 0.7s ease" : "none",
-                        left: hover ? "150%" : "-100%",
-                        zIndex: 1,
-                        pointerEvents: "none"
-                    }}
-                />
+
 
                 <img
-                    src={white ? WYSELE_LOGOS.white : WYSELE_LOGOS.dark}
+                    src={LogoWhiteImg}
                     alt="Logo"
-                    className="w-20 bg-cover mx-auto"
+                    className="w-24 bg-cover mx-auto"
                 />
 
             </div>

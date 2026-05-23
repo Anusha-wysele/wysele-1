@@ -56,9 +56,12 @@ import Menu from "./Menu";
 
 import Logo from "./Logo";
 
+import LogoMobile from "./LogoMobile";
+
 import Button from "../../common/Button";
 
 import { WEB_DEVELOPMENT_IMAGES } from "../../common/data";
+
 
 
 
@@ -852,7 +855,7 @@ export default function Navbar() {
 
         animate={{ y: 0, opacity: 1 }}
 
-        className="w-full bg-black fixed top-0 z-[991] border-b border-teal-950 overflow-hidden hidden md:block"
+        className="w-full bg-black fixed top-0 z-[991]  overflow-hidden hidden md:block"
 
         style={{ height: '44px' }}
 
@@ -1023,7 +1026,7 @@ export default function Navbar() {
 
       <nav
         id="main-navbar"
-        className={`w-full fixed z-[990] ${bgClass} px-3 py-2 md:py-0 transition-all duration-300 top-0 md:top-[44px]`}
+        className={`w-full fixed z-[990] bg-white px-3 py-2 md:py-0 transition-all duration-300 top-0 md:top-[40px]`}
       >
 
         <div className="w-full h-full flex items-center justify-between">
@@ -1032,7 +1035,7 @@ export default function Navbar() {
 
           <div className="flex md:hidden flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
 
-            <Logo white={false} />
+            <LogoMobile white={false} />
 
           </div>
 

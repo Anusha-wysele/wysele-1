@@ -14,7 +14,7 @@ export default function LoadingScreen({ onDone }) {
           clearInterval(interval);
           return 100;
         }
-        const step = Math.floor(Math.random() * 8) + 4; 
+        const step = Math.floor(Math.random() * 8) + 4;
         return Math.min(prev + step, 100);
       });
     }, 80);
@@ -45,7 +45,7 @@ export default function LoadingScreen({ onDone }) {
     <div className="fixed inset-0 z-[10000] overflow-hidden bg-transparent pointer-events-none">
       <AnimatePresence mode="wait">
         {loading && (
-          <motion.div 
+          <motion.div
             key="loader-container"
             className="absolute inset-0 z-20 overflow-hidden"
             exit={{ opacity: 1 }} // Prevent container from fading early
@@ -68,16 +68,16 @@ export default function LoadingScreen({ onDone }) {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ 
-                opacity: 0, 
-                scale: 0.8, 
+              exit={{
+                opacity: 0,
+                scale: 0.8,
                 filter: "blur(40px)",
-                transition: { duration: 0.7, ease: "easeIn" } 
+                transition: { duration: 0.7, ease: "easeIn" }
               }}
               className="absolute inset-0 flex flex-col items-center justify-center z-40 pointer-events-auto"
             >
               <div className="relative flex flex-col items-center justify-center w-48 h-48 md:w-56 md:h-56">
-                
+
                 {/* 3D Atom Orbit 1 (Maroon) */}
                 <div className="absolute inset-0" style={{ transform: "rotateX(65deg) rotateY(0deg)" }}>
                   <motion.div
@@ -113,21 +113,10 @@ export default function LoadingScreen({ onDone }) {
                 />
 
                 {/* Center Logo */}
-                <motion.div
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.3, ease: "backOut" }}
-                  className="absolute z-10 flex items-center justify-center"
-                >
-                  <img
-                    src={WYSELE_LOGOS.white}
-                    alt="Wysele"
-                    className="w-20 md:w-24 object-contain brightness-150 contrast-125"
-                  />
-                </motion.div>
+
 
                 {/* Progress Text */}
-                <motion.div 
+                <motion.div
                   className="absolute -bottom-10 md:-bottom-12 text-white/60 text-[10px] md:text-xs tracking-[0.3em] font-mono"
                   animate={{ opacity: [0.5, 1, 0.5] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -141,7 +130,7 @@ export default function LoadingScreen({ onDone }) {
       </AnimatePresence>
 
       {/* Atmospheric Shutter Grain */}
-      <motion.div 
+      <motion.div
         animate={{ opacity: loading ? 0.015 : 0 }}
         className="absolute inset-0 z-10 pointer-events-none"
         style={{

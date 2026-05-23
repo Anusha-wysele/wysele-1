@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
+import HeroImg from "../../../assets/LandingVideo.mp4";
 
 const HERO_INDUSTRIES = [
   { name: "Manufacturing", id: "manufacturing" },
@@ -70,7 +71,7 @@ export default function HeroSection() {
           filter: "brightness(0.75) grayscale(0.1)",
         }}
       >
-        <source src="https://ik.imagekit.io/zqgg7lja1/Hero.mp4?tr=orig" type="video/mp4" />
+        <source src={HeroImg} type="video/mp4" />
       </video>
 
       {/* Content Overlay */}

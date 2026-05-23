@@ -1,6 +1,8 @@
 import React from "react";
 import { Linkedin, Instagram, Facebook } from "lucide-react";
 import { motion } from "framer-motion";
+import LogoWhiteImg from "../../../assets/LogoWhite.png";
+
 
 export default function Footer() {
     const LOGO_WHITE = "https://wysele.com/wp-content/uploads/2025/02/logo1000.png";
@@ -10,7 +12,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr,1fr,1fr,1fr] gap-12 mb-16">
                     {/* Brand Section */}
                     <div className="space-y-6">
-                        <img src={LOGO_WHITE} alt="Wysele" className="w-24 opacity-90" />
+                        <img src={LogoWhiteImg} alt="Wysele" className="w-24 opacity-90" />
                         <p className="text-white/60 text-base leading-relaxed max-w-md">
                             Wysele is one of India’s top SAP solution providers, delivering end-to-end digital transformation for enterprises globally.
                         </p>
@@ -20,11 +22,11 @@ export default function Footer() {
                                 { Icon: Instagram, href: "#" },
                                 { Icon: Facebook, href: "#" }
                             ].map(({ Icon, href }, i) => (
-                                <a 
-                                    key={i} 
-                                    href={href} 
-                                    target={href !== "#" ? "_blank" : undefined} 
-                                    rel={href !== "#" ? "noopener noreferrer" : undefined} 
+                                <a
+                                    key={i}
+                                    href={href}
+                                    target={href !== "#" ? "_blank" : undefined}
+                                    rel={href !== "#" ? "noopener noreferrer" : undefined}
                                     className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
                                 >
                                     <Icon size={20} className="text-white/60" />
@@ -74,7 +76,7 @@ export default function Footer() {
             </div>
 
             {/* Backdrop Text */}
-            <motion.div 
+            <motion.div
                 initial={{ opacity: 0, y: 50, x: "-50%" }}
                 whileInView={{ opacity: 1, y: 0, x: "-50%" }}
                 viewport={{ once: true }}

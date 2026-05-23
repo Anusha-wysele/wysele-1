@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Linkedin, Twitter, Facebook, X } from "lucide-react";
 import { menuImage, WYSELE_LOGOS } from "../../common/data";
+import LogoWhiteImg from "../../../assets/LogoWhite.png";
+
 
 const SAP_SERVICES_LIST = [
   { label: "SAP Consulting Services", path: "/services/sap-consulting" },
@@ -106,7 +108,7 @@ export default function Menu({ open, onClose }) {
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <img
-              src={WYSELE_LOGOS.white}
+              src={LogoWhiteImg}
               alt="Wysele Logo"
               style={{ width: 80, height: "auto" }}
             />
