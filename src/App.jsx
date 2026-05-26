@@ -129,7 +129,7 @@ export default function App() {
             <Route path="*" element={<h1 className="text-white">404 - Page Not Found</h1>} />
           </Routes>
         </Suspense>
-        {loading && !isAdminPath && <LoadingScreen onDone={handleLoadingDone} />}
+        {/* {loading && !isAdminPath && <LoadingScreen onDone={handleLoadingDone} />} */}
         {!isAdminPath && <ScrollProgressBar />}
       </div>
     </AuthProvider>

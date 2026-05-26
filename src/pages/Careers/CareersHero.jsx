@@ -4,7 +4,7 @@ import { ArrowRight, Users, Globe, Rocket, Award } from 'lucide-react';
 
 const CareersHero = () => {
   const metrics = [
-    { label: "50+ Team Members", icon: <Users className="w-4 h-4" /> },
+    { label: "100+ Team Members", icon: <Users className="w-4 h-4" /> },
     { label: "Remote Friendly", icon: <Globe className="w-4 h-4" /> },
     { label: "Career Growth", icon: <Rocket className="w-4 h-4" /> },
     { label: "Enterprise Projects", icon: <Award className="w-4 h-4" /> }
@@ -26,7 +26,7 @@ const CareersHero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full relative z-10 pt-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-10">
           
           <motion.div 
@@ -48,12 +48,12 @@ const CareersHero = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0 }
               }}
-              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+              className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#ffcc00] border border-white/10 backdrop-blur-md"
             >
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#ffcc00] animate-pulse" />
-                <span className="text-[10px] font-bold tracking-widest uppercase text-white/80 flex items-center gap-2">
-                  <span className="text-[#ffcc00]">✨</span> We're hiring
+              <div className="flex items-center gap-2  ">
+                <div className="w-2 h-2 rounded-full bg-black animate-pulse" />
+                <span className="text-[10px] font-bold tracking-widest uppercase flex items-center gap-2">
+                  <span className="text-black"></span> We're hiring
                 </span>
               </div>
             </motion.div>
