@@ -1,15 +1,16 @@
-import React from 'react';
-import SapDatahero from './SapDatahero';
-import DataSupport from './DataSupport';
+import Breadcrumbs from '../../../components/common/Breadcrumbs';
+import Footer from '../../../components/layout/section/Footer';
 import DataContinuousmonitering from './DataContinuousmonitering';
 import DataStrategicPartnership from './DataStrategicPartnership';
+import DataSupport from './DataSupport';
 import DataWhychoose from './DataWhychoose';
-import Footer from '../../../components/layout/section/Footer';
+import SapDatahero from './SapDatahero';
 
 const SapDataspherePage = () => {
     return (
         <div>
             <SapDatahero />
+            <Breadcrumbs />
             <DataSupport />
             <DataStrategicPartnership />
             <DataContinuousmonitering />

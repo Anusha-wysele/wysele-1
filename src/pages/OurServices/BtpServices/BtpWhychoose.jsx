@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Target, LifeBuoy } from 'lucide-react';
+import { LifeBuoy, ShieldCheck, Target } from 'lucide-react';
 
 const chooseData = [
     {

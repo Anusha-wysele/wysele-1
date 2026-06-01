@@ -18,7 +18,12 @@ const jobService = {
    * GET /api/v1/jobs/search?q=...
    */
   searchJobs: async (query) => {
-    const response = await api.get('/jobs/search', { params: { q: query } });
+    const response = await api.get('/jobs/search', { 
+      params: { 
+        q: query,
+        query: query 
+      } 
+    });
     return response.data;
   },
 
@@ -159,14 +164,7 @@ const jobService = {
       throw error;
     }
   },
-  /**
-   * Search jobs using the backend search endpoint
-   * GET /api/v1/jobs/search?query=...
-   */
-  searchJobs: async (query) => {
-    const response = await api.get(`/jobs/search?query=${encodeURIComponent(query)}`);
-    return response.data;
-  },
+
 
   // --- Contact Inquiry APIs ---
   

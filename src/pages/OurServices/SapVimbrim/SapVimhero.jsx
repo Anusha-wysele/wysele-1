@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { OTHER_PAGE_IMAGES } from "../../../components/common/data";
-
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import sapVimImg from "../../../assets/wysele-sapvimhero.webp";
+import sapBrimImg from "../../../assets/wysele-sapbrimhero.webp";
 export default function SapVimhero() {
   const VIM_BRIM_CONTENT = [
     {
@@ -9,7 +9,7 @@ export default function SapVimhero() {
       title: "Transform Your Financial Workflows with SAP VIM",
       desc1: "At Wysele, we provide specialized SAP Vendor Invoice Management (VIM) solutions to streamline and automate your invoice processing operations. Our services are designed to reduce manual effort, enhance accuracy, and accelerate approval cycles, ensuring efficient accounts payable management.",
       desc2: "By leveraging SAP VIM, we help organizations improve financial visibility, minimize errors, and maintain compliance with regulatory standards—enabling faster and more reliable financial operations.",
-      image: OTHER_PAGE_IMAGES.sapVim1,
+      image: sapVimImg,
       tag: "SAP VIM"
     },
     {
@@ -17,7 +17,7 @@ export default function SapVimhero() {
       title: "Optimize Billing and Revenue with SAP BRIM",
       desc1: "Wysele delivers advanced SAP Billing and Revenue Innovation Management (BRIM) solutions to simplify complex billing processes and drive revenue growth. Our expertise enables businesses to manage dynamic pricing models, automate billing cycles, and gain real-time insights into revenue streams.",
       desc2: "With SAP BRIM, we help organizations enhance billing efficiency, improve financial transparency, and adapt quickly to evolving business models—ensuring sustainable and scalable growth.",
-      image: OTHER_PAGE_IMAGES.sapVim2,
+      image: sapBrimImg,
       tag: "SAP BRIM"
     }
   ];

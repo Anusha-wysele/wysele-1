@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Users, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Calendar, 
-  Download, 
+import {
   ArrowLeft,
-  FileText,
-  ExternalLink,
   ChevronRight,
+  Download,
+  Users,
   X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import jobService from '../../services/jobService';
 
 const JobApplications = () => {

@@ -1,6 +1,5 @@
-import React from 'react';
-import { Layers, Puzzle, TrendingUp, RefreshCw, Headset } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Headset, Layers, Puzzle, RefreshCw, TrendingUp } from 'lucide-react';
 
 const WHY_CHOOSE_DATA = [
     {

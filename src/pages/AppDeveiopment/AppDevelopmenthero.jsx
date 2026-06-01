@@ -1,10 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import AppDev1 from '../../assets/App-Development1.png';
 
 const AppDevelopmenthero = () => {
     return (
-        <section className="relative w-full bg-[#1A222E] flex items-center justify-center overflow-x-hidden pt-12 pb-6 md:py-12 lg:py-16">
+        <section className="relative w-full bg-[#1A222E] flex items-center justify-center overflow-x-hidden pt-[150px] pb-6 md:py-12 lg:py-16">
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
 
                 {/* Left Side: Content */}

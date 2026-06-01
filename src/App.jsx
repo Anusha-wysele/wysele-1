@@ -1,14 +1,14 @@
-import React, { useState, Suspense, lazy, useCallback } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-import LoadingScreen from "./loading/LoadingScreen";
-import Navbar from "./components/layout/navbar/Navbar";
-import ScrollProgressBar from "./components/common/ScrollProgressBar";
-import LeftSidebar from "./components/layout/navbar/LeftSidebar";
-import { ToastProvider } from "./components/Admin/ToastContext";
-import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/Admin/ProtectedRoute";
+import { ToastProvider } from "./components/Admin/ToastContext";
 import ConsultationPopup from "./components/common/ConsultationPopup";
+import ScrollProgressBar from "./components/common/ScrollProgressBar";
+import SEOManager from "./components/common/SEOManager";
+import LeftSidebar from "./components/layout/navbar/LeftSidebar";
+import Navbar from "./components/layout/navbar/Navbar";
+import { AuthProvider } from "./context/AuthContext";
 
 // Lazy load pages for better performance
 const LandingPages = lazy(() => import("./components/layout/section/LandingPages"));
@@ -42,6 +42,8 @@ const CareersHome = lazy(() => import("./pages/Careers/CareersHome"));
 const JobApplicationPage = lazy(() => import("./pages/Careers/JobApplicationPage"));
 const BlogsPage = lazy(() => import("./pages/Blogs/BlogsPage"));
 const BlogDetailPage = lazy(() => import("./pages/Blogs/BlogDetailPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFound/NotFoundPage"));
+const SitemapPage = lazy(() => import("./pages/Sitemap/SitemapPage"));
 
 // Admin Pages
 const AdminLogin = lazy(() => import("./pages/Admin/Login"));
@@ -74,17 +76,12 @@ const AdminRoutes = () => (
 );
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
   const location = useLocation();
   const isAdminPath = location.pathname.startsWith('/admin');
 
-  const handleLoadingDone = useCallback(() => {
-    console.log("Loading done triggered");
-    setLoading(false);
-  }, []);
-
   return (
     <AuthProvider>
+      <SEOManager />
       <div className="relative min-h-screen" style={{ background: "#000" }}>
         {!isAdminPath && <Navbar />}
         {!isAdminPath && <LeftSidebar />}
@@ -121,15 +118,15 @@ export default function App() {
             <Route path="/careers/apply/:id" element={<JobApplicationPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/blogs/:id" element={<BlogDetailPage />} />
+            <Route path="/sitemap" element={<SitemapPage />} />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="/admin/*" element={<AdminRoutes />} />
 
-            <Route path="*" element={<h1 className="text-white">404 - Page Not Found</h1>} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
-        {/* {loading && !isAdminPath && <LoadingScreen onDone={handleLoadingDone} />} */}
         {!isAdminPath && <ScrollProgressBar />}
       </div>
     </AuthProvider>

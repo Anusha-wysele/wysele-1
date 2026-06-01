@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ScrollNavigation = ({ sections }) => {
   const [activeSection, setActiveSection] = useState(sections[0]?.id || "");

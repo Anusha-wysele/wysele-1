@@ -1,6 +1,12 @@
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Plus, Briefcase, FileText, CheckCircle, Users, BarChart, ShieldCheck, Gear } from 'lucide-react';
+import img1 from '../../../assets/wysele-sapvimservices1.webp';
+import img2 from '../../../assets/wysele-sapvimservices2.webp';
+import img3 from '../../../assets/wysele-sapvimservices3.webp';
+import img4 from '../../../assets/wysele-sapvimservices4.webp';
+import img5 from '../../../assets/wysele-sapvimservices5.webp';
+import img6 from '../../../assets/wysele-sapvimservices6.webp';
 
 const VIM_SERVICES = [
     {
@@ -10,7 +16,7 @@ const VIM_SERVICES = [
         description: "Efficient invoice management is crucial for an organization’s success. With SAP VIM, we automate and integrate invoicing into your SAP S/4HANA or SAP ECC environment, ensuring seamless ERP synchronization for better visibility and control over accounts payable. Our team supports you through every phase, from strategy to execution, helping you understand key features and functionalities.",
         sideTitle: "Seamless ERP Connectivity",
         sideDesc: "Ensure smooth synchronization between SAP systems and invoicing processes for consistent and reliable data flow.",
-        image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg",
+        image: img1,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -20,7 +26,7 @@ const VIM_SERVICES = [
         description: "Our SAP VIM solution minimizes manual intervention, reducing human error and speeding up invoice processing. Automation streamlines capture, validation, approval, and matching with purchase orders and goods receipts, enhancing efficiency and accelerating payments to improve cash flow.",
         sideTitle: "Faster Processing Cycles",
         sideDesc: "Accelerate invoice handling with automated workflows that improve efficiency and enhance cash flow.",
-        image: "https://images.pexels.com/photos/5900222/pexels-photo-5900222.jpeg",
+        image: img2,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -30,7 +36,7 @@ const VIM_SERVICES = [
         description: "With SAP VIM, we streamline invoice approval workflows to ensure timely payments and accountability. Our tailored approval hierarchy enhances compliance, reduces late payments, and strengthens vendor relationships.",
         sideTitle: "Enhanced Compliance Control",
         sideDesc: "Maintain approval transparency and enforce policies to reduce delays and ensure regulatory compliance.",
-        image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg",
+        image: img3,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -40,7 +46,7 @@ const VIM_SERVICES = [
         description: "Our SAP VIM solution streamlines vendor management by tracking vendor details, monitoring payments, and improving communication. Enhanced transparency strengthens supplier relationships, enabling better negotiations and smoother workflows.",
         sideTitle: "Improved Vendor Collaboration",
         sideDesc: "Enable better coordination and transparency with vendors for smoother operations and stronger partnerships.",
-        image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg",
+        image: img4,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -50,7 +56,7 @@ const VIM_SERVICES = [
         description: "SAP VIM ensures compliance with global regulations by standardizing invoicing processes and maintaining audit-ready documentation. We help implement robust policies to meet tax requirements, enhancing reporting accuracy and reducing regulatory risks.SAP VIM ensures compliance with global regulations by standardizing invoicing processes and maintaining audit-ready documentation. We help implement robust policies to meet tax requirements, enhancing reporting accuracy and reducing regulatory risks.",
         sideTitle: "Accurate Financial Insights",
         sideDesc: "Gain better visibility into financial data with reliable reporting and improved decision-making.",
-        image: "https://images.pexels.com/photos/5900167/pexels-photo-5900167.jpeg",
+        image: img5,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -60,7 +66,7 @@ const VIM_SERVICES = [
         description: "We provide ongoing support and optimization for SAP VIM, ensuring efficient, secure invoice management. Our team offers continuous monitoring, troubleshooting, and enhancements to help you maximize its benefits for sustainable growth.",
         sideTitle: "Sustained System Performance",
         sideDesc: "Maintain high efficiency with ongoing improvements, updates, and proactive issue resolution.",
-        image: "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg",
+        image: img6,
         icon: <Plus className="w-6 h-6" />
     }
 ];

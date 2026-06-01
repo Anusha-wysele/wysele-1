@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const SalesforceHero = () => {
@@ -36,7 +35,7 @@ const SalesforceHero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
       
       {/* Main Content Container */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col justify-between pt-32 pb-16">
+      <div className="relative z-20 h-full max-w-7xl mx-auto px-6 md:px-12 lg:px-24 flex flex-col justify-between pt-[150px] md:pt-32 pb-16">
         
         {/* Top Section: Text & Contact Box */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 flex-grow w-full">

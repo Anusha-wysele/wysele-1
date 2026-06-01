@@ -1,27 +1,29 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { saps4image } from '../../../components/common/data';
+import s4ServicesImg1 from '../../../assets/wysele-s4services1.webp';
+import s4ServicesImg2 from '../../../assets/wysele-s4services2.webp';
+import s4ServicesImg3 from '../../../assets/wysele-s4services3.webp';
+import s4ServicesImg4 from '../../../assets/wysele-s4services4.webp';
 
 const services = [
     {
         title: "Assessment & Planning",
         description: "We perform a comprehensive assessment of your current SAP landscape. Based on this analysis, we develop a custom conversion strategy aligned with your business objectives and growth plans.",
-        image: saps4image.assessment
+        image: s4ServicesImg1
     },
     {
         title: "System Conversion",
         description: "Our experienced consultants oversee the conversion process from start to finish, including data migration and system configuration, ensuring a hassle-free transition.",
-        image: saps4image.conversion
+        image: s4ServicesImg2
     },
     {
         title: "Custom Code Optimization",
         description: "To ensure all your unique business processes are maintained, we optimize your existing custom code for compatibility with SAP S/4HANA, preserving functionality while enhancing performance.",
-        image: saps4image.optimization
+        image: s4ServicesImg3
     },
     {
         title: "Post-Conversion Support",
         description: "Following your migration, we remain dedicated to your success with ongoing support and optimization, ensuring your new SAP S/4HANA system operates at peak performance.",
-        image: saps4image.support
+        image: s4ServicesImg4
     }
 ];
 

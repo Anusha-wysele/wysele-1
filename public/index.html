@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="./Tlogo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Wysele Technologies LLP – Enterprise Digital Transformation, SAP, Salesforce, Cybersecurity & IT Infrastructure Services."
-    />
-    <link rel="apple-touch-icon" href="./Tlogo.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="./Tlogo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description"
+    content="Wysele Technologies delivers SAP, Salesforce, cybersecurity, AI/ML, cloud, IoT, web, and enterprise IT solutions for digital transformation." />
+  <link rel="apple-touch-icon" href="./Tlogo.png" />
+
+  <!-- Preconnect to Google Fonts Origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Preload homepage background video poster for LCP optimization -->
+  <link rel="preload" as="image" href="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80" />
+
+  <!-- Optimized Google Fonts Asynchronous Loader (Prevents Render Blocking) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxygen:wght@300;400;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxygen:wght@300;400;700&display=swap" media="print" onload="this.media='all'" />
+
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -23,13 +34,30 @@
       Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Wysele Technologies | Digital Transformation Experts</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>Wysele Technologies | Digital Transformation Solutions</title>
+
+  <!-- Open Graph / Facebook / LinkedIn / Instagram -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.wysele.com/" />
+  <meta property="og:title" content="Wysele Technologies | Digital Transformation Solutions" />
+  <meta property="og:description" content="Wysele Technologies delivers SAP, Salesforce, cybersecurity, AI/ML, cloud, IoT, web, and enterprise IT solutions for digital transformation." />
+  <meta property="og:image" content="https://www.wysele.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:site_name" content="Wysele Technologies" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Image Source Link -->
+  <link rel="image_src" href="https://www.wysele.com/og-image.png" />
+
+  <!-- Note: Schema.org structured data is injected dynamically by SEOManager.jsx per page -->
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +67,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>

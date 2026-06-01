@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Search, Bell, User, ChevronDown, Command, UserPlus, LogOut, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useAuth } from '../../context/AuthContext';
-import RegisterEmployeeModal from './RegisterEmployeeModal';
-import jobService from '../../services/jobService';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Briefcase, ChevronDown, FileText, Loader2, LogOut, Menu, Search, UserPlus } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FileText, MessageSquare, Mail, Briefcase, Loader2, ArrowRight } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
+import jobService from '../../services/jobService';
+import RegisterEmployeeModal from './RegisterEmployeeModal';
 
 const Navbar = ({ onMenuToggle }) => {
   const { user, logout } = useAuth();

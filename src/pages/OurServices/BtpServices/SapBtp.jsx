@@ -1,14 +1,15 @@
-import React from 'react';
+import Breadcrumbs from '../../../components/common/Breadcrumbs';
+import Footer from '../../../components/layout/section/Footer';
 import BtpHero from './BtpHero';
-import EmpoverSapbtp from './EmpoverSapbtp';
 import BtpSapservices from './BtpSapservices';
 import BtpWhychoose from './BtpWhychoose';
-import Footer from '../../../components/layout/section/Footer';
+import EmpoverSapbtp from './EmpoverSapbtp';
 
 const SapBtp = () => {
     return (
         <main className="bg-white">
             <BtpHero />
+            <Breadcrumbs />
             <EmpoverSapbtp />
             <BtpSapservices />
             <BtpWhychoose />

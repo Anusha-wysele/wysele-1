@@ -1,9 +1,8 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const ItInfrastructureHero = () => {
   return (
-    <section className="relative min-h-[560px] lg:h-[600px] w-full bg-[#fcfcfc] font-sans overflow-hidden flex items-center pt-16">
+    <section className="relative min-h-[560px] lg:h-[600px] w-full bg-[#fcfcfc] font-sans overflow-hidden flex items-center pt-[150px] md:pt-16">
       
       {/* Background Graphic (Subtle Grid) */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 

@@ -1,10 +1,9 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
-  ShieldCheck,
+  Headphones,
   Layers3,
   Settings2,
-  Headphones
+  ShieldCheck
 } from "lucide-react";
 
 const WhyChooseUs = () => {

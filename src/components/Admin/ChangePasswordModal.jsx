@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, ShieldAlert, CheckCircle2, Loader2, Key } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CheckCircle2, Key, Loader2, Lock, ShieldAlert } from 'lucide-react';
+import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import authService from '../../services/authService';
 import { useToast } from '../Admin/ToastContext';
-import { useAuth } from '../../context/AuthContext';
 
 const ChangePasswordModal = ({ isOpen, onClose }) => {
   const [oldPassword, setOldPassword] = useState('');

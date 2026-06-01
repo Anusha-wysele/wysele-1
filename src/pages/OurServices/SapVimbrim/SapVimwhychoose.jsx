@@ -1,16 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-    Brain, 
-    Briefcase, 
-    ChartLine, 
-    ArrowsOut, 
-    ShieldCheck,
-    CheckCircle,
-    TrendUp,
-    Globe,
-    Users
+import {
+  ArrowsOut,
+  Brain,
+  Briefcase,
+  ChartLine,
+  CheckCircle,
+  ShieldCheck
 } from "@phosphor-icons/react";
+import { motion } from 'framer-motion';
 
 const SapVimwhychoose = () => {
     const whyChooseData = [

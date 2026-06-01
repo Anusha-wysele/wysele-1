@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, UserPlus, Mail, Fingerprint, Phone, Briefcase, Building, ShieldCheck, Loader2 } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Briefcase, Building, Fingerprint, Loader2, Mail, Phone, ShieldCheck, UserPlus, X } from 'lucide-react';
+import { useState } from 'react';
 import employeeService from '../../services/employeeService';
 import { useToast } from '../Admin/ToastContext';
 

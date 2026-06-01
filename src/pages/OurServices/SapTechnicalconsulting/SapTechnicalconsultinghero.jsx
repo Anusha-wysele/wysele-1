@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import SapTechnicalconsultImg from '../../../assets/SapTechnicalconsult.jpg';
 
 const DURATION = 6000; // ms per card
@@ -30,7 +30,7 @@ export default function SapTechnicalconsultinghero() {
     }, []);
 
     return (
-        <div className="w-full min-h-screen lg:h-screen overflow-hidden relative flex flex-col pt-[68px] lg:pt-0">
+        <div className="w-full min-h-screen lg:h-screen overflow-hidden relative flex flex-col pt-[140px] lg:pt-0">
 
             {/* Full screen image */}
             <div className="absolute inset-0 z-0">

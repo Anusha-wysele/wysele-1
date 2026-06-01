@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import SapMasterImg from '../../../assets/SapMaster.jpg';
 import Cylinders from '../../../components/common/Cylinders';

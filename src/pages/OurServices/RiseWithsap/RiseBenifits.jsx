@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-    ArrowsOut, 
-    Stack, 
-    CurrencyCircleDollar, 
-    Heartbeat,
-    Lightbulb
+import {
+  ArrowsOut,
+  CurrencyCircleDollar,
+  Heartbeat,
+  Lightbulb,
+  Stack
 } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+import React from 'react';
 
 const benefits = [
     {

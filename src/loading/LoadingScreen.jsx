@@ -1,6 +1,5 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { WYSELE_LOGOS } from "../components/common/data";
 
 export default function LoadingScreen({ onDone }) {
   const [loading, setLoading] = useState(true);

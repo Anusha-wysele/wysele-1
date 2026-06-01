@@ -1,14 +1,13 @@
-import React from 'react';
+import {
+  CornersOut,
+  Handshake,
+  Lightbulb,
+  PuzzlePiece,
+  Scales,
+  TrendUp
+} from "@phosphor-icons/react";
 import { motion } from 'framer-motion';
 import Cylinderr from '../../../components/common/Cylinderr';
-import { 
-    Lightbulb, 
-    PuzzlePiece, 
-    TrendUp, 
-    Handshake, 
-    CornersOut, 
-    Scales 
-} from "@phosphor-icons/react";
 
 const reasons = [
     {

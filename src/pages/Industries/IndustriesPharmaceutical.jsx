@@ -1,5 +1,5 @@
+import PHARMA_IMAGE from "../../assets/wysele-industriespharma.webp";
 import IndustrySection from "./IndustrySection";
-import { PHARMA_IMAGE } from "../../components/common/data";
 
 const IndustriesPharmaceutical = () => {
     const features = [

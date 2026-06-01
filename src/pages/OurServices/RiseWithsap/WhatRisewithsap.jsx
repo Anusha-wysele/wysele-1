@@ -1,7 +1,6 @@
-import React from 'react';
+import { ChartLineUp, Lightbulb, RocketLaunch } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import { Lightbulb, ChartLineUp, RocketLaunch } from '@phosphor-icons/react';
+import riseWhyChooseImg from "../../../assets/wysele-risewhychoose.webp";
 
 
 
@@ -145,7 +144,7 @@ export default function WhatRisewithsap() {
                 {/* Background image & gradient layer (constrained to container) */}
                 <div className="absolute inset-0 overflow-hidden">
                     <motion.img
-                        src={SERVICES_PAGE_IMAGES.riseWithSapOverview}
+                        src={riseWhyChooseImg}
                         alt="RISE with SAP Overview"
                         className="w-full h-full object-cover"
                         initial={{ opacity: 0, scale: 1.05 }}

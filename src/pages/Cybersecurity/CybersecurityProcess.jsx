@@ -1,13 +1,12 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ClipboardCheck, 
-  FileText, 
-  Settings, 
-  Search, 
-  Monitor, 
+import {
+  ClipboardCheck,
+  FileText,
+  GraduationCap,
   Headphones,
-  GraduationCap
+  Monitor,
+  Search,
+  Settings
 } from 'lucide-react';
 
 const steps = [

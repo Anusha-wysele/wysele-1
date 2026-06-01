@@ -1,6 +1,5 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, AlertCircle, Info, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { AlertCircle, CheckCircle2, Info, X } from 'lucide-react';
 
 const Toast = ({ id, message, type = 'info', onClose }) => {
   const icons = {

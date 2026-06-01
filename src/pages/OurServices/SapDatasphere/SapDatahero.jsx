@@ -1,18 +1,17 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import Cylinders from '../../../components/common/Cylinders';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Cylinders from '../../../components/common/Cylinders';
+import sapDatasphereHeroImg from "../../../assets/wysele-sapdataspherehero.webp";
 
 const SapDatahero = () => {
     const navigate = useNavigate();
 
     return (
-        <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[68px] lg:pt-0">
+        <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[140px] lg:pt-0">
             {/* Full screen background image */}
             <img
-                src={SERVICES_PAGE_IMAGES.sapDatasphereHero}
+                src={sapDatasphereHeroImg}
                 alt="SAP Landscape Support"
                 className="absolute inset-0 w-full h-full object-cover object-[70%] lg:object-center z-0"
             />

@@ -1,14 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import { 
-    MagnifyingGlass, 
-    MapTrifold, 
-    GearSix, 
-    ArrowsClockwise 
+import {
+  ArrowsClockwise,
+  GearSix,
+  MagnifyingGlass,
+  MapTrifold
 } from "@phosphor-icons/react";
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import riseHowBusinessTransformImg from "../../../assets/wysele-risehowbusinesstransform.webp";
 
 const steps = [
     {
@@ -60,7 +59,7 @@ const HowRisework = () => {
             <section
                 className="relative z-10 w-full px-6 md:px-16 pt-12 pb-8 md:pt-16 md:pb-10 flex items-center justify-center bg-white"
                 style={{
-                    backgroundImage: `url("${SERVICES_PAGE_IMAGES.howRiseWorkBg}")`,
+                    backgroundImage: `url("${riseHowBusinessTransformImg}")`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}

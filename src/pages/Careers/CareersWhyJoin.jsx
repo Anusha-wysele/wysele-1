@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Zap, Heart, Shield, ArrowRight } from 'lucide-react';
+import { Heart, Trophy, Zap } from 'lucide-react';
 
 const features = [
   {
@@ -9,6 +8,8 @@ const features = [
     desc: "Work with the latest technology stacks and solve complex challenges that shape the future of IT infrastructure and digital transformation.",
     icon: <Zap className="w-6 h-6 text-[#800000]" />,
     image: "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg",
+    alt: "Innovation and Digital Transformation Services",
+    imageTitle: "Innovation Driven",
     delay: 0.1
   },
   {
@@ -17,6 +18,8 @@ const features = [
     desc: "Accelerate your career with structured learning paths, mentorship programs, and opportunities to lead high-impact global projects.",
     icon: <Trophy className="w-6 h-6 text-[#800000]" />,
     image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
+    alt: "Career Growth and Employee Mentorship Program",
+    imageTitle: "Growth & Mentorship",
     delay: 0.2
   },
   {
@@ -25,6 +28,8 @@ const features = [
     desc: "Join a vibrant community that values diversity, encourages open communication, and prioritizes your professional and personal well-being.",
     icon: <Heart className="w-6 h-6 text-[#800000]" />,
     image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg",
+    alt: "Collaborative Work Culture at Wysele Technologies",
+    imageTitle: "Collaborative Culture",
     delay: 0.3
   }
 ];
@@ -80,7 +85,8 @@ const CareersWhyJoin = () => {
               <div className="relative h-40 overflow-hidden">
                 <img 
                   src={item.image} 
-                  alt={item.title} 
+                  alt={item.alt} 
+                  title={item.imageTitle} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/5" />

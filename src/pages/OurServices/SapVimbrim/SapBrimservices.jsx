@@ -1,6 +1,11 @@
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Plus } from 'lucide-react';
+import img1 from '../../../assets/wysele-sapbrimservices1.webp';
+import img2 from '../../../assets/wysele-sapbrimservices2.webp';
+import img3 from '../../../assets/wysele-sapbrimservices3.webp';
+import img4 from '../../../assets/wysele-sapbrimservices4.webp';
+import img5 from '../../../assets/wysele-sapbrimservices5.webp';
 
 const BRIM_SERVICES = [
     {
@@ -10,7 +15,7 @@ const BRIM_SERVICES = [
         description: "SAP BRIM simplifies subscription and usage-based billing, ensuring flexible cycles for various pricing models like SaaS or utilities. We streamline billing to enhance customer experience and improve financial predictability.",
         sideTitle: "Billing Flexibility",
         sideDesc: "Simplify pricing models like SaaS or utilities with streamlined cycles and financial predictability.",
-        image: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg",
+        image: img1,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -20,7 +25,7 @@ const BRIM_SERVICES = [
         description: "SAP BRIM optimizes billing, invoicing, and revenue recognition with precision and efficiency. We automate invoice generation, handle complex billing scenarios, and reduce disputes, enhancing cash flow and operational transparency.",
         sideTitle: "Precise Invoice Operations",
         sideDesc: "Automate complex billing scenarios and reduce disputes to enhance cash flow and transparency.",
-        image: "https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg",
+        image: img2,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -30,7 +35,7 @@ const BRIM_SERVICES = [
         description: "SAP BRIM ensures accurate revenue recognition in compliance with IFRS 15 through automated processes based on contracts, milestones, and performance obligations, enhancing financial reporting and regulatory adherence.",
         sideTitle: "Compliance Assurance",
         sideDesc: "Ensure accurate IFRS 15 compliance through automated contract and milestone-based reporting.",
-        image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
+        image: img3,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -40,7 +45,7 @@ const BRIM_SERVICES = [
         description: "Our SAP BRIM solution integrates advanced convergent charging and rating, enabling real-time usage-based billing for industries like telecom, utilities, and cloud services. This ensures billing accuracy and enhances customer satisfaction.",
         sideTitle: "Real-Time Usage Billing",
         sideDesc: "Enable advanced convergent charging for real-time accuracy in telecom, cloud, and utility billing.",
-        image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+        image: img4,
         icon: <Plus className="w-6 h-6" />
     },
     {
@@ -50,7 +55,7 @@ const BRIM_SERVICES = [
         description: "We provide ongoing support for SAP BRIM, ensuring optimal performance through continuous improvements. Our team minimizes errors, enhances efficiency, and adapts to evolving business needs, helping you scale and optimize operations.",
         sideTitle: "Sustained Platform Growth",
         sideDesc: "Maintain peak performance with ongoing support, error minimization, and strategic platform scaling.",
-        image: "https://images.pexels.com/photos/3184311/pexels-photo-3184311.jpeg",
+        image: img5,
         icon: <Plus className="w-6 h-6" />
     }
 ];

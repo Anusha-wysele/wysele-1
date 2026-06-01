@@ -1,5 +1,4 @@
-import React from 'react';
-import { TrainRegional, Target, Handshake, ChalkboardTeacher } from '@phosphor-icons/react';
+import { ChalkboardTeacher, Handshake, Target, TrainRegional } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 
 const cards = [

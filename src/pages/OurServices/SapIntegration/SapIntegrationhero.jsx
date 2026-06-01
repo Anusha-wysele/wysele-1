@@ -1,13 +1,12 @@
-import React from "react";
 import { SERVICES_PAGE_IMAGES } from "../../../components/common/data";
 
 import { motion } from "framer-motion";
-import { Star, Play, CheckCircle } from "lucide-react";
+import { CheckCircle, Star } from "lucide-react";
 import Cylinders from "../../../components/common/Cylinders";
 
 const SapIntegrationhero = () => {
   return (
-    <section className="relative w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] overflow-hidden m-0 p-0 font-inter pt-[68px] lg:pt-0 flex flex-col">
+    <section className="relative w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] overflow-hidden m-0 p-0 font-inter pt-[140px] lg:pt-0 flex flex-col">
       {/* Background Image Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <motion.img

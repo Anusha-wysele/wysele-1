@@ -1,5 +1,5 @@
+import MANUFACTURING_IMAGE from "../../assets/wysele-industriesmanufacturing.webp";
 import IndustrySection from "./IndustrySection";
-import { MANUFACTURING_IMAGE } from "../../components/common/data";
 
 const IndustriesManufacturing = () => {
   const features = [

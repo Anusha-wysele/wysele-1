@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
 
 const SapOverview = () => {

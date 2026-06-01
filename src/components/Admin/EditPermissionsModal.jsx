@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  X, 
-  ShieldCheck, 
-  FileText, 
-  Briefcase, 
-  Database, 
-  Save, 
-  Loader2, 
-  Power,
-  CheckCircle2,
+import { AnimatePresence, motion } from 'framer-motion';
+import {
   AlertCircle,
-  Edit3,
-  Trash2,
-  Mail
+  CheckCircle2,
+  Loader2,
+  Save,
+  ShieldCheck,
+  X
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import employeeService from '../../services/employeeService';
 import { useToast } from './ToastContext';
 

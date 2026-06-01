@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import Breadcrumbs from '../../../components/common/Breadcrumbs';
+import Footer from '../../../components/layout/section/Footer';
 import SapTechnicalconsultinghero from './SapTechnicalconsultinghero';
 import SapTechnicalconsultingoverview from './SapTechnicalconsultingoverview';
 import SapTechnicalConsultingprocess from './SapTechnicalConsultingprocess';
 import SapTechnicalconsultingservices from './SapTechnicalconsultingservices';
 import SapTechnicalconsultingwhychoose from './SapTechnicalconsultingwhychoose';
-import Footer from '../../../components/layout/section/Footer';
 
 export default function SapTechnicalconsultingpage() {
     useEffect(() => {
@@ -14,6 +15,7 @@ export default function SapTechnicalconsultingpage() {
     return (
         <main className="bg-white">
             <SapTechnicalconsultinghero />
+            <Breadcrumbs />
             <SapTechnicalconsultingoverview />
             <SapTechnicalConsultingprocess />
             <SapTechnicalconsultingservices />

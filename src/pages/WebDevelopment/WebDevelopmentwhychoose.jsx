@@ -1,8 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { ArrowUpRight, ChartLineUp, Headset, RocketLaunch, ShieldCheck } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import { SERVICES_PAGE_IMAGES } from '../../components/common/data';
-import { RocketLaunch, ChartLineUp, ShieldCheck, Headset, ArrowUpRight } from '@phosphor-icons/react';
+import { Link } from 'react-router-dom';
 
 const WebDevelopmentwhychoose = () => {
     return (

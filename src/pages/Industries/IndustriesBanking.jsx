@@ -1,5 +1,5 @@
+import BANKING_IMAGE from "../../assets/wysele-industriesbanking.webp";
 import IndustrySection from "./IndustrySection";
-import { BANKING_IMAGE } from "../../components/common/data";
 
 const IndustriesBanking = () => {
     const features = [

@@ -1,13 +1,12 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { saps4image } from '../../../components/common/data';
+import s4hanaHeroImg from '../../../assets/wysele-s4hanahero.webp';
 
 export default function SapS4hero() {
     return (
-        <div className="w-full pt-[68px]">
-            <section className="relative w-full overflow-hidden font-sans min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] py-12 lg:py-0">
+        <div className="w-full">
+            <section className="relative w-full overflow-hidden font-sans min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] pt-[140px] md:pt-0 py-12 lg:py-0">
                 <img 
-                    src={saps4image.hero} 
+                    src={s4hanaHeroImg} 
                     alt="SAP S/4HANA" 
                     className="absolute inset-0 w-full h-full object-cover object-center z-0"
                 />

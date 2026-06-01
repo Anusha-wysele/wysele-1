@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ShieldCheck, Building2 } from 'lucide-react';
-import { MapPinSimpleArea, TrainRegional, HeadCircuit, Headset, HandFist } from '@phosphor-icons/react';
+import { HandFist, HeadCircuit, Headset, MapPinSimpleArea, TrainRegional } from '@phosphor-icons/react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Building2, ShieldCheck } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const CountUpNumber = ({ end, duration, startTrigger, suffix = "" }) => {
     const [count, setCount] = useState(0);
@@ -64,22 +63,23 @@ const SimnStats = () => {
     ];
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setInView(true);
-                    observer.unobserve(entry.target);
+                    if (currentRef) observer.unobserve(currentRef);
                 }
             },
             { threshold: 0.2 }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
+            if (currentRef) observer.unobserve(currentRef);
         };
     }, []);
 

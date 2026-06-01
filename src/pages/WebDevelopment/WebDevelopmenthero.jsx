@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { WEB_DEVELOPMENT_IMAGES, WEB_DEVELOPMENT_BG } from "../../components/common/data";
+import { useCallback, useEffect, useState } from "react";
+import { WEB_DEVELOPMENT_BG, WEB_DEVELOPMENT_IMAGES } from "../../components/common/data";
 
 const HERO_CONTENT = [
     {
@@ -73,8 +73,8 @@ export default function WebDevelopmenthero() {
     };
 
     return (
-        <div className="w-full pt-[68px]">
-            <section className="relative w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] bg-black overflow-hidden flex flex-col lg:flex-row">
+        <div className="w-full">
+            <section className="relative w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] bg-black overflow-hidden flex flex-col lg:flex-row pt-[140px] md:pt-0">
                 {/* Left Column (30%) - Deep Maroon */}
                 <div
                     onMouseEnter={() => setIsHovered(true)}
@@ -207,6 +207,7 @@ export default function WebDevelopmenthero() {
                             >
                                 <img
                                     src={WEB_DEVELOPMENT_IMAGES[currentSlide]}
+                                    alt="Web Development Showcase"
                                     className="absolute inset-0 w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/10" />

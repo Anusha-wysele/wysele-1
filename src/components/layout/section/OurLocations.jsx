@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import RealisticGlobe from '../../common/RealisticGlobe';
 
 const OurLocations = () => {
@@ -127,6 +127,10 @@ const OurLocations = () => {
                                     href={currentOffice.mapUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    title={activeOffice === 'india' 
+                                        ? "Wysele Technologies Location on Google Maps" 
+                                        : "Wysele Technologies USA Location on Google Maps"
+                                    }
                                     className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group text-xs"
                                 >
                                     Get Directions

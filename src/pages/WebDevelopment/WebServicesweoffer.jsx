@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { WEB_SERVICES_OFFER_IMG, WEB_SERVICES_OFFER_IMG_2 } from "../../components/common/data";
 

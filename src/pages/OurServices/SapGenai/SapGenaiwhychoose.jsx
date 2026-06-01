@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
 
 const services = [
     { title: "1. Customized AI Solutions", description: "We develop tailored AI models specifically designed to address your business's unique challenges and objectives, ensuring that you get the most relevant and effective solutions." },

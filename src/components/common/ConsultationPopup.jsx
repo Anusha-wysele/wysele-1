@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Mail, Phone, MessageSquare, CheckCircle2, MessageCircle, ArrowRight } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, CheckCircle2, MessageCircle, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import jobService from '../../services/jobService';
 
@@ -90,6 +90,7 @@ const ConsultationPopup = () => {
             animate={{ scale: 1, opacity: 1, x: 0 }}
             exit={{ scale: 0, opacity: 0, x: 20 }}
             onClick={() => { setIsMinimized(false); setIsOpen(true); }}
+            aria-label="Open Consultation Form"
             className="fixed right-6 bottom-6 z-[9999] w-14 h-14 bg-[#ffcc00] text-black rounded-full flex items-center justify-center shadow-2xl hover:scale-110 hover:bg-[#e6b800] transition-all duration-300 group"
           >
             <MessageCircle className="w-7 h-7 group-hover:rotate-12 transition-transform" />
@@ -116,6 +117,7 @@ const ConsultationPopup = () => {
             >
               <button
                 onClick={handleClose}
+                aria-label="Close Consultation Form"
                 className="absolute top-3 right-3 z-50 p-1.5 bg-white text-gray-900 rounded-full hover:bg-gray-100 transition-colors shadow-lg"
               >
                 <X size={16} />
@@ -142,6 +144,9 @@ const ConsultationPopup = () => {
                   <img
                     src="https://images.pexels.com/photos/8133862/pexels-photo-8133862.jpeg"
                     alt="Consultation"
+                    loading="lazy"
+                    width="300"
+                    height="400"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#800000] via-transparent to-transparent" />
@@ -169,26 +174,31 @@ const ConsultationPopup = () => {
                         <div className="space-y-2">
                           <input
                             required name="name" value={formData.name} onChange={handleChange}
+                            aria-label="Full Name"
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Full Name"
                           />
                           <input
                             required type="email" name="email" value={formData.email} onChange={handleChange}
+                            aria-label="Email Address"
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Email Address"
                           />
                           <input
                             required type="tel" name="mobile_number" value={formData.mobile_number} onChange={handleChange}
+                            aria-label="Mobile Number"
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Mobile Number"
                           />
                           <input
                             required type="name" name="company_name" value={formData.company_name} onChange={handleChange}
+                            aria-label="Company Name"
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none transition-all"
                             placeholder="Company"
                           />
                           <textarea
                             required name="message" value={formData.message} onChange={handleChange}
+                            aria-label="Message"
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-100 rounded-none text-xs focus:bg-white focus:border-[#800000] outline-none h-16 resize-none"
                             placeholder="How can we help?"
                           />

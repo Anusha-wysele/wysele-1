@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Clock, Tag, ChevronRight, Search } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Clock, Search } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/layout/navbar/Navbar";
+import Breadcrumbs from "../../components/common/Breadcrumbs";
+import { staticBlogPosts } from "../../components/layout/section/BlogsBanner";
 import Footer from "../../components/layout/section/Footer";
 import blogService from "../../services/blogService";
-import { blogPosts as staticBlogPosts } from "../../components/common/data";
 
 const categories = ["All", "Organisation", "Innovation", "Technology", "Culture", "AI"];
 
@@ -113,6 +113,7 @@ const BlogsPage = () => {
           </motion.div>
         </div>
       </section>
+      <Breadcrumbs />
 
       {/* Filter & Search Bar */}
       <section className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-6 px-6 md:px-20">

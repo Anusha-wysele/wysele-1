@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Clock, ShieldCheck, UserCircle } from 'lucide-react';
+import sapMigrationWhyImg from '../../../assets/wysele-sapmigrationwhychoose.webp';
 
 const WHY_CHOOSE_POINTS = [
     {
@@ -43,7 +43,7 @@ export default function SapMigrationWhy() {
                             {/* Decorative background image with full visibility */}
                             <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
                                 <img
-                                    src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+                                    src={sapMigrationWhyImg}
                                     alt="Transformation"
                                     className="w-full h-full object-cover"
                                 />

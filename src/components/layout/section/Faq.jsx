@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import HeadingBracket from "../../common/HeadingBracket";
 
 const faqItems = [

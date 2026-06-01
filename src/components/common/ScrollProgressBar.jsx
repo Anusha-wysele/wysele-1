@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ScrollProgressBar = () => {
@@ -21,7 +21,7 @@ const ScrollProgressBar = () => {
             setIsVisible(window.scrollY > 300);
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -55,6 +55,15 @@ const ScrollProgressBar = () => {
                     cursor: 'pointer',
                 }}
                 onClick={scrollToTop}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        scrollToTop();
+                    }
+                }}
+                role="button"
+                tabIndex={isVisible ? 0 : -1}
+                aria-label="Scroll to top of page"
             >
                 {/* SVG Progress Ring */}
                 <svg

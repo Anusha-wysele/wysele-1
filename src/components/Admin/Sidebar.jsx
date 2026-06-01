@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  LayoutDashboard, 
-  Briefcase, 
-  Users, 
-  UserSquare2, 
-  ChevronLeft, 
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  Briefcase,
+  ChevronLeft,
   ChevronRight,
-  LogOut,
-  MessageCircle,
   FileText,
+  LayoutDashboard,
+  LogOut,
   Mail,
+  MessageCircle,
+  UserSquare2,
   X
 } from 'lucide-react';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-import { WYSELE_LOGOS } from '../common/data';
 import logoDark from '../../assets/wysele_dark-removebg-preview.png';
+import { WYSELE_LOGOS } from '../common/data';
 
 
 const menuItems = [

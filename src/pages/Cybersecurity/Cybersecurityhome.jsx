@@ -1,18 +1,19 @@
-import React from 'react';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/layout/section/Footer';
 import CybersecurityHero from './Cybersecurityhero';
-import CybersecurityServices from './CybersecurityServices';
-import CybersecurityThreats from './CybersecurityThreats';
 import CybersecurityIndustries from './CybersecurityIndustries';
 import CybersecurityProcess from './CybersecurityProcess';
+import CybersecurityServices from './CybersecurityServices';
+import CybersecurityThreats from './CybersecurityThreats';
 import CybersecurityWhyChooseUs from './CybersecurityWhyChooseUs';
 
 const Cybersecurityhome = () => {
   return (
     <main className="bg-black min-h-screen">
-      <div className="pt-[68px]">
+      <div className="w-full">
         <CybersecurityHero />
       </div>
+      <Breadcrumbs />
       <CybersecurityServices />
       <CybersecurityThreats />
       <CybersecurityWhyChooseUs />

@@ -1,6 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { industryImages } from "../../components/common/data";
+import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+
+const INDUSTRIES = [
+  "Manufacturing", "Utilities", "Logistics", "Pharmaceutical", 
+  "Agribusiness", "Aerospace", "Automotive", "Banking", 
+  "Retail", "Textiles", "Mining"
+];
 
 const IndustriesNav = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -80,7 +85,7 @@ const IndustriesNav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = industryImages.map(img => img.alt.toLowerCase().split(' ')[0]);
+      const sections = INDUSTRIES.map(alt => alt.toLowerCase().split(' ')[0]);
       let current = "";
 
       for (const section of sections) {
@@ -121,12 +126,12 @@ const IndustriesNav = () => {
           ref={scrollContainerRef}
           className="flex items-center overflow-x-auto no-scrollbar py-1 relative scroll-smooth gap-1 md:gap-2"
         >
-          {industryImages.map((industry, index) => {
-            const id = industry.alt.toLowerCase().split(' ')[0];
+          {INDUSTRIES.map((alt, index) => {
+            const id = alt.toLowerCase().split(' ')[0];
             const isActive = activeSection === id;
             
             return (
-              <React.Fragment key={industry.alt}>
+              <React.Fragment key={alt}>
                 <motion.button
                   whileHover={{ backgroundColor: isActive ? "" : "#fafafa" }}
                   onClick={() => {
@@ -147,7 +152,7 @@ const IndustriesNav = () => {
                   className={`tab-btn-${id} relative px-3 py-1.5 md:px-4 md:py-2 text-[10px] md:text-[11.5px] font-bold tracking-[0.05em] uppercase whitespace-nowrap transition-colors duration-300 flex-shrink-0 z-20 rounded-full
                     ${isActive ? 'text-white' : 'text-gray-500 hover:text-gray-900'}`}
                 >
-                  <span className="relative z-20">{industry.alt}</span>
+                  <span className="relative z-20">{alt}</span>
                   {isActive && (
                     <motion.div 
                       layoutId="activeTab"

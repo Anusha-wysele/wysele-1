@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Zap, Eye, Users, Server, Target } from 'lucide-react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { ArrowRight, Eye, Server, Target, Users, Zap } from 'lucide-react';
+import { useRef } from 'react';
 import Cylinders from '../../../components/common/Cylinders';
+import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
 
 const services = [
     { 
@@ -53,10 +53,10 @@ const TechnicalConsulting = () => {
                 <div className="w-full max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Left Side Content: Heading & Description */}
                     <div className="lg:col-span-5 text-left space-y-4">
-                        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight">
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white leading-tight">
                             Trusted by Businesses Looking for <br />
                             Long-Term SAP Success
-                        </h1>
+                        </h2>
                         <div className="text-xs sm:text-sm text-white/80 leading-relaxed space-y-3 font-normal">
                             <p>
                                 Organizations choose Wysele because we focus on practical implementation strategies, operational clarity, and long-term system performance.

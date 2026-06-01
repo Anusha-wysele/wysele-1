@@ -1,5 +1,5 @@
+import MINING_IMAGE from "../../assets/wysele-industriesmining.webp";
 import IndustrySection from "./IndustrySection";
-import { MINING_IMAGE } from "../../components/common/data";
 
 const IndustriesMining = () => {
     const features = [

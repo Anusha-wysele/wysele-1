@@ -1,23 +1,23 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const data = {
   Technology: [
-    { year: "2021", finances: 40, economy: 44, investment: 28 },
-    { year: "2022", finances: 22, economy: 32, investment: 36 },
-    { year: "2023", finances: 34, economy: 40, investment: 34 },
-    { year: "2024", finances: 44, economy: 40, investment: 30 },
+    { year: "2023", finances: 40, economy: 44, investment: 28 },
+    { year: "2024", finances: 22, economy: 32, investment: 36 },
+    { year: "2025", finances: 34, economy: 40, investment: 34 },
+    { year: "2026", finances: 44, economy: 40, investment: 30 },
   ],
   Development: [
-    { year: "2021", finances: 38, economy: 48, investment: 25 },
-    { year: "2022", finances: 30, economy: 42, investment: 38 },
-    { year: "2023", finances: 30, economy: 44, investment: 42 },
-    { year: "2024", finances: 46, economy: 36, investment: 28 },
+    { year: "2023", finances: 38, economy: 48, investment: 25 },
+    { year: "2024", finances: 30, economy: 42, investment: 38 },
+    { year: "2025", finances: 30, economy: 44, investment: 42 },
+    { year: "2026", finances: 46, economy: 36, investment: 28 },
   ],
   Research: [
-    { year: "2021", finances: 46, economy: 50, investment: 31 },
-    { year: "2022", finances: 26, economy: 37, investment: 41 },
-    { year: "2023", finances: 37, economy: 46, investment: 38 },
-    { year: "2024", finances: 50, economy: 45, investment: 36 },
+    { year: "2023", finances: 46, economy: 50, investment: 31 },
+    { year: "2024", finances: 26, economy: 37, investment: 41 },
+    { year: "2025", finances: 37, economy: 46, investment: 38 },
+    { year: "2026", finances: 50, economy: 45, investment: 36 },
   ],
 };
 
@@ -54,22 +54,23 @@ export default function TrustUs() {
   const chartData = data[activeTab];
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.unobserve(entry.target);
+          if (currentRef) observer.unobserve(currentRef);
         }
       },
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
@@ -81,8 +82,6 @@ export default function TrustUs() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
-
         .bc-wrap {
           font-family: 'DM Sans', sans-serif;
           display: flex;
@@ -109,7 +108,7 @@ export default function TrustUs() {
           gap: 18px;
         }
 
-        .bc-left h1 {
+        .bc-left h2 {
           font-family: 'DM Sans', sans-serif;
           font-size: 15px;
           font-weight: 800;
@@ -355,7 +354,7 @@ export default function TrustUs() {
 
           {/* LEFT CONTENT */}
           <div className="bc-left">
-            <h1>Trust the process &amp; grow your business</h1>
+            <h2>Trust the process &amp; grow your business</h2>
             <p className="font-light">{tabDescriptions[activeTab]}</p>
           </div>
 

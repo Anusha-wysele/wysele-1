@@ -1,12 +1,11 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import SapgenaiImg from '../../../assets/Sapgenai.jpg';
 import Cylinders from '../../../components/common/Cylinders';
 
 export default function SapGenhero() {
     return (
-        <div className="w-full pt-[68px]">
-            <section className="relative w-full overflow-hidden font-sans min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] py-12 lg:py-0">
+        <div className="w-full">
+            <section className="relative w-full overflow-hidden font-sans min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] pt-[140px] md:pt-0 py-12 lg:py-0">
                 <img 
                     src={SapgenaiImg} 
                     alt="SAP GenAI" 

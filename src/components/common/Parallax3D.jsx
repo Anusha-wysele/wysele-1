@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 // Custom hook for tracking mouse and returning damped 3D rotation coordinates
 export const useMouseParallax = (multiplier = 4) => {

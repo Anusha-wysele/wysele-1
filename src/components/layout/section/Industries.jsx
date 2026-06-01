@@ -1,8 +1,33 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { industryImages } from "../../common/data";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { fadeSlideUp, staggerContainer, viewportSettings } from "../../common/animations";
 import HeadingBracket from "../../common/HeadingBracket";
+
+import aerospaceImg from "../../../assets/wysele-AerospaceDefense.webp";
+import agribusinessImg from "../../../assets/wysele-industires-agribusines.webp";
+import automotiveImg from "../../../assets/wysele-industry-automotive-heavy-equipment.webp";
+import bankingImg from "../../../assets/Banking.webp";
+import logisticsImg from "../../../assets/wysele-industry-logistics.webp";
+import manufacturingImg from "../../../assets/wysele-industires-manufacturing.jpeg";
+import miningImg from "../../../assets/wysele-Industry-mining.webp";
+import pharmaImg from "../../../assets/wysele-industires-pharma.webp";
+import retailImg from "../../../assets/Retail.webp";
+import textilesImg from "../../../assets/wysele-industry-textile.webp";
+import utilitiesImg from "../../../assets/wysele-industires-utilities.webp";
+
+const industryImagesLocal = [
+    manufacturingImg,
+    utilitiesImg,
+    logisticsImg,
+    pharmaImg,
+    agribusinessImg,
+    aerospaceImg,
+    automotiveImg,
+    bankingImg,
+    retailImg,
+    textilesImg,
+    miningImg
+];
 
 const industriesBase = [
     {
@@ -11,6 +36,8 @@ const industriesBase = [
         desc: "Enhance production efficiency and innovation with tailored SAP solutions. From shop floor to top floor, we help manufacturers streamline operations, reduce waste, and achieve operational excellence with intelligent ERP systems and real-time analytics.",
         tags: ["SAP S/4HANA", "Production Planning", "Quality Management", "Plant Maintenance"],
         color: "#1e3a5f",
+        alt: "Manufacturing Solutions",
+        titleAttr: "Manufacturing Services",
         Icon: () => (
             <svg viewBox="0 0 64 64" fill="none" stroke="white" strokeWidth="1.5" style={{ width: 64, height: 64, opacity: 0.25 }}>
                 <rect x="8" y="28" width="48" height="28" rx="1" />
@@ -181,7 +208,7 @@ const industriesBase = [
 
 const industries = industriesBase.map((ind, idx) => ({
     ...ind,
-    img: industryImages[idx]?.src || null,
+    img: industryImagesLocal[idx] || null,
 }));
 
 function useWindowWidth() {
@@ -266,7 +293,7 @@ function ContentPanel({ industry, isMobile }) {
                     }}
                 >
                     {img ? (
-                        <img src={img} alt={industry.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img src={img} alt={industry.alt || industry.title} title={industry.titleAttr || industry.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     ) : (
                         <Icon />
                     )}
@@ -299,7 +326,6 @@ export default function IndustriesWeServe() {
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const width = useWindowWidth();
     const isMobile = width < 768;
-    const isTablet = width >= 768 && width < 1024;
 
     return (
         <div style={{
@@ -315,7 +341,7 @@ export default function IndustriesWeServe() {
         }}>
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: 4 }}>
                 <HeadingBracket size={isMobile ? 30 : 40} style={{ transform: isMobile ? "translate(24px, -8px)" : "translate(32px, -10px)" }} />
-                <motion.h1
+                <motion.h2
                     initial={{ opacity: 0, y: -10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -329,7 +355,7 @@ export default function IndustriesWeServe() {
                     }}
                 >
                     Industries we serve
-                </motion.h1>
+                </motion.h2>
             </div>
             <motion.div
                 initial={{ width: 0 }}

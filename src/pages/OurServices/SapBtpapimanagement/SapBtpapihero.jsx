@@ -1,10 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import SapbtpapiheroImg from '../../../assets/Sapbtpapihero.jpg';
 
 export default function SapBtpapihero() {
     return (
-        <div className="w-full min-h-screen lg:h-screen overflow-hidden relative flex flex-col pt-[68px] lg:pt-0">
+        <div className="w-full min-h-screen lg:h-screen overflow-hidden relative flex flex-col pt-[140px] lg:pt-0">
             
             {/* Full screen image */}
             <div className="absolute inset-0 z-0">

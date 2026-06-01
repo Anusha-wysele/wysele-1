@@ -1,12 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import {
-    Database,
-    FileText,
-    ShieldCheck,
-    MapTrifold,
-    Lightbulb
+  Database,
+  FileText,
+  Lightbulb,
+  MapTrifold,
+  ShieldCheck
 } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+import React from 'react';
 
 const solutions = [
     {

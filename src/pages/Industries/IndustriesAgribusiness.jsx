@@ -1,5 +1,5 @@
+import AGRIBUSINESS_IMAGE from "../../assets/wysele-industriesagribusinesses.webp";
 import IndustrySection from "./IndustrySection";
-import { AGRIBUSINESS_IMAGE } from "../../components/common/data";
 
 const IndustriesAgribusiness = () => {
     const features = [

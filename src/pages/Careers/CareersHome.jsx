@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import CareersHero from './CareersHero';
-import CareersWhyJoin from './CareersWhyJoin';
+import { useEffect } from 'react';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 import CareersCulture from './CareersCulture';
+import CareersHero from './CareersHero';
 import CareersOpenings from './CareersOpenings';
-import CareersCTA from './CareersCTA';
+import CareersWhyJoin from './CareersWhyJoin';
 
 const CareersHome = () => {
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -14,6 +13,7 @@ const CareersHome = () => {
   return (
     <main className="min-h-screen bg-white">
       <CareersHero />
+      <Breadcrumbs />
       <CareersWhyJoin />
       <CareersCulture />
       <div id="open-positions">

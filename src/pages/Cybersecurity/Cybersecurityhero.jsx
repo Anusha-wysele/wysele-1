@@ -1,12 +1,10 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ShieldAlert, Cpu } from 'lucide-react';
 import cybersecurity from '../../assets/cyber4.png';
 
 const CybersecurityHero = () => {
 
   return (
-    <section className="relative w-full min-h-[560px] lg:h-[600px] overflow-hidden font-sans">
+    <section className="relative w-full min-h-[560px] lg:h-[600px] overflow-hidden font-sans pt-[140px] md:pt-0">
       {/* Background Image with Premium Overlay */}
       <div className="relative min-h-[650px] w-full flex items-start justify-start overflow-hidden">
         <motion.img
@@ -24,7 +22,7 @@ const CybersecurityHero = () => {
 
 
         {/* Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-15 md:pt-20">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-[150px] md:pt-20">
           <div className="w-full lg:w-1/2 lg:max-w-2xl pr-4 lg:pr-8">
             {/* <motion.div
               initial={{ opacity: 0, x: -50 }}

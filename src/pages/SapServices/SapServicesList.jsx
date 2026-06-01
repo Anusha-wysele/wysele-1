@@ -1,21 +1,20 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-import imgSapConsulting from '../../assets/Sapconsulting.jpg';
-import imgSapSignavio from '../../assets/Sapsignavio.jpg';
-import imgSapDatasphere from '../../assets/Sapdatasphere.jpg';
 import imgRiseWithSap from '../../assets/Risewithsap.jpg';
-import imgSapBtp from '../../assets/Sapbtp.jpg';
-import imgSapIntegration from '../../assets/Sapintegration.jpg';
-import imgSapVimBrim from '../../assets/Sapvim&brim.jpg';
-import imgSapMigration from '../../assets/Sapmigration.jpg';
-import imgSapS4 from '../../assets/Saps4.jpg';
-import imgSapGenai from '../../assets/Sapgenai.jpg';
-import imgSapMasterData from '../../assets/Sapmasterdata.jpg';
 import imgSapBtpApi from '../../assets/Sapbtp&api.jpg';
-import imgSapTechnicalConsulting from '../../assets/Saptechnicalconsulting.jpg';
+import imgSapBtp from '../../assets/Sapbtp.jpg';
+import imgSapConsulting from '../../assets/Sapconsulting.jpg';
+import imgSapDatasphere from '../../assets/Sapdatasphere.jpg';
+import imgSapGenai from '../../assets/Sapgenai.jpg';
+import imgSapIntegration from '../../assets/Sapintegration.jpg';
+import imgSapMasterData from '../../assets/Sapmasterdata.jpg';
+import imgSapMigration from '../../assets/Sapmigration.jpg';
 import imgSapOpentext from '../../assets/Sapopentext.jpg';
+import imgSapS4 from '../../assets/Saps4.jpg';
+import imgSapSignavio from '../../assets/Sapsignavio.jpg';
+import imgSapTechnicalConsulting from '../../assets/Saptechnicalconsulting.jpg';
+import imgSapVimBrim from '../../assets/Sapvim&brim.jpg';
 
 const SAP_SERVICES = [
   {

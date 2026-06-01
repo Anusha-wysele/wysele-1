@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Search, 
-  Trash2, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  MessageSquare,
+import {
   Download,
-  Filter,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Search,
+  Trash2,
   UserCircle2
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import jobService from '../../services/jobService';
-import { useToast } from '../../components/Admin/ToastContext';
+import { useEffect, useState } from 'react';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import ConfirmModal from '../../components/Admin/ConfirmModal';
+import { useToast } from '../../components/Admin/ToastContext';
+import jobService from '../../services/jobService';
 
 const AdminContacts = () => {
   const { showToast } = useToast();
@@ -25,30 +23,30 @@ const AdminContacts = () => {
   const [inquiryToDelete, setInquiryToDelete] = useState(null);
 
   useEffect(() => {
-    fetchInquiries();
-  }, []);
+    const fetchInquiries = async () => {
+      try {
+        setLoading(true);
+        const data = await jobService.getAllContacts();
+        console.log('📬 Contact Inquiries Response:', data);
+        
+        // Handle various response structures
+        let rawInquiries = [];
+        if (Array.isArray(data)) rawInquiries = data;
+        else if (data.data && Array.isArray(data.data)) rawInquiries = data.data;
+        else if (data.results && Array.isArray(data.results)) rawInquiries = data.results;
+        else if (data.contacts && Array.isArray(data.contacts)) rawInquiries = data.contacts;
+        
+        setInquiries(rawInquiries);
+      } catch (err) {
+        console.error('Failed to load inquiries:', err);
+        showToast('Failed to load contact inquiries.', 'error');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const fetchInquiries = async () => {
-    try {
-      setLoading(true);
-      const data = await jobService.getAllContacts();
-      console.log('📬 Contact Inquiries Response:', data);
-      
-      // Handle various response structures
-      let rawInquiries = [];
-      if (Array.isArray(data)) rawInquiries = data;
-      else if (data.data && Array.isArray(data.data)) rawInquiries = data.data;
-      else if (data.results && Array.isArray(data.results)) rawInquiries = data.results;
-      else if (data.contacts && Array.isArray(data.contacts)) rawInquiries = data.contacts;
-      
-      setInquiries(rawInquiries);
-    } catch (err) {
-      console.error('Failed to load inquiries:', err);
-      showToast('Failed to load contact inquiries.', 'error');
-    } finally {
-      setLoading(false);
-    }
-  };
+    fetchInquiries();
+  }, [showToast]);
 
   const handleDeleteClick = (id) => {
     setInquiryToDelete(id);

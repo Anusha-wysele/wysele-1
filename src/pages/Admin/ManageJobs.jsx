@@ -1,24 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Search, 
-  Plus, 
-  MoreVertical, 
-  Eye, 
-  Edit3, 
-  Trash2, 
-  Filter,
-  Download,
+import { AnimatePresence, motion } from 'framer-motion';
+import {
   Briefcase,
+  Download,
+  Edit3,
+  Eye,
+  Plus,
+  Search,
+  Trash2,
   Users,
-  ChevronRight,
   X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import jobService from '../../services/jobService';
-import { useToast } from '../../components/Admin/ToastContext';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import ConfirmModal from '../../components/Admin/ConfirmModal';
+import { useToast } from '../../components/Admin/ToastContext';
+import jobService from '../../services/jobService';
 
 const ManageJobs = () => {
   const { showToast } = useToast();

@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Search, 
-  Plus, 
-  Eye, 
-  Edit3, 
-  Trash2, 
-  Download,
-  FileText,
-  ChevronRight,
-  X,
+import { AnimatePresence, motion } from 'framer-motion';
+import {
   Clock,
-  Tag
+  Edit3,
+  Eye,
+  FileText,
+  Plus,
+  Search,
+  Tag,
+  Trash2,
+  X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import blogService from '../../services/blogService';
-import { useToast } from '../../components/Admin/ToastContext';
+import { useEffect, useState } from 'react';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import ConfirmModal from '../../components/Admin/ConfirmModal';
+import { useToast } from '../../components/Admin/ToastContext';
+import blogService from '../../services/blogService';
 
 const ManageBlogs = () => {
   const { showToast } = useToast();
@@ -121,7 +119,7 @@ const ManageBlogs = () => {
     try {
       setIsSubmitting(true);
       if (modalMode === 'create') {
-        const response = await blogService.createBlog(formData);
+        await blogService.createBlog(formData);
         showToast('Blog published successfully!', 'success');
         // Refresh list
         fetchBlogs();

@@ -1,12 +1,12 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Bug,
-  MailWarning,
   Database,
+  MailWarning,
   Users,
   Zap,
 } from 'lucide-react';
+import React from 'react';
 
 const threats = [
   {

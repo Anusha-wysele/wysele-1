@@ -1,7 +1,11 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings2, Database, BarChart3, Cpu, Code2, Cloud } from 'lucide-react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { BarChart3, Cloud, Code2, Cpu, Database, Settings2 } from 'lucide-react';
+import btpServiceHoverImg from "../../../assets/wysele-sapbtpservices1.webp";
+import btpDataMgmtHoverImg from "../../../assets/wysele-sapbtpservices2.webp";
+import btpAnalyticsHoverImg from "../../../assets/wysele-sapbtpservices3.webp";
+import btpAiHoverImg from "../../../assets/wysele-sapbtpservices4.webp";
+import btpAppDevHoverImg from "../../../assets/wysele-sapbtpservices5.webp";
+import btpCloudHoverImg from "../../../assets/wysele-sapbtpservices6.webp";
 
 const btpServicesList = [
     {
@@ -77,12 +81,12 @@ const BtpSapservices = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl lg:ml-[5%]">
                     {btpServicesList.map((service, i) => {
                         const hoverImage = 
-                            i === 0 ? SERVICES_PAGE_IMAGES.btpServiceHover : 
-                            i === 1 ? SERVICES_PAGE_IMAGES.btpDataMgmtHover : 
-                            i === 2 ? SERVICES_PAGE_IMAGES.btpAnalyticsHover : 
-                            i === 3 ? SERVICES_PAGE_IMAGES.btpAiHover : 
-                            i === 4 ? SERVICES_PAGE_IMAGES.btpAppDevHover : 
-                            i === 5 ? SERVICES_PAGE_IMAGES.btpCloudHover : null;
+                            i === 0 ? btpServiceHoverImg : 
+                            i === 1 ? btpDataMgmtHoverImg : 
+                            i === 2 ? btpAnalyticsHoverImg : 
+                            i === 3 ? btpAiHoverImg : 
+                            i === 4 ? btpAppDevHoverImg : 
+                            i === 5 ? btpCloudHoverImg : null;
 
                         return (
                             <motion.div

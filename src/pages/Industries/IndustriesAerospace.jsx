@@ -1,5 +1,5 @@
+import AEROSPACE_IMAGE from "../../assets/wysele-industriesaerospace.webp";
 import IndustrySection from "./IndustrySection";
-import { AEROSPACE_IMAGE } from "../../components/common/data";
 
 const IndustriesAerospace = () => {
     const features = [

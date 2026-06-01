@@ -1,16 +1,9 @@
-import React, { useState } from "react";
-import { WYSELE_LOGOS } from "../../common/data";
-import logoImg from "../../../assets/logo.png"
 import LogoWhiteImg from "../../../assets/LogoWhite.png";
 
 const Logo = ({ white = false }) => {
-    const [hover, setHover] = useState(false);
-
     return (
         <div
             className="w-full flex items-center justify-center"
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
         >
             <div
                 className="text-center relative overflow-hidden group"
@@ -22,7 +15,10 @@ const Logo = ({ white = false }) => {
 
                 <img
                     src={LogoWhiteImg}
-                    alt="Logo"
+                    alt="Wysele Technologies Logo"
+                    title="Wysele Technologies"
+                    width="96"
+                    height="24"
                     className="w-24 bg-cover mx-auto"
                 />
 

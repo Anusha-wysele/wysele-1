@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { INDUSTRIES_HERO_SLIDER } from "../../components/common/data";
+import { useEffect, useState } from "react";
+import heroImg1 from "../../assets/wysele-industrieshero1.webp";
+import heroImg2 from "../../assets/wysele-industrieshero2.webp";
+import heroImg3 from "../../assets/wysele-industrieshero3.webp";
+import heroImg4 from "../../assets/wysele-industrieshero4.webp";
+import heroImg5 from "../../assets/wysele-industrieshero5.webp";
+
+const INDUSTRIES_HERO_SLIDER = [heroImg1, heroImg2, heroImg3, heroImg4, heroImg5];
 
 const IndustriesHero = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageCount, setImageCount] = useState(0);
+  const currentImageIndex = imageCount % INDUSTRIES_HERO_SLIDER.length;
 
   const heroContent = [
     {
@@ -39,9 +46,32 @@ const IndustriesHero = () => {
     }
   ];
 
+  const sliderMeta = [
+    {
+      alt: "Digital transformation solutions for modern industries by Wysele",
+      title: "Industry Digital Solutions | Wysele"
+    },
+    {
+      alt: "Enterprise industry services and digital innovation",
+      title: "Industry Consulting Services | Wysele"
+    },
+    {
+      alt: "Advanced industrial operations and business technology solutions",
+      title: "Industry Technology Solutions | Wysele"
+    },
+    {
+      alt: "Smart industrial automation and enterprise technology services",
+      title: "Industry Automation Services | Wysele"
+    },
+    {
+      alt: "Industrial digital transformation and IT infrastructure solutions",
+      title: "Industry IT Solutions | Wysele"
+    }
+  ];
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % INDUSTRIES_HERO_SLIDER.length);
+      setImageCount((prevCount) => prevCount + 1);
     }, 8000);
     return () => clearInterval(timer);
   }, []);
@@ -52,7 +82,7 @@ const IndustriesHero = () => {
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
         <AnimatePresence initial={false}>
           <motion.img
-            key={currentImageIndex}
+            key={imageCount}
             src={INDUSTRIES_HERO_SLIDER[currentImageIndex]}
             initial={{ opacity: 0, scale: 1 }}
             animate={{ opacity: 1, scale: 1.1 }}
@@ -61,7 +91,8 @@ const IndustriesHero = () => {
               opacity: { duration: 2.5, ease: "easeInOut" },
               scale: { duration: 10, ease: "linear" } 
             }}
-            alt={`Industry ${currentImageIndex}`}
+            alt={sliderMeta[currentImageIndex]?.alt || `Industry ${currentImageIndex}`}
+            title={sliderMeta[currentImageIndex]?.title || ""}
             className="absolute inset-0 w-full h-full object-cover block"
           />
         </AnimatePresence>
@@ -74,7 +105,7 @@ const IndustriesHero = () => {
         <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-12 lg:px-20 w-full">
           <AnimatePresence mode="wait">
             <motion.div
-              key={currentImageIndex}
+              key={imageCount}
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -129,7 +160,7 @@ const IndustriesHero = () => {
                   </div>
                   <div className="w-32 h-[1px] bg-white/20 relative overflow-hidden">
                     <motion.div
-                      key={currentImageIndex}
+                      key={imageCount}
                       initial={{ width: "0%" }}
                       animate={{ width: "100%" }}
                       transition={{ duration: 8, ease: "linear" }}
@@ -154,7 +185,7 @@ const IndustriesHero = () => {
                 {/* Progress Bar on Mobile (when sm:hidden) */}
                 <div className="sm:hidden w-28 h-[1px] bg-white/20 relative overflow-hidden pt-0.5">
                   <motion.div
-                    key={currentImageIndex}
+                    key={imageCount}
                     initial={{ width: "0%" }}
                     animate={{ width: "100%" }}
                     transition={{ duration: 8, ease: "linear" }}

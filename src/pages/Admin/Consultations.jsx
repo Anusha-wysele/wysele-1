@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Search, 
-  Trash2, 
-  Eye,
-  Mail, 
-  Phone, 
-  Building2, 
-  Briefcase,
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  Building2,
+  Calendar,
   Download,
-  Filter,
+  Eye,
+  Mail,
   MessageSquare,
-  X,
-  Calendar
+  Phone,
+  Search,
+  X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import jobService from '../../services/jobService';
+import { useEffect, useState } from 'react';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import { useToast } from '../../components/Admin/ToastContext';
-import ConfirmModal from '../../components/Admin/ConfirmModal';
+import jobService from '../../services/jobService';
 
 const AdminConsultations = () => {
   const { showToast } = useToast();
@@ -26,54 +22,32 @@ const AdminConsultations = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [requestToDelete, setRequestToDelete] = useState(null);
-
   useEffect(() => {
+    const fetchRequests = async () => {
+      try {
+        setLoading(true);
+        const data = await jobService.getAllConsultations();
+        console.log('📊 Consultation Requests Response:', data);
+        
+        let rawData = [];
+        if (Array.isArray(data)) rawData = data;
+        else if (data.data && Array.isArray(data.data)) rawData = data.data;
+        else if (data.results && Array.isArray(data.results)) rawData = data.results;
+        else if (data.consultations && Array.isArray(data.consultations)) rawData = data.consultations;
+        else if (data.items && Array.isArray(data.items)) rawData = data.items;
+        
+        console.log('✅ Processed rawData:', rawData);
+        setRequests(rawData);
+      } catch (err) {
+        console.error('Failed to load consultations:', err);
+        showToast('Failed to load consultation requests.', 'error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchRequests();
-  }, []);
-
-  const fetchRequests = async () => {
-    try {
-      setLoading(true);
-      const data = await jobService.getAllConsultations();
-      console.log('📊 Consultation Requests Response:', data);
-      
-      let rawData = [];
-      if (Array.isArray(data)) rawData = data;
-      else if (data.data && Array.isArray(data.data)) rawData = data.data;
-      else if (data.results && Array.isArray(data.results)) rawData = data.results;
-      else if (data.consultations && Array.isArray(data.consultations)) rawData = data.consultations;
-      else if (data.items && Array.isArray(data.items)) rawData = data.items;
-      
-      console.log('✅ Processed rawData:', rawData);
-      setRequests(rawData);
-    } catch (err) {
-      console.error('Failed to load consultations:', err);
-      showToast('Failed to load consultation requests.', 'error');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDeleteClick = (id) => {
-    setRequestToDelete(id);
-    setIsConfirmModalOpen(true);
-  };
-
-  const handleDeleteConfirm = async () => {
-    if (!requestToDelete) return;
-    try {
-      await jobService.deleteConsultation(requestToDelete);
-      setRequests(requests.filter(item => (item._id || item.id) !== requestToDelete));
-      showToast('Request deleted successfully.', 'success');
-    } catch (err) {
-      showToast('Failed to delete request.', 'error');
-    } finally {
-      setIsConfirmModalOpen(false);
-      setRequestToDelete(null);
-    }
-  };
+  }, [showToast]);
 
   const exportToCSV = () => {
     if (filteredRequests.length === 0) return;
@@ -307,16 +281,7 @@ const AdminConsultations = () => {
           )}
         </AnimatePresence>
 
-        {/* Delete Confirmation Modal */}
-        <ConfirmModal 
-          isOpen={isConfirmModalOpen}
-          onClose={() => setIsConfirmModalOpen(false)}
-          onConfirm={handleDeleteConfirm}
-          title="Delete Request?"
-          message="Are you sure you want to remove this consultation request? This action will permanently hide the client data."
-          confirmText="Yes, Delete"
-          cancelText="Cancel"
-        />
+
       </div>
     </AdminLayout>
   );

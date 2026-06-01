@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Settings, Target, Award, RefreshCw, Building2, Check } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { Award, Building2, Check, RefreshCw, Settings, Target } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const FunctionalConsulting = () => {
     const [activeStep, setActiveStep] = useState(-1);

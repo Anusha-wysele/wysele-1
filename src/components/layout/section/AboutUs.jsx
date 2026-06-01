@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { AlignCenterVertical, BoundingBox, CraneTower } from '@phosphor-icons/react';
-import { ABOUT_US_IMAGES } from '../../common/data';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
-const images = ABOUT_US_IMAGES;
+import missionImg from "../../../assets/wysele-mission.webp";
+import valuesImg from "../../../assets/wysele-values.webp";
+import visionImg from "../../../assets/wysele-vission.webp";
+
+const images = [visionImg, missionImg, valuesImg];
 
 const textItems = [
     {
@@ -24,6 +27,12 @@ const textItems = [
         description: "We build strong connections with clients and communities to create a better tomorrow. Our guiding principles help us stay different and better.",
         Icon: CraneTower,
     }
+];
+
+const aboutImageMeta = [
+    { alt: "About Wysele Technologies", title: "About Wysele" },
+    { alt: "Our Mission", title: "Wysele Mission" },
+    { alt: "Our Values", title: "Wysele Values" }
 ];
 
 const LIQUID_EASE = [0.32, 0.72, 0, 1];
@@ -167,7 +176,8 @@ export default function AboutUs() {
                         >
                             <motion.img
                                 src={images[activeIndex]}
-                                alt="About Us Banner"
+                                alt={aboutImageMeta[activeIndex]?.alt || "About Wysele Technologies"}
+                                title={aboutImageMeta[activeIndex]?.title || "About Wysele"}
                                 initial={{ scale: 1.15 }}
                                 animate={{ scale: 1 }}
                                 transition={{ duration: 8, ease: "easeOut" }}
@@ -180,17 +190,17 @@ export default function AboutUs() {
                                     willChange: 'transform'
                                 }}
                             />
-                            
+
                             {/* Diagonal Overlay Transition - Top Left */}
-                            <div 
+                            <div
                                 className="absolute top-0 left-0 w-0 h-0 bg-black/10 transition-all duration-700 group-hover:w-full group-hover:h-full"
                                 style={{
                                     clipPath: 'polygon(0 0, 100% 0, 0 100%)',
                                 }}
                             ></div>
-                            
+
                             {/* Diagonal Overlay Transition - Bottom Right */}
-                            <div 
+                            <div
                                 className="absolute bottom-0 right-0 w-0 h-0 bg-black/10 transition-all duration-700 group-hover:w-full group-hover:h-full"
                                 style={{
                                     clipPath: 'polygon(100% 0, 100% 100%, 0 100%)',
@@ -216,8 +226,8 @@ export default function AboutUs() {
                     padding: isMobile
                         ? '28px 20px 40px 20px'
                         : isTablet
-                        ? '40px 30px 40px 24px'
-                        : '60px 80px 60px 40px',
+                            ? '40px 30px 40px 24px'
+                            : '60px 80px 60px 40px',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',

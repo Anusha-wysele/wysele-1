@@ -1,25 +1,19 @@
-import React, { useState } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import GlassCard from '../../components/Admin/GlassCard';
-import { 
-  ChevronRight, 
-  MapPin, 
-  Briefcase, 
-  Globe, 
-  DollarSign, 
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  Briefcase,
   Calendar,
-  X,
+  CheckCircle2,
+  Globe,
+  MapPin,
   Plus,
-  ArrowLeft,
-  Save,
   Send,
-  Eye,
-  CheckCircle2
+  X
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import jobService from '../../services/jobService';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import { useToast } from '../../components/Admin/ToastContext';
+import jobService from '../../services/jobService';
 
 const JobPosting = () => {
   const { showToast } = useToast();
@@ -35,8 +29,7 @@ const JobPosting = () => {
   const [region, setRegion] = useState('North America');
   const [lastDateToApply, setLastDateToApply] = useState(new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]);
   const [jobPostedDate, setJobPostedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [isFeatured, setIsFeatured] = useState(true);
-  const [isPublished, setIsPublished] = useState(false);
+  const [isFeatured] = useState(true);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);

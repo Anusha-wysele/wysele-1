@@ -1,9 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { OTHER_PAGE_IMAGES } from '../../components/common/data';
+import heroImage from "../../assets/wysele-aboutushero.webp";
 
 const SimnHero = () => {
-    const heroImage = OTHER_PAGE_IMAGES.simnHero;
 
     return (
         <section className="relative w-full bg-white overflow-hidden">
@@ -11,14 +9,15 @@ const SimnHero = () => {
             <div className="relative w-full h-[85vh] md:h-screen overflow-hidden">
                 <img
                     src={heroImage}
-                    alt="About Us"
+                    alt="About Wysele Technologies"
+                    title="About Us"
                     className="w-full h-full object-cover"
                 />
                 {/* Dark overlay */}
                 <div className="absolute inset-0 bg-black/50 md:bg-black/40" />
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 flex items-end pb-25 md:pb-30 pt-20 md:pt-0">
+                <div className="absolute inset-0 flex items-end pb-25 md:pb-30 pt-[140px] md:pt-20 md:pt-0">
                     <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
                         <div className="flex flex-col md:flex-row gap-10 md:gap-8 items-end">
 
@@ -40,9 +39,7 @@ const SimnHero = () => {
                                 <div className="max-w-2xl">
                                     {/* Main Heading */}
                                     <h1 className="text-3xl md:text-3xl lg:text-5xl font-extralight text-white leading-tight mb-4 tracking-tight">
-                                        Empowering Businesses<br />
-                                        Through<br />
-                                        Strategic Innovation
+                                        About Wysele Technologies
                                     </h1>
 
                                     {/* Description */}

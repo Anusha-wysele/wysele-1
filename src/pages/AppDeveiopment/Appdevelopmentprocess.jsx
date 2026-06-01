@@ -1,13 +1,13 @@
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
 
-import ideaImg from '../../assets/ideaAppdevelopment.jpg';
-import PlanningImg from '../../assets/planningAppdevelopment.jpg';
 import DesignImg from '../../assets/designAppdevelopment.jpg';
 import DevelopmentImg from '../../assets/developmentAppdevelopment.jpg';
-import TestingImg from '../../assets/testingAppdevelopment.jpg';
+import ideaImg from '../../assets/ideaAppdevelopment.jpg';
+import PlanningImg from '../../assets/planningAppdevelopment.jpg';
 import ReleaseImg from '../../assets/releaseAppdevelopment.jpg';
+import TestingImg from '../../assets/testingAppdevelopment.jpg';
 
 const PROCESS_STEPS = [
     {

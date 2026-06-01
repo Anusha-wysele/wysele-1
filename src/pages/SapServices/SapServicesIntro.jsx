@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 
 const HEADING_TEXT = "Driving Modern Enterprises with Intelligent Transformation . . .";
 

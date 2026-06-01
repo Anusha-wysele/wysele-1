@@ -1,6 +1,5 @@
-import React from "react";
-import { useNavigate, useLocation } from "react-router-dom";
 import { FaHouse, FaRegHandshake } from "react-icons/fa6";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
@@ -32,10 +31,12 @@ const LeftSidebar = () => {
       {buttons.map((btn) => {
         const Icon = btn.icon;
         return (
-          <div
+          <button
             key={btn.id}
             onClick={() => handleAction(btn.id)}
-            className="flex items-center justify-between bg-[#C9184A] text-white overflow-hidden shadow-md cursor-pointer group w-[36px] hover:w-[110px] transition-[width] duration-300 ease-out"
+            type="button"
+            aria-label={btn.label}
+            className="flex items-center justify-between bg-[#C9184A] text-white overflow-hidden shadow-md cursor-pointer group w-[36px] hover:w-[110px] transition-[width] duration-300 ease-out border-none outline-none"
           >
             {/* Expandable text container on the left */}
             <div className="flex-1 w-0 group-hover:w-auto overflow-hidden flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-[50ms]">
@@ -47,7 +48,7 @@ const LeftSidebar = () => {
             <div className="w-[36px] h-[36px] flex-shrink-0 flex items-center justify-center">
               <Icon size={16} />
             </div>
-          </div>
+          </button>
         );
       })}
     </div>

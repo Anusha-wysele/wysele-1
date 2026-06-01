@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Users, 
-  Rocket, 
-  Code2, 
-  Share2, 
-  Headphones, 
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  CheckCircle2,
+  Code2,
   Database,
-  CheckCircle2
+  Headphones,
+  Rocket,
+  Share2,
+  Users
 } from 'lucide-react';
+import { useState } from 'react';
 
 const SalesforceTabs = () => {
   const [[activeTab, direction], setTab] = useState([0, 0]);

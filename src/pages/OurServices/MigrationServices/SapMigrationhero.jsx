@@ -1,16 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import Cylinders from '../../../components/common/Cylinders';
-import { 
-    Monitor, 
-    HardDrives, 
-    CloudArrowUp, 
-    Database, 
-    AppWindow, 
-    Globe, 
-    Stack 
+import {
+  AppWindow,
+  CloudArrowUp,
+  Database,
+  Globe,
+  HardDrives,
+  Monitor,
+  Stack
 } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+import React from 'react';
+import Cylinders from '../../../components/common/Cylinders';
+import sapMigrationHeroImg from '../../../assets/wysele-sapmigrationhero.webp';
 
 export default function SapMigrationhero() {
     const services = [
@@ -24,10 +24,10 @@ export default function SapMigrationhero() {
     ];
 
     return (
-        <section className="relative w-full min-h-screen flex items-center overflow-hidden font-sans bg-black">
+        <section className="relative w-full min-h-screen flex items-center overflow-hidden font-sans bg-black pt-[150px] md:pt-0">
             {/* Background Image */}
             <img 
-                src={SERVICES_PAGE_IMAGES.sapMigrationHero} 
+                src={sapMigrationHeroImg} 
                 alt="SAP Migration" 
                 className="absolute inset-0 w-full h-full object-cover object-center z-0"
             />

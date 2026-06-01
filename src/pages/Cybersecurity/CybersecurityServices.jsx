@@ -1,13 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
+  Activity,
+  Cloud,
+  Globe,
+  Search,
   ShieldAlert,
   ShieldCheck,
-  Activity,
-  Globe,
-  Cloud,
-  Search,
 } from 'lucide-react';
+import React from 'react';
 
 const services = [
   {

@@ -1,14 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    Palette,
-    Smartphone,
-    Zap,
-    Lock,
-    Edit,
-    TrendingUp,
-    Rocket,
-    Headset
+  Edit,
+  Headset,
+  Lock,
+  Palette,
+  Rocket,
+  Smartphone,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
 
 const BENEFITS = [

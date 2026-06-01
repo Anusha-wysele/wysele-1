@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Globe, Rocket, Award } from 'lucide-react';
+import { ArrowRight, Award, Globe, Rocket, Users } from 'lucide-react';
 
 const CareersHero = () => {
   const metrics = [
@@ -11,7 +10,7 @@ const CareersHero = () => {
   ];
 
   return (
-    <section className="relative w-full min-h-[560px] lg:h-[600px] overflow-hidden font-sans pt-20">
+    <section className="relative w-full min-h-[560px] lg:h-[600px] overflow-hidden font-sans pt-[140px] md:pt-20">
       
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
@@ -20,7 +19,8 @@ const CareersHero = () => {
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           src="https://images.pexels.com/photos/3184420/pexels-photo-3184420.jpeg" 
-          alt="Enterprise Collaboration" 
+          alt="Enterprise Team Collaboration at Wysele Technologies" 
+          title="Enterprise Collaboration"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />

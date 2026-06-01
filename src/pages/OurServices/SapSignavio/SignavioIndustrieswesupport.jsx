@@ -1,16 +1,16 @@
-import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { 
-    Factory, 
-    ShoppingCart, 
-    HeartPulse, 
-    Truck, 
-    Landmark, 
-    Zap, 
-    Monitor, 
-    Briefcase,
-    Check
+import {
+  Briefcase,
+  Check,
+  Factory,
+  HeartPulse,
+  Landmark,
+  Monitor,
+  ShoppingCart,
+  Truck,
+  Zap
 } from 'lucide-react';
+import { useRef } from 'react';
 
 const industries = [
     { name: "Manufacturing", icon: <Factory className="w-6 h-6 text-[#C9184A]" /> },

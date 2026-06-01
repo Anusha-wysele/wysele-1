@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Factory, ShoppingCart, Heart, Landmark, Truck, Briefcase } from 'lucide-react';
+import { Briefcase, Factory, Heart, Landmark, ShoppingCart, Truck } from 'lucide-react';
+import React, { useRef } from 'react';
 
 const industries = [
     {

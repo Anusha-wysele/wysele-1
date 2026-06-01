@@ -1,6 +1,5 @@
-import React from 'react';
+import { ClipboardList, Layers, Settings, Sliders, TrendingUp } from 'lucide-react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import { Layers, Sliders, ClipboardList, TrendingUp, Settings } from 'lucide-react';
 
 const reasons = [
     {

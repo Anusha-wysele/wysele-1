@@ -1,5 +1,5 @@
+import TEXTILES_IMAGE from "../../assets/wysele-industriestextile.webp";
 import IndustrySection from "./IndustrySection";
-import { TEXTILES_IMAGE } from "../../components/common/data";
 
 const IndustriesTextiles = () => {
     const features = [

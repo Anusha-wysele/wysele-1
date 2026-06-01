@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Settings, ShieldCheck, Wrench, ArrowRightLeft, Database, BarChart2, HeadphonesIcon } from 'lucide-react';
+import { ArrowRightLeft, BarChart2, Database, HeadphonesIcon, Settings, ShieldCheck, Wrench } from 'lucide-react';
 
 import SapMDGanalysis from '../../../assets/SapMDGanalysis.jpg';
 import SapMDGcentralised from '../../../assets/SapMDGcentralised.jpg';

@@ -1,23 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Briefcase, 
-  Users, 
-  MessageSquare, 
-  Mail, 
-  FileText,
-  Calendar, 
-  TrendingUp, 
-  TrendingDown,
-  ArrowRight,
-  Download,
-  Eye,
-  UserCircle2
-} from 'lucide-react';
 import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  Briefcase,
+  FileText,
+  Mail,
+  MessageSquare,
+  TrendingUp
+} from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import jobService from '../../services/jobService';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import blogService from '../../services/blogService';
+import jobService from '../../services/jobService';
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);

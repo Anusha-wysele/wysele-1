@@ -1,55 +1,29 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 import {
-
-  ChevronRight,
-
-  Cpu,
-
-  Cloud,
-
-  ShieldCheck,
-
-  Layout,
-
-  Globe,
-
-  Smartphone,
-
-  Factory,
-
-  Landmark,
-
-  ShoppingBag,
-
-  Truck,
-
-  HeartPulse,
-
-  Zap,
-
-  CloudLightning,
-
-  Brain,
-
-  Code,
-
-  Database,
-
-  Terminal,
-
-  Radio,
-
   ArrowRight,
-
+  Brain,
+  ChevronRight,
+  CloudLightning,
+  Code,
+  Cpu,
+  Database,
+  Factory,
+  HeartPulse,
+  Landmark,
+  Linkedin,
   Plus,
-
-  Linkedin
-
+  Radio,
+  ShieldCheck,
+  ShoppingBag,
+  Smartphone,
+  Terminal,
+  Truck,
+  Zap
 } from "lucide-react";
 
 import Menu from "./Menu";
@@ -746,11 +720,6 @@ export default function Navbar() {
   const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const [scrolled, setScrolled] = useState(false);
-
-  const [hidden, setHidden] = useState(false);
-
   const [openDrop, setOpenDrop] = useState(null);
 
   const [hoveredLink, setHoveredLink] = useState(null);
@@ -793,29 +762,7 @@ export default function Navbar() {
 
 
 
-  const isAbout = location.pathname.startsWith("/about");
 
-
-
-  useEffect(() => {
-
-    const handleScroll = () => {
-
-      const currentScrollY = window.scrollY;
-
-      const threshold = isAbout ? window.innerHeight * 0.8 : 50;
-
-      setScrolled(currentScrollY >= threshold);
-
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-
-  }, [isAbout]);
 
 
 
@@ -836,10 +783,6 @@ export default function Navbar() {
 
 
   const textColor = "#111827";
-
-  const bgClass = "bg-white border-b border-gray-100 shadow-sm";
-
-  const transitionClass = "transition-all duration-300 ease-in-out";
 
 
 
@@ -909,7 +852,7 @@ export default function Navbar() {
 
           {/* Logo on Top Bar - Small */}
 
-          <motion.div
+          <motion.a
 
             initial={{ opacity: 0, x: -24 }}
 
@@ -917,17 +860,25 @@ export default function Navbar() {
 
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
 
+            href="https://www.wysele.com/"
+
+            title="Wysele Technologies Home"
+
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
+
             className="cursor-pointer flex-shrink-0"
 
-            style={{ transform: 'scale(0.65)', transformOrigin: 'left center' }}
-
-            onClick={() => navigate("/")}
+            style={{ transform: 'scale(0.65)', transformOrigin: 'left center', display: 'block' }}
 
           >
 
             <Logo white={true} />
 
-          </motion.div>
+          </motion.a>
 
 
 
@@ -1033,11 +984,20 @@ export default function Navbar() {
 
           {/* Mobile Logo */}
 
-          <div className="flex md:hidden flex-shrink-0 cursor-pointer" onClick={() => navigate("/")}>
+          <a
+            href="https://www.wysele.com/"
+            title="Wysele Technologies Home"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
+            className="flex md:hidden flex-shrink-0 cursor-pointer"
+          >
 
             <LogoMobile white={false} />
 
-          </div>
+          </a>
 
           {/* Desktop Nav Links - Left Aligned */}
 
@@ -1310,6 +1270,8 @@ export default function Navbar() {
 
             rel="noopener noreferrer"
 
+            title="Wysele Technologies LinkedIn Profile"
+
             className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 hover:border-[#0A66C2] hover:bg-[#0A66C2] text-gray-700 hover:text-white transition-all duration-300 ml-7 mr-4"
 
             onMouseEnter={() => setHoveredLink("linkedin")}
@@ -1333,6 +1295,10 @@ export default function Navbar() {
             onMouseEnter={() => setHoveredLink("menuIcon")}
 
             onMouseLeave={() => setHoveredLink(null)}
+
+            aria-label="Open Navigation Menu"
+
+            aria-expanded={menuOpen}
 
             className="transition flex flex-col justify-center items-center ml-4 w-10 h-10 relative group"
 

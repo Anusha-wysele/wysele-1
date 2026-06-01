@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../../common/Button';
 
 const HERO_INDUSTRIES = [
@@ -21,7 +21,7 @@ function useWindowWidth() {
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   React.useEffect(() => {
     const handler = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handler);
+    window.addEventListener('resize', handler, { passive: true });
     return () => window.removeEventListener('resize', handler);
   }, []);
   return width;
@@ -62,6 +62,7 @@ export default function HeroSection() {
         loop
         muted
         playsInline
+        poster="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80"
         style={{
           width: "100%",
           height: "100%",

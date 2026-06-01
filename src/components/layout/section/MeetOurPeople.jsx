@@ -1,57 +1,73 @@
-import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import HeadingBracket from "../../common/HeadingBracket";
 
 
-import GeethikaImg from "../../../assets/GeethikaKarrayoula.jpg";
-import MadhuImg from "../../../assets/Madhu.png";
-import ManikantaImg from "../../../assets/Manikanta.png";
-import SaiSudhaImg from "../../../assets/RajoliSaiSudha.jpg";
-import SatishImg from "../../../assets/Satish.png";
-import SamyuktaImg from "../../../assets/BondiliSamyukta.png";
-import RamyaImg from "../../../assets/Ramya.jpeg";
-import LegalAdvisorImg from "../../../assets/legaladvisor.png";
+import SamyuktaImg from "../../../assets/wysele-imgi_21_bondili-samyukta.webp";
+import GeethikaImg from "../../../assets/wysele-imgi_20_geethika-karrayoula.webp";
+import MadhuImg from "../../../assets/wysele-imgi_24_madhu-megavath.webp";
+import ManikantaImg from "../../../assets/wysele-imgi_26_sattu-manikanta.webp";
+import SaiSudhaImg from "../../../assets/wysele-imgi_23_RajoliSaiSudha.webp";
+import RamyaImg from "../../../assets/wysele-imgi_22_ramya-goruganti.webp";
+import SatishImg from "../../../assets/wysele-imgi_25_satish-thirumani.webp";
+import LegalAdvisorImg from "../../../assets/wysele-imgi_19_ravinder-rao-chirumamilla.webp";
 
 const localTeamMembers = [
   {
     name: "Ravinder Rao Chirumamilla",
     role: "Legal Advisor",
     img: LegalAdvisorImg,
+    alt: "Ravinder Rao Chirumamilla",
+    title: "Legal Advisor"
   },
   {
     name: "Geethika Karrayoula",
     role: "Director of Operations",
     img: GeethikaImg,
+    alt: "Geethika Karrayoula",
+    title: "Team Member"
   },
   {
     name: "Bondili Samyukta",
     role: "Project Manager",
     img: SamyuktaImg,
+    alt: "Bondili Samyukta",
+    title: "Team Member"
   },
   {
     name: "Ramya Goruganti",
     role: "Admin & Facilities",
     img: RamyaImg,
+    alt: "Ramya Goruganti",
+    title: "Team Member"
   },
   {
     name: "Rajoli Saisudha",
     role: "HR Manager",
     img: SaiSudhaImg,
+    alt: "Rajoli Saisudha",
+    title: "Team Member"
   },
   {
     name: "Madhu Megavath",
     role: "Solution Architect",
     img: MadhuImg,
+    alt: "Madhu Megavath",
+    title: "Team Member"
   },
   {
     name: "Satish Thirumani",
     role: "Digital Transformation Expert",
     img: SatishImg,
+    alt: "Satish Thirumani",
+    title: "Team Member"
   },
   {
     name: "Sattu Manikanta",
     role: "Sales Head",
     img: ManikantaImg,
+    alt: "Sattu Manikanta",
+    title: "Team Member"
   },
 ];
 
@@ -85,36 +101,6 @@ function useWindowWidth() {
   return width;
 }
 
-const FacebookIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-);
-const LinkedInIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect x="2" y="9" width="4" height="12" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-const TwitterIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-  </svg>
-);
-const DribbbleIcon = () => (
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
-  </svg>
-);
-
-const socialIcons = [
-  { icon: <FacebookIcon />, label: "Facebook" },
-  { icon: <LinkedInIcon />, label: "LinkedIn" },
-  { icon: <TwitterIcon />, label: "Twitter" },
-  { icon: <DribbbleIcon />, label: "Dribbble" },
-];
 
 export default function MeetOurPeople() {
   const width = useWindowWidth();
@@ -231,7 +217,8 @@ export default function MeetOurPeople() {
                     {/* Image */}
                     <img
                       src={member.img}
-                      alt={member.name}
+                      alt={member.alt}
+                      title={member.title}
                       className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${isActive ? "scale-105 saturate-100" : "scale-100 saturate-50 brightness-75 hover:brightness-90"
                         }`}
                     />

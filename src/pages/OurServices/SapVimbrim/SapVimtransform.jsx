@@ -1,12 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-    Stack, 
-    CurrencyCircleDollar, 
-    Lightbulb,
-    FileText,
-    Receipt
+import {
+  CurrencyCircleDollar,
+  FileText,
+  Lightbulb
 } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+import React from 'react';
 
 const vimBrimBenefits = [
     {

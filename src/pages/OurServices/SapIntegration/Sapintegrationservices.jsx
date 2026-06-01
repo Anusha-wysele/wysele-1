@@ -1,18 +1,15 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    Check,
-    Share2,
-    Cloud,
-    Workflow,
-    Zap,
-    Database,
-    Globe,
-    ArrowUpRight,
-    Users
+  Check,
+  Cloud,
+  Database,
+  Globe,
+  Users,
+  Workflow,
+  Zap
 } from 'lucide-react';
+import React from 'react';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import Button from '../../../components/common/Button';
 
 const SapIntegrationServices = () => {
     const bulletPoints = [

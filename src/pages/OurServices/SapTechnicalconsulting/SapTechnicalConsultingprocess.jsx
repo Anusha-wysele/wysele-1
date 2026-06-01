@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, FileText, Settings, GraduationCap, HeadphonesIcon } from 'lucide-react';
+import { FileText, GraduationCap, HeadphonesIcon, Search, Settings } from 'lucide-react';
 
 const steps = [
     {

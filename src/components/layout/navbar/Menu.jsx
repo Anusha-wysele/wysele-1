@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { Facebook, Linkedin, Twitter, X } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Linkedin, Twitter, Facebook, X } from "lucide-react";
-import { menuImage, WYSELE_LOGOS } from "../../common/data";
 import LogoWhiteImg from "../../../assets/LogoWhite.png";
+import { menuImage } from "../../common/data";
 
 
 const SAP_SERVICES_LIST = [
@@ -44,9 +44,12 @@ export default function Menu({ open, onClose }) {
   };
 
   // Social icon helper
-  const SocialIcon = ({ Icon }) => (
+  const SocialIcon = ({ Icon, href = "#", title }) => (
     <a
-      href="#"
+      href={href}
+      title={title}
+      target={href !== "#" ? "_blank" : undefined}
+      rel={href !== "#" ? "noopener noreferrer" : undefined}
       style={{
         width: 32, height: 32, borderRadius: "50%",
         display: "flex", alignItems: "center", justifyContent: "center",
@@ -109,11 +112,15 @@ export default function Menu({ open, onClose }) {
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <img
               src={LogoWhiteImg}
-              alt="Wysele Logo"
+              alt="Wysele Technologies Logo"
+              title="Wysele Technologies"
+              width="80"
+              height="20"
               style={{ width: 80, height: "auto" }}
             />
             <button
               onClick={onClose}
+              aria-label="Close Navigation Menu"
               style={{
                 background: "none", border: "none", cursor: "pointer",
                 color: "#fff", opacity: 0.8, padding: 4,
@@ -136,7 +143,6 @@ export default function Menu({ open, onClose }) {
           msOverflowStyle: "none", // IE/Edge
         }}>
           <style>{`
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
             div::-webkit-scrollbar { display: none; }
           `}</style>
 
@@ -358,7 +364,11 @@ export default function Menu({ open, onClose }) {
             }}>
               <img
                 src={menuImage}
-                alt="Our Office"
+                alt="Wysele Corporate Office"
+                title="Enterprise Office"
+                loading="lazy"
+                width="280"
+                height="160"
                 style={{ width: "100%", height: 160, objectFit: "cover", display: "block" }}
               />
             </div>
@@ -372,6 +382,7 @@ export default function Menu({ open, onClose }) {
           }}>
             <a
               href="mailto:info@wysele.com"
+              title="Contact Wysele Technologies"
               style={{
                 color: "#fff", fontSize: 16, fontWeight: 600, textDecoration: "none",
                 display: "block", marginBottom: 18, transition: "color 0.3s ease"
@@ -383,9 +394,9 @@ export default function Menu({ open, onClose }) {
             </a>
 
             <div style={{ display: "flex", gap: 10 }}>
-              <SocialIcon Icon={Linkedin} />
-              <SocialIcon Icon={Twitter} />
-              <SocialIcon Icon={Facebook} />
+              <SocialIcon Icon={Linkedin} href="https://www.linkedin.com/company/wysele" title="Wysele Technologies LinkedIn Profile" />
+              <SocialIcon Icon={Twitter} href="#" title="Wysele Technologies Twitter Profile" />
+              <SocialIcon Icon={Facebook} href="#" title="Wysele Technologies Facebook Profile" />
             </div>
           </div>
         </div>

@@ -1,12 +1,78 @@
-import React, { useState, useRef, useEffect, useCallback, forwardRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { HoverTiltCard } from "../../common/Parallax3D";
+import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { fadeSlideUp, staggerContainer, viewportSettings } from "../../common/animations";
-import { SERVICES_LIST } from "../../common/data";
 import HeadingBracket from "../../common/HeadingBracket";
+import { HoverTiltCard } from "../../common/Parallax3D";
 
-const services = SERVICES_LIST;
+import AimlHeroImg from "../../../assets/Aimlhero.webp";
+import AppDevImg from "../../../assets/Appdevelopment.webp";
+import CybersecurityImg from "../../../assets/Cybersecurity.jpg";
+import IotHeroImg from "../../../assets/IotHero.webp";
+import ItInfrastructureImg from "../../../assets/Itinfrastructure.jpg";
+import SalesforceImg from "../../../assets/Salesforce.webp";
+import Saps4Img from "../../../assets/Saps4.jpg";
+import WebDevImg from "../../../assets/webdevelopment.webp";
+
+const services = [
+  {
+    title: "SAP Services",
+    desc: "Comprehensive SAP solutions including Consulting, Signavio, Datasphere, RISE, BTP, Integration, Migration, MDG, and S/4HANA Conversion to drive enterprise transformation.",
+    img: Saps4Img,
+    alt: "SAP S/4HANA Services",
+    titleAttr: "SAP Solutions"
+  },
+  {
+    title: "Salesforce Services",
+    desc: "Boost customer engagement with tailored Salesforce solutions.",
+    img: SalesforceImg,
+    alt: "Salesforce CRM Services",
+    titleAttr: "Salesforce Solutions"
+  },
+  {
+    title: "IT Infrastructure Services",
+    desc: "Scalable IT solutions to support business growth.",
+    img: ItInfrastructureImg,
+    alt: "IT Infrastructure Services",
+    titleAttr: "IT Infrastructure"
+  },
+  {
+    title: "Cybersecurity Services",
+    desc: "Protect your digital assets with cutting-edge security solutions.",
+    img: CybersecurityImg,
+    alt: "Cybersecurity Services",
+    titleAttr: "Cybersecurity Solutions"
+  },
+  {
+    title: "IoT Services",
+    desc: "End-to-end IoT solutions — from device integration and embedded systems to cloud connectivity and industry-specific IoT applications.",
+    img: IotHeroImg,
+    alt: "IoT Smart Solutions",
+    titleAttr: "IoT Services"
+  },
+  {
+    title: "AI & ML Services",
+    desc: "Accelerate your business with AI strategy, machine learning, NLP, computer vision, predictive analytics, and intelligent automation.",
+    img: AimlHeroImg,
+    alt: "AI and ML Services",
+    titleAttr: "AI ML Solutions"
+  },
+  {
+    title: "Web Development",
+    desc: "Build scalable, responsive, and high-performance web applications tailored to your business needs.",
+    img: WebDevImg,
+    alt: "Web Development Services",
+    titleAttr: "Web Development"
+  },
+  {
+    title: "App Development",
+    desc: "Create intuitive, feature-rich mobile experiences for iOS and Android to engage your customers on the go.",
+    img: AppDevImg,
+    alt: "Mobile App Development",
+    titleAttr: "App Development"
+  },
+];
+
 
 function useVisibleSlides() {
   const [visible, setVisible] = useState(3);
@@ -22,25 +88,6 @@ function useVisibleSlides() {
   }, []);
   return visible;
 }
-
-const fadeUpVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1, y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-  }
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    }
-  }
-};
 
 export default function Services() {
   const visibleSlides = useVisibleSlides();
@@ -94,6 +141,7 @@ export default function Services() {
   }, [currentIndex, isDragging, dragOffset]);
 
   const goNext = () => {
+    if (currentIndex >= totalSlides) return;
     setIsAnimating(true);
     setCurrentIndex((i) => i + 1);
   };
@@ -171,7 +219,7 @@ export default function Services() {
           }}
         >
           <HeadingBracket size={56} style={{ transform: "translate(40px, -20px)" }} />
-          <h1
+          <h2
             style={{
               fontSize: "clamp(1.5rem, 3.5vw, 2.8rem)",
               lineHeight: 1.1,
@@ -184,7 +232,7 @@ export default function Services() {
             }}
           >
             Services
-          </h1>
+          </h2>
         </motion.div>
         <motion.h3
           variants={fadeSlideUp}
@@ -336,7 +384,10 @@ const SlideCard = forwardRef(function SlideCard({ service, slideWidth, isActive 
       }}>
         <motion.img
           src={service.img}
-          alt={service.title}
+          alt={service.alt}
+          title={service.titleAttr}
+          width="400"
+          height="280"
           draggable={false}
           animate={{
             filter: shadowed => hovered ? "grayscale(0)" : "grayscale(0.8)",

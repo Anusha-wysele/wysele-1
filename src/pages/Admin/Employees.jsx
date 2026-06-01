@@ -1,36 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import AdminLayout from '../../components/Admin/AdminLayout';
-import { 
-  Search, 
-  Trash2, 
-  UserSquare2, 
-  Mail, 
-  Phone, 
+import {
   Briefcase,
   Download,
   Filter,
-  FileText,
-  Database
+  Mail,
+  Phone,
+  Search,
+  UserSquare2
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import employeeService from '../../services/employeeService';
-import { useToast } from '../../components/Admin/ToastContext';
-import ConfirmModal from '../../components/Admin/ConfirmModal';
+import { useCallback, useEffect, useState } from 'react';
+import AdminLayout from '../../components/Admin/AdminLayout';
 import EditPermissionsModal from '../../components/Admin/EditPermissionsModal';
-import { ShieldCheck, Eye, Edit3 } from 'lucide-react';
+import { useToast } from '../../components/Admin/ToastContext';
+import employeeService from '../../services/employeeService';
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isPermissionsModalOpen, setIsPermissionsModalOpen] = useState(false);
-  const [employeeToDelete, setEmployeeToDelete] = useState(null);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   
   const { showToast } = useToast();
 
-  const fetchEmployees = async () => {
+  const fetchEmployees = useCallback(async () => {
     try {
       setLoading(true);
       const data = await employeeService.getAllEmployees();
@@ -40,7 +32,7 @@ const Employees = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [showToast]);
 
   useEffect(() => {
     fetchEmployees();
@@ -52,29 +44,11 @@ const Employees = () => {
 
     window.addEventListener('employeeRegistered', handleRefresh);
     return () => window.removeEventListener('employeeRegistered', handleRefresh);
-  }, []);
-
-  const handleDeleteClick = (id) => {
-    setEmployeeToDelete(id);
-    setIsConfirmModalOpen(true);
-  };
+  }, [fetchEmployees]);
 
   const handleEditPermissions = (emp) => {
     setSelectedEmployee(emp);
     setIsPermissionsModalOpen(true);
-  };
-
-  const handleDeleteConfirm = async () => {
-    try {
-      await employeeService.deleteEmployee(employeeToDelete);
-      setEmployees(employees.filter(emp => (emp._id || emp.id) !== employeeToDelete));
-      showToast('Employee removed successfully.', 'success');
-    } catch (err) {
-      showToast('Failed to remove employee.', 'error');
-    } finally {
-      setIsConfirmModalOpen(false);
-      setEmployeeToDelete(null);
-    }
   };
 
   const filteredEmployees = employees.filter(emp => 
@@ -269,15 +243,7 @@ const Employees = () => {
           onUpdate={fetchEmployees}
         />
 
-        <ConfirmModal 
-          isOpen={isConfirmModalOpen}
-          onClose={() => setIsConfirmModalOpen(false)}
-          onConfirm={handleDeleteConfirm}
-          title="Remove Employee?"
-          message="Are you sure you want to remove this employee? This will revoke their access to the admin system."
-          confirmText="Yes, Remove Access"
-          cancelText="Keep Staff"
-        />
+
       </div>
     </AdminLayout>
   );

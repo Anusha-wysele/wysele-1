@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { ArrowRight, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Calendar, TrendingUp } from 'lucide-react';
+import Breadcrumbs from '../../../components/common/Breadcrumbs';
 import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import SapOverview from './SapOverview';
-import FunctionalConsulting from './FunctionalConsulting';
-import TechnicalConsulting from './TechnicalConsulting';
-import SapIntegrationsupport from './SapIntegrationsupport';
-import SapIndustriesweserve from './SapIndustriesweserve';
-import WhyChooseWysele from './WhyChooseWysele';
 import Footer from '../../../components/layout/section/Footer';
+import FunctionalConsulting from './FunctionalConsulting';
+import SapIndustriesweserve from './SapIndustriesweserve';
+import SapIntegrationsupport from './SapIntegrationsupport';
+import SapOverview from './SapOverview';
+import TechnicalConsulting from './TechnicalConsulting';
+import WhyChooseWysele from './WhyChooseWysele';
 
 const SapConsulting = () => {
     const navigate = useNavigate();
@@ -55,7 +55,7 @@ const SapConsulting = () => {
                 </div>
 
                 {/* Content Area (Left Side) */}
-                <div className="relative w-full lg:w-[60%] h-full flex flex-col justify-end px-6 sm:px-12 lg:pl-16 lg:pr-10 pb-12 sm:pb-16 lg:pb-20 pt-28 sm:pt-32 z-20">
+                <div className="relative w-full lg:w-[60%] h-full flex flex-col justify-end px-6 sm:px-12 lg:pl-16 lg:pr-10 pb-12 sm:pb-16 lg:pb-20 pt-[150px] md:pt-28 sm:pt-32 z-20">
                     <div className="max-w-xl w-full">
                         <motion.h1
                             initial={{ opacity: 0, y: 25 }}
@@ -136,6 +136,7 @@ const SapConsulting = () => {
                     </div>
                 </div>
             </section>
+            <Breadcrumbs />
             <SapOverview />
             <FunctionalConsulting />
             <TechnicalConsulting />

@@ -1,18 +1,18 @@
-import React, { useRef, useState } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useNavigate, Link } from 'react-router-dom';
-import { 
-    Users, 
-    UserCheck, 
-    Calculator, 
-    Box, 
-    ShoppingCart, 
-    Network, 
-    TrendingUp, 
-    Cloud,
-    Plus,
-    ArrowUpRight
+import { AnimatePresence, motion, useInView } from 'framer-motion';
+import {
+  ArrowUpRight,
+  Box,
+  Calculator,
+  Cloud,
+  Network,
+  Plus,
+  ShoppingCart,
+  TrendingUp,
+  UserCheck,
+  Users
 } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const integrations = [
     {
@@ -83,7 +83,6 @@ const faqItems = [
 ];
 
 const SapIntegrationsupport = () => {
-    const navigate = useNavigate();
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-100px" });
     const [openKey, setOpenKey] = useState(null);

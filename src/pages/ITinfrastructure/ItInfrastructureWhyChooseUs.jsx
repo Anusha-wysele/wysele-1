@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Award, ShieldCheck, Zap, Headphones } from 'lucide-react';
+import { Award, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
 
 const ItInfrastructureWhyChooseUs = () => {
   const points = [

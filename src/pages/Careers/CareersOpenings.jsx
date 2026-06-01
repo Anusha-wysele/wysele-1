@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, Briefcase, MapPin, Search, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Briefcase, ArrowRight, Search, X } from 'lucide-react';
 
 import jobService from '../../services/jobService';
 

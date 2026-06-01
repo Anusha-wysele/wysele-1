@@ -1,13 +1,12 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
-import { 
-    CheckCircle, 
-    TreeStructure, 
-    MagnifyingGlass, 
-    UsersThree, 
-    ArrowsMerge 
+import {
+  ArrowsMerge,
+  CheckCircle,
+  MagnifyingGlass,
+  TreeStructure,
+  UsersThree
 } from "@phosphor-icons/react";
+import { motion } from 'framer-motion';
+import sapSignavioImplementationImg from "../../../assets/wysele-sapsignavioimplementation.webp";
 
 const SapSignavioStrengths = () => {
     const strengths = [
@@ -82,7 +81,7 @@ const SapSignavioStrengths = () => {
                             className="w-full h-full rounded-sm overflow-hidden"
                         >
                             <img 
-                                src={SERVICES_PAGE_IMAGES.sapSignavioStrengths} 
+                                src={sapSignavioImplementationImg} 
                                 alt="Business people meeting outdoors" 
                                 className="w-full h-full object-cover rounded-sm absolute inset-0"
                             />

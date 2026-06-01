@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Target, Shield, Cloud, Users, Award, Lightbulb, TrendingUp } from 'lucide-react';
+import { AirTrafficControl, FramerLogo, LinkedinLogo, SlackLogo } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import { TrainRegional, ChalkboardTeacher, FramerLogo, AirTrafficControl, SlackLogo, LinkedinLogo } from '@phosphor-icons/react';
-import { OTHER_PAGE_IMAGES } from '../../components/common/data';
-import founderImg from '../../assets/image (2).png';
+import { Award, Cloud, Lightbulb, TrendingUp, Users } from 'lucide-react';
+import founderImg from '../../assets/wysele-founder.webp';
 
 const Founder = () => {
     // Animations are now viewport-based using Framer Motion and Tailwind lg: modifiers
@@ -111,7 +109,8 @@ const Founder = () => {
                                 <div className="relative bg-white rounded-lg overflow-hidden shadow-2xl">
                                     <img
                                         src={founderImg}
-                                        alt="Brahmam Chowdary Murukonda - Founder & CEO"
+                                        alt="Brahmam Chowdary Murukonda Founder and CEO"
+                                        title="Founder and CEO"
                                         className="w-full h-[400px] md:h-[480px] object-cover transition-all duration-700 group-hover:grayscale-[30%]"
                                     />
 

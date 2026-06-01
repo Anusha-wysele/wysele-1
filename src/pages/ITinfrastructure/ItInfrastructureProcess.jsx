@@ -1,11 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
-  Search,
-  Layout,
-  Settings,
   Activity,
-  ArrowRight
+  Layout,
+  Search,
+  Settings
 } from 'lucide-react';
 
 const ItInfrastructureProcess = () => {

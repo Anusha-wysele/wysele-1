@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const industries = [

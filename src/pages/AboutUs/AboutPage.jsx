@@ -1,5 +1,6 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
 import { motion } from "framer-motion";
+import { Suspense, lazy, useEffect } from "react";
+import Breadcrumbs from "../../components/common/Breadcrumbs";
 import SimnHero from "./SimnHero";
 
 // Lazy load below-the-fold components
@@ -23,6 +24,7 @@ const AboutPage = () => {
         <div className="relative w-full bg-white min-h-screen font-oxygen">
             {/* 1. Full-width Material Hero */}
             <SimnHero />
+            <Breadcrumbs />
 
             <Suspense fallback={<div className="h-[50vh]" />}>
                 <WhatWeDo />

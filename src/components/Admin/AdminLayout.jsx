@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Sidebar from './Sidebar';
-import Navbar from './Navbar';
-import ChangePasswordModal from './ChangePasswordModal';
+import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import '../../styles/admin.css';
+import ChangePasswordModal from './ChangePasswordModal';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 const AdminLayout = ({ children }) => {
   const { user } = useAuth();

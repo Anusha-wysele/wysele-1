@@ -1,12 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-    Gear, 
-    Monitor, 
-    Brain,
-    ArrowsOut,
-    ShieldCheck
+import {
+  ArrowsOut,
+  Brain,
+  Gear,
+  Monitor,
+  ShieldCheck
 } from "@phosphor-icons/react";
+import { motion } from 'framer-motion';
 
 const DataWhychoose = () => {
     const cardsData = [

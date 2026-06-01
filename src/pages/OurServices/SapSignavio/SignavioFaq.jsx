@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, ArrowUpRight } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowUpRight, Plus } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const faqItems = [

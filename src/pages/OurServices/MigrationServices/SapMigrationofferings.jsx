@@ -1,17 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import {
-    Code,
-    Desktop,
-    CloudArrowUp,
-    Database,
-    Cpu,
-    Buildings,
-    HardDrives,
-    ArrowsLeftRight,
-    ArrowsMerge
+  ArrowsLeftRight,
+  ArrowsMerge,
+  Buildings,
+  CloudArrowUp,
+  Code,
+  Cpu,
+  Database,
+  Desktop,
+  HardDrives
 } from "@phosphor-icons/react";
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import sapMigrationOfferingsImg from '../../../assets/wysele-sapmigrationofferings.webp';
 
 const MIGRATION_SERVICES = [
     { title: "Software Migration", color: "#E11D48", icon: <Code size={24} /> },
@@ -81,7 +81,7 @@ export default function SapMigrationofferings() {
                         {/* Background Image Wrapper */}
                         <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden z-0">
                             <img
-                                src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg"
+                                src={sapMigrationOfferingsImg}
                                 alt="Migration Strategy"
                                 className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
                             />

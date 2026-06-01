@@ -1,16 +1,17 @@
-import React from 'react';
-import WebDevelopmenthero from './WebDevelopmenthero';
-import WebServicesweoffer from './WebServicesweoffer';
-import WebDevelopmentProcess from './WebDevelopmectprocess';
-import WebDevelopmentShowcase from './WebDevelopmentShowcase';
-import WebDevelopmentBenifits from './WebDevelopmentBenifits';
-import WebDevelopmentwhychoose from './WebDevelopmentwhychoose';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 import Footer from '../../components/layout/section/Footer';
+import WebDevelopmentProcess from './WebDevelopmectprocess';
+import WebDevelopmentBenifits from './WebDevelopmentBenifits';
+import WebDevelopmenthero from './WebDevelopmenthero';
+import WebDevelopmentShowcase from './WebDevelopmentShowcase';
+import WebDevelopmentwhychoose from './WebDevelopmentwhychoose';
+import WebServicesweoffer from './WebServicesweoffer';
 
 const WebDevelopmentPage = () => {
     return (
         <main className="bg-white">
             <WebDevelopmenthero />
+            <Breadcrumbs />
             <WebServicesweoffer />
             <WebDevelopmentProcess />
             <WebDevelopmentShowcase />

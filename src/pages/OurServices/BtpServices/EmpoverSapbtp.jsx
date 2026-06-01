@@ -1,7 +1,7 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Layout, BarChart, CheckCircle } from 'lucide-react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { ArrowRight } from 'lucide-react';
+import btpEmpover1Img from "../../../assets/wysele-btpempover1.webp";
+import btpEmpover2Img from "../../../assets/wysele-btpempover2.webp";
 
 const btpPoints = [
     "Unlock the full potential of your business data with SAP BTP",
@@ -70,7 +70,7 @@ const EmpoverSapbtp = () => {
                         className="relative w-[280px] h-[360px] rounded-2xl overflow-hidden border border-gray-200 p-2 bg-gray-50 shadow-sm"
                     >
                         <img
-                            src={SERVICES_PAGE_IMAGES.btpEmpowerment}
+                            src={btpEmpover1Img}
                             alt="SAP BTP Architecture"
                             className="w-full h-full object-cover rounded-xl"
                         />
@@ -87,7 +87,7 @@ const EmpoverSapbtp = () => {
                     >
                         {/* Integrated Analytics Image */}
                         <img
-                            src={SERVICES_PAGE_IMAGES.btpAnalytics}
+                            src={btpEmpover2Img}
                             alt="Wysele BTP Analytics"
                             className="w-full h-full object-cover"
                         />

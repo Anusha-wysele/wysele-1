@@ -1,13 +1,13 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-    Gear, 
-    Monitor, 
-    ArrowsMerge, 
-    CornersOut, 
-    Target
+import {
+  ArrowsMerge,
+  CornersOut,
+  Gear,
+  Monitor,
+  Target
 } from "@phosphor-icons/react";
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { motion } from 'framer-motion';
+import sapDatasphereStrategic1Img from "../../../assets/wysele-sapdataspherestrategic1.webp";
+import sapDatasphereStrategic2Img from "../../../assets/wysele-sapdataspherestrategic2.webp";
 
 const DataStrategicPartnership = () => {
     const points = [
@@ -50,7 +50,7 @@ const DataStrategicPartnership = () => {
                             {/* Background Image with dark overlay for text readability */}
                             <div className="absolute inset-0 z-0">
                                 <img 
-                                    src={SERVICES_PAGE_IMAGES.sapDatasphereWhyChooseLeft} 
+                                    src={sapDatasphereStrategic1Img} 
                                     className="w-full h-full object-cover object-[center_75%] transition-transform duration-700 group-hover:scale-110" 
                                     alt="Partner Background" 
                                 />
@@ -84,7 +84,7 @@ const DataStrategicPartnership = () => {
                             {/* Background Image with Overlay */}
                             <div className="absolute inset-0 z-0">
                                 <img 
-                                    src={SERVICES_PAGE_IMAGES.sapDatasphereWhyChoose} 
+                                    src={sapDatasphereStrategic2Img} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                                     alt="Background" 
                                     />

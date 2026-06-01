@@ -1,10 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { OTHER_PAGE_IMAGES } from '../../common/data';
-import Cylinders from '../../common/Cylinders';
 import Button from '../../common/Button';
+import Cylinders from '../../common/Cylinders';
+import insightsHeroImg from "../../../assets/wysele-insights.webp";
 
 export default function InsightsHero() {
   const navigate = useNavigate();
@@ -13,8 +12,9 @@ export default function InsightsHero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src={OTHER_PAGE_IMAGES.insightsHero}
-          alt="Desk Background" 
+          src={insightsHeroImg}
+          alt="Modern Digital Workspace" 
+          title="Digital Workspace"
           className="w-full h-full object-cover object-center md:object-right opacity-40 md:opacity-60"
         />
         {/* Responsive Overlay: Darkness increases on mobile to ensure readability since text is centered over the image */}

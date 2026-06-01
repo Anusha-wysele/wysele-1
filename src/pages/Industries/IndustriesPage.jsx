@@ -1,8 +1,9 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Breadcrumbs from "../../components/common/Breadcrumbs";
+import Footer from "../../components/layout/section/Footer";
 import IndustriesHero from "./IndustriesHero";
 import IndustriesNav from "./IndustriesNav";
-import Footer from "../../components/layout/section/Footer";
 
 // Lazy load industry components
 const Manufacturing = lazy(() => import("./IndustriesManufacturing"));
@@ -46,6 +47,7 @@ const IndustriesPage = () => {
   return (
     <main className="bg-white">
       <IndustriesHero />
+      <Breadcrumbs />
       <IndustriesNav />
 
       <div className="space-y-0">

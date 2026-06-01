@@ -1,13 +1,11 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  CloudCog, 
-  Share2, 
-  Database, 
-  Terminal,
-  ShieldCheck,
+import {
   Activity,
-  ArrowRight
+  CloudCog,
+  Database,
+  Share2,
+  ShieldCheck,
+  Terminal
 } from 'lucide-react';
 
 const ItInfrastructureServices = () => {

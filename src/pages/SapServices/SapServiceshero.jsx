@@ -1,17 +1,17 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import Footer from '../../components/layout/section/Footer';
 import sapServicesImg from '../../assets/Sapservices.jpg';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
+import Cylinders from '../../components/common/Cylinders';
+import Footer from '../../components/layout/section/Footer';
 import SapServicesIntro from './SapServicesIntro';
 import SapServicesList from './SapServicesList';
-import Cylinders from '../../components/common/Cylinders';
 
 export default function SapServices() {
   return (
     <div className="bg-white">
-      <div className="w-full pt-[68px]">
+      <div className="w-full">
         {/* Full Width Hero Image with Content Overlay */}
-        <div className="w-full relative overflow-hidden" style={{ height: 'calc(100vh - 68px)' }}>
+        <div className="w-full relative overflow-hidden pt-[140px] md:pt-0" style={{ height: 'calc(100vh - 68px)' }}>
           <img 
             src={sapServicesImg} 
             alt="SAP Services Hero" 
@@ -71,6 +71,7 @@ export default function SapServices() {
           </div>
         </div>
       </div>
+      <Breadcrumbs />
         
         {/* Intro Content Section */}
         <SapServicesIntro />

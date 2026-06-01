@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, CheckCircle2, Monitor, Zap } from 'lucide-react';
+import { CheckCircle2, Monitor, ShieldCheck, Zap } from 'lucide-react';
 
 const cards = [
   {

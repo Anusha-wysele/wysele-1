@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Cylinderr from '../../components/common/Cylinderr';
 
 const bulletsData = [

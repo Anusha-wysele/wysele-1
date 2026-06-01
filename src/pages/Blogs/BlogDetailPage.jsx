@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, Tag, Share2, Facebook, Twitter, Linkedin } from "lucide-react";
-import Navbar from "../../components/layout/navbar/Navbar";
+import { ArrowLeft, Calendar, Clock, Facebook, Linkedin, Share2, Twitter } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import Breadcrumbs from "../../components/common/Breadcrumbs";
 import Footer from "../../components/layout/section/Footer";
 import blogService from "../../services/blogService";
 
@@ -32,6 +32,90 @@ const BlogDetailPage = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  // Inject per-blog dynamic SEO meta once blog data is loaded
+  useEffect(() => {
+    if (!blog) return;
+
+    const prevTitle = document.title;
+    const pageTitle = `${blog.title} | Wysele Technologies`;
+    const pageDesc = blog.excerpt || blog.summary || blog.description ||
+      (blog.content ? blog.content.substring(0, 160).replace(/\n/g, ' ') + '...' : '');
+    const pageImage = blog.image_url || blog.img || 'https://www.wysele.com/og-image.png';
+    const canonical = `https://www.wysele.com/blogs/${id}`;
+
+    document.title = pageTitle;
+
+    const setMeta = (attr, name, value) => {
+      let el = document.querySelector(`meta[${attr}='${name}']`);
+      const oldVal = el ? el.getAttribute('content') : null;
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, name);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', value);
+      return () => {
+        if (oldVal !== null) el.setAttribute('content', oldVal);
+        else el.remove();
+      };
+    };
+
+    const setLink = (rel, value) => {
+      let el = document.querySelector(`link[rel='${rel}']`);
+      const oldVal = el ? el.getAttribute('href') : null;
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', value);
+      return () => {
+        if (oldVal !== null) el.setAttribute('href', oldVal);
+        else el.remove();
+      };
+    };
+
+    const cleanups = [
+      setMeta('name', 'description', pageDesc),
+      setMeta('property', 'og:title', pageTitle),
+      setMeta('property', 'og:description', pageDesc),
+      setMeta('property', 'og:image', pageImage),
+      setMeta('property', 'og:url', canonical),
+      setMeta('property', 'og:type', 'article'),
+      setMeta('name', 'twitter:title', pageTitle),
+      setMeta('name', 'twitter:description', pageDesc),
+      setMeta('name', 'twitter:image', pageImage),
+      setLink('canonical', canonical),
+    ];
+
+    // Article schema
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'blog-article-schema';
+    script.innerHTML = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": blog.title,
+      "description": pageDesc,
+      "image": pageImage,
+      "url": canonical,
+      "datePublished": blog.created_at || blog.date || '',
+      "publisher": {
+        "@type": "Organization",
+        "name": "Wysele Technologies",
+        "logo": { "@type": "ImageObject", "url": "https://www.wysele.com/og-image.png" }
+      }
+    });
+    document.head.appendChild(script);
+
+    return () => {
+      document.title = prevTitle;
+      cleanups.forEach(fn => fn());
+      const s = document.getElementById('blog-article-schema');
+      if (s) s.remove();
+    };
+  }, [blog, id]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-white flex flex-col items-center justify-center">
@@ -57,9 +141,10 @@ const BlogDetailPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white font-['Inter',_sans-serif]">
+    <div className="min-h-screen bg-white font-['Inter',_sans-serif] pt-[68px]">
+      <Breadcrumbs />
       {/* Article Header */}
-      <section className="pt-32 pb-12 px-6 md:px-20 max-w-5xl mx-auto">
+      <section className="pt-12 pb-12 px-6 md:px-20 max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

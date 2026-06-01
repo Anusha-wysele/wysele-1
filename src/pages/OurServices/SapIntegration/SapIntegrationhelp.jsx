@@ -1,34 +1,29 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import {
-    Search,
-    Settings,
-    Activity,
-    ShieldCheck,
-    ArrowUpRight
-} from 'lucide-react';
+import integrationHelp1Img from "../../../assets/wysele-sapintegrationhelp1.webp";
+import integrationHelp2Img from "../../../assets/wysele-sapintegrationhelp2.webp";
+import integrationHelp3Img from "../../../assets/wysele-sapintegrationhelp3.webp";
+import integrationHelp4Img from "../../../assets/wysele-sapintegrationhelp4.webp";
 
 const SapIntegrationHelp = () => {
     const steps = [
         {
             title: "Consultation & Strategy",
             desc: "Comprehensive assessment of business needs and IT architecture to develop an aligned integration strategy.",
-            img: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
+            img: integrationHelp1Img
         },
         {
             title: "Implementation",
             desc: "Leveraging proven methodologies to create seamless connections and harmonious system operations.",
-            img: "https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg"
+            img: integrationHelp2Img
         },
         {
             title: "Testing & Optimization",
             desc: "Thorough testing and continuous monitoring to ensure flawless performance and adaptability.",
-            img: "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg"
+            img: integrationHelp3Img
         },
         {
             title: "Ongoing Support",
             desc: "Continuous maintenance and support services to ensure long-term system performance and reliability.",
-            img: "https://images.pexels.com/photos/3182811/pexels-photo-3182811.jpeg"
+            img: integrationHelp4Img
         }
     ];
 

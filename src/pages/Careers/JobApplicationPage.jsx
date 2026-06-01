@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  MapPin, Clock, Briefcase, Check, ArrowLeft, 
-  User, Mail, Phone, DollarSign, FileText, Upload, 
-  CheckCircle2, X
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowLeft,
+  Briefcase, Check,
+  CheckCircle2,
+  Clock,
+  FileText,
+  Mail,
+  MapPin,
+  Upload,
+  User,
+  X
 } from 'lucide-react';
-import { jobOpenings } from './CareersOpenings';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import Breadcrumbs from '../../components/common/Breadcrumbs';
 import jobService from '../../services/jobService';
+import { jobOpenings } from './CareersOpenings';
 
 const JobApplicationPage = () => {
   const { id } = useParams();
@@ -208,6 +216,7 @@ const JobApplicationPage = () => {
 
   return (
     <main className="min-h-screen bg-white pt-32 pb-20 font-sans">
+      <Breadcrumbs />
       <div className="max-w-5xl mx-auto px-6">
         
         {/* Back Button */}

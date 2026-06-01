@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, MessageCircle, Linkedin, Instagram, Facebook, Youtube } from "lucide-react";
-import Button from '../../common/Button';
+import { Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
 import jobService from '../../../services/jobService';
+import Button from '../../common/Button';
 
 function useWindowWidth() {
     const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -137,6 +136,7 @@ const GetInTouch = () => {
                                     href="https://www.linkedin.com/company/wysele"
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    title="Wysele Technologies LinkedIn Profile"
                                     className="text-black hover:text-[#C9184A] transition-colors"
                                 >
                                     <Linkedin size={20} />

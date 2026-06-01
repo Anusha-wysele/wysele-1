@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { OTHER_PAGE_IMAGES } from '../../components/common/data';
+import { useEffect, useRef, useState } from 'react';
+import whoWeAreImg from "../../assets/wysele-aboutwhoweare.webp";
 
 const CountUpNumber = ({ end, duration, startTrigger }) => {
     const [count, setCount] = useState(0);
@@ -41,22 +41,23 @@ const SimnWhoWeAre = () => {
     ];
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setInView(true);
-                    observer.unobserve(entry.target);
+                    if (currentRef) observer.unobserve(currentRef);
                 }
             },
             { threshold: 0.1 }
         );
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
+        if (currentRef) {
+            observer.observe(currentRef);
         }
 
         return () => {
-            if (sectionRef.current) observer.unobserve(sectionRef.current);
+            if (currentRef) observer.unobserve(currentRef);
         };
     }, []);
 
@@ -65,7 +66,7 @@ const SimnWhoWeAre = () => {
             ref={sectionRef}
             className="py-8 md:py-12 bg-white overflow-hidden flex flex-col justify-center relative"
             style={{
-                backgroundImage: `url(${OTHER_PAGE_IMAGES.whoWeAre})`,
+                backgroundImage: `url(${whoWeAreImg})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat'

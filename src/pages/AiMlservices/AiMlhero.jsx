@@ -1,19 +1,18 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowRight, 
-  Brain, 
-  Cpu, 
-  MessageSquare, 
-  Eye, 
-  Zap, 
-  TrendingUp, 
-  Rocket, 
-  Bot, 
-  Cloud 
+import {
+  ArrowRight,
+  Bot,
+  Brain,
+  Cloud,
+  Cpu,
+  Eye,
+  MessageSquare,
+  Rocket,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
-import AimlheroImg from '../../assets/Aimlhero.jpg';
+import { useNavigate } from 'react-router-dom';
+import AimlheroImg from '../../assets/Aimlhero.webp';
 import Cylinders from '../../components/common/Cylinders';
 
 const services = [
@@ -60,7 +59,7 @@ export default function AiMlhero() {
 
   return (
     <div className="relative bg-white w-full">
-      <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[68px] lg:pt-0">
+      <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[140px] lg:pt-0">
         {/* Full screen background image */}
         <img
           src={AimlheroImg}

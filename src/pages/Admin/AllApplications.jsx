@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Search, 
-  Filter, 
-  Download, 
-  Mail, 
-  Phone, 
-  FileText, 
-  ExternalLink,
+import {
+  Briefcase,
   ChevronRight,
-  UserCheck,
   Clock,
-  Briefcase
+  Download,
+  Search,
+  UserCheck
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import jobService from '../../services/jobService';
 
 import AdminLayout from '../../components/Admin/AdminLayout';

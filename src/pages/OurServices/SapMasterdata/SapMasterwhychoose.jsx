@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, CheckCircle, TrendingUp, Scale, HeadphonesIcon } from 'lucide-react';
+import { Award, CheckCircle, HeadphonesIcon, Scale, TrendingUp } from 'lucide-react';
 // Removed unused background image import
 
 const reasons = [

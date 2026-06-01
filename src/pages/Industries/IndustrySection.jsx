@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Factory, 
-  Lightning, 
-  Truck, 
-  FirstAid, 
-  Leaf, 
-  Airplane, 
-  Car, 
-  Bank, 
-  ShoppingBag, 
-  TShirt, 
-  Diamond 
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  Airplane,
+  Bank,
+  Car,
+  Diamond,
+  Factory,
+  FirstAid,
+  Leaf,
+  Lightning,
+  ShoppingBag,
+  Truck,
+  TShirt
 } from "phosphor-react";
+import { useState } from "react";
 
 const iconMap = {
   "Manufacturing": Factory,
@@ -28,9 +28,57 @@ const iconMap = {
   "Mining": Diamond
 };
 
+const imageMetaMap = {
+  "Manufacturing": {
+    alt: "Manufacturing industry ERP and automation solutions",
+    title: "Manufacturing Industry Solutions | Wysele"
+  },
+  "Utilities": {
+    alt: "Utilities industry smart infrastructure and SAP solutions",
+    title: "Utilities Industry Solutions | Wysele"
+  },
+  "Logistics": {
+    alt: "Logistics and supply chain digital transformation services",
+    title: "Logistics Industry Solutions | Wysele"
+  },
+  "Pharmaceutical": {
+    alt: "Pharmaceutical industry compliance and ERP solutions",
+    title: "Pharmaceutical Industry Solutions | Wysele"
+  },
+  "Agribusiness": {
+    alt: "Agribusiness technology and enterprise management solutions",
+    title: "Agribusiness Industry Solutions | Wysele"
+  },
+  "Aerospace & Defense": {
+    alt: "Aerospace and defense digital engineering solutions",
+    title: "Aerospace & Defense Solutions | Wysele"
+  },
+  "Automotive & Heavy Equipment": {
+    alt: "Automotive and heavy equipment enterprise solutions",
+    title: "Automotive & Heavy Equipment Solutions | Wysele"
+  },
+  "Banking & Financial": {
+    alt: "Banking and financial services digital transformation",
+    title: "Banking & Financial Solutions | Wysele"
+  },
+  "Retail": {
+    alt: "Retail industry omnichannel and ERP technology solutions",
+    title: "Retail Industry Solutions | Wysele"
+  },
+  "Textiles": {
+    alt: "Textile industry automation and supply chain solutions",
+    title: "Textile Industry Solutions | Wysele"
+  },
+  "Mining": {
+    alt: "Mining industry operational efficiency and digital solutions",
+    title: "Mining Industry Solutions | Wysele"
+  }
+};
+
 const IndustrySection = ({ title, description, image, tags, features, reversed }) => {
   const [activeFeature, setActiveFeature] = useState(-1);
   const Icon = iconMap[title] || Factory;
+  const meta = imageMetaMap[title] || { alt: title, title: title };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -159,7 +207,8 @@ const IndustrySection = ({ title, description, image, tags, features, reversed }
               >
                 <img
                   src={image}
-                  alt={title}
+                  alt={meta.alt}
+                  title={meta.title}
                   className="w-full h-full object-cover transition-all duration-700"
                 />
                 

@@ -1,12 +1,11 @@
-import React from 'react';
+import {
+  ArrowsMerge,
+  Brain,
+  Cloud,
+  Users
+} from "@phosphor-icons/react";
 import { motion } from 'framer-motion';
 import Cylinderr from '../../../components/common/Cylinderr';
-import {
-    ArrowsMerge,
-    Brain,
-    Cloud,
-    Users
-} from "@phosphor-icons/react";
 
 const reasons = [
     {

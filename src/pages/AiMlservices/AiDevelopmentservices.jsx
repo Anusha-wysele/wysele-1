@@ -1,16 +1,12 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Cloud, 
-  MessageSquareCode, 
-  Eye, 
-  Layers, 
-  Bot, 
-  TrendingUp,
+import {
+  Bot,
+  Cloud,
   Cpu,
-  ArrowRight,
-  Database,
-  CheckCircle2
+  Eye,
+  Layers,
+  MessageSquareCode,
+  TrendingUp
 } from 'lucide-react';
 import Cylinderr from '../../components/common/Cylinderr';
 

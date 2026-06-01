@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
-import SapMasterhero from './SapMasterhero';
+import { useEffect } from 'react';
+import Breadcrumbs from '../../../components/common/Breadcrumbs';
+import Footer from '../../../components/layout/section/Footer';
 import SapMastergovernance from './SapMastergovernance';
+import SapMasterhero from './SapMasterhero';
 import SapMasterservices from './SapMasterservices';
 import SapMasterwhychoose from './SapMasterwhychoose';
-import Footer from '../../../components/layout/section/Footer';
 
 export default function SapMasterPage() {
     useEffect(() => {
@@ -13,6 +14,7 @@ export default function SapMasterPage() {
     return (
         <main className="bg-white">
             <SapMasterhero />
+            <Breadcrumbs />
             <SapMastergovernance />
             <SapMasterservices />
             <SapMasterwhychoose />

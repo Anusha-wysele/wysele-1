@@ -1,17 +1,16 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import { useNavigate } from 'react-router-dom';
 import Cylinders from '../../../components/common/Cylinders';
+import riseWithSapHeroImg from "../../../assets/wysele-risewithsaphero.webp";
 
 const RiseWithsaphero = () => {
     const navigate = useNavigate();
     return (
-        <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[68px] lg:pt-0">
+        <section className="relative w-full min-h-screen lg:h-[calc(100vh-68px)] flex items-end overflow-hidden font-sans bg-black pt-[140px] lg:pt-0">
             {/* Background Image */}
             <img
-                src={SERVICES_PAGE_IMAGES.riseWithSapHero}
+                src={riseWithSapHeroImg}
                 alt="RISE with SAP Services"
                 className="absolute inset-0 w-full h-full object-cover object-[70%] lg:object-center z-0"
             />

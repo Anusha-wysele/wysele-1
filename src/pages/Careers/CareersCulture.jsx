@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, BookOpen, TrendingUp, MessageSquare } from 'lucide-react';
+import { BookOpen, MessageSquare, TrendingUp, Users } from 'lucide-react';
 
 const CareersCulture = () => {
   const cultureValues = [
@@ -48,7 +47,8 @@ const CareersCulture = () => {
             >
               <img 
                 src="https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg" 
-                alt="Tech Collaboration" 
+                alt="Technology Team Collaboration and IT Solutions" 
+                title="Tech Collaboration"
                 className="w-full h-full object-cover"
               />
             </motion.div>
@@ -63,7 +63,8 @@ const CareersCulture = () => {
             >
               <img 
                 src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg" 
-                alt="Workspace Environment" 
+                alt="Modern Workspace Environment at Wysele Technologies" 
+                title="Workspace Environment"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#800000]/20 to-transparent" />

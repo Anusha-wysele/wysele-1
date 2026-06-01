@@ -1,15 +1,15 @@
-import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { 
-    Layers, 
-    Workflow, 
-    BarChart3, 
-    Eye, 
-    Zap, 
-    Shield, 
-    Users, 
-    TrendingUp
+import {
+  BarChart3,
+  Eye,
+  Layers,
+  Shield,
+  TrendingUp,
+  Users,
+  Workflow,
+  Zap
 } from 'lucide-react';
+import React, { useRef } from 'react';
 
 // Custom standardization icon if standard standardization icon does not exist
 import { Compass } from 'lucide-react';
