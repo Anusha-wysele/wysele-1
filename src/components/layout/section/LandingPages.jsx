@@ -2,9 +2,9 @@ import { Suspense, lazy } from "react";
 import FadeUp from "../../common/FadeUp";
 import ScrollNavigation from "../navbar/ScrollNavigation";
 import Herosection from "./Herosection";
+import Services from "./Services";
 
 // Lazy load below-the-fold sections
-const Services = lazy(() => import("./Services"));
 const AboutUs = lazy(() => import("./AboutUs"));
 const Industries = lazy(() => import("./Industries"));
 const InsightsHero = lazy(() => import("./InsightsHero"));
