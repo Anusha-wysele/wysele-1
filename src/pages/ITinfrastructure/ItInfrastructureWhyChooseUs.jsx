@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { Award, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
+import itInfrastructureWhyChoose from '../../assets/wysele-itinfrastructurewhychoose.webp';
+
+// ... (cards/points array and component code)
 
 const ItInfrastructureWhyChooseUs = () => {
   const points = [
@@ -91,7 +94,7 @@ const ItInfrastructureWhyChooseUs = () => {
             >
               <div className="relative p-2  ">
                 <img 
-                  src="https://images.pexels.com/photos/8134240/pexels-photo-8134240.jpeg" 
+                  src={itInfrastructureWhyChoose} 
                   alt="IT Excellence Team" 
                   className="w-full h-[400px] object-cover transition-all duration-700"
                 />

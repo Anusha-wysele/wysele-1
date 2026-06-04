@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Check,
@@ -8,8 +9,7 @@ import {
   Workflow,
   Zap
 } from 'lucide-react';
-import React from 'react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import sapIntegrationServicesImg from '../../../assets/wysele-sapintegrationservices.webp';
 
 const SapIntegrationServices = () => {
     const bulletPoints = [
@@ -62,7 +62,7 @@ const SapIntegrationServices = () => {
                 {/* Left: Image */}
                 <div className="w-full lg:w-[40%] h-[300px] lg:h-[450px] relative">
                     <img
-                        src={SERVICES_PAGE_IMAGES.sapIntegrationServices}
+                        src={sapIntegrationServicesImg}
                         alt="Integration Excellence"
                         className="absolute inset-0 w-full h-full object-cover grayscale-[10%]"
                     />

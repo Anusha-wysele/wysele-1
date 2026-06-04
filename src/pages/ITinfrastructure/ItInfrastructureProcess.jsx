@@ -5,6 +5,7 @@ import {
   Search,
   Settings
 } from 'lucide-react';
+import itInfrastructureProcess from '../../assets/wysele-itinfrastructureprocess.webp';
 
 const ItInfrastructureProcess = () => {
   const steps = [
@@ -46,7 +47,7 @@ const ItInfrastructureProcess = () => {
     <section
       className="py-10 font-sans overflow-hidden relative bg-[#0f0f0f]"
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/7653984/pexels-photo-7653984.jpeg')`,
+        backgroundImage: `url(${itInfrastructureProcess})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'

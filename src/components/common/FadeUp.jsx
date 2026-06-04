@@ -7,14 +7,12 @@ export default function FadeUp({ children, delay = 0, distance = 40, id }) {
       initial={{ 
         opacity: 0, 
         y: distance, 
-        scale: 0.98,
-        filter: "blur(8px)" 
+        scale: 0.98
       }}
       whileInView={{ 
         opacity: 1, 
         y: 0, 
-        scale: 1,
-        filter: "blur(0px)" 
+        scale: 1
       }}
       viewport={{ once: true, amount: 0.05, margin: "0px 0px -50px 0px" }}
       transition={{ 

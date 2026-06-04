@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import itInfrastructureHero from '../../assets/wysele-itinfrastructurehero.webp';
 
 const ItInfrastructureHero = () => {
   return (
@@ -18,7 +19,7 @@ const ItInfrastructureHero = () => {
           className="w-full h-full relative"
         >
           <img 
-            src="https://images.pexels.com/photos/7643859/pexels-photo-7643859.jpeg" 
+            src={itInfrastructureHero} 
             alt="IT Infrastructure Team" 
             className="w-full h-full object-cover object-center"
           />

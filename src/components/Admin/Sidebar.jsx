@@ -14,9 +14,8 @@ import {
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-
 import logoDark from '../../assets/wysele_dark-removebg-preview.png';
-import { WYSELE_LOGOS } from '../common/data';
+import logoIcon from '../../assets/wysele-logo-icon.png';
 
 
 const menuItems = [
@@ -218,7 +217,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.5 }}
-                  src={WYSELE_LOGOS.favicon}
+                  src={logoIcon}
                   alt="Wysele"
                   className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
                 />

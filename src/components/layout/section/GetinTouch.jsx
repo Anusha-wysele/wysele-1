@@ -133,7 +133,7 @@ const GetInTouch = () => {
                             </div>
                             <div className="flex gap-4 pt-4 border-t border-gray-100">
                                 <a
-                                    href="https://www.linkedin.com/company/wysele"
+                                    href="https://www.linkedin.com/company/wyseletechnologies"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Wysele Technologies LinkedIn Profile"

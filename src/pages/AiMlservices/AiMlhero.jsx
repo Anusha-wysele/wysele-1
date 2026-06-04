@@ -12,7 +12,7 @@ import {
   Zap
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import AimlheroImg from '../../assets/Aimlhero.webp';
+import AimlheroImg from '../../assets/wysele-aimlhero.webp';
 import Cylinders from '../../components/common/Cylinders';
 
 const services = [

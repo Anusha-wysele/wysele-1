@@ -1,5 +1,5 @@
 import { ClipboardList, Layers, Settings, Sliders, TrendingUp } from 'lucide-react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import sapConsultingWhyChooseImg from '../../../assets/wysele-sapconsultingwhychoose.webp';
 
 const reasons = [
     {
@@ -57,7 +57,7 @@ const WhyChooseWysele = () => (
     <div
         className="min-h-[75vh] py-16 lg:h-auto relative flex items-center"
         style={{
-            backgroundImage: `url(${SERVICES_PAGE_IMAGES.whyChooseWysele})`,
+            backgroundImage: `url(${sapConsultingWhyChooseImg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
         }}

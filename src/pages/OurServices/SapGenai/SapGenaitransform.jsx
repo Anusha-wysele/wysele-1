@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import GanAiphasesImg from '../../../assets/GanAiphases.png';
+import GanAiphasesImg from '../../../assets/wysele-sapgenaitransfom.webp';
 
 export default function SapGenaitransform() {
     return (

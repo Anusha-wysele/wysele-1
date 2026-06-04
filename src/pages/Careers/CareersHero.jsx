@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Award, Globe, Rocket, Users } from 'lucide-react';
+import careersHeroImg from '../../assets/wysele-careershero.webp';
+
 
 const CareersHero = () => {
   const metrics = [
@@ -18,7 +20,7 @@ const CareersHero = () => {
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          src="https://images.pexels.com/photos/3184420/pexels-photo-3184420.jpeg" 
+          src={careersHeroImg} 
           alt="Enterprise Team Collaboration at Wysele Technologies" 
           title="Enterprise Collaboration"
           className="w-full h-full object-cover object-center"

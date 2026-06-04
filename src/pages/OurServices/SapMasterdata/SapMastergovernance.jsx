@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapMasterGovernanceImg from '../../../assets/SapMastergovernance.png';
+import SapMasterGovernanceImg from '../../../assets/wysele-SapMastergovernance.webp';
 
 export default function SapMastergovernance() {
     return (

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapBtpapithirdpartyImg from '../../../assets/Sapbtpapithirdparty.png';
+import SapBtpapithirdpartyImg from '../../../assets/wysele-Sapbtpapithirdparty.webp';
 
 export default function SapBtpapithirdparty() {
     return (

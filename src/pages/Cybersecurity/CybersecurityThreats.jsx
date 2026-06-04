@@ -8,36 +8,42 @@ import {
 } from 'lucide-react';
 import React from 'react';
 
+import cybersecurityMalware from '../../assets/wysele-cybersecuritymalware.webp';
+import cybersecurityPhishing from '../../assets/wysele-cybersecuritypishing.webp';
+import cybersecurityDataBreach from '../../assets/wysele-cybersecuritydatabreach.webp';
+import cybersecurityInsider from '../../assets/wysele-cybersecurityinsider.webp';
+import cybersecurityDdos from '../../assets/wysele-cybersecuruityddos.webp';
+
 const threats = [
   {
     title: "Malware & Ransomware",
     desc: "Malicious software can damage systems, restrict operational access, and affect business continuity. Wysele helps organizations improve protection against malware and ransomware attacks through threat monitoring and system security measures.",
     icon: <Bug className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800",
+    image: cybersecurityMalware,
   },
   {
     title: "Phishing Attacks",
     desc: " Fraudulent emails and deceptive communication attempts are commonly used to gain unauthorized access to sensitive information. Wysele helps businesses strengthen email security and improve protection against phishing risks.",
     icon: <MailWarning className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
+    image: cybersecurityPhishing,
   },
   {
     title: "Data Breaches",
     desc: "Unauthorized access to business information can affect operations, customer trust, and compliance requirements. We help organizations improve data protection through secure access management and operational security controls.",
     icon: <Database className="w-6 h-6" />,
-    image: "https://images.pexels.com/photos/5380655/pexels-photo-5380655.jpeg",
+    image: cybersecurityDataBreach,
   },
   {
     title: "Insider Threats",
     desc: "Internal security risks can affect operational environments when sensitive information is misused or unauthorized activities occur within the organization. We help businesses monitor unusual behavior and improve internal security visibility.",
     icon: <Users className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+    image: cybersecurityInsider,
   },
   {
     title: "DDoS Attacks",
     desc: "Distributed denial-of-service attacks can disrupt operational availability and affect online platforms. We help businesses improve infrastructure stability and maintain operational continuity during high-volume traffic attacks. ",
     icon: <Zap className="w-6 h-6" />,
-    image: "https://images.pexels.com/photos/8720586/pexels-photo-8720586.jpeg",
+    image: cybersecurityDdos,
   }
 ];
 

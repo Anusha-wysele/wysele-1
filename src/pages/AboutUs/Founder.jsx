@@ -132,7 +132,7 @@ const Founder = () => {
 
                                     {/* LinkedIn Icon Overlay */}
                                     <a
-                                        href="https://www.linkedin.com/company/wyseletech/"
+                                        href="https://www.linkedin.com/company/wyseletechnologies"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300 shadow-lg hover:scale-110 transform z-10"

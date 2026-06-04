@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import cybersecurity from '../../assets/cyber4.png';
+import cybersecurity from '../../assets/wysele-cybersecurityhero.webp';
 
 const CybersecurityHero = () => {
 
@@ -22,8 +22,8 @@ const CybersecurityHero = () => {
 
 
         {/* Content */}
-        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-[150px] md:pt-20">
-          <div className="w-full lg:w-1/2 lg:max-w-2xl pr-4 lg:pr-8">
+        <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 lg:px-24 w-full pt-[180px] md:pt-32">
+          <div className="w-full lg:w-1/2 lg:max-w-2xl pr-4 lg:pr-8 lg:ml-12">
             {/* <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}

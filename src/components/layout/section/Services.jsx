@@ -5,13 +5,13 @@ import { fadeSlideUp, staggerContainer, viewportSettings } from "../../common/an
 import HeadingBracket from "../../common/HeadingBracket";
 import { HoverTiltCard } from "../../common/Parallax3D";
 
-import AimlHeroImg from "../../../assets/Aimlhero.webp";
+import AimlHeroImg from "../../../assets/wysele-aimlhero.webp";
 import AppDevImg from "../../../assets/Appdevelopment.webp";
 import CybersecurityImg from "../../../assets/Cybersecurity.jpg";
-import IotHeroImg from "../../../assets/IotHero.webp";
+import IotHeroImg from "../../../assets/wysele-iothero.webp";
 import ItInfrastructureImg from "../../../assets/Itinfrastructure.jpg";
 import SalesforceImg from "../../../assets/Salesforce.webp";
-import Saps4Img from "../../../assets/Saps4.jpg";
+import Saps4Img from "../../../assets/wysele-imgi_13_Saps4.webp";
 import WebDevImg from "../../../assets/webdevelopment.webp";
 
 const services = [
@@ -104,13 +104,24 @@ export default function Services() {
   const [dragOffset, setDragOffset] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
+  const goNext = useCallback(() => {
+    if (currentIndex >= totalSlides) return;
+    setIsAnimating(true);
+    setCurrentIndex((i) => i + 1);
+  }, [currentIndex, totalSlides]);
+
+  const goPrev = useCallback(() => {
+    setIsAnimating(true);
+    setCurrentIndex((i) => (i <= 0 ? totalSlides - 1 : i - 1));
+  }, [totalSlides]);
+
   useEffect(() => {
     if (!isPlaying || isDragging) return;
     const interval = setInterval(() => {
       goNext();
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPlaying, isDragging, currentIndex]);
+  }, [isPlaying, isDragging, goNext]);
 
   useEffect(() => {
     if (currentIndex >= totalSlides) {
@@ -139,17 +150,6 @@ export default function Services() {
     if (isDragging) baseTranslate -= dragOffset;
     return baseTranslate;
   }, [currentIndex, isDragging, dragOffset]);
-
-  const goNext = () => {
-    if (currentIndex >= totalSlides) return;
-    setIsAnimating(true);
-    setCurrentIndex((i) => i + 1);
-  };
-
-  const goPrev = () => {
-    setIsAnimating(true);
-    setCurrentIndex((i) => (i <= 0 ? totalSlides - 1 : i - 1));
-  };
 
   const handleDragStart = (e) => {
     setIsDragging(true);

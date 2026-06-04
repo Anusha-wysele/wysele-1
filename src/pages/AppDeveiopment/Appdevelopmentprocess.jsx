@@ -2,12 +2,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import React, { useState } from 'react';
 
-import DesignImg from '../../assets/designAppdevelopment.jpg';
-import DevelopmentImg from '../../assets/developmentAppdevelopment.jpg';
-import ideaImg from '../../assets/ideaAppdevelopment.jpg';
-import PlanningImg from '../../assets/planningAppdevelopment.jpg';
-import ReleaseImg from '../../assets/releaseAppdevelopment.jpg';
-import TestingImg from '../../assets/testingAppdevelopment.jpg';
+import DesignImg from '../../assets/wysele-appdevelopmentdesign.webp';
+import DevelopmentImg from '../../assets/wysele-appdevelopmentdevelopment.webp';
+import ideaImg from '../../assets/wysele-appdevelopmentidea.webp';
+import PlanningImg from '../../assets/wysele-appdevelopmentplanning.webp';
+import ReleaseImg from '../../assets/wysele-appdevelopmentrelease.webp';
+import TestingImg from '../../assets/wysele-appdevelopmenttesting.webp';
 
 const PROCESS_STEPS = [
     {
@@ -165,15 +165,13 @@ export default function Appdevelopmentprocess() {
                                     <button
                                         key={service.id}
                                         onClick={() => setActiveIndex(idx)}
-                                        className={`relative rounded-none p-2 h-12 flex items-center justify-center transition-all duration-300 border ${
-                                            activeIndex === idx 
-                                                ? 'bg-[#800000] border-[#800000] text-white ring-2 ring-[#FFB703]' 
+                                        className={`relative rounded-none p-2 h-12 flex items-center justify-center transition-all duration-300 border ${activeIndex === idx
+                                                ? 'bg-[#800000] border-[#800000] text-white ring-2 ring-[#FFB703]'
                                                 : 'bg-[#f8f9fa] border-gray-300 text-gray-800 hover:bg-gray-100 hover:border-gray-400'
-                                        }`}
+                                            }`}
                                     >
-                                        <span className={`text-[10px] font-black uppercase tracking-wider text-center ${
-                                            activeIndex === idx ? 'text-white' : 'text-gray-900'
-                                        }`}>
+                                        <span className={`text-[10px] font-black uppercase tracking-wider text-center ${activeIndex === idx ? 'text-white' : 'text-gray-900'
+                                            }`}>
                                             {service.tag}
                                         </span>
                                     </button>

@@ -1,8 +1,6 @@
 import { Suspense, lazy } from "react";
 import FadeUp from "../../common/FadeUp";
 import ScrollNavigation from "../navbar/ScrollNavigation";
-import Footer from "./Footer";
-import GetInTouch from "./GetinTouch";
 import Herosection from "./Herosection";
 
 // Lazy load below-the-fold sections
@@ -14,6 +12,8 @@ const BlogsBanner = lazy(() => import("./BlogsBanner"));
 const MeetOurPeople = lazy(() => import("./MeetOurPeople"));
 const Faq = lazy(() => import("./Faq"));
 const OurLocations = lazy(() => import("./OurLocations"));
+const GetInTouch = lazy(() => import("./GetinTouch"));
+const Footer = lazy(() => import("./Footer"));
 
 const landingSections = [
     { id: "home", label: "Home", hideDot: true },

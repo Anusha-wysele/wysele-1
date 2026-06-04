@@ -89,6 +89,9 @@ const SITE_SECTIONS = [
     icon: Info,
     color: '#6b7280',
     pages: [
+      { label: 'Privacy Policy', path: '/privacy-policy', desc: 'Wysele Technologies Privacy Policy' },
+      { label: 'Terms of Service', path: '/terms-of-service', desc: 'Wysele Technologies Terms of Service' },
+      { label: 'Cookie Policy', path: '/cookie-policy', desc: 'Wysele Technologies Cookie Policy' },
       { label: 'HTML Sitemap', path: '/sitemap', desc: 'Full site navigation map' },
       { label: 'XML Sitemap', path: '/sitemap.xml', desc: 'Machine-readable URL list for search engines', external: true },
     ],

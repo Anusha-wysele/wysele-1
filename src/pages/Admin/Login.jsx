@@ -2,8 +2,10 @@ import { motion } from 'framer-motion';
 import { Eye, EyeOff, Loader2, Lock, Mail } from 'lucide-react';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { WYSELE_LOGOS } from '../../components/common/data';
+import logoDark from '../../assets/wysele_dark-removebg-preview.png';
+import loginHeroImg from '../../assets/wysele-aboutushero.webp';
 import { useAuth } from '../../context/AuthContext';
+
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -40,7 +42,7 @@ const AdminLogin = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center filter blur-lg scale-105"
         style={{
-          backgroundImage: `url('https://images.pexels.com/photos/7693114/pexels-photo-7693114.jpeg')`,
+          backgroundImage: `url(${loginHeroImg})`,
         }}
     />
       <div className="absolute inset-0 z-0 bg-black/30 backdrop-blur-xs" /> 
@@ -57,7 +59,7 @@ const AdminLogin = () => {
 
           {/* Image */}
           <img
-            src="https://images.pexels.com/photos/7693114/pexels-photo-7693114.jpeg"
+            src={loginHeroImg}
             alt="Admin Login Visual"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
@@ -86,7 +88,7 @@ const AdminLogin = () => {
         {/* Right Side - Login Form */}
         <div className="flex-1 flex flex-col justify-center p-6 md:p-10 bg-white relative overflow-y-auto">
           <div className="md:hidden flex justify-center mb-6">
-            <img src={WYSELE_LOGOS.dark} alt="Wysele" className="h-8" />
+            <img src={logoDark} alt="Wysele" className="h-8" />
           </div>
 
           <div className="space-y-1 text-center md:text-left mb-8">

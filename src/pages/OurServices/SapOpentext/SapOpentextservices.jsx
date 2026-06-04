@@ -2,6 +2,12 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import React, { useState } from 'react';
 
+import dmsImg from '../../../assets/wysele-SapOpentextdocumentmanagement.webp';
+import ecmImg from '../../../assets/wysele-SapOpentextcontentmanagement.webp';
+import workflowImg from '../../../assets/wysele-SapOpentextworkflow.webp';
+import successFactorsImg from '../../../assets/wysele-SapOpentextsuccessfactor.webp';
+import serverImg from '../../../assets/wysele-SapOpentextserver.webp';
+
 const SERVICES = [
     {
         id: 1,
@@ -10,7 +16,7 @@ const SERVICES = [
         description: "We provide seamless integration of SAP OpenText with your existing SAP system, allowing for effective document management and accessibility. Our experts ensure your teams can easily access all necessary documents and records directly within the SAP interface, reducing the risk of errors in workflows and significantly boosting productivity.",
         sideTitle: "Seamless SAP OpenText DMS",
         sideDesc: "Access critical document files directly inside the SAP interface with DMS integration.",
-        image: "https://images.pexels.com/photos/5980866/pexels-photo-5980866.jpeg"
+        image: dmsImg
     },
     {
         id: 2,
@@ -19,7 +25,7 @@ const SERVICES = [
         description: "Our SAP OpenText ECM solutions enable comprehensive management of the entire lifecycle of enterprise content. From document creation to secure archiving, our solutions guarantee compliance with regulatory standards, secure access, and collaborative capabilities. Your content is stored in a centralized, searchable repository, enhancing operational efficiency and minimizing manual effort.",
         sideTitle: "Full-Lifecycle Content Management",
         sideDesc: "Manage document lifecycles securely in a searchable, compliant, centralized repository.",
-        image: "https://images.pexels.com/photos/7652037/pexels-photo-7652037.jpeg"
+        image: ecmImg
     },
     {
         id: 3,
@@ -28,7 +34,7 @@ const SERVICES = [
         description: "We harness the power of automated workflows to enhance productivity across your organization. Our automation solutions streamline document routing, approval processes, and notifications, effectively reducing bottlenecks and expediently facilitating decision-making through enhanced visibility.",
         sideTitle: "Automated Business Workflows",
         sideDesc: "Accelerate document approval and routing to reduce bottlenecks and speed up decision making.",
-        image: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+        image: workflowImg
     },
     {
         id: 4,
@@ -37,7 +43,7 @@ const SERVICES = [
         description: "Maximize the effectiveness of your SAP SuccessFactors by integrating it with OpenText’s Extended ECM solutions. This integration creates a unified experience for employees by managing HR documents and records alongside SAP SuccessFactors data, thereby improving compliance, collaboration, and the overall employee lifecycle experience.",
         sideTitle: "Extended HR ECM Integration",
         sideDesc: "Connect employee documents directly with SAP SuccessFactors data for complete HR compliance.",
-        image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
+        image: successFactorsImg
     },
     {
         id: 5,
@@ -46,7 +52,7 @@ const SERVICES = [
         description: "The SAP OpenText Content Server is an essential, secure platform for managing business-critical documents and records. We provide tailored solutions that support your implementation of the Content Server, enhancing access control, workflow automation, and compliance management for your critical business data.",
         sideTitle: "Secure Content Platform",
         sideDesc: "Establish a robust foundation for access control and regulatory compliance of corporate content.",
-        image: "https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg"
+        image: serverImg
     }
 ];
 

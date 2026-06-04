@@ -9,7 +9,7 @@ const OurLocations = () => {
             name: 'Wysele Technologies',
             location: 'Hyderabad, India',
             address: '#308 4th floor DSL Abacus IT Park, Survey Colony, Industrial Development Area, Uppal, Hyderabad, Telangana 500039',
-            phone: '+91 63057 53919',
+            phone: '+91 9100042919',
             mapUrl: 'https://maps.app.goo.gl/ZqFNB8twNkuA17iG9',
             lat: 17.406544,
             lng: 78.551033

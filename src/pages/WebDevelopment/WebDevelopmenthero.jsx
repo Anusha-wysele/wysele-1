@@ -1,7 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { WEB_DEVELOPMENT_BG, WEB_DEVELOPMENT_IMAGES } from "../../components/common/data";
+import webDevHeroBg from "../../assets/wysele-webdevelopmentmainhero.webp";
+import webDevHero1 from "../../assets/wysele-webdevelopmenthero1.webp";
+import webDevHero2 from "../../assets/wysele-webdevelopmenthero2.webp";
+import webDevHero3 from "../../assets/wysele-webdevelopmenthero3.webp";
+
+const WEB_DEVELOPMENT_IMAGES = [webDevHero1, webDevHero2, webDevHero3];
 
 const HERO_CONTENT = [
     {
@@ -74,7 +79,7 @@ export default function WebDevelopmenthero() {
 
     return (
         <div className="w-full">
-            <section className="relative w-full min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] bg-black overflow-hidden flex flex-col lg:flex-row pt-[140px] md:pt-0">
+            <section className="relative w-full min-h-[calc(100vh-68px)] lg:h-screen bg-black overflow-hidden flex flex-col lg:flex-row pt-[140px] md:pt-0">
                 {/* Left Column (30%) - Deep Maroon */}
                 <div
                     onMouseEnter={() => setIsHovered(true)}
@@ -104,7 +109,7 @@ export default function WebDevelopmenthero() {
                     {/* Background Image for Right Column - Cinematic View */}
                     <div className="absolute inset-0 z-0">
                         <motion.img
-                            src={WEB_DEVELOPMENT_BG}
+                            src={webDevHeroBg}
                             alt="Background"
                             initial={{ scale: 1.1, opacity: 0 }}
                             animate={{ scale: 1, opacity: 0.85 }}

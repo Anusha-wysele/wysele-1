@@ -3,7 +3,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 
 import ProtectedRoute from "./components/Admin/ProtectedRoute";
 import { ToastProvider } from "./components/Admin/ToastContext";
-import ConsultationPopup from "./components/common/ConsultationPopup";
 import ScrollProgressBar from "./components/common/ScrollProgressBar";
 import SEOManager from "./components/common/SEOManager";
 import LeftSidebar from "./components/layout/navbar/LeftSidebar";
@@ -11,6 +10,7 @@ import Navbar from "./components/layout/navbar/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 
 // Lazy load pages for better performance
+const ConsultationPopup = lazy(() => import("./components/common/ConsultationPopup"));
 const LandingPages = lazy(() => import("./components/layout/section/LandingPages"));
 const AboutPage = lazy(() => import("./pages/AboutUs/AboutPage"));
 const SapConsulting = lazy(() => import("./pages/OurServices/SapConsulting/SapHero"));
@@ -44,6 +44,9 @@ const BlogsPage = lazy(() => import("./pages/Blogs/BlogsPage"));
 const BlogDetailPage = lazy(() => import("./pages/Blogs/BlogDetailPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFound/NotFoundPage"));
 const SitemapPage = lazy(() => import("./pages/Sitemap/SitemapPage"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService/TermsOfService"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy/CookiePolicy"));
 
 // Admin Pages
 const AdminLogin = lazy(() => import("./pages/Admin/Login"));
@@ -85,7 +88,9 @@ export default function App() {
       <div className="relative min-h-screen" style={{ background: "#000" }}>
         {!isAdminPath && <Navbar />}
         {!isAdminPath && <LeftSidebar />}
-        {!isAdminPath && <ConsultationPopup />}
+        <Suspense fallback={null}>
+          {!isAdminPath && <ConsultationPopup />}
+        </Suspense>
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<LandingPages />} />
@@ -119,6 +124,9 @@ export default function App() {
             <Route path="/blogs" element={<BlogsPage />} />
             <Route path="/blogs/:id" element={<BlogDetailPage />} />
             <Route path="/sitemap" element={<SitemapPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />

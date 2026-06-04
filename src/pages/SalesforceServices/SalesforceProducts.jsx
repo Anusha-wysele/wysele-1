@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SalesforceProductImg from '../../assets/wysele-salesforceproduct.webp';
 
 const SalesforceProducts = () => {
   const products = [
@@ -44,7 +45,7 @@ const SalesforceProducts = () => {
               {/* Background Image with Overlay */}
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url('https://images.pexels.com/photos/7651804/pexels-photo-7651804.jpeg')` }}
+                style={{ backgroundImage: `url(${SalesforceProductImg})` }}
               />
               <div className="absolute inset-0 bg-black/50 text-center items-center justify-center" />
               {/* Content on Image */}

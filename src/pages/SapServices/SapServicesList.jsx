@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-import imgRiseWithSap from '../../assets/Risewithsap.jpg';
-import imgSapBtpApi from '../../assets/Sapbtp&api.jpg';
-import imgSapBtp from '../../assets/Sapbtp.jpg';
-import imgSapConsulting from '../../assets/Sapconsulting.jpg';
-import imgSapDatasphere from '../../assets/Sapdatasphere.jpg';
-import imgSapGenai from '../../assets/Sapgenai.jpg';
-import imgSapIntegration from '../../assets/Sapintegration.jpg';
-import imgSapMasterData from '../../assets/Sapmasterdata.jpg';
-import imgSapMigration from '../../assets/Sapmigration.jpg';
-import imgSapOpentext from '../../assets/Sapopentext.jpg';
-import imgSapS4 from '../../assets/Saps4.jpg';
-import imgSapSignavio from '../../assets/Sapsignavio.jpg';
-import imgSapTechnicalConsulting from '../../assets/Saptechnicalconsulting.jpg';
-import imgSapVimBrim from '../../assets/Sapvim&brim.jpg';
+import imgRiseWithSap from '../../assets/wysele-imgi_8_Risewithsap.webp';
+import imgSapBtpApi from '../../assets/wysele-imgi_16_Sapbtpapi.webp';
+import imgSapBtp from '../../assets/wysele-imgi_9_Sapbtp.webp';
+import imgSapConsulting from '../../assets/wysele-imgi_5_Sapconsulting.webp';
+import imgSapDatasphere from '../../assets/wysele-imgi_7_Sapdatasphere.webp';
+import imgSapGenai from '../../assets/wysele-imgi_14_Sapgenai.webp';
+import imgSapIntegration from '../../assets/wysele-imgi_10_Sapintegration.webp';
+import imgSapMasterData from '../../assets/wysele-imgi_15_Sapmasterdata.webp';
+import imgSapMigration from '../../assets/wysele-imgi_4_sap-s4hana-services.webp';
+import imgSapOpentext from '../../assets/wysele-imgi_18_Sapopentext.webp';
+import imgSapS4 from '../../assets/wysele-imgi_13_Saps4.webp';
+import imgSapSignavio from '../../assets/wysele-imgi_6_Sapsignavio.webp';
+import imgSapTechnicalConsulting from '../../assets/wysele-imgi_17_Saptechnicalconsulting.webp';
+import imgSapVimBrim from '../../assets/wysele-imgi_11_Sapvimbrim.webp';
 
 const SAP_SERVICES = [
   {
@@ -26,7 +26,7 @@ const SAP_SERVICES = [
   {
     label: "SAP Signavio Solutions",
     desc: "Process mining and business transformation with advanced analytics.",
-    path: "/services",
+    path: "/services/sap-signavio",
     img: imgSapSignavio,
   },
   {
@@ -44,61 +44,61 @@ const SAP_SERVICES = [
   {
     label: "BTP Services",
     desc: "Integration and application platform services for modern enterprises.",
-    path: "/services",
+    path: "/services/sap-btp",
     img: imgSapBtp,
   },
   {
     label: "SAP Integration Services",
     desc: "Seamless cross-system connectivity and real-time data flow.",
-    path: "/services",
+    path: "/services/sap-integration",
     img: imgSapIntegration,
   },
   {
     label: "SAP VIM & BRIM Services",
     desc: "Digital billing and invoice management powered by automation.",
-    path: "/services",
+    path: "/services/sap-vim-brim",
     img: imgSapVimBrim,
   },
   {
     label: "Migration Services",
     desc: "Secure, seamless data and system migrations for business continuity.",
-    path: "/services",
+    path: "/services/sap-migration",
     img: imgSapMigration,
   },
   {
     label: "S/4 HANA Conversion",
     desc: "Intelligent ERP upgrade to future-proof your digital landscape.",
-    path: "/services",
+    path: "/services/sap-s4hana",
     img: imgSapS4,
   },
   {
     label: "Gen AI Services",
     desc: "Next-generation AI capabilities embedded into your SAP ecosystem.",
-    path: "/services",
+    path: "/services/sap-genai",
     img: imgSapGenai,
   },
   {
     label: "Master Data Governance",
     desc: "A single source of truth for consistent, accurate enterprise data.",
-    path: "/services",
+    path: "/services/sap-masterdata",
     img: imgSapMasterData,
   },
   {
     label: "SAP BTP & API Management",
     desc: "Build, manage and scale enterprise APIs with SAP BTP.",
-    path: "/services",
+    path: "/services/sap-btp-api-management",
     img: imgSapBtpApi,
   },
   {
     label: "Technical Consulting",
     desc: "Deep technical SAP expertise to optimise your system landscape.",
-    path: "/services",
+    path: "/services/sap-technical-consulting",
     img: imgSapTechnicalConsulting,
   },
   {
     label: "OpenText Services",
     desc: "Content, archiving and enterprise information management.",
-    path: "/services",
+    path: "/services/sap-opentext",
     img: imgSapOpentext,
   },
 ];

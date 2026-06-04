@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Cylinders from '../../../components/common/Cylinders';
-import sapBtpApiHeroImg from "../../../assets/wysele-sapbtpapihero.webp";
+import sapBtpHeroImg from "../../../assets/wysele-btphero.webp";
 
 const BtpHero = () => {
     const slideUp = {
@@ -18,7 +18,7 @@ const BtpHero = () => {
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src={sapBtpApiHeroImg}
+                    src={sapBtpHeroImg}
                     alt="SAP BTP Services"
                     className="w-full h-full object-cover object-[center_45%]"
                 />
@@ -34,7 +34,7 @@ const BtpHero = () => {
 
             {/* Reverting to Centered Content Design (as requested by 'how it is previous') */}
             <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 py-24 sm:py-32 w-full flex-1">
-                <motion.div 
+                <motion.div
                     className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full flex flex-col items-center"
                     variants={staggerContainer}
                     initial="hidden"
@@ -42,14 +42,14 @@ const BtpHero = () => {
                 >
                     {/* Minimal Label */}
                     <motion.div variants={slideUp} className="mb-6 md:mb-8">
-                         <span className="text-[10px] sm:text-xs font-bold tracking-[0.5em] text-white/70 uppercase">
+                        <span className="text-[10px] sm:text-xs font-bold tracking-[0.5em] text-white/70 uppercase">
                             Digital Transformation
-                         </span>
+                        </span>
                     </motion.div>
 
                     {/* Headline - Restored to original requested text */}
                     <div className="mb-10 md:mb-16">
-                        <motion.h1 
+                        <motion.h1
                             variants={slideUp}
                             className="text-4xl sm:text-5xl md:text-6xl font-light text-white tracking-tight leading-tight"
                         >
@@ -66,8 +66,8 @@ const BtpHero = () => {
                             "SAP BTP brings together analytics, AI, and cloud capabilities into a unified ecosystem—helping businesses integrate systems, streamline processes, and gain meaningful data insights.",
                             "Our SAP BTP services provide a flexible, future-ready foundation that evolves with your business needs, modernizing operations and building intelligent applications."
                         ].map((text, i) => (
-                            <motion.div 
-                                key={i} 
+                            <motion.div
+                                key={i}
                                 variants={slideUp}
                                 className="flex flex-col items-center"
                             >

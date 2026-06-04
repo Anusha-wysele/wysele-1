@@ -2,7 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Eye, Server, Target, Users, Zap } from 'lucide-react';
 import { useRef } from 'react';
 import Cylinders from '../../../components/common/Cylinders';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import sapConsultingTechnicalImg from '../../../assets/wysele-sapconsultingtechnical.webp';
 
 const services = [
     { 
@@ -43,7 +43,7 @@ const TechnicalConsulting = () => {
             {/* Full Width Image with Overlay Text */}
             <div className="w-full relative min-h-[90vh] lg:min-h-[75vh] flex items-center bg-black overflow-hidden py-16 lg:py-0">
                 <img
-                    src={SERVICES_PAGE_IMAGES.technicalConsulting}
+                    src={sapConsultingTechnicalImg}
                     alt="Technical SAP Consulting"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

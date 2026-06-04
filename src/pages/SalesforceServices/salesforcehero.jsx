@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import SalesforceHeroImg from '../../assets/wysele-salesforcehero.webp';
 
 const SalesforceHero = () => {
   const features = [
@@ -27,7 +28,7 @@ const SalesforceHero = () => {
         initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        src="https://images.pexels.com/photos/7709157/pexels-photo-7709157.jpeg"
+        src={SalesforceHeroImg}
         alt="Salesforce Solutions" 
         className="absolute inset-0 w-full h-full object-cover object-center opacity-90"
       />

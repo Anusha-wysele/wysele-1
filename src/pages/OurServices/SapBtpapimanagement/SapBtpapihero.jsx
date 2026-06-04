@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapbtpapiheroImg from '../../../assets/Sapbtpapihero.jpg';
+import SapbtpapiheroImg from '../../../assets/wysele-Sapbtpapihero.webp';
 
 export default function SapBtpapihero() {
     return (

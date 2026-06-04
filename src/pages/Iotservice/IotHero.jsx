@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import IotheroImg from '../../assets/IotHero.webp';
+import IotheroImg from '../../assets/wysele-iothero.webp';
 
 export default function IotHero() {
   const listItems = [

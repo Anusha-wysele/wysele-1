@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapgenaiImg from '../../../assets/Sapgenai.jpg';
+import SapgenaiImg from '../../../assets/wysele-Sapgenaihero.webp';
 import Cylinders from '../../../components/common/Cylinders';
 
 export default function SapGenhero() {

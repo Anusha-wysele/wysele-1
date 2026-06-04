@@ -9,6 +9,7 @@ import {
   TrendingUp,
   Zap
 } from 'lucide-react';
+import webDevBenefitsBg from '../../assets/wysele-webdevelopmentbenifits.webp';
 
 const BENEFITS = [
     { text: "Bespoke Digital Identity: Custom-crafted designs that elevate your unique brand.", icon: Palette },
@@ -28,7 +29,7 @@ const WebDevelopmentBenifits = () => {
             <div 
                 className="absolute inset-0 z-0"
                 style={{
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80")',
+                    backgroundImage: `url(${webDevBenefitsBg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}

@@ -42,7 +42,7 @@ const SEO_CONFIG_MAP = {
             "availableLanguage": ["en", "tel", "hi"]
           },
           "sameAs": [
-            "https://www.linkedin.com/company/wysele"
+            "https://www.linkedin.com/company/wyseletechnologies"
           ]
         },
         {

@@ -1,4 +1,4 @@
-import heroImage from '../../../assets/SapOpentexthero.jpg';
+import heroImage from '../../../assets/wysele-SapOpentexthero.webp';
 
 export default function SapOpentexthero() {
     return (

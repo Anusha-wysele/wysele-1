@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapApiEnhancementImg from '../../../assets/SapApimanagement.png';
+import SapApiEnhancementImg from '../../../assets/wysele-SapApimanagement.webp';
 
 export default function SapApimanagement() {
     return (

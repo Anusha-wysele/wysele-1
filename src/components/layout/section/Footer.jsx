@@ -26,7 +26,7 @@ export default function Footer() {
                         </p>
                         <div className="flex gap-4">
                             {[
-                                { Icon: Linkedin, href: "https://www.linkedin.com/company/wysele", title: "Wysele Technologies LinkedIn Profile" },
+                                { Icon: Linkedin, href: "https://www.linkedin.com/company/wyseletechnologies", title: "Wysele Technologies LinkedIn Profile" },
                                 { Icon: Instagram, href: "#", title: "Wysele Technologies Instagram Profile" },
                                 { Icon: Facebook, href: "#", title: "Wysele Technologies Facebook Profile" }
                             ].map(({ Icon, href, title }, i) => (
@@ -87,7 +87,7 @@ export default function Footer() {
                         <ul className="space-y-4 text-white/70">
                             {[
                                 { label: "Contact", href: "/contact", title: "Contact Wysele Technologies" },
-                                { label: "LinkedIn", href: "https://www.linkedin.com/company/wysele", title: "Wysele Technologies LinkedIn Profile", target: "_blank", rel: "noopener noreferrer" },
+                                { label: "LinkedIn", href: "https://www.linkedin.com/company/wyseletechnologies", title: "Wysele Technologies LinkedIn Profile", target: "_blank", rel: "noopener noreferrer" },
                                 { label: "WhatsApp", href: "#", title: "Chat with Wysele on WhatsApp" },
                                 { label: "Email Us", href: "mailto:info@wysele.com", title: "Contact Wysele Technologies" }
                             ].map(item => (
@@ -112,9 +112,9 @@ export default function Footer() {
                     <p>&copy; {new Date().getFullYear()} Wysele. All rights reserved.</p>
                     <div className="flex flex-wrap justify-center gap-6">
                         {[
-                            { label: "Privacy Policy", href: "#", title: "Wysele Technologies Privacy Policy" },
-                            { label: "Terms of Service", href: "#", title: "Wysele Technologies Terms of Service" },
-                            { label: "Cookies", href: "#", title: "Wysele Technologies Cookie Policy" },
+                            { label: "Privacy Policy", href: "/privacy-policy", title: "Wysele Technologies Privacy Policy" },
+                            { label: "Terms of Service", href: "/terms-of-service", title: "Wysele Technologies Terms of Service" },
+                            { label: "Cookies", href: "/cookie-policy", title: "Wysele Technologies Cookie Policy" },
                             { label: "Site Map", href: "/sitemap", title: "Wysele Technologies HTML Site Map" },
                             { label: "XML Sitemap", href: "/sitemap.xml", title: "Wysele Technologies XML Sitemap for Search Engines" }
                         ].map(item => (

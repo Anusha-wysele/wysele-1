@@ -3,6 +3,8 @@ import { ArrowRight, CheckCircle2, MessageCircle, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import jobService from '../../services/jobService';
+import contactHeroImg from '../../assets/wysele-contactushero.webp';
+
 
 const ConsultationPopup = () => {
   const location = useLocation();
@@ -142,7 +144,7 @@ const ConsultationPopup = () => {
                   className="absolute inset-0 w-full h-full pointer-events-none "
                 >
                   <img
-                    src="https://images.pexels.com/photos/8133862/pexels-photo-8133862.jpeg"
+                    src={contactHeroImg}
                     alt="Consultation"
                     loading="lazy"
                     width="300"

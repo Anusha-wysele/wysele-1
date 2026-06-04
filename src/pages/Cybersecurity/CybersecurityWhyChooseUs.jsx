@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { CheckCircle2, Monitor, ShieldCheck, Zap } from 'lucide-react';
+import cybersecurityWhyChoose from '../../assets/wysele-cybersecuritywhychoose.webp';
 
 const cards = [
   {
@@ -30,7 +31,7 @@ const CybersecurityWhyChooseUs = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.pexels.com/photos/5428642/pexels-photo-5428642.jpeg"
+          src={cybersecurityWhyChoose}
           alt="Cybersecurity Background"
           className="w-full h-full object-cover"
         />

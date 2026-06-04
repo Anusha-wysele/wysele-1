@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import connectivityBg from '../../assets/Iotconnectivity.jpg';
+import connectivityBg from '../../assets/wysele-iotconnectivity.webp';
 
 export default function IotConnectivity() {
   const technologies = [

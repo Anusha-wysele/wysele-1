@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 import { ArrowRightLeft, BarChart2, Database, HeadphonesIcon, Settings, ShieldCheck, Wrench } from 'lucide-react';
 
-import SapMDGanalysis from '../../../assets/SapMDGanalysis.jpg';
-import SapMDGcentralised from '../../../assets/SapMDGcentralised.jpg';
-import SapMDGdatagovernance from '../../../assets/SapMDGdatagovernance.jpg';
-import SapMDGenhancement from '../../../assets/SapMDGenhancement.jpg';
-import SapMDGimplementation from '../../../assets/SapMDGimplementation.jpg';
-import SapMDGmigration from '../../../assets/SapMDGmigration.jpg';
-import SapMDGsupport from '../../../assets/SapMDGsupport.jpg';
+import SapMDGanalysis from '../../../assets/wysele-SapMDGanalysis.webp';
+import SapMDGcentralised from '../../../assets/wysele-SapMDGcentralised.webp';
+import SapMDGdatagovernance from '../../../assets/wysele-SapMDGdatagovernance.webp';
+import SapMDGenhancement from '../../../assets/wysele-SapMDGenhancement.webp';
+import SapMDGimplementation from '../../../assets/wysele-SapMDGimplementation.webp';
+import SapMDGmigration from '../../../assets/wysele-SapMDGmigration.webp';
+import SapMDGsupport from '../../../assets/wysele-SapMDGsupport.webp';
 
 const services = [
     {

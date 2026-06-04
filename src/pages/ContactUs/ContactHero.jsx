@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { OTHER_PAGE_IMAGES } from "../../components/common/data";
+import contactUsHeroImg from "../../assets/wysele-contactushero.webp";
 
 const ContactHero = () => {
   return (
@@ -8,7 +8,7 @@ const ContactHero = () => {
       {/* Full-width Background Image Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <img
-          src={OTHER_PAGE_IMAGES.contactHero}
+          src={contactUsHeroImg}
           alt="Contact Wysele"
           className="w-full h-full object-cover block"
         />

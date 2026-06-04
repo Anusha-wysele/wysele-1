@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapMasterImg from '../../../assets/SapMaster.jpg';
+import SapMasterImg from '../../../assets/wysele-SapMaster.webp';
 import Cylinders from '../../../components/common/Cylinders';
 
 export default function SapMasterhero() {

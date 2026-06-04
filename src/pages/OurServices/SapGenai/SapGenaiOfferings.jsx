@@ -1,27 +1,30 @@
 import { motion } from 'framer-motion';
-import { genAiOfferingsImages } from '../../../components/common/data';
+import offering1 from '../../../assets/wysele-sapganaiofferings1.webp';
+import offering2 from '../../../assets/wysele-sapganaiofferings2.webp';
+import offering3 from '../../../assets/wysele-sapganaiofferings3.webp';
+import offering4 from '../../../assets/wysele-sapganaiofferings4.webp';
 
 export default function SapGenaiOfferings() {
     const offerings = [
         {
             title: "AI-Powered Automation",
             description: "Transform your organization’s workflows with state-of-the-art AI-driven automation solutions that minimize manual efforts, reduce errors, and improve operational efficiency across departments.",
-            image: genAiOfferingsImages.automation
+            image: offering1
         },
         {
             title: "AI Chatbots & Virtual Assistants",
             description: "Implement AI-powered conversational agents that provide immediate support and enhance customer engagement, allowing for 24/7 service availability and effective resolution of customer issues.",
-            image: genAiOfferingsImages.chatbots
+            image: offering2
         },
         {
             title: "Predictive Analytics & Machine Learning",
             description: "Utilize advanced AI models designed to predict trends, optimize operational processes, and empower data-driven decision-making for your organization, enhancing your strategic planning capabilities.",
-            image: genAiOfferingsImages.analytics
+            image: offering3
         },
         {
             title: "Generative AI for Content Creation",
             description: "Streamline the content creation process by automating the generation of high-quality text, images, and videos that resonate with your target audience, elevating your brand presence in the market.",
-            image: genAiOfferingsImages.content
+            image: offering4
         }
     ];
 

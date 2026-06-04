@@ -1,4 +1,4 @@
-import { SERVICES_PAGE_IMAGES } from "../../../components/common/data";
+import sapIntegrationHeroImg from "../../../assets/wysele-sapintegrationhero.webp";
 
 import { motion } from "framer-motion";
 import { CheckCircle, Star } from "lucide-react";
@@ -13,7 +13,7 @@ const SapIntegrationhero = () => {
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: "easeOut" }}
-          src={SERVICES_PAGE_IMAGES.sapIntegrationHero}
+          src={sapIntegrationHeroImg}
           alt="SAP Integration Services"
           className="w-full h-full object-cover block"
         />

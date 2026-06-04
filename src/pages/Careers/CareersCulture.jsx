@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { BookOpen, MessageSquare, TrendingUp, Users } from 'lucide-react';
+import cultureImg1 from '../../assets/wysele-careersculture1.webp';
+import cultureImg2 from '../../assets/wysele-careerculture2.webp';
+
 
 const CareersCulture = () => {
   const cultureValues = [
@@ -46,7 +49,7 @@ const CareersCulture = () => {
               className="absolute top-0 right-0 w-2/3 h-2/5 z-20  overflow-hidden border-4 border-white"
             >
               <img 
-                src="https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg" 
+                src={cultureImg1} 
                 alt="Technology Team Collaboration and IT Solutions" 
                 title="Tech Collaboration"
                 className="w-full h-full object-cover"
@@ -62,7 +65,7 @@ const CareersCulture = () => {
               className="absolute bottom-0 left-0 w-4/5 h-3/4 z-10  overflow-hidden"
             >
               <img 
-                src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg" 
+                src={cultureImg2} 
                 alt="Modern Workspace Environment at Wysele Technologies" 
                 title="Workspace Environment"
                 className="w-full h-full object-cover"

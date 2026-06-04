@@ -2,7 +2,7 @@ import { Facebook, Linkedin, Twitter, X } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoWhiteImg from "../../../assets/LogoWhite.png";
-import { menuImage } from "../../common/data";
+import wyseleMenuImg from "../../../assets/wysele-menu.webp";
 
 
 const SAP_SERVICES_LIST = [
@@ -363,7 +363,7 @@ export default function Menu({ open, onClose }) {
               boxShadow: "0 12px 25px rgba(0,0,0,0.2)"
             }}>
               <img
-                src={menuImage}
+                src={wyseleMenuImg}
                 alt="Wysele Corporate Office"
                 title="Enterprise Office"
                 loading="lazy"
@@ -394,7 +394,7 @@ export default function Menu({ open, onClose }) {
             </a>
 
             <div style={{ display: "flex", gap: 10 }}>
-              <SocialIcon Icon={Linkedin} href="https://www.linkedin.com/company/wysele" title="Wysele Technologies LinkedIn Profile" />
+              <SocialIcon Icon={Linkedin} href="https://www.linkedin.com/company/wyseletechnologies" title="Wysele Technologies LinkedIn Profile" />
               <SocialIcon Icon={Twitter} href="#" title="Wysele Technologies Twitter Profile" />
               <SocialIcon Icon={Facebook} href="#" title="Wysele Technologies Facebook Profile" />
             </div>

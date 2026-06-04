@@ -8,48 +8,55 @@ import {
   Terminal
 } from 'lucide-react';
 
+import itInfrastructureCloudIntegration from '../../assets/wysele-itinfrastructurecloudintegration.webp';
+import itInfrastructureCybersecurity from '../../assets/wysele-itinfrastructurecybersecurity.webp';
+import itInfrastructureDisaster from '../../assets/wysele-itinfrastructuredisaster.webp';
+import itInfrastructureNetwork from '../../assets/wysele-itinfrastructurenetwork.webp';
+import itInfrastructureServer from '../../assets/wysele-itinfrastructureserver.webp';
+import itInfrastructureAutomation from '../../assets/wysele-itinfrastructureautomation.webp';
+
 const ItInfrastructureServices = () => {
   const services = [
     {
       title: "Cloud Infrastructure",
       desc: "Scalable cloud environments on AWS, Azure, and hybrid platforms deliver secure, high-performance infrastructure. We optimize your cloud presence for maximum cost-efficiency and reliability.",
       icon: <CloudCog className="w-5 h-5" />,
-      image: "https://images.pexels.com/photos/7691697/pexels-photo-7691697.jpeg",
+      image: itInfrastructureCloudIntegration,
       delay: 0.1
     },
     {
       title: "Network Architecture",
       desc: "Secure, high-performance network design ensures optimized connectivity, reliability, and seamless data flow across your infrastructure. We implement advanced routing protocols.",
       icon: <Share2 className="w-5 h-5" />,
-      image: "https://images.pexels.com/photos/8102700/pexels-photo-8102700.jpeg",
+      image: itInfrastructureNetwork,
       delay: 0.2
     },
     {
       title: "Server & Storage Solutions",
       desc: "Reliable compute and storage systems deliver high availability, consistent performance, and resilient data access across your infrastructure. Our solutions are built to handle intensive enterprise workloads.",
       icon: <Database className="w-5 h-5" />,
-      image: "https://images.pexels.com/photos/1181318/pexels-photo-1181318.jpeg",
+      image: itInfrastructureServer,
       delay: 0.3
     },
     {
       title: "Infrastructure Automation",
       desc: "DevOps-driven automation streamlines deployments, monitoring, and scaling to ensure faster releases and improved reliability. We automate repetitive tasks to reduce manual overhead and human error.",
       icon: <Terminal className="w-5 h-5" />,
-      image: "https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg",
+      image: itInfrastructureAutomation,
       delay: 0.4
     },
     {
       title: "Cybersecurity Integration",
       desc: "Protect your infrastructure with integrated security protocols, threat detection, and advanced encryption to safeguard critical assets. We ensure full compliance and proactive defense across all layers.",
       icon: <ShieldCheck className="w-5 h-5" />,
-      image: "https://images.pexels.com/photos/6266267/pexels-photo-6266267.jpeg",
+      image: itInfrastructureCybersecurity,
       delay: 0.5
     },
     {
       title: "Disaster Recovery",
       desc: "Ensure business continuity with automated backups, resilient recovery sites, and rapid data restoration for minimal downtime. Protect your data against any unforeseen failures with robust protocols.",
       icon: <Activity className="w-5 h-5" />,
-      image: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=600",
+      image: itInfrastructureDisaster,
       delay: 0.6
     }
   ];

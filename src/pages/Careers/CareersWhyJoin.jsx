@@ -1,5 +1,9 @@
 import { motion } from 'framer-motion';
 import { Heart, Trophy, Zap } from 'lucide-react';
+import whyJoinImg1 from '../../assets/wysele-careerswhyjoin1.webp';
+import whyJoinImg2 from '../../assets/wysele-careerswhyjoin2.webp';
+import whyJoinImg3 from '../../assets/wysele-careerswhyjoin3.webp';
+
 
 const features = [
   {
@@ -7,7 +11,7 @@ const features = [
     title: "Innovation Driven",
     desc: "Work with the latest technology stacks and solve complex challenges that shape the future of IT infrastructure and digital transformation.",
     icon: <Zap className="w-6 h-6 text-[#800000]" />,
-    image: "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg",
+    image: whyJoinImg1,
     alt: "Innovation and Digital Transformation Services",
     imageTitle: "Innovation Driven",
     delay: 0.1
@@ -17,7 +21,7 @@ const features = [
     title: "Growth & Mentorship",
     desc: "Accelerate your career with structured learning paths, mentorship programs, and opportunities to lead high-impact global projects.",
     icon: <Trophy className="w-6 h-6 text-[#800000]" />,
-    image: "https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg",
+    image: whyJoinImg2,
     alt: "Career Growth and Employee Mentorship Program",
     imageTitle: "Growth & Mentorship",
     delay: 0.2
@@ -27,7 +31,7 @@ const features = [
     title: "Collaborative Culture",
     desc: "Join a vibrant community that values diversity, encourages open communication, and prioritizes your professional and personal well-being.",
     icon: <Heart className="w-6 h-6 text-[#800000]" />,
-    image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg",
+    image: whyJoinImg3,
     alt: "Collaborative Work Culture at Wysele Technologies",
     imageTitle: "Collaborative Culture",
     delay: 0.3

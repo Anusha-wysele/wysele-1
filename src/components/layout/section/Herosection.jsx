@@ -58,21 +58,45 @@ export default function HeroSection() {
       overflow: "hidden",
     }}>
       <video
+        key={isMobile ? "mobile-video" : "desktop-video"}
         autoPlay
         loop
         muted
         playsInline
-        poster="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80"
+        preload="auto"
+        poster={
+          isMobile
+            ? "https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-480,q-50"
+            : "https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80"
+        }
         style={{
           width: "100%",
           height: "100%",
           objectFit: "cover",
           display: "block",
-          filter: "brightness(0.75) grayscale(0.1)",
+          filter: isMobile ? "none" : "brightness(0.75) grayscale(0.1)",
         }}
       >
-        <source src="https://ik.imagekit.io/czsxw7xki/Hero.mp4?tr=orig" type="video/mp4" />
+        <source
+          src={
+            isMobile
+              ? "https://ik.imagekit.io/czsxw7xki/Hero.mp4?tr=w-480,q-30"
+              : "https://ik.imagekit.io/czsxw7xki/Hero.mp4?tr=w-1280,q-60"
+          }
+          type="video/mp4"
+        />
       </video>
+
+      {/* Dark Overlay for Mobile when filter is disabled */}
+      {isMobile && (
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.25)",
+          zIndex: 1,
+          pointerEvents: "none",
+        }} />
+      )}
 
       {/* Content Overlay */}
       <motion.div
@@ -131,7 +155,7 @@ export default function HeroSection() {
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
                 style={{
                   fontSize: isMobile ? "0.825rem" : "0.9rem",
-                  color: "rgba(255,255,255,0.85)",
+                  color: "#fff",
                   fontFamily: "Inter, sans-serif",
                   fontWeight: 300,
                   lineHeight: 1.6,

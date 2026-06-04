@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import SapTechnicalconsultingoverviewImg from '../../../assets/Saptechnicalconsultingoverview.png';
+import SapTechnicalconsultingoverviewImg from '../../../assets/wysele-Saptechnicalconsultingoverview.webp';
 
 export default function SapTechnicalconsultingoverview() {
     return (

@@ -1,6 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
+import webDevEcommerce from "../../assets/wysele-webdevelopmentecommerce.webp";
+import webDevEnterprise from "../../assets/wysele-webdevelopmententerprise.webp";
+import webDevWebPortals from "../../assets/wysele-webdevelopmentwebportals.webp";
+import webDevWebPwas from "../../assets/wysele-webdevelopmentwebpaws.webp";
+
 const TABS = [
     {
         id: "ecommerce",
@@ -8,7 +13,7 @@ const TABS = [
         title: "Scalable Storefronts",
         subtitle: "High-Performance Digital Commerce",
         description: "Delivering bespoke e-commerce platforms with headless architecture and seamless ERP integrations. We focus on conversion optimization, multi-currency support, and mobile-first storefronts that drive global growth.",
-        image: "https://images.pexels.com/photos/6956903/pexels-photo-6956903.jpeg"
+        image: webDevEcommerce
     },
     {
         id: "enterprise",
@@ -16,7 +21,7 @@ const TABS = [
         title: "Operational Excellence",
         subtitle: "Custom Business Logic Solutions",
         description: "Building robust enterprise software designed to streamline complex corporate workflows. From advanced data management to automated reporting, we create secure tools that scale alongside your organizational needs.",
-        image: "https://images.unsplash.com/photo-1607705703571-c5a8695f18f6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D"
+        image: webDevEnterprise
     },
     {
         id: "portals",
@@ -24,7 +29,7 @@ const TABS = [
         title: "Engaging Gateways",
         subtitle: "High-Traffic Digital Experiences",
         description: "Crafting intuitive web portals that prioritize user engagement and brand identity. We leverage modern frameworks to ensure sub-second load times, interactive features, and seamless navigation for diverse global audiences.",
-        image: "https://images.unsplash.com/photo-1678227547330-7b17f29fd1ff?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIyfHx8ZW58MHx8fHx8"
+        image: webDevWebPortals
     },
     {
         id: "pwa",
@@ -32,7 +37,7 @@ const TABS = [
         title: "App-Like Web Apps",
         subtitle: "Seamless Mobile Connectivity",
         description: "Developing Progressive Web Apps that offer offline functionality, push notifications, and native-app performance directly within the browser. We eliminate the friction of app stores while maximizing reach and user retention.",
-        image: "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg"
+        image: webDevWebPwas
     }
 ];
 

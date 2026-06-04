@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { WEB_SERVICES_OFFER_IMG, WEB_SERVICES_OFFER_IMG_2 } from "../../components/common/data";
+import webDevServices1 from "../../assets/wysele-webdevelopmentservices1.webp";
+import webDevServices2 from "../../assets/wysele-webdevelopmentservices2.webp";
 
 const SERVICES_OFFERED = [
     {
@@ -88,7 +89,7 @@ export default function WebServicesweoffer() {
                                 className="relative z-0 overflow-hidden rounded-sm shadow-xl border border-gray-100 aspect-[16/9] w-full"
                             >
                                 <img 
-                                    src={WEB_SERVICES_OFFER_IMG} 
+                                    src={webDevServices1} 
                                     alt="Workspace Base" 
                                     className="w-full h-full object-cover"
                                 />
@@ -109,7 +110,7 @@ export default function WebServicesweoffer() {
                                 className="absolute bottom-[-20px] md:bottom-[-40px] left-0 md:left-[-20px] w-full aspect-[16/9] z-10 overflow-hidden rounded-sm shadow-2xl"
                             >
                                 <img 
-                                    src={WEB_SERVICES_OFFER_IMG_2} 
+                                    src={webDevServices2} 
                                     alt="Modern Setup" 
                                     className="w-full h-full object-cover"
                                 />

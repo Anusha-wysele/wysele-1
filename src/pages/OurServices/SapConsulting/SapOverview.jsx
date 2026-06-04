@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import sapConsultingOverviewImg from '../../../assets/wysele-sapconsultingoverview.webp';
 
 const SapOverview = () => {
     const ref = useRef(null);
@@ -35,7 +35,7 @@ const SapOverview = () => {
                 </div>
                 <div className="w-full lg:w-1/2">
                     <img
-                        src={SERVICES_PAGE_IMAGES.sapOverview}
+                        src={sapConsultingOverviewImg}
                         alt="SAP Overview"
                         className="w-full h-auto rounded-xl object-cover"
                     />

@@ -5,6 +5,7 @@ import {
   Settings2,
   ShieldCheck
 } from "lucide-react";
+import WhyChooseBgImg from "../../assets/wysele-salesforcewhychoose.webp";
 
 const WhyChooseUs = () => {
 
@@ -38,8 +39,7 @@ const WhyChooseUs = () => {
   return (
     <section className="py-10 bg-white overflow-hidden relative bg-cover bg-center"
       style={{
-        backgroundImage:
-          "url('https://images.pexels.com/photos/8117521/pexels-photo-8117521.jpeg')",
+        backgroundImage: `url(${WhyChooseBgImg})`,
       }}
     >
       {/* Overlay */}

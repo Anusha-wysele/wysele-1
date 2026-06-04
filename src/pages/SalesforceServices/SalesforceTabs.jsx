@@ -10,6 +10,14 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 
+// Import Salesforce tabs local images
+import ConsultingImg from '../../assets/wysele-salesforceconsulting.webp';
+import ImplementationImg from '../../assets/wysele-salesfrceimplementation.webp';
+import DevelopmentImg from '../../assets/wysele-salesforcedevelopment.webp';
+import IntegrationImg from '../../assets/wysele-salesforceintegration.webp';
+import SupportImg from '../../assets/wysele-salesforcesupport.webp';
+import MigrationImg from '../../assets/wysele-salesforcemigration.webp';
+
 const SalesforceTabs = () => {
   const [[activeTab, direction], setTab] = useState([0, 0]);
 
@@ -31,7 +39,7 @@ const SalesforceTabs = () => {
         "Change management strategy",
         "System architecture review"
       ],
-      image: "https://images.pexels.com/photos/6913193/pexels-photo-6913193.jpeg"
+      image: ConsultingImg
     },
     {
       id: 1,
@@ -46,7 +54,7 @@ const SalesforceTabs = () => {
         "Third-party app configuration",
         "Go-live support & monitoring"
       ],
-      image: "https://images.pexels.com/photos/7437489/pexels-photo-7437489.jpeg"
+      image: ImplementationImg
     },
     {
       id: 2,
@@ -61,7 +69,7 @@ const SalesforceTabs = () => {
         "Visualforce to LWC migration",
         "Custom AppExchange app creation"
       ],
-      image: "https://images.pexels.com/photos/7988210/pexels-photo-7988210.jpeg"
+      image: DevelopmentImg
     },
     {
       id: 3,
@@ -76,7 +84,7 @@ const SalesforceTabs = () => {
         "MuleSoft and middleware setup",
         "Legacy system connection"
       ],
-      image: "https://images.pexels.com/photos/5257005/pexels-photo-5257005.jpeg"
+      image: IntegrationImg
     },
     {
       id: 4,
@@ -91,7 +99,7 @@ const SalesforceTabs = () => {
         "User role and permission management",
         "On-demand troubleshooting"
       ],
-      image: "https://images.pexels.com/photos/7681560/pexels-photo-7681560.jpeg"
+      image: SupportImg
     },
     {
       id: 5,
@@ -106,7 +114,7 @@ const SalesforceTabs = () => {
         "Downtime minimization strategy",
         "Post-migration data auditing"
       ],
-      image: "https://images.pexels.com/photos/7550303/pexels-photo-7550303.jpeg"
+      image: MigrationImg
     }
   ];
 

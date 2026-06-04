@@ -1,33 +1,40 @@
 import { motion } from 'framer-motion';
 
+import appDevGlobalMarket from '../../assets/wysele-appdevelopmentglobalmarket.webp';
+import appDevFlexible from '../../assets/wysele-appdevelopmentflexible.webp';
+import appDevCostEfficient from '../../assets/wysele-appdevelopmentcostefficient.webp';
+import appDevRobust from '../../assets/wysele-appdevelopmentrobust.webp';
+import appDevAdvanced from '../../assets/wysele-appdevelopmentadvanced.webp';
+import appDevStrongEcosystem from '../../assets/wysele-appdevelopmentstrongecosystem.webp';
+
 const essentials = [
     {
-        image: "https://images.pexels.com/photos/3183175/pexels-photo-3183175.jpeg",
+        image: appDevGlobalMarket,
         title: "Global Market Accessibility",
         desc: "With a vast number of mobile users worldwide, your application can reach diverse audiences and expand your presence across global markets through a flexible and scalable ecosystem."
     },
     {
-        image: "https://images.pexels.com/photos/5324859/pexels-photo-5324859.jpeg",
+        image: appDevFlexible,
         title: "Flexible & Custom Solutions",
         desc: "A highly adaptable development environment enables tailored solutions, allowing your application to deliver personalized experiences aligned with user expectations."
     },
     {
-        image: "https://images.pexels.com/photos/7550450/pexels-photo-7550450.jpeg",
+        image: appDevCostEfficient,
         title: "Cost-Efficient Development",
         desc: "Optimized tools and streamlined processes help reduce development costs while maintaining high quality and efficient resource utilization."
     },
     {
-        image: "https://images.pexels.com/photos/6804068/pexels-photo-6804068.jpeg",
+        image: appDevRobust,
         title: "Robust Security Framework",
         desc: "Advanced security measures ensure data protection and user privacy, establishing trust and maintaining the integrity of your application."
     },
     {
-        image: "https://images.pexels.com/photos/9487244/pexels-photo-9487244.jpeg",
+        image: appDevAdvanced,
         title: "Advanced Feature Integration",
         desc: "Leverage modern technologies such as AI, AR, and IoT to create engaging, interactive, and future-ready user experiences."
     },
     {
-        image: "https://images.pexels.com/photos/3183129/pexels-photo-3183129.jpeg",
+        image: appDevStrongEcosystem,
         title: "Strong Ecosystem & Support",
         desc: "Access to a broad developer community and continuous support ensures faster problem-solving and smooth application growth over time."
     },

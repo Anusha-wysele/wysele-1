@@ -1,42 +1,49 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+import webDevReq from "../../assets/wysele-webdevelopmentrequirements.webp";
+import webDevPlan from "../../assets/wysele-webdevelopmentplanning.webp";
+import webDevDev from "../../assets/wysele-webdevelopmentdevelopment.webp";
+import webDevTest from "../../assets/wysele-webdevelopmenttesting.webp";
+import webDevDeploy from "../../assets/wysele-webdevelopmentdeployment.webp";
+import webDevMaintain from "../../assets/wysele-webdevelopmentmaintainence.webp";
+
 const PROCESS_STEPS = [
     {
         number: "01",
         title: "Business Requirements",
         description: "Defining objectives and challenges to ensure strategic alignment from the start.",
-        image: "https://images.pexels.com/photos/4872025/pexels-photo-4872025.jpeg"
+        image: webDevReq
     },
     {
         number: "02",
         title: "Planning & Design",
         description: "Strategic planning and intuitive UI/UX design focused on flow and visual excellence.",
-        image: "https://images.pexels.com/photos/36747234/pexels-photo-36747234.jpeg"
+        image: webDevPlan
     },
     {
         number: "03",
         title: "Development",
         description: "Engineering scalable, high-performance solutions using modern tech and best practices.",
-        image: "https://images.pexels.com/photos/6804613/pexels-photo-6804613.jpeg"
+        image: webDevDev
     },
     {
         number: "04",
         title: "Testing",
         description: "Rigorous testing to ensure functional perfection and a flawless user experience.",
-        image: "https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg"
+        image: webDevTest
     },
     {
         number: "05",
         title: "Deployment",
         description: "Seamless live deployment with expert configuration for minimal disruption.",
-        image: "https://images.pexels.com/photos/17115909/pexels-photo-17115909.jpeg"
+        image: webDevDeploy
     },
     {
         number: "06",
         title: "Maintenance",
         description: "Continuous support and updates to keep your system secure and optimized.",
-        image: "https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg"
+        image: webDevMaintain
     }
 ];
 

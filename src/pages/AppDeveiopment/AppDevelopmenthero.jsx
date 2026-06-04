@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import AppDev1 from '../../assets/App-Development1.png';
+import AppDev1 from '../../assets/wysele-appdevelopmenthero.webp';
 
 const AppDevelopmenthero = () => {
     return (
-        <section className="relative w-full bg-[#1A222E] flex items-center justify-center overflow-x-hidden pt-[150px] pb-6 md:py-12 lg:py-16">
+        <section className="relative w-full bg-[#1A222E] flex items-center justify-center overflow-x-hidden pt-[150px] pb-6 md:pt-[140px] md:pb-12 lg:pt-[180px] lg:pb-16">
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-8">
 
                 {/* Left Side: Content */}
@@ -47,7 +47,7 @@ const AppDevelopmenthero = () => {
                         initial={{ opacity: 0, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-[90%] sm:w-[80%] md:w-[640px] lg:w-[850px] md:max-w-none object-contain md:translate-y-16 lg:translate-y-24"
+                        className="w-[95%] sm:w-[90%] md:w-[720px] lg:w-[1050px] md:max-w-none object-contain md:translate-y-16 lg:translate-y-24"
                     />
                 </div>
 

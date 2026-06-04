@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Breadcrumbs from '../../../components/common/Breadcrumbs';
-import { SERVICES_PAGE_IMAGES } from '../../../components/common/data';
+import sapConsultingHeroImg from '../../../assets/wysele-sapconsultinghero.webp';
 import Footer from '../../../components/layout/section/Footer';
 import FunctionalConsulting from './FunctionalConsulting';
 import SapIndustriesweserve from './SapIndustriesweserve';
@@ -47,7 +47,7 @@ const SapConsulting = () => {
                 {/* Mobile Background Image and Overlay */}
                 <div className="absolute inset-0 block lg:hidden z-0">
                     <img
-                        src={SERVICES_PAGE_IMAGES.sapHero}
+                        src={sapConsultingHeroImg}
                         alt="SAP Consulting Team"
                         className="w-full h-full object-cover"
                     />
@@ -110,7 +110,7 @@ const SapConsulting = () => {
                         >
                             <div className="relative w-full h-full">
                                 <img
-                                    src={SERVICES_PAGE_IMAGES.sapHero}
+                                    src={sapConsultingHeroImg}
                                     alt="SAP Consulting Team"
                                     className="w-full h-full object-cover"
                                 />

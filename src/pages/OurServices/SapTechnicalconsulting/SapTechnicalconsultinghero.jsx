@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import SapTechnicalconsultImg from '../../../assets/SapTechnicalconsult.jpg';
+import SapTechnicalconsultImg from '../../../assets/wysele-SapTechnicalconsulthero.webp';
 
 const DURATION = 6000; // ms per card
 

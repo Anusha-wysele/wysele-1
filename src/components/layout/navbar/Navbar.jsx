@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -26,15 +26,17 @@ import {
   Zap
 } from "lucide-react";
 
-import Menu from "./Menu";
-
 import Logo from "./Logo";
-
 import LogoMobile from "./LogoMobile";
-
 import Button from "../../common/Button";
+import webDevMenuImg from "../../../assets/webdevelopment.webp";
+import appDevMenuImg from "../../../assets/Appdevelopment.webp";
+import sapMenuImg from "../../../assets/wysele-menu.webp";
+import industriesMenuImg from "../../../assets/wysele-insights.webp";
+import techMenuImg from "../../../assets/wysele-blogs2.webp";
 
-import { WEB_DEVELOPMENT_IMAGES } from "../../common/data";
+const Menu = lazy(() => import("./Menu"));
+
 
 
 
@@ -101,9 +103,9 @@ const MEGA_MENU_DATA = {
 
       { label: "IT Infrastructure", desc: "Managed networks and data centers", icon: <Radio size={18} />, path: "/services/itinfrastructure" },
 
-      { label: "Web Development", desc: "Scalable and secure web apps", icon: <Code size={18} />, path: "/services/web-development", img: WEB_DEVELOPMENT_IMAGES[0] },
+      { label: "Web Development", desc: "Scalable and secure web apps", icon: <Code size={18} />, path: "/services/web-development", img: webDevMenuImg },
 
-      { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services/app-development", img: WEB_DEVELOPMENT_IMAGES[1] },
+      { label: "App Development", desc: "Native and hybrid mobile experiences", icon: <Smartphone size={18} />, path: "/services/app-development", img: appDevMenuImg },
 
       { label: "IoT Services", desc: "Smart connected solutions", icon: <Cpu size={18} />, path: "/services/iot-services" },
 
@@ -119,7 +121,7 @@ const MEGA_MENU_DATA = {
 
       desc: "How we helped a global shipping firm scale with SAP BTP.",
 
-      img: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+      img: sapMenuImg,
 
       link: "/#blogs"
 
@@ -163,7 +165,7 @@ const MEGA_MENU_DATA = {
 
       desc: "Harnessing Digital Twins for manufacturing excellence.",
 
-      img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+      img: industriesMenuImg,
 
       link: "/#blogs"
 
@@ -207,7 +209,7 @@ const MEGA_MENU_DATA = {
 
       desc: "Practical steps to embedding AI in your business.",
 
-      img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+      img: techMenuImg,
 
       link: "/#blogs"
 
@@ -1264,7 +1266,7 @@ export default function Navbar() {
 
           <a
 
-            href="https://www.linkedin.com/company/wysele"
+            href="https://www.linkedin.com/company/wyseletechnologies"
 
             target="_blank"
 
@@ -1400,7 +1402,9 @@ export default function Navbar() {
 
 
 
-      <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <Suspense fallback={null}>
+        <Menu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      </Suspense>
 
     </>
 

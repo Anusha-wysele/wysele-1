@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import blogsHeroBg from "../../assets/wysele-insights.webp";
+import blogsDefaultImg from "../../assets/wysele-blogs1.webp";
+
 import Breadcrumbs from "../../components/common/Breadcrumbs";
 import { staticBlogPosts } from "../../components/layout/section/BlogsBanner";
 import Footer from "../../components/layout/section/Footer";
@@ -34,7 +37,7 @@ const BlogsPage = () => {
             day: blog.day || new Date(blog.createdAt || Date.now()).getDate().toString().padStart(2, '0'),
             month: blog.month || new Date(blog.createdAt || Date.now()).toLocaleString('default', { month: 'short' }),
             year: blog.year || new Date(blog.createdAt || Date.now()).getFullYear().toString(),
-            img: blog.image_url || blog.img || "https://images.pexels.com/photos/7988751/pexels-photo-7988751.jpeg?auto=compress&cs=tinysrgb&w=1200",
+            img: blog.image_url || blog.img || blogsDefaultImg,
             tags: blog.category ? [blog.category] : (blog.tags || ["Insights"]),
             excerpt: blog.excerpt || blog.content?.substring(0, 120) + "..." || "No description available."
           }));
@@ -69,7 +72,7 @@ const BlogsPage = () => {
           <div
             className="w-full h-full relative"
             style={{
-              backgroundImage: `url('https://images.pexels.com/photos/5685890/pexels-photo-5685890.jpeg')`,
+              backgroundImage: `url(${blogsHeroBg})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

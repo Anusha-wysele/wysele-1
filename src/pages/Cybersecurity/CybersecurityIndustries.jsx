@@ -3,12 +3,15 @@ import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import cybersecurityHealthcare from "../../assets/wysele-cybersecurityhealthcare.webp";
+import cybersecurityFinance from "../../assets/wysele-cybersecurityfinance.webp";
+import cybersecurityEcommerce from "../../assets/wysele-cybersecurityecommerce.webp";
+
 const industries = [
   {
     name: "Healthcare",
     desc: "Healthcare organizations manage sensitive patient information, connected medical systems, and critical operational infrastructure. Wysele provides healthcare cybersecurity services that help organizations improve data protection and maintain secure operational environments.",
-    image:
-      "https://images.pexels.com/photos/7446988/pexels-photo-7446988.jpeg",
+    image: cybersecurityHealthcare,
     points: [
       "Patient data protection",
       "Secure system access",
@@ -19,8 +22,7 @@ const industries = [
   {
     name: "Finance",
     desc: "Financial organizations require strong cybersecurity measures to protect transactions, customer information, and digital banking systems from evolving cyber threats.Wysele delivers security solutions that help businesses maintain secure financial operations, reduce risks, and support regulatory compliance.",
-    image:
-      "https://images.pexels.com/photos/6964107/pexels-photo-6964107.jpeg",
+    image: cybersecurityFinance,
     points: [
       "Fraud Prevention",
       "Secure Transactions",
@@ -31,8 +33,7 @@ const industries = [
   {
     name: "E-commerce",
     desc: "E-commerce businesses handle large volumes of customer data and online transactions, making strong cybersecurity essential for secure digital operations. Wysele provides cybersecurity solutions that help protect online stores, customer information, and payment systems from evolving cyber threats while supporting safe and uninterrupted shopping experiences.",
-    image:
-      "https://images.pexels.com/photos/7289725/pexels-photo-7289725.jpeg",
+    image: cybersecurityEcommerce,
     points: [
       "Payment Security",
       "Customer Data Protection",

@@ -327,7 +327,17 @@ export default function IndustriesWeServe() {
     const width = useWindowWidth();
     const isMobile = width < 768;
 
+    useEffect(() => {
+        industryImagesLocal.forEach((imgSrc) => {
+            if (imgSrc) {
+                const img = new Image();
+                img.src = imgSrc;
+            }
+        });
+    }, []);
+
     return (
+
         <div style={{
             fontFamily: "'Jost', sans-serif",
             background: "#ffffff",

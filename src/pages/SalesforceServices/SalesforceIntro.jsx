@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Users, Zap } from 'lucide-react';
+import SalesforceOverviewImg from '../../assets/wysele-salesforceoverview.webp';
 
 const SalesforceIntro = () => {
   const benefits = [
@@ -103,7 +104,7 @@ const SalesforceIntro = () => {
                 className="absolute top-8 left-0 z-10 w-[84%] h-[82%] overflow-hidden shadow-2xl "
               >
                 <img
-                  src="https://images.pexels.com/photos/7988235/pexels-photo-7988235.jpeg"
+                  src={SalesforceOverviewImg}
                   alt="Team Collaboration"
                   className="w-full h-full object-cover transition-all duration-700 rounded-lg bg-black/30"
                 />
