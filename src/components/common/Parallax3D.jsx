@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
 
 // Custom hook for tracking mouse and returning damped 3D rotation coordinates
 export const useMouseParallax = (multiplier = 4) => {
@@ -34,12 +34,17 @@ export const HoverTiltCard = React.forwardRef(({
     onMouseLeave,
     ...props
 }, ref) => {
-    // Merge the forwarded ref and local cardRef using a callback or just use the local one and sync it
     const localRef = useRef(null);
     const [tilt, setTilt] = useState({ x: 0, y: 0 });
     const [glare, setGlare] = useState({ x: 50, y: 50, o: 0 });
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
+    }, []);
 
     const handleMouseMove = (e) => {
+        if (isMobile) return;
         const node = ref && typeof ref !== 'function' ? ref.current : localRef.current;
         if (!node) return;
         const rect = node.getBoundingClientRect();
@@ -52,23 +57,28 @@ export const HoverTiltCard = React.forwardRef(({
     };
 
     const handleMouseLeaveInternal = (e) => {
+        if (isMobile) {
+            if (onMouseLeave) onMouseLeave(e);
+            return;
+        }
         setTilt({ x: 0, y: 0 });
         setGlare(p => ({ ...p, o: 0 }));
         if (onMouseLeave) onMouseLeave(e);
     };
 
     const handleMouseEnterInternal = (e) => {
+        if (isMobile) return;
         if (onMouseEnter) onMouseEnter(e);
     };
 
     return (
         <div
             ref={ref || localRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnterInternal}
+            onMouseMove={isMobile ? undefined : handleMouseMove}
+            onMouseEnter={isMobile ? undefined : handleMouseEnterInternal}
             onMouseLeave={handleMouseLeaveInternal}
             className={className}
-            style={{
+            style={isMobile ? style : {
                 perspective: 1000,
                 transformStyle: 'preserve-3d',
                 ...style
@@ -76,7 +86,7 @@ export const HoverTiltCard = React.forwardRef(({
             {...props}
         >
             <div
-                style={{
+                style={isMobile ? { width: '100%', height: '100%', position: 'relative', borderRadius: 'inherit' } : {
                     width: '100%', height: '100%',
                     position: 'relative',
                     transition: 'transform 0.15s linear, box-shadow 0.3s ease',
@@ -86,15 +96,17 @@ export const HoverTiltCard = React.forwardRef(({
                 }}
             >
                 {/* Dynamic Mouse Glare Layer */}
-                <div style={{
-                    position: 'absolute', inset: 0,
-                    pointerEvents: 'none',
-                    background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 60%)`,
-                    opacity: glare.o,
-                    transition: 'opacity 0.3s ease',
-                    zIndex: 20,
-                    borderRadius: 'inherit'
-                }} />
+                {!isMobile && (
+                    <div style={{
+                        position: 'absolute', inset: 0,
+                        pointerEvents: 'none',
+                        background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 60%)`,
+                        opacity: glare.o,
+                        transition: 'opacity 0.3s ease',
+                        zIndex: 20,
+                        borderRadius: 'inherit'
+                    }} />
+                )}
 
                 {/* Render the actual content inside the tilted plane */}
                 {children}

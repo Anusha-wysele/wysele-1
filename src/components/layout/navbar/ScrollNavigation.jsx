@@ -5,36 +5,44 @@ const ScrollNavigation = ({ sections }) => {
   const [hoveredSection, setHoveredSection] = useState(null);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      let currentSection = activeSection;
-      let minDistance = Infinity;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          let currentSection = activeSection;
+          let minDistance = Infinity;
 
-      sections.forEach((section) => {
-        const element = document.getElementById(section.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const viewportCenter = window.innerHeight / 2;
+          sections.forEach((section) => {
+            const element = document.getElementById(section.id);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              const viewportCenter = window.innerHeight / 2;
 
-          const distanceToTop = Math.abs(rect.top - viewportCenter);
-          const distanceToBottom = Math.abs(rect.bottom - viewportCenter);
-          const distance = Math.min(distanceToTop, distanceToBottom);
+              const distanceToTop = Math.abs(rect.top - viewportCenter);
+              const distanceToBottom = Math.abs(rect.bottom - viewportCenter);
+              const distance = Math.min(distanceToTop, distanceToBottom);
 
-          if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
-            currentSection = section.id;
-            minDistance = 0;
-          } else if (distance < minDistance && rect.top < window.innerHeight && rect.bottom > 0) {
-            minDistance = distance;
-            currentSection = section.id;
+              if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+                currentSection = section.id;
+                minDistance = 0;
+              } else if (distance < minDistance && rect.top < window.innerHeight && rect.bottom > 0) {
+                minDistance = distance;
+                currentSection = section.id;
+              }
+            }
+          });
+
+          if (currentSection && currentSection !== activeSection) {
+            setActiveSection(currentSection);
           }
-        }
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);

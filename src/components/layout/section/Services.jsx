@@ -319,6 +319,7 @@ export default function Services() {
                   service={service}
                   slideWidth={slideWidth}
                   isActive={i === currentIndex + 1}
+                  isMobile={visibleSlides === 1}
                   ref={i === 0 ? slideRef : null}
                 />
               ))}
@@ -358,8 +359,101 @@ export default function Services() {
   );
 }
 
-const SlideCard = forwardRef(function SlideCard({ service, slideWidth, isActive }, ref) {
+const SlideCard = forwardRef(function SlideCard({ service, slideWidth, isActive, isMobile }, ref) {
   const [hovered, setHovered] = useState(false);
+
+  if (isMobile) {
+    return (
+      <div
+        ref={ref}
+        style={{
+          flex: `0 0 ${slideWidth}`,
+          height: "100%",
+          position: "relative",
+        }}
+      >
+        <div style={{
+          width: "100%", height: "100%",
+          position: "relative",
+          overflow: "hidden",
+          backgroundColor: "#000",
+          borderRadius: "12px",
+        }}>
+          <img
+            src={service.img}
+            alt={service.alt}
+            title={service.titleAttr}
+            width="400"
+            height="280"
+            loading="lazy"
+            draggable={false}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+              opacity: 0.9,
+            }}
+          />
+
+          {/* Subtle baseline gradient */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              height: "70%",
+              background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
+              pointerEvents: "none",
+              zIndex: 1,
+            }}
+          />
+
+          {/* Content Overlay */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              width: "100%",
+              padding: "20px 16px",
+              color: "#ffffff",
+              pointerEvents: "none",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              zIndex: 3,
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                fontWeight: "600",
+                lineHeight: 1.2,
+                letterSpacing: "-0.01em",
+                margin: 0,
+              }}
+            >
+              {service.title}
+            </h3>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                color: "#d1d5db",
+                lineHeight: 1.45,
+                fontWeight: "300",
+                margin: 0,
+                marginTop: "6px",
+              }}
+            >
+              {service.desc}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <HoverTiltCard

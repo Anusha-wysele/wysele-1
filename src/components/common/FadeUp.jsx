@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+function useMobileCheck() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
 export default function FadeUp({ children, delay = 0, distance = 40, id }) {
+  const isMobile = useMobileCheck();
+
+  if (isMobile) {
+    return <div id={id}>{children}</div>;
+  }
+
   return (
     <motion.div
       id={id}

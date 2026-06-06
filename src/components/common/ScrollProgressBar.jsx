@@ -3,27 +3,50 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const ScrollProgressBar = () => {
+    const [isMobile, setIsMobile] = useState(false);
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
+    }, []);
+
     const [isVisible, setIsVisible] = useState(false);
     const [scrollProgress, setScrollProgress] = useState(0);
     const location = useLocation();
 
     useEffect(() => {
+        if (isMobile) return;
         // Reset scroll progress when route changes
         setScrollProgress(0);
         window.scrollTo(0, 0);
-    }, [location.pathname]);
+    }, [location.pathname, isMobile]);
 
     useEffect(() => {
+        if (isMobile) return;
+        let ticking = false;
+
         const handleScroll = () => {
-            const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            setScrollProgress(progress);
-            setIsVisible(window.scrollY > 300);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+                    setScrollProgress(progress);
+                    
+                    const shouldBeVisible = window.scrollY > 300;
+                    setIsVisible(prev => {
+                        if (prev !== shouldBeVisible) {
+                            return shouldBeVisible;
+                        }
+                        return prev;
+                    });
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [isMobile]);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,6 +54,8 @@ const ScrollProgressBar = () => {
 
     const circumference = 2 * Math.PI * 20;
     const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
+
+    if (isMobile) return null;
 
     return (
         <>
