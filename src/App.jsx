@@ -34,6 +34,7 @@ const SapMasterPage = lazy(() => import("./pages/OurServices/SapMasterdata/SapMa
 const SapBtpApiPage = lazy(() => import("./pages/OurServices/SapBtpapimanagement/Sapbtpapipage"));
 const SapTechnicalConsultingPage = lazy(() => import("./pages/OurServices/SapTechnicalconsulting/SapTechnicalconsultingpage"));
 const SapOpentextPage = lazy(() => import("./pages/OurServices/SapOpentext/SapOpentextpage"));
+const FdePage = lazy(() => import("./pages/Fde/fdePage"));
 
 const Salesforce = lazy(() => import("./pages/SalesforceServices/Salesforcepages"));
 const Cybersecurityhome = lazy(() => import("./pages/Cybersecurity/Cybersecurityhome"));
@@ -95,6 +96,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPages />} />
             <Route path="/about/*" element={<AboutPage />} />
+            <Route path="/services/fde" element={<FdePage />} />
             <Route path="/services/sap-consulting" element={<SapConsulting />} />
             <Route path="/services/sap-signavio" element={<SapSignavio />} />
             <Route path="/services/sap-datasphere" element={<SapDatasphere />} />

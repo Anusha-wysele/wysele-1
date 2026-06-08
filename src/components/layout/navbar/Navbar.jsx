@@ -95,6 +95,8 @@ const MEGA_MENU_DATA = {
 
     items: [
 
+      { label: "FDE Services", desc: "Future Driven Enterprise solutions", icon: <Zap size={18} />, path: "/services/fde" },
+
       { label: "SAP Services", desc: "Consulting, BTP, S/4HANA", icon: <Database size={18} />, path: "/sap-services", sublinks: SAP_SERVICES },
 
       { label: "Salesforce Services", desc: "CRM and multi-cloud solutions", icon: <CloudLightning size={18} />, path: "/services/salesforce" },

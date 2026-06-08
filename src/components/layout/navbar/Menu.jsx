@@ -281,6 +281,7 @@ export default function Menu({ open, onClose }) {
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {[
+                { label: "FDE Services", path: "/services/fde" },
                 { label: "SAP Services", path: "/sap-services" },
                 { label: "Salesforce Services", path: "/services/salesforce" },
                 { label: "IT Infrastructure Services", path: "/services/itinfrastructure" },

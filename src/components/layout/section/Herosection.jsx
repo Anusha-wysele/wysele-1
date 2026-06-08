@@ -17,6 +17,29 @@ const HERO_INDUSTRIES = [
   { name: "Mining", id: "mining" },
 ];
 
+const HERO_SLIDES = [
+  {
+    tag: "Forward-Deployed Engineering (FDE) Services",
+    headline: (
+      <>
+        Transforming AI Ideas into <br />
+        Production-Ready Business Solutions
+      </>
+    ),
+    description: "Bridge the gap between experimental AI and real-world impact. Our embedded engineering teams work alongside your experts to rapidly deploy, customize, and scale AI-driven platforms tailored to your operational needs."
+  },
+  {
+    tag: "Digital Excellence",
+    headline: (
+      <>
+        Driving Business Transformation <br />
+        with Tailored Digital & AI Solutions
+      </>
+    ),
+    description: "A powerful foundation for enterprises to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance."
+  }
+];
+
 function useWindowWidth() {
   const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   React.useEffect(() => {
@@ -35,13 +58,21 @@ export default function HeroSection() {
 
   const numVisibleLogos = isMobile ? 3 : (isTablet ? 4 : 5);
   const [startIndex, setStartIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setStartIndex((prev) => (prev + 1) % HERO_INDUSTRIES.length);
     }, 4500);
 
-    return () => clearInterval(interval);
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 8000);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(slideInterval);
+    };
   }, []);
 
   const visibleIndustries = Array.from({ length: numVisibleLogos }).map((_, colIndex) => {
@@ -120,63 +151,66 @@ export default function HeroSection() {
         }}
       >
         <div className="max-w-7xl w-full mx-auto">
-          <div className="max-w-3xl">
-            {/* Insights Tag */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center gap-3 mb-6 md:mb-8"
-            >
-              <div className="w-8 h-1.5 bg-[#FFD700]" />
-              <span className="text-white text-[10px] font-bold tracking-[0.3em] uppercase">Digital Excellence</span>
-            </motion.div>
-
-            {/* Headline */}
-            <h1
-              style={{
-                fontSize: isMobile ? "1.65rem" : "clamp(1.8rem, 3.8vw, 2.6rem)",
-                fontWeight: 500,
-                color: "#fff",
-                lineHeight: 1.2,
-                marginBottom: "20px",
-                letterSpacing: "-0.01em"
-              }}
-            >
-              Driving Business Transformation <br />
-              with Tailored Digital & AI Solutions
-            </h1>
-
-            {/* Description with Accent Line */}
-            <div className="flex gap-4 md:gap-5 mb-8 md:mb-10">
-              <div className="w-[1px] bg-[#FFD700] shrink-0" />
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
+          <div className="max-w-3xl min-h-[300px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                style={{
-                  fontSize: isMobile ? "0.825rem" : "0.9rem",
-                  color: "#fff",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 300,
-                  lineHeight: 1.6,
-                  maxWidth: "520px",
-                }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
               >
-                A powerful foundation for enterprises to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance.
-              </motion.p>
-            </div>
+                {/* Insights Tag */}
+                <div className="flex items-center gap-3 mb-6 md:mb-8">
+                  <div className="w-8 h-1.5 bg-[#FFD700]" />
+                  <span className="text-white text-[12px] md:text-[14px] font-bold tracking-[0.2em] uppercase">
+                    {HERO_SLIDES[currentSlide].tag}
+                  </span>
+                </div>
 
-            {/* Action Button */}
-            <div className="mt-2">
-              <Button
-                text="Get In Touch"
-                onClick={() => {
-                  navigate('/contact');
-                  window.scrollTo(0, 0);
-                }}
-              />
-            </div>
+                {/* Headline */}
+                <h1
+                  style={{
+                    fontSize: isMobile ? "1.65rem" : "clamp(1.8rem, 3.8vw, 2.6rem)",
+                    fontWeight: 500,
+                    color: "#fff",
+                    lineHeight: 1.2,
+                    marginBottom: "20px",
+                    letterSpacing: "-0.01em"
+                  }}
+                >
+                  {HERO_SLIDES[currentSlide].headline}
+                </h1>
+
+                {/* Description with Accent Line */}
+                <div className="flex gap-4 md:gap-5 mb-8 md:mb-10">
+                  <div className="w-[1px] bg-[#FFD700] shrink-0" />
+                  <p
+                    style={{
+                      fontSize: isMobile ? "0.825rem" : "0.9rem",
+                      color: "#fff",
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 300,
+                      lineHeight: 1.6,
+                      maxWidth: "520px",
+                    }}
+                  >
+                    {HERO_SLIDES[currentSlide].description}
+                  </p>
+                </div>
+
+                {/* Action Button */}
+                <div className="mt-2">
+                  <Button
+                    text="Get In Touch"
+                    onClick={() => {
+                      navigate('/contact');
+                      window.scrollTo(0, 0);
+                    }}
+                  />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </motion.div>
