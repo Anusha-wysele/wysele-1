@@ -293,7 +293,7 @@ function ContentPanel({ industry, isMobile }) {
                     }}
                 >
                     {img ? (
-                        <img src={img} alt={industry.alt || industry.title} title={industry.titleAttr || industry.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <img loading="lazy" src={img} alt={industry.alt || industry.title} title={industry.titleAttr || industry.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     ) : (
                         <Icon />
                     )}

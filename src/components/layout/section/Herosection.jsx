@@ -64,6 +64,7 @@ export default function HeroSection() {
         muted
         playsInline
         preload="metadata"
+        fetchpriority="high"
         poster={
           isMobile
             ? "https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-480,q-40,f-webp"

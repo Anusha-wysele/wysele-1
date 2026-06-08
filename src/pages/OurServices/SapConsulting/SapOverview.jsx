@@ -34,8 +34,7 @@ const SapOverview = () => {
                 </div>
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img
-                        src={sapConsultingOverviewImg}
+                    <img loading="lazy" src={sapConsultingOverviewImg}
                         alt="SAP Overview"
                         className="w-full h-auto rounded-xl object-cover"
                     />

@@ -65,8 +65,7 @@ export default function SapGenaiOfferings() {
                             className="bg-white rounded-none shadow-[0_10px_30px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col group border border-gray-100 relative cursor-pointer"
                         >
                             <div className="h-48 relative overflow-hidden">
-                                <img 
-                                    src={offering.image} 
+                                <img loading="lazy" src={offering.image} 
                                     alt={offering.title} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />

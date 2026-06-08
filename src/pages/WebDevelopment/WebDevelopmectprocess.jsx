@@ -77,8 +77,7 @@ export default function WebDevelopmentProcess() {
                                 >
                                     {/* Image Container */}
                                     <div className="w-full h-full rounded-xl overflow-hidden shadow-2xl">
-                                        <img 
-                                            src={PROCESS_STEPS[activeIndex].image} 
+                                        <img loading="lazy" src={PROCESS_STEPS[activeIndex].image} 
                                             alt={PROCESS_STEPS[activeIndex].title}
                                             className="absolute inset-0 w-full h-full object-cover"
                                         />

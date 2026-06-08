@@ -70,8 +70,7 @@ const CybersecurityIndustries = () => {
             >
               <div className="relative rounded-none overflow-hidden border border-white/10 ">
 
-                <img
-                  src={industries[activeTab].image}
+                <img loading="lazy" src={industries[activeTab].image}
                   alt={industries[activeTab].name}
                   className="w-full h-[400px] object-cover"
                 />

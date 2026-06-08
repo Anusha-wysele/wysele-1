@@ -245,7 +245,7 @@ export default function SapServicesList() {
               onClick={() => { navigate(service.path); window.scrollTo(0, 0); }}
             >
               <div className="image-container">
-                <img src={service.img} alt={service.label} />
+                <img loading="lazy" src={service.img} alt={service.label} />
                 <div className="view-details-btn">View Details</div>
               </div>
 

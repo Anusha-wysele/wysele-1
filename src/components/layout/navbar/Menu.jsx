@@ -110,8 +110,7 @@ export default function Menu({ open, onClose }) {
           transition: "all 0.5s ease 0.1s"
         }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <img
-              src={LogoWhiteImg}
+            <img loading="lazy" src={LogoWhiteImg}
               alt="Wysele Technologies Logo"
               title="Wysele Technologies"
               width="80"

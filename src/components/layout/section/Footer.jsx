@@ -19,7 +19,7 @@ export default function Footer() {
                             }}
                             className="block w-fit"
                         >
-                            <img src={LogoWhiteImg} alt="Wysele Enterprise Logo" title="Wysele Technologies" width="96" height="24" className="w-24 opacity-90" />
+                            <img loading="lazy" src={LogoWhiteImg} alt="Wysele Enterprise Logo" title="Wysele Technologies" width="96" height="24" className="w-24 opacity-90" />
                         </a>
                         <p className="text-white/60 text-base leading-relaxed max-w-md">
                             Wysele is one of India’s top SAP solution providers, delivering end-to-end digital transformation for enterprises globally.
@@ -27,13 +27,14 @@ export default function Footer() {
                         <div className="flex gap-4">
                             {[
                                 { Icon: Linkedin, href: "https://www.linkedin.com/company/wyseletechnologies", title: "Wysele Technologies LinkedIn Profile" },
-                                { Icon: Instagram, href: "#", title: "Wysele Technologies Instagram Profile" },
-                                { Icon: Facebook, href: "#", title: "Wysele Technologies Facebook Profile" }
+                                { Icon: Instagram, href: "#!", title: "Wysele Technologies Instagram Profile" },
+                                { Icon: Facebook, href: "#!", title: "Wysele Technologies Facebook Profile" }
                             ].map(({ Icon, href, title }, i) => (
                                 <a
                                     key={i}
                                     href={href}
                                     title={title}
+                                    aria-label={title}
                                     target={href !== "#" ? "_blank" : undefined}
                                     rel={href !== "#" ? "noopener noreferrer" : undefined}
                                     className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
@@ -88,7 +89,7 @@ export default function Footer() {
                             {[
                                 { label: "Contact", href: "/contact", title: "Contact Wysele Technologies" },
                                 { label: "LinkedIn", href: "https://www.linkedin.com/company/wyseletechnologies", title: "Wysele Technologies LinkedIn Profile", target: "_blank", rel: "noopener noreferrer" },
-                                { label: "WhatsApp", href: "#", title: "Chat with Wysele on WhatsApp" },
+                                { label: "WhatsApp", href: "#!", title: "Chat with Wysele on WhatsApp" },
                                 { label: "Email Us", href: "mailto:info@wysele.com", title: "Contact Wysele Technologies" }
                             ].map(item => (
                                 <li key={item.label}>

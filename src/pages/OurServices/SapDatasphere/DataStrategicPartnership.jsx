@@ -49,8 +49,7 @@ const DataStrategicPartnership = () => {
                         >
                             {/* Background Image with dark overlay for text readability */}
                             <div className="absolute inset-0 z-0">
-                                <img 
-                                    src={sapDatasphereStrategic1Img} 
+                                <img loading="lazy" src={sapDatasphereStrategic1Img} 
                                     className="w-full h-full object-cover object-[center_75%] transition-transform duration-700 group-hover:scale-110" 
                                     alt="Partner Background" 
                                 />
@@ -83,8 +82,7 @@ const DataStrategicPartnership = () => {
                         >
                             {/* Background Image with Overlay */}
                             <div className="absolute inset-0 z-0">
-                                <img 
-                                    src={sapDatasphereStrategic2Img} 
+                                <img loading="lazy" src={sapDatasphereStrategic2Img} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                                     alt="Background" 
                                     />

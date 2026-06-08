@@ -80,8 +80,7 @@ export default function SapMigrationofferings() {
                     <div className="w-full xl:w-[60%] relative group">
                         {/* Background Image Wrapper */}
                         <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden z-0">
-                            <img
-                                src={sapMigrationOfferingsImg}
+                            <img loading="lazy" src={sapMigrationOfferingsImg}
                                 alt="Migration Strategy"
                                 className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
                             />

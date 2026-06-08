@@ -30,8 +30,7 @@ export default function SapApimanagement() {
                     transition={{ duration: 0.8 }}
                     className="w-full flex justify-center lg:justify-start pr-8 lg:pr-16"
                 >
-                    <img
-                        src={SapApiEnhancementImg}
+                    <img loading="lazy" src={SapApiEnhancementImg}
                         alt="SAP API Enhancement"
                         className="w-full max-w-xl h-auto object-contain"
                     />

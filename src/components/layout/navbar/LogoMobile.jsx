@@ -17,9 +17,9 @@ const LogoMobile = ({ white = false }) => {
                     src={LogoBlackImg}
                     alt="Wysele Company Logo"
                     title="Wysele Home"
-                    width="96"
-                    height="24"
-                    className="w-24 bg-cover mx-auto"
+                    width="80"
+                    height="20"
+                    className="w-20 bg-cover mx-auto"
                 />
 
             </div>

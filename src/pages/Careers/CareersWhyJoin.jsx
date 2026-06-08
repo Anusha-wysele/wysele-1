@@ -87,8 +87,7 @@ const CareersWhyJoin = () => {
             >
               {/* Image Section */}
               <div className="relative h-40 overflow-hidden">
-                <img 
-                  src={item.image} 
+                <img loading="lazy" src={item.image} 
                   alt={item.alt} 
                   title={item.imageTitle} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

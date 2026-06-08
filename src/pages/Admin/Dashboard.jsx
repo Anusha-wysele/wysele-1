@@ -216,7 +216,7 @@ export default function Dashboard() {
                   <div key={blog.id || blog._id} className="p-4 flex items-center gap-4 group hover:bg-gray-50/50 transition-colors">
                     <div className="w-12 h-12 bg-gray-100 flex-shrink-0 rounded overflow-hidden border border-gray-50">
                       {(blog.image_url || blog.img) ? (
-                        <img src={blog.image_url || blog.img} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        <img loading="lazy" src={blog.image_url || blog.img} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-300">
                           <FileText size={18} />

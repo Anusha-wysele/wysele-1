@@ -69,8 +69,7 @@ const EmpoverSapbtp = () => {
                         transition={{ duration: 1 }}
                         className="relative w-[280px] h-[360px] rounded-2xl overflow-hidden border border-gray-200 p-2 bg-gray-50 shadow-sm"
                     >
-                        <img
-                            src={btpEmpover1Img}
+                        <img loading="lazy" src={btpEmpover1Img}
                             alt="SAP BTP Architecture"
                             className="w-full h-full object-cover rounded-xl"
                         />
@@ -86,8 +85,7 @@ const EmpoverSapbtp = () => {
                         className="absolute left-[30%] top-[20%] -translate-x-1/2 -translate-y-1/2 w-[420px] h-[220px] rounded-3xl shadow-2xl z-20 overflow-hidden border border-gray-100 bg-white"
                     >
                         {/* Integrated Analytics Image */}
-                        <img
-                            src={btpEmpover2Img}
+                        <img loading="lazy" src={btpEmpover2Img}
                             alt="Wysele BTP Analytics"
                             className="w-full h-full object-cover"
                         />

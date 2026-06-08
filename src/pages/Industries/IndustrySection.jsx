@@ -205,8 +205,7 @@ const IndustrySection = ({ title, description, image, tags, features, reversed }
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
               >
-                <img
-                  src={image}
+                <img loading="lazy" src={image}
                   alt={meta.alt}
                   title={meta.title}
                   className="w-full h-full object-cover transition-all duration-700"

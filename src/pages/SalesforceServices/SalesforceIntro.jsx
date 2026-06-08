@@ -103,8 +103,7 @@ const SalesforceIntro = () => {
                 transition={{ duration: 0.8 }}
                 className="absolute top-8 left-0 z-10 w-[84%] h-[82%] overflow-hidden shadow-2xl "
               >
-                <img
-                  src={SalesforceOverviewImg}
+                <img loading="lazy" src={SalesforceOverviewImg}
                   alt="Team Collaboration"
                   className="w-full h-full object-cover transition-all duration-700 rounded-lg bg-black/30"
                 />

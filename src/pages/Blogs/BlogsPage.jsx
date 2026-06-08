@@ -169,8 +169,7 @@ const BlogsPage = () => {
               >
                 {/* Image Container */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
-                  <img
-                    src={post.img}
+                  <img loading="lazy" src={post.img}
                     alt={post.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

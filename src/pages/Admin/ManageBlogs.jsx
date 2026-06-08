@@ -417,7 +417,7 @@ const ManageBlogs = () => {
                 <div className="p-8 space-y-6 max-h-[75vh] overflow-y-auto hide-scrollbar">
                   {selectedBlog.image_url && (
                     <div className="w-full h-48 bg-gray-100 overflow-hidden">
-                      <img src={selectedBlog.image_url} alt={selectedBlog.title} className="w-full h-full object-cover" />
+                      <img loading="lazy" src={selectedBlog.image_url} alt={selectedBlog.title} className="w-full h-full object-cover" />
                     </div>
                   )}
                   <div className="space-y-2">

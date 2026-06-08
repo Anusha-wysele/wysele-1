@@ -50,8 +50,7 @@ const SapIntegrationHelp = () => {
                                 data-aos-delay={idx * 100}
                             >
                                 {/* Background Image */}
-                                <img 
-                                    src={step.img} 
+                                <img loading="lazy" src={step.img} 
                                     alt={step.title}
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                 />

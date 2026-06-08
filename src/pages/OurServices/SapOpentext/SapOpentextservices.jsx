@@ -105,8 +105,7 @@ export default function SapOpentextservices() {
                                     }}
                                     className="absolute inset-0 w-full h-full"
                                 >
-                                    <img
-                                        src={currentService.image}
+                                    <img loading="lazy" src={currentService.image}
                                         alt={currentService.title}
                                         className="w-full h-full object-cover"
                                     />

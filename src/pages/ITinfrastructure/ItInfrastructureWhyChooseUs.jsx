@@ -93,8 +93,7 @@ const ItInfrastructureWhyChooseUs = () => {
               className="relative z-10"
             >
               <div className="relative p-2  ">
-                <img 
-                  src={itInfrastructureWhyChoose} 
+                <img loading="lazy" src={itInfrastructureWhyChoose} 
                   alt="IT Excellence Team" 
                   className="w-full h-[400px] object-cover transition-all duration-700"
                 />

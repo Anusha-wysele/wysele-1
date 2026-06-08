@@ -215,8 +215,7 @@ export default function MeetOurPeople() {
                       }`}
                   >
                     {/* Image */}
-                    <img
-                      src={member.img}
+                    <img loading="lazy" src={member.img}
                       alt={member.alt}
                       title={member.title}
                       className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-out ${isActive ? "scale-105 saturate-100" : "scale-100 saturate-50 brightness-75 hover:brightness-90"

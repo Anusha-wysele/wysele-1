@@ -30,8 +30,7 @@ export default function SapMastergovernance() {
                     transition={{ duration: 0.8 }}
                     className="w-full flex justify-center lg:justify-start pr-8 lg:pr-16"
                 >
-                    <img
-                        src={SapMasterGovernanceImg}
+                    <img loading="lazy" src={SapMasterGovernanceImg}
                         alt="SAP Master Data Governance"
                         className="w-full max-w-md h-auto object-contain"
                     />

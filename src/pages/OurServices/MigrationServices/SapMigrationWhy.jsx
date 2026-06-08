@@ -42,8 +42,7 @@ export default function SapMigrationWhy() {
                         <div className="relative rounded-[1.5rem] overflow-hidden p-6 md:pt-10 md:px-8 md:pb-5 shadow-2xl group min-h-[400px] flex flex-col">
                             {/* Decorative background image with full visibility */}
                             <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-110">
-                                <img
-                                    src={sapMigrationWhyImg}
+                                <img loading="lazy" src={sapMigrationWhyImg}
                                     alt="Transformation"
                                     className="w-full h-full object-cover"
                                 />

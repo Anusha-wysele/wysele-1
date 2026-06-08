@@ -58,8 +58,7 @@ const AdminLogin = () => {
         <div className="hidden md:block w-1/2 relative overflow-hidden group">
 
           {/* Image */}
-          <img
-            src={loginHeroImg}
+          <img loading="lazy" src={loginHeroImg}
             alt="Admin Login Visual"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
@@ -88,7 +87,7 @@ const AdminLogin = () => {
         {/* Right Side - Login Form */}
         <div className="flex-1 flex flex-col justify-center p-6 md:p-10 bg-white relative overflow-y-auto">
           <div className="md:hidden flex justify-center mb-6">
-            <img src={logoDark} alt="Wysele" className="h-8" />
+            <img loading="lazy" src={logoDark} alt="Wysele" className="h-8" />
           </div>
 
           <div className="space-y-1 text-center md:text-left mb-8">

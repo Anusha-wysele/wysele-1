@@ -61,8 +61,7 @@ const SapIntegrationServices = () => {
             <div className="flex flex-col lg:flex-row w-full bg-[#0B0B0B] overflow-hidden border-b border-gray-800">
                 {/* Left: Image */}
                 <div className="w-full lg:w-[40%] h-[300px] lg:h-[450px] relative">
-                    <img
-                        src={sapIntegrationServicesImg}
+                    <img loading="lazy" src={sapIntegrationServicesImg}
                         alt="Integration Excellence"
                         className="absolute inset-0 w-full h-full object-cover grayscale-[10%]"
                     />

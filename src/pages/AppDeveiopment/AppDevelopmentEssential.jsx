@@ -83,8 +83,7 @@ const AppDevelopmentEssential = () => {
                         >
                             {/* Card Image */}
                             <div className="w-full h-36 overflow-hidden">
-                                <img
-                                    src={item.image}
+                                <img loading="lazy" src={item.image}
                                     alt={item.title}
                                     className="w-full h-full object-cover object-top"
                                 />

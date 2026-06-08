@@ -30,8 +30,7 @@ export default function SapGenaitransform() {
                     transition={{ duration: 0.8 }}
                     className="w-full flex justify-center lg:justify-end"
                 >
-                    <img
-                        src={GanAiphasesImg}
+                    <img loading="lazy" src={GanAiphasesImg}
                         alt="SAP GenAI Transformation Phases"
                         className="w-full max-w-xl h-auto object-contain rounded-xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.07)]"
                     />

@@ -85,14 +85,14 @@ const GetInTouch = () => {
 
                     <form onSubmit={handleSubmit} className={`flex flex-col gap-4 md:gap-5 max-w-[540px] w-full ${isMobile ? 'px-0' : 'mb-3'}`}>
                         <div className="flex flex-col md:flex-row gap-4 md:gap-5 w-full">
-                            <input type="text" name="fullName" value={form.fullName} onChange={handleChange} required placeholder="Full Name" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
-                            <input type="email" name="emailAddress" value={form.emailAddress} onChange={handleChange} required placeholder="Email Address" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
+                            <input type="text" name="fullName" aria-label="Full Name" value={form.fullName} onChange={handleChange} required placeholder="Full Name" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
+                            <input type="email" name="emailAddress" aria-label="Email Address" value={form.emailAddress} onChange={handleChange} required placeholder="Email Address" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
                         </div>
                         <div className="flex flex-col md:flex-row gap-4 md:gap-5 w-full">
-                            <input type="tel" name="phoneNumber" value={form.phoneNumber} onChange={handleChange} required placeholder="Phone Number" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
-                            <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="Location" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
+                            <input type="tel" name="phoneNumber" aria-label="Phone Number" value={form.phoneNumber} onChange={handleChange} required placeholder="Phone Number" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
+                            <input type="text" name="location" aria-label="Location" value={form.location} onChange={handleChange} required placeholder="Location" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors" />
                         </div>
-                        <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors resize-none h-[42px]" />
+                        <textarea name="message" aria-label="Message" value={form.message} onChange={handleChange} required placeholder="Message" className="w-full bg-transparent border-b border-white/50 py-2.5 text-[15px] text-white placeholder-white/80 outline-none focus:border-white transition-colors resize-none h-[42px]" />
 
                         <div className="flex items-start gap-3 w-full mt-2 text-left">
                             <input type="checkbox" name="confirm" id="confirm-checkbox" checked={form.confirm} onChange={handleChange} required className="mt-1" />
@@ -137,12 +137,17 @@ const GetInTouch = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     title="Wysele Technologies LinkedIn Profile"
+                                    aria-label="Wysele Technologies LinkedIn Profile"
                                     className="text-black hover:text-[#C9184A] transition-colors"
                                 >
                                     <Linkedin size={20} />
                                 </a>
-                                <Instagram size={20} className="cursor-pointer hover:text-[#C9184A]" />
-                                <Facebook size={20} className="cursor-pointer hover:text-[#C9184A]" />
+                                <button type="button" aria-label="Wysele Technologies Instagram Profile" className="text-black hover:text-[#C9184A] transition-colors">
+                                    <Instagram size={20} className="cursor-pointer" />
+                                </button>
+                                <button type="button" aria-label="Wysele Technologies Facebook Profile" className="text-black hover:text-[#C9184A] transition-colors">
+                                    <Facebook size={20} className="cursor-pointer" />
+                                </button>
                             </div>
                         </div>
                     </div>

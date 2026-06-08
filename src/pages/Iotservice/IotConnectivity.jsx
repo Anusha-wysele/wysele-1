@@ -16,8 +16,7 @@ export default function IotConnectivity() {
       
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={connectivityBg} 
+        <img loading="lazy" src={connectivityBg} 
           alt="Secure IoT Connectivity" 
           className="w-full h-full object-cover"
         />

@@ -80,8 +80,7 @@ const SapSignavioStrengths = () => {
                             transition={{ duration: 0.8 }}
                             className="w-full h-full rounded-sm overflow-hidden"
                         >
-                            <img 
-                                src={sapSignavioImplementationImg} 
+                            <img loading="lazy" src={sapSignavioImplementationImg} 
                                 alt="Business people meeting outdoors" 
                                 className="w-full h-full object-cover rounded-sm absolute inset-0"
                             />

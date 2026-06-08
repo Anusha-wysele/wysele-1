@@ -107,8 +107,7 @@ const Founder = () => {
 
                                 {/* Image container */}
                                 <div className="relative bg-white rounded-lg overflow-hidden shadow-2xl">
-                                    <img
-                                        src={founderImg}
+                                    <img loading="lazy" src={founderImg}
                                         alt="Brahmam Chowdary Murukonda Founder and CEO"
                                         title="Founder and CEO"
                                         className="w-full h-[400px] md:h-[480px] object-cover transition-all duration-700 group-hover:grayscale-[30%]"

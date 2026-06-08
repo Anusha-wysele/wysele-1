@@ -30,8 +30,7 @@ const CybersecurityWhyChooseUs = () => {
     <section className="relative py-10 overflow-hidden font-sans">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={cybersecurityWhyChoose}
+        <img loading="lazy" src={cybersecurityWhyChoose}
           alt="Cybersecurity Background"
           className="w-full h-full object-cover"
         />

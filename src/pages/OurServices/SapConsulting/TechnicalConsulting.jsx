@@ -42,8 +42,7 @@ const TechnicalConsulting = () => {
         <div className="bg-white" ref={sectionRef}>
             {/* Full Width Image with Overlay Text */}
             <div className="w-full relative min-h-[90vh] lg:min-h-[75vh] flex items-center bg-black overflow-hidden py-16 lg:py-0">
-                <img
-                    src={sapConsultingTechnicalImg}
+                <img loading="lazy" src={sapConsultingTechnicalImg}
                     alt="Technical SAP Consulting"
                     className="absolute inset-0 w-full h-full object-cover"
                 />

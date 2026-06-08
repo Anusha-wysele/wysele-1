@@ -13,8 +13,7 @@ const Logo = ({ white = false }) => {
             >
 
 
-                <img
-                    src={LogoWhiteImg}
+                <img src={LogoWhiteImg}
                     alt="Wysele Technologies Logo"
                     title="Wysele Technologies"
                     width="96"

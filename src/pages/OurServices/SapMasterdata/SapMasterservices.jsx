@@ -95,8 +95,7 @@ const SapMasterservices = () => {
                         >
                             {/* Card Image */}
                             <div className="w-full h-44 overflow-hidden relative">
-                                <img
-                                    src={service.image}
+                                <img loading="lazy" src={service.image}
                                     alt={service.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 />

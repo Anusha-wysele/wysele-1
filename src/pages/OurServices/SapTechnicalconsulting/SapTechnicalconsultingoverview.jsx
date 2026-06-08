@@ -30,8 +30,7 @@ export default function SapTechnicalconsultingoverview() {
                     transition={{ duration: 0.8 }}
                     className="w-full flex justify-center lg:justify-start lg:pr-16"
                 >
-                    <img
-                        src={SapTechnicalconsultingoverviewImg}
+                    <img loading="lazy" src={SapTechnicalconsultingoverviewImg}
                         alt="SAP Technical Consulting Overview"
                         className="w-full max-w-xl h-auto object-contain"
                     />

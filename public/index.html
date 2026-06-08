@@ -9,14 +9,19 @@
   <meta name="description"
     content="Wysele Technologies delivers SAP, Salesforce, cybersecurity, AI/ML, cloud, IoT, web, and enterprise IT solutions for digital transformation." />
   <link rel="apple-touch-icon" href="./Tlogo.png" />
+  
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- Preconnect to Google Fonts Origins -->
+  <!-- Preconnect to Google Fonts Origins and ImageKit -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://ik.imagekit.io" crossorigin />
 
   <!-- Preload homepage background video poster with responsive media queries for LCP optimization -->
-  <link rel="preload" as="image" href="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-480,q-40,f-webp" media="(max-width: 767px)" />
-  <link rel="preload" as="image" href="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80" media="(min-width: 768px)" />
+  <link rel="preload" as="image" href="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-480,q-40,f-webp" media="(max-width: 767px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80,f-webp" media="(min-width: 768px)" fetchpriority="high" />
 
   <!-- Optimized Google Fonts Asynchronous Loader (Prevents Render Blocking) -->
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@300;400;500;600;700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oxygen:wght@300;400;700&display=swap" />
@@ -54,11 +59,41 @@
   <link rel="image_src" href="https://www.wysele.com/og-image.png" />
 
   <!-- Note: Schema.org structured data is injected dynamically by SEOManager.jsx per page -->
+  <style>
+    body { margin: 0; background-color: #111827; }
+    #initial-loader {
+      position: absolute;
+      top: 60px; left: 10px; right: 10px; bottom: 30px;
+      background-image: url('https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80,f-webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+      filter: brightness(0.75) grayscale(0.1);
+    }
+    @media (max-width: 767px) {
+      #initial-loader {
+        top: 60px; left: 0; right: 0; bottom: 0;
+        background-image: url('https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-480,q-40,f-webp');
+        filter: none;
+      }
+      #initial-loader-overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.25);
+        z-index: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+    <div id="initial-loader">
+      <div id="initial-loader-overlay"></div>
+    </div>
+  </div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -88,8 +88,7 @@ export default function WebServicesweoffer() {
                                 transition={{ duration: 1.2, ease: "easeOut" }}
                                 className="relative z-0 overflow-hidden rounded-sm shadow-xl border border-gray-100 aspect-[16/9] w-full"
                             >
-                                <img 
-                                    src={webDevServices1} 
+                                <img loading="lazy" src={webDevServices1} 
                                     alt="Workspace Base" 
                                     className="w-full h-full object-cover"
                                 />
@@ -109,8 +108,7 @@ export default function WebServicesweoffer() {
                                 transition={{ duration: 1.2, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
                                 className="absolute bottom-[-20px] md:bottom-[-40px] left-0 md:left-[-20px] w-full aspect-[16/9] z-10 overflow-hidden rounded-sm shadow-2xl"
                             >
-                                <img 
-                                    src={webDevServices2} 
+                                <img loading="lazy" src={webDevServices2} 
                                     alt="Modern Setup" 
                                     className="w-full h-full object-cover"
                                 />

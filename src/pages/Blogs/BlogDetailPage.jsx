@@ -202,8 +202,7 @@ const BlogDetailPage = () => {
           transition={{ duration: 0.8 }}
           className="w-full aspect-video overflow-hidden bg-gray-100"
         >
-          <img 
-            src={blog.image_url || blog.img} 
+          <img loading="lazy" src={blog.image_url || blog.img} 
             alt={blog.title} 
             className="w-full h-full object-cover"
           />

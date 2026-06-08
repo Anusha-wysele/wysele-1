@@ -14,8 +14,7 @@ export default function SapBtpapithirdparty() {
                     transition={{ duration: 0.8 }}
                     className="w-full flex justify-center lg:justify-end lg:pl-16"
                 >
-                    <img
-                        src={SapBtpapithirdpartyImg}
+                    <img loading="lazy" src={SapBtpapithirdpartyImg}
                         alt="SAP BTP Third Party Integration"
                         className="w-full max-w-xl h-auto object-contain"
                     />

@@ -139,8 +139,7 @@ const CybersecurityThreats = () => {
 
                 {/* IMAGE */}
                 <div className="w-full h-full">
-                  <img
-                    src={threats[activeIndex].image}
+                  <img loading="lazy" src={threats[activeIndex].image}
                     alt={threats[activeIndex].title}
                     className="w-full h-full object-cover"
                   />

@@ -539,9 +539,7 @@ function MegaMenu({ type, open, onClose }) {
 
             >
 
-              <img
-
-                src={hoveredItem?.img || data.featured.img}
+              <img loading="lazy" src={hoveredItem?.img || data.featured.img}
 
                 alt="Featured"
 
@@ -979,7 +977,7 @@ export default function Navbar() {
 
       <nav
         id="main-navbar"
-        className={`w-full fixed z-[990] bg-white px-3 py-2 md:py-0 transition-all duration-300 top-0 md:top-[40px]`}
+        className={`w-full fixed z-[990] bg-white px-3 py-0.5 md:py-0 transition-all duration-300 top-0 md:top-[40px]`}
       >
 
         <div className="w-full h-full flex items-center justify-between">
@@ -1210,7 +1208,7 @@ export default function Navbar() {
           {/* Contact Us Button */}
 
           <div
-            className="hidden md:block ml-auto mr-8 relative"
+            className="ml-auto mr-2 md:mr-8 relative"
             onMouseEnter={() => setHoveredLink("Contact Us")}
             onMouseLeave={() => setHoveredLink(null)}
           >
@@ -1219,7 +1217,7 @@ export default function Navbar() {
                 navigate("/contact");
                 window.scrollTo(0, 0);
               }}
-              className="text-[12px] uppercase font-semibold px-6 py-4 flex items-center gap-1.5 relative bg-[#FFD700] hover:bg-[#fbbf24] text-black transition-colors duration-300"
+              className="text-[10px] md:text-[12px] uppercase font-semibold px-2.5 py-1.5 md:px-6 md:py-4 flex items-center gap-1.5 relative bg-[#FFD700] hover:bg-[#fbbf24] text-black transition-colors duration-300 rounded-sm md:rounded-none"
             >
               <span className="relative inline-block overflow-hidden" style={{ height: '1.5em' }}>
                 {"Contact Us".split('').map((char, idx) => (
@@ -1264,7 +1262,7 @@ export default function Navbar() {
 
           {/* LinkedIn Icon */}
 
-          <a
+          <a aria-label="Wysele Technologies LinkedIn Profile" 
 
             href="https://www.linkedin.com/company/wyseletechnologies"
 
@@ -1272,7 +1270,7 @@ export default function Navbar() {
 
             rel="noopener noreferrer"
 
-            title="Wysele Technologies LinkedIn Profile"
+             title="Wysele Technologies LinkedIn Profile" 
 
             className="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-gray-300 hover:border-[#0A66C2] hover:bg-[#0A66C2] text-gray-700 hover:text-white transition-all duration-300 ml-7 mr-4"
 
@@ -1291,21 +1289,13 @@ export default function Navbar() {
           {/* Hamburger Menu Icon */}
 
           <button
-
             onClick={() => setMenuOpen(!menuOpen)}
-
             onMouseEnter={() => setHoveredLink("menuIcon")}
-
             onMouseLeave={() => setHoveredLink(null)}
-
             aria-label="Open Navigation Menu"
-
             aria-expanded={menuOpen}
-
-            className="transition flex flex-col justify-center items-center ml-4 w-10 h-10 relative group"
-
+            className="transition flex flex-col justify-center items-center ml-2 md:ml-4 w-8 h-8 md:w-10 md:h-10 relative group"
             style={{ color: textColor }}
-
           >
 
             <div className="relative w-7 h-5 overflow-hidden">

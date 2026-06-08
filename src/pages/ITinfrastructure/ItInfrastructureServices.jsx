@@ -111,8 +111,7 @@ const ItInfrastructureServices = () => {
 
               {/* Image Area at Bottom */}
               <div className="w-full h-[160px] overflow-hidden relative mt-auto">
-                <img 
-                  src={service.image} 
+                <img loading="lazy" src={service.image} 
                   alt={service.title}
                   className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000 transform group-hover:scale-110"
                 />
