@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Cylinders from '../../../components/common/Cylinders';
 import sapBtpHeroImg from "../../../assets/wysele-btphero.webp";
@@ -55,7 +56,7 @@ const BtpHero = () => {
                         >
                             Transform Your <br className="hidden sm:block" />
                             Business with <br className="hidden sm:block" />
-                            <span className="text-[#800000] font-semibold">SAP BTP</span>
+                            <span className="text-[#800000] font-semibold"><Link to="/services/sap-btp" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></Link></span>
                         </motion.h1>
                     </div>
 

@@ -154,19 +154,19 @@ const SignavioFaq = () => {
                 {/* Left Column: Heading and Paragraphs */}
                 <div className="lg:max-w-[65%] text-left space-y-4">
                     <h2 className="text-xl sm:text-2xl lg:text-[28px] font-bold text-gray-950 leading-tight">
-                        Improve Workflow Efficiency with SAP Signavio Solutions
+                        Improve Workflow Efficiency with <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> Solutions
                     </h2>
                     <div className="space-y-2">
                         <p className="text-xs sm:text-sm text-gray-750 leading-relaxed font-normal">
                             Businesses need connected, efficient, and transparent operational workflows to remain competitive in evolving markets.
                         </p>
                         <p className="text-xs sm:text-sm text-gray-750 leading-relaxed font-normal">
-                            Wysele helps organizations optimize processes, improve collaboration, and support digital transformation through scalable SAP Signavio consulting and implementation services.
+                            Wysele helps organizations optimize processes, improve collaboration, and support digital transformation through scalable <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> consulting and implementation services.
                         </p>
                     </div>
                 </div>
 
-                {/* Right Column: Button styled like Web Development */}
+                {/* Right Column: Button styled like <Link to="/services/web-development" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/web-development" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Web Development</Link></Link> */}
                 <div className="w-full lg:w-auto flex justify-start lg:justify-end flex-shrink-0 pt-4 lg:pt-0">
                     <Link to="/contact">
                         <button className="group relative inline-flex items-center gap-2 text-sm font-medium tracking-[0.15em] text-[#800000] uppercase pb-2 border-b border-[#800000]/30 hover:border-[#800000] transition-colors duration-300 px-6">

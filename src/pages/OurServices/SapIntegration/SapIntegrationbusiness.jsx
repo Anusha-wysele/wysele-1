@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -44,7 +45,7 @@ const SapIntegrationBusiness = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="text-xl md:text-2xl lg:text-3xl font-medium text-black mb-10 tracking-tight max-w-4xl leading-tight"
                 >
-                    Connected SAP Integration for <br className="hidden md:block" /> Unified Business Operations
+                    Connected <Link to="/services/sap-integration" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-integration" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Integration</Link></Link> for <br className="hidden md:block" /> Unified Business Operations
                 </motion.h2>
 
                 {/* Content Grid */}

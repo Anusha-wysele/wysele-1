@@ -1,5 +1,6 @@
 import AGRIBUSINESS_IMAGE from "../../assets/wysele-industriesagribusinesses.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesAgribusiness = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesAgribusiness = () => {
     return (
         <IndustrySection
             title="Agribusiness"
-            description="From farm to fork, Wysele’s SAP solutions help agribusinesses optimize processes, enhance sustainability, and maximize yields."
+            description={<>From farm to fork, Wysele’s <Link to="/sap-services" style={{ color: "inherit", textDecoration: "none" }}>SAP solutions</Link> help agribusinesses optimize processes, enhance sustainability, and maximize yields.</>}
             image={AGRIBUSINESS_IMAGE}
             features={features}
             reversed={false}

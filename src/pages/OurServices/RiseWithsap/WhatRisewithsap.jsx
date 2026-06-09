@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ChartLineUp, Lightbulb, RocketLaunch } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import riseWhyChooseImg from "../../../assets/wysele-risewhychoose.webp";
@@ -47,13 +48,13 @@ export default function WhatRisewithsap() {
                             <div className="hidden md:block absolute -inset-4 border-2 border-[#800000] opacity-30 group-hover:inset-0 transition-all duration-500 ease-out pointer-events-none" />
                             <div className="p-4 relative z-10">
                                 <h2 className="text-base font-semibold text-gray-900 leading-snug mb-1 tracking-tight">
-                                    How RISE with SAP Supports <span className="text-[#C9184A]">Business Transformation</span>
+                                    How <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> Supports <span className="text-[#C9184A]">Business Transformation</span>
                                 </h2>
                                 <h3 className="text-xs font-bold text-gray-800 mb-2">
                                     Improve Operational Efficiency
                                 </h3>
                                 <p className="text-xs text-gray-600 leading-relaxed font-normal mb-3">
-                                    Operational inefficiencies often reduce productivity and create delays across departments. RISE with SAP helps organizations improve workflow management, streamline business processes, and reduce operational complexity.
+                                    Operational inefficiencies often reduce productivity and create delays across departments. <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> helps organizations improve workflow management, streamline business processes, and reduce operational complexity.
                                 </p>
                                 <div className="h-[1px] w-full bg-gray-100 mb-3" />
                                 <p className="text-xs font-semibold text-gray-700 mb-2">
@@ -98,15 +99,15 @@ export default function WhatRisewithsap() {
                             <div className="absolute -inset-4 border-2 border-[#800000] opacity-30 group-hover:inset-0 transition-all duration-500 ease-out pointer-events-none" />
                             <div className="p-4 relative z-10">
                                 <h2 className="text-base font-semibold text-gray-900 leading-snug mb-2 tracking-tight">
-                                    What is <span className="text-[#C9184A]">RISE with SAP?</span>
+                                    What is <span className="text-[#C9184A]"><Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link>?</span>
                                 </h2>
                                 <div className="h-[1px] w-full bg-gray-100 mb-2" />
                                 <p className="text-xs text-gray-600 leading-relaxed font-normal mb-3">
-                                    RISE with SAP is a business transformation solution that combines SAP cloud infrastructure, SAP S/4HANA, process intelligence, analytics, and operational tools into a unified framework. The solution helps businesses modernize enterprise systems, improve operational visibility, and simplify digital transformation initiatives.
+                                    <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> is a business transformation solution that combines SAP cloud infrastructure, <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link>, process intelligence, analytics, and operational tools into a unified framework. The solution helps businesses modernize enterprise systems, improve operational visibility, and simplify digital transformation initiatives.
                                 </p>
                                 <div className="h-[1px] w-full bg-gray-100 mb-3" />
                                 <p className="text-xs font-semibold text-gray-700 mb-2">
-                                    RISE with SAP supports organizations by helping them:
+                                    <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> supports organizations by helping them:
                                 </p>
                                 <ul className="space-y-1">
                                     {[
@@ -164,7 +165,7 @@ export default function WhatRisewithsap() {
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     >
                         <h2 className="text-xl md:text-2xl font-medium text-white leading-tight tracking-tight mb-4 drop-shadow-lg">
-                            How RISE with SAP Supports<br />Business Transformation
+                            How <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> Supports<br />Business Transformation
                         </h2>
                     </motion.div>
                 </div>
@@ -186,7 +187,7 @@ export default function WhatRisewithsap() {
                                     Improve Operational Efficiency
                                 </h3>
                                 <p className="text-white/90 text-xs leading-relaxed mb-4">
-                                    RISE with SAP helps organizations improve workflow management, streamline business processes, and reduce operational complexity.
+                                    <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> helps organizations improve workflow management, streamline business processes, and reduce operational complexity.
                                 </p>
                                 <div className="h-[1px] w-full bg-white/10 my-3" />
                                 <p className="text-xs font-semibold text-white mb-2">
@@ -225,7 +226,7 @@ export default function WhatRisewithsap() {
                                     Support Cloud-Based Business Operations
                                 </h3>
                                 <p className="text-white/90 text-xs leading-relaxed mb-4">
-                                    RISE with SAP supports cloud transformation by helping organizations move critical business operations into secure and scalable cloud environments.
+                                    <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> supports cloud transformation by helping organizations move critical business operations into secure and scalable cloud environments.
                                 </p>
                                 <div className="h-[1px] w-full bg-white/10 my-3" />
                                 <p className="text-xs font-semibold text-white mb-2">
@@ -263,7 +264,7 @@ export default function WhatRisewithsap() {
                                     Accelerate Growth
                                 </h3>
                                 <p className="text-white/90 text-xs leading-relaxed mb-4">
-                                    Boost your organizational scalability and responsiveness, enabling rapid adaptation to market changes and the ability to seize new opportunities as they arise. RISE with SAP includes analytics and process intelligence tools that help organizations monitor performance, identify inefficiencies, and improve reporting visibility.
+                                    Boost your organizational scalability and responsiveness, enabling rapid adaptation to market changes and the ability to seize new opportunities as they arise. <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> includes analytics and process intelligence tools that help organizations monitor performance, identify inefficiencies, and improve reporting visibility.
                                 </p>
                                 <div className="h-[1px] w-full bg-white/10 my-3" />
                                 <p className="text-xs font-semibold text-white mb-2">

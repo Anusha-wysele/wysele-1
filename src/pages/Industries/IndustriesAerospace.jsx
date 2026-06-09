@@ -1,5 +1,6 @@
 import AEROSPACE_IMAGE from "../../assets/wysele-industriesaerospace.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesAerospace = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesAerospace = () => {
     return (
         <IndustrySection
             title="Aerospace & Defense"
-            description="Wysele helps aerospace and defense companies drive operational excellence, compliance, and innovation."
+            description={<>Wysele helps aerospace and defense companies drive <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">operational excellence</Link>, compliance, and innovation.</>}
             image={AEROSPACE_IMAGE}
             features={features}
             reversed={true}

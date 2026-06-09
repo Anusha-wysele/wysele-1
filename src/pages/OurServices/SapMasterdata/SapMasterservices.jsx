@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightLeft, BarChart2, Database, HeadphonesIcon, Settings, ShieldCheck, Wrench } from 'lucide-react';
 
@@ -78,7 +79,7 @@ const SapMasterservices = () => {
                         Our Expertise
                     </span>
                     <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
-                        SAP Master Data Governance <span className="text-gray-400 italic font-light">Services</span>
+                        <Link to="/services/sap-masterdata" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-masterdata" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Master Data</Link></Link> Governance <span className="text-gray-400 italic font-light">Services</span>
                     </h2>
                 </motion.div>
 

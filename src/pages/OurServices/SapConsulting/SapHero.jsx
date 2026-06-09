@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -63,7 +64,7 @@ const SapConsulting = () => {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-3xl sm:text-4xl lg:text-[40px] font-bold mb-4 sm:mb-6 leading-tight text-white lg:text-gray-900"
                         >
-                            SAP Consulting Services <br className="hidden sm:block" />
+                            <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link> Services <br className="hidden sm:block" />
                             That Improve <span className="text-[#C9184A]">Operations</span> and <span className="text-[#C9184A]">Business Growth</span>
                         </motion.h1>
 
@@ -74,7 +75,7 @@ const SapConsulting = () => {
                             className="space-y-3 sm:space-y-4"
                         >
                             <h4 className="text-sm sm:text-base font-bold text-white lg:text-gray-800">
-                                Expert SAP Consulting for Growing Businesses
+                                Expert <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link> for Growing Businesses
                             </h4>
                             <p className="text-xs sm:text-sm text-white/80 lg:text-gray-600 leading-relaxed font-normal max-w-lg">
                                 Modern businesses need more than software implementation. They need SAP systems that improve workflows, reduce delays, support decision-making, and scale with business growth.

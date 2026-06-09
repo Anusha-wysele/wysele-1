@@ -1,6 +1,7 @@
 import { AlignCenterVertical, BoundingBox, CraneTower } from '@phosphor-icons/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import missionImg from "../../../assets/wysele-mission.webp";
 import valuesImg from "../../../assets/wysele-values.webp";
@@ -275,7 +276,7 @@ export default function AboutUs() {
                         fontFamily: 'Jost, sans-serif'
                     }}
                 >
-                    Wysele partners with enterprises to engineer intelligent SAP ecosystems, cloud-native solutions, and AI-driven strategies — delivering outcomes that create lasting competitive advantage across every market we serve.
+                    Wysele partners with enterprises to engineer intelligent <Link to="/sap-services" className="hover:text-[#f47d20] underline decoration-gray-300 underline-offset-4 transition-colors">SAP ecosystems</Link>, <Link to="/services/itinfrastructure" className="hover:text-[#f47d20] underline decoration-gray-300 underline-offset-4 transition-colors">cloud-native solutions</Link>, and <Link to="/services/aiml-services" className="hover:text-[#f47d20] underline decoration-gray-300 underline-offset-4 transition-colors">AI-driven strategies</Link> — delivering outcomes that create lasting competitive advantage across every market we serve.
                 </motion.p>
 
                 <motion.div

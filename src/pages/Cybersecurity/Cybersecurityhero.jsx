@@ -46,27 +46,9 @@ const CybersecurityHero = () => {
               </span>
             </motion.h1>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              className="space-y-6"
-            >
-              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
-                Protect business systems, networks, and cloud environments from cyber threats, unauthorized access, and security vulnerabilities.
-              </p>
-              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
-                Detect and reduce risks related to malware, ransomware, phishing attacks, and sensitive data exposure.
-              </p>
-              <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
-                Strengthen cybersecurity through risk assessment, vulnerability management, and continuous threat monitoring services.
-              </p>
               <p className="text-gray-300 text-sm md:text-lg font-light leading-relaxed pl-4 border-l-2 border-[#C9184A]">
                 Secure applications, infrastructure, and enterprise operations to support business continuity and operational stability.
               </p>
-
-            </motion.div>
-
 
           </div>
         </div>
@@ -80,4 +62,3 @@ const CybersecurityHero = () => {
 };
 
 export default CybersecurityHero;
-

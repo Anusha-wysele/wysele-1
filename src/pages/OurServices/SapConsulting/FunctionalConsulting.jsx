@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { Award, Building2, Check, RefreshCw, Settings, Target } from 'lucide-react';
 import React, { useEffect, useRef, useState } from 'react';
@@ -219,14 +220,14 @@ const FunctionalConsulting = () => {
 
             <div className="pt-2 pb-6">
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16">
-                    {/* SAP Consulting Process Section */}
+                    {/* <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link> Process Section */}
                     <div className="mt-10" ref={processRef}>
                     <div className="flex flex-col lg:flex-row items-start gap-8">
                         {/* Left side heading */}
                         <div className="flex-shrink-0 mt-16 lg:w-48">
                             <h2 className="text-2xl font-normal text-gray-900 leading-tight">
                                 How Our<br />
-                                SAP Consulting<br />
+                                <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link><br />
                                 Process Works
                             </h2>
                         </div>

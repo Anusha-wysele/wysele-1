@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Activity,
@@ -98,7 +99,7 @@ const CybersecurityServices = () => {
             transition={{ duration: 0.6 }}
             className="text-xl md:text-2xl lg:text-3xl font-normal text-[#800000] mb-3"
           >
-            Cybersecurity Services
+            <Link to="/services/cybersecurityhome" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/cybersecurityhome" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Cybersecurity</Link></Link> Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

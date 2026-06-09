@@ -217,6 +217,31 @@ const BlogDetailPage = () => {
           {blog.content}
         </div>
 
+        {/* Related Services (SEO Internal Linking) */}
+        <div className="mt-16 pt-8 border-t border-gray-100">
+          <h4 className="text-sm font-black text-gray-900 uppercase tracking-widest mb-6">Explore Related Services</h4>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/sap-services" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+              SAP Consulting
+            </Link>
+            <Link to="/services/salesforce" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+              Salesforce Solutions
+            </Link>
+            <Link to="/services/aiml-services" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+              AI / ML Services
+            </Link>
+            <Link to="/services/cybersecurityhome" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+              Cybersecurity
+            </Link>
+            <Link to="/services/itinfrastructure" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+              IT Infrastructure
+            </Link>
+            <Link to="/industries" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+              Industries We Serve
+            </Link>
+          </div>
+        </div>
+
         {/* Tags */}
         {/* {(blog.tags || blog.category) && (
           <div className="mt-16 pt-8 border-t border-gray-100 flex flex-wrap gap-2">

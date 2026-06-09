@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import {
   Briefcase,
@@ -106,7 +107,7 @@ const SignavioIndustrieswesupport = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right Column: Benefits of SAP Signavio Solutions */}
+                    {/* Right Column: Benefits of <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> Solutions */}
                     <motion.div 
                         variants={containerVariants}
                         initial="hidden"
@@ -115,7 +116,7 @@ const SignavioIndustrieswesupport = () => {
                     >
                         <div className="text-center mb-8 flex flex-col items-center">
                             <h2 className="text-xl sm:text-2xl font-bold text-gray-950 tracking-tight mb-3">
-                                Benefits of SAP Signavio Solutions
+                                Benefits of <Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-[#800000] font-medium">SAP Signavio</Link> Solutions
                             </h2>
                             <div className="w-12 h-1 bg-[#800000] rounded" />
                         </div>

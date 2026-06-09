@@ -1,5 +1,6 @@
 import BANKING_IMAGE from "../../assets/wysele-industriesbanking.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesBanking = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesBanking = () => {
     return (
         <IndustrySection
             title="Banking & Financial"
-            description="Wysele helps financial institutions modernize core banking operations, enhance security, and drive digital transformation."
+            description={<>Wysele helps financial institutions modernize core banking operations, enhance security, and drive <Link to="/sap-services" style={{ color: "inherit", textDecoration: "none" }}>digital transformation</Link>.</>}
             image={BANKING_IMAGE}
             features={features}
             reversed={true}

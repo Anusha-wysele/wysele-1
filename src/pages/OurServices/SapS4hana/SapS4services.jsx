@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import s4ServicesImg1 from '../../../assets/wysele-s4services1.webp';
 import s4ServicesImg2 from '../../../assets/wysele-s4services2.webp';
@@ -33,7 +34,7 @@ export default function SapS4services() {
             <div className="max-w-7xl mx-auto px-6 md:px-12">
                 <div className="text-center max-w-3xl mx-auto mb-6">
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-3">
-                        Our SAP S/4HANA Conversion Services
+                        Our <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link> Conversion Services
                     </h2>
                     <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </div>

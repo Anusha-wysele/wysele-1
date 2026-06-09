@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../common/Button';
 
 const HERO_INDUSTRIES = [
@@ -19,24 +19,32 @@ const HERO_INDUSTRIES = [
 
 const HERO_SLIDES = [
   {
-    tag: "Forward-Deployed Engineering (FDE) Services",
+    tag: <Link to="/services/fde" className="hover:text-[#FFD700] transition-colors">Forward-Deployed Engineering (FDE) Services</Link>,
     headline: (
       <>
-        Transforming AI Ideas into <br />
+        Transforming <Link to="/services/aiml-services" className="hover:text-white/80 transition-colors">AI</Link> Ideas into <br />
         Production-Ready Business Solutions
       </>
     ),
-    description: "Bridge the gap between experimental AI and real-world impact. Our embedded engineering teams work alongside your experts to rapidly deploy, customize, and scale AI-driven platforms tailored to your operational needs."
+    description: (
+      <>
+        Bridge the gap between experimental <Link to="/services/aiml-services" className="hover:text-[#FFD700] transition-colors underline decoration-white/30 underline-offset-4">AI</Link> and real-world impact. Our embedded engineering teams work alongside your experts to rapidly deploy, customize, and scale AI-driven platforms tailored to your operational needs.
+      </>
+    )
   },
   {
     tag: "Digital Excellence",
     headline: (
       <>
         Driving Business Transformation <br />
-        with Tailored Digital & AI Solutions
+        with Tailored Digital & <Link to="/services/aiml-services" className="hover:text-white/80 transition-colors">AI Solutions</Link>
       </>
     ),
-    description: "A powerful foundation for enterprises to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance."
+    description: (
+      <>
+        A powerful foundation for <Link to="/industries" className="hover:text-[#FFD700] transition-colors underline decoration-white/30 underline-offset-4">enterprises</Link> to design and manage workflows that handle complex tasks at scale, generate meaningful insights, and continuously evolve to improve performance.
+      </>
+    )
   }
 ];
 

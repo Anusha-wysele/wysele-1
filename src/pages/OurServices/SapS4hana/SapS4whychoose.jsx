@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function SapS4whychoose() {
@@ -71,7 +72,7 @@ export default function SapS4whychoose() {
             <div className="max-w-5xl mx-auto px-6 md:px-12">
                 <div className="text-center mb-10">
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#1e293b] uppercase tracking-wide">
-                        Why Choose Us for Your SAP S/4HANA Conversion?
+                        Why Choose Us for Your <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link> Conversion?
                     </h2>
                 </div>
 

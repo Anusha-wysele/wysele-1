@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BarChart3, Cloud, Code2, Cpu, Database, Settings2 } from 'lucide-react';
 import btpServiceHoverImg from "../../../assets/wysele-sapbtpservices1.webp";
@@ -57,7 +58,7 @@ const BtpSapservices = () => {
                         {/* Heading Section */}
                         <div className="relative mb-6">
                             <h2 className="text-xl md:text-2xl font-medium text-gray-900 flex items-baseline gap-2 flex-wrap">
-                                Our SAP BTP <span className="text-[#800000]">Services</span>
+                                Our <Link to="/services/sap-btp" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></Link> <span className="text-[#800000]">Services</span>
                             </h2>
                             <motion.div
                                 initial={{ width: 0 }}
@@ -70,7 +71,7 @@ const BtpSapservices = () => {
 
                         {/* Paragraph Section */}
                         <p className="text-[13px] text-gray-600 leading-relaxed">
-                            By partnering with <strong className="text-[#800000] font-bold">Wysele</strong> for SAP BTP services, you’re not just adopting a platform; <br className="hidden md:block" />
+                            By partnering with <strong className="text-[#800000] font-bold">Wysele</strong> for <Link to="/services/sap-btp" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></Link> services, you’re not just adopting a platform; <br className="hidden md:block" />
                             you’re embarking on a journey to transform your business through data, insights, and modern technology solutions. <br className="hidden md:block" />
                             Let us help you unlock the true potential of your operations and drive your business forward.
                         </p>

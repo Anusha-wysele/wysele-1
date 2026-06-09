@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const features = [
@@ -72,7 +73,7 @@ const AppDevelopmentBusinessgoals = () => {
                     className="mb-4 mx-auto max-w-3xl flex flex-col items-start text-left px-4 md:px-0"
                 >
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-normal text-black mb-2 leading-tight tracking-wide">
-                        Achieve Your Business Goals with <br />Mobile App Development
+                        Achieve Your Business Goals with <br />Mobile <Link to="/services/app-development" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>App Development</Link>
                     </h2>
                     <p className="text-sm md:text-base text-gray-700 font-light mb-1 w-full leading-relaxed">
                         In today's fast-evolving digital landscape, mobile devices play a vital role in simplifying everyday life. Mobile applications are designed to provide seamless, intuitive, and accessible experiences for users.

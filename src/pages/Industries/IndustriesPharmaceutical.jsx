@@ -1,5 +1,6 @@
 import PHARMA_IMAGE from "../../assets/wysele-industriespharma.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesPharmaceutical = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesPharmaceutical = () => {
     return (
         <IndustrySection
             title="Pharmaceutical"
-            description="SAP solutions by Wysele enable pharma companies to meet regulatory requirements while optimizing supply chain operations."
+            description={<><Link to="/sap-services" style={{ color: "inherit", textDecoration: "none" }}>SAP solutions</Link> by Wysele enable pharma companies to meet regulatory requirements while optimizing supply chain operations.</>}
             image={PHARMA_IMAGE}
             features={features}
             reversed={true}

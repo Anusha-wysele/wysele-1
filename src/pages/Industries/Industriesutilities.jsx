@@ -1,5 +1,6 @@
 import UTILITIES_IMAGE from "../../assets/wysele-industriesutilities.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesUtilities = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesUtilities = () => {
     return (
         <IndustrySection
             title="Utilities"
-            description="Wysele provides SAP solutions that help utilities enhance service delivery, regulatory compliance, and asset management."
+            description={<>Wysele provides <Link to="/sap-services" style={{ color: "inherit", textDecoration: "none" }}>SAP solutions</Link> that help utilities enhance service delivery, regulatory compliance, and asset management.</>}
             image={UTILITIES_IMAGE}
             features={features}
             reversed={true}

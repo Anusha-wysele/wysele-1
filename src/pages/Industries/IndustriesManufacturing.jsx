@@ -1,5 +1,6 @@
 import MANUFACTURING_IMAGE from "../../assets/wysele-industriesmanufacturing.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesManufacturing = () => {
   const features = [
@@ -24,7 +25,7 @@ const IndustriesManufacturing = () => {
   return (
     <IndustrySection
       title="Manufacturing"
-      description="Leverage SAP solutions to optimize production, reduce downtime, and drive digital transformation in the manufacturing sector."
+      description={<>Leverage <Link to="/sap-services" style={{ color: "inherit", textDecoration: "none" }}>SAP solutions</Link> to optimize production, reduce downtime, and drive digital transformation in the manufacturing sector.</>}
       image={MANUFACTURING_IMAGE}
       features={features}
       reversed={false}

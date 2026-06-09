@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FileText, GraduationCap, HeadphonesIcon, Search, Settings } from 'lucide-react';
 
@@ -68,7 +69,7 @@ export default function SapTechnicalConsultingprocess() {
                     className="text-center mb-10"
                 >
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-                        SAP Consulting Process
+                        <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link> Process
                     </h2>
                 </motion.div>
 

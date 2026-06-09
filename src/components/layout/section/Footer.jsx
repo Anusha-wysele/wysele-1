@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import LogoWhiteImg from "../../../assets/LogoWhite.png";
-
 
 export default function Footer() {
     return (
@@ -10,17 +10,16 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr,1fr,1fr,1fr] gap-12 mb-16">
                     {/* Brand Section */}
                     <div className="space-y-6">
-                        <a
-                            href="https://www.wysele.com/"
+                        <Link
+                            to="/"
                             title="Wysele Technologies Home"
-                            onClick={(e) => {
-                                e.preventDefault();
+                            onClick={() => {
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                             className="block w-fit"
                         >
                             <img loading="lazy" src={LogoWhiteImg} alt="Wysele Enterprise Logo" title="Wysele Technologies" width="96" height="24" className="w-24 opacity-90" />
-                        </a>
+                        </Link>
                         <p className="text-white/60 text-base leading-relaxed max-w-md">
                             Wysele is one of India’s top SAP solution providers, delivering end-to-end digital transformation for enterprises globally.
                         </p>
@@ -35,8 +34,8 @@ export default function Footer() {
                                     href={href}
                                     title={title}
                                     aria-label={title}
-                                    target={href !== "#" ? "_blank" : undefined}
-                                    rel={href !== "#" ? "noopener noreferrer" : undefined}
+                                    target={href !== "#!" ? "_blank" : undefined}
+                                    rel={href !== "#!" ? "noopener noreferrer" : undefined}
                                     className="p-2 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
                                 >
                                     <Icon size={20} className="text-white/60" />
@@ -50,16 +49,16 @@ export default function Footer() {
                         <h3 className="text-sm font-bold uppercase tracking-wider mb-6 text-white/40">Company</h3>
                         <ul className="space-y-4 text-white/70">
                             {[
-                                { label: "Home", href: "https://www.wysele.com/", title: "Wysele Technologies Home" },
+                                { label: "Home", href: "/", title: "Wysele Technologies Home" },
                                 { label: "About Us", href: "/about", title: "About Wysele Technologies" },
                                 { label: "Our Services", href: "/sap-services", title: "Wysele Enterprise SAP and IT Services" },
                                 { label: "Industries", href: "/industries", title: "Industries | Wysele" },
                                 { label: "Site Map", href: "/sitemap", title: "Wysele Technologies Site Map" }
                             ].map(item => (
                                 <li key={item.label}>
-                                    <a href={item.href} title={item.title} className="hover:text-white transition-colors">
+                                    <Link to={item.href} title={item.title} className="hover:text-white transition-colors">
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -75,9 +74,9 @@ export default function Footer() {
                                 { label: "Career", href: "/careers", title: "Careers and Job Opportunities at Wysele" }
                             ].map(item => (
                                 <li key={item.label}>
-                                    <a href={item.href} title={item.title} className="hover:text-white transition-colors">
+                                    <Link to={item.href} title={item.title} className="hover:text-white transition-colors">
                                         {item.label}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -87,21 +86,31 @@ export default function Footer() {
                         <h3 className="text-sm font-bold uppercase tracking-wider mb-6 text-white/40">Connect</h3>
                         <ul className="space-y-4 text-white/70">
                             {[
-                                { label: "Contact", href: "/contact", title: "Contact Wysele Technologies" },
-                                { label: "LinkedIn", href: "https://www.linkedin.com/company/wyseletechnologies", title: "Wysele Technologies LinkedIn Profile", target: "_blank", rel: "noopener noreferrer" },
-                                { label: "WhatsApp", href: "#!", title: "Chat with Wysele on WhatsApp" },
-                                { label: "Email Us", href: "mailto:info@wysele.com", title: "Contact Wysele Technologies" }
+                                { label: "Contact", href: "/contact", title: "Contact Wysele Technologies", isExternal: false },
+                                { label: "LinkedIn", href: "https://www.linkedin.com/company/wyseletechnologies", title: "Wysele Technologies LinkedIn Profile", target: "_blank", rel: "noopener noreferrer", isExternal: true },
+                                { label: "WhatsApp", href: "#!", title: "Chat with Wysele on WhatsApp", isExternal: true },
+                                { label: "Email Us", href: "mailto:info@wysele.com", title: "Contact Wysele Technologies", isExternal: true }
                             ].map(item => (
                                 <li key={item.label}>
-                                    <a
-                                        href={item.href}
-                                        title={item.title}
-                                        target={item.target}
-                                        rel={item.rel}
-                                        className="hover:text-white transition-colors"
-                                    >
-                                        {item.label}
-                                    </a>
+                                    {item.isExternal ? (
+                                        <a
+                                            href={item.href}
+                                            title={item.title}
+                                            target={item.target}
+                                            rel={item.rel}
+                                            className="hover:text-white transition-colors"
+                                        >
+                                            {item.label}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            to={item.href}
+                                            title={item.title}
+                                            className="hover:text-white transition-colors"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    )}
                                 </li>
                             ))}
                         </ul>
@@ -116,13 +125,16 @@ export default function Footer() {
                             { label: "Privacy Policy", href: "/privacy-policy", title: "Wysele Technologies Privacy Policy" },
                             { label: "Terms of Service", href: "/terms-of-service", title: "Wysele Technologies Terms of Service" },
                             { label: "Cookies", href: "/cookie-policy", title: "Wysele Technologies Cookie Policy" },
-                            { label: "Site Map", href: "/sitemap", title: "Wysele Technologies HTML Site Map" },
-                            { label: "XML Sitemap", href: "/sitemap.xml", title: "Wysele Technologies XML Sitemap for Search Engines" }
+                            { label: "Site Map", href: "/sitemap", title: "Wysele Technologies HTML Site Map" }
                         ].map(item => (
-                            <a key={item.label} href={item.href} title={item.title} className="hover:text-white transition-colors">
+                            <Link key={item.label} to={item.href} title={item.title} className="hover:text-white transition-colors">
                                 {item.label}
-                            </a>
+                            </Link>
                         ))}
+                        {/* XML Sitemap is an external resource relative to React Router */}
+                        <a href="/sitemap.xml" title="Wysele Technologies XML Sitemap for Search Engines" className="hover:text-white transition-colors">
+                            XML Sitemap
+                        </a>
                     </div>
                 </div>
             </div>

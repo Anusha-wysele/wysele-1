@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { fadeSlideUp, staggerContainer, viewportSettings } from "../../common/animations";
@@ -33,7 +34,7 @@ const industriesBase = [
     {
         name: "Manufacturing",
         title: "Manufacturing Industry",
-        desc: "Enhance production efficiency and innovation with tailored SAP solutions. From shop floor to top floor, we help manufacturers streamline operations, reduce waste, and achieve operational excellence with intelligent ERP systems and real-time analytics.",
+        desc: <>Enhance production efficiency and innovation with tailored <Link to="/sap-services" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP solutions</Link>. From shop floor to top floor, we help manufacturers streamline operations, reduce waste, and achieve operational excellence with intelligent ERP systems and real-time analytics.</>,
         tags: ["SAP S/4HANA", "Production Planning", "Quality Management", "Plant Maintenance"],
         color: "#1e3a5f",
         alt: "Manufacturing Solutions",
@@ -52,7 +53,7 @@ const industriesBase = [
     {
         name: "Utilities",
         title: "Utilities Industry",
-        desc: "Improve operational efficiency with advanced SAP Signavio analytics. We empower utility providers to modernize infrastructure management, optimize asset performance, and deliver reliable services through data-driven insights and process automation.",
+        desc: <>Improve operational efficiency with advanced <Link to="/services/sap-signavio" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP Signavio</Link> analytics. We empower utility providers to modernize infrastructure management, optimize asset performance, and deliver reliable services through data-driven insights and process automation.</>,
         tags: ["Asset Management", "SAP Signavio", "Process Analytics", "Grid Optimization"],
         color: "#1a4a3a",
         Icon: () => (
@@ -67,7 +68,7 @@ const industriesBase = [
     {
         name: "Logistics",
         title: "Logistics Industry",
-        desc: "Seamlessly integrate and manage enterprise-wide data with SAP. Our logistics solutions help companies gain full supply chain visibility, automate warehouse operations, and optimize last-mile delivery with intelligent tracking and routing capabilities.",
+        desc: <>Seamlessly integrate and manage enterprise-wide data with <Link to="/sap-services" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP</Link>. Our logistics solutions help companies gain full supply chain visibility, automate warehouse operations, and optimize last-mile delivery with intelligent tracking and routing capabilities.</>,
         tags: ["Supply Chain", "Warehouse Management", "Transportation", "Track & Trace"],
         color: "#2c1a4a",
         Icon: () => (
@@ -83,7 +84,7 @@ const industriesBase = [
     {
         name: "Pharmaceutical",
         title: "Pharmaceutical Industry",
-        desc: "Accelerate digital transformation with secure and compliant SAP solutions. We help pharmaceutical companies navigate complex regulatory requirements, manage clinical data, ensure product quality, and bring life-saving therapies to market faster.",
+        desc: <>Accelerate digital transformation with secure and compliant <Link to="/sap-services" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP solutions</Link>. We help pharmaceutical companies navigate complex regulatory requirements, manage clinical data, ensure product quality, and bring life-saving therapies to market faster.</>,
         tags: ["Regulatory Compliance", "GMP", "Clinical Management", "Drug Safety"],
         color: "#1e2d40",
         Icon: () => (
@@ -98,7 +99,7 @@ const industriesBase = [
     {
         name: "Agribusiness",
         title: "Agribusiness Industry",
-        desc: "Leverage SAP Business Technology Platform for improved agility and growth. We support agribusiness operations across the entire value chain — from field to fork — with precision farming analytics, commodity management, and supply chain traceability.",
+        desc: <>Leverage <Link to="/services/sap-btp" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP Business Technology Platform</Link> for improved agility and growth. We support agribusiness operations across the entire value chain — from field to fork — with precision farming analytics, commodity management, and supply chain traceability.</>,
         tags: ["SAP BTP", "Commodity Management", "Field Analytics", "Supply Chain"],
         color: "#1a3a1a",
         Icon: () => (
@@ -113,7 +114,7 @@ const industriesBase = [
     {
         name: "Aerospace & Defense",
         title: "Aerospace & Defense",
-        desc: "Enable secure and seamless data flow between SAP and non-SAP systems. We serve aerospace and defense organizations with mission-critical integration solutions, compliance frameworks, and advanced analytics for complex program management.",
+        desc: <>Enable secure and seamless data flow between <Link to="/services/sap-integration" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP and non-SAP systems</Link>. We serve aerospace and defense organizations with mission-critical integration solutions, compliance frameworks, and advanced analytics for complex program management.</>,
         tags: ["System Integration", "Compliance", "MRO", "Program Management"],
         color: "#0f1e3a",
         Icon: () => (
@@ -128,7 +129,7 @@ const industriesBase = [
     {
         name: "Automotive & Heavy Equipment",
         title: "Automotive & Heavy Equipment",
-        desc: "Optimize invoicing, billing, and supply chain with SAP automation. Our automotive solutions streamline complex manufacturing processes, dealer management, warranty handling, and connected vehicle data integration for the modern auto industry.",
+        desc: <>Optimize invoicing, billing, and supply chain with <Link to="/sap-services" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP automation</Link>. Our automotive solutions streamline complex manufacturing processes, dealer management, warranty handling, and connected vehicle data integration for the modern auto industry.</>,
         tags: ["SAP Automation", "Supply Chain", "Warranty Management", "Dealer Network"],
         color: "#2a1a10",
         Icon: () => (
@@ -144,7 +145,7 @@ const industriesBase = [
     {
         name: "Banking & Financial",
         title: "Banking & Financial",
-        desc: "Ensure smooth business continuity with hassle-free SAP migration. We guide financial institutions through core banking transformations, risk management implementations, and regulatory reporting automation with minimal disruption to operations.",
+        desc: <>Ensure smooth business continuity with hassle-free <Link to="/services/sap-migration" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP migration</Link>. We guide financial institutions through core banking transformations, risk management implementations, and regulatory reporting automation with minimal disruption to operations.</>,
         tags: ["Core Banking", "Risk Management", "Regulatory Reporting", "SAP Migration"],
         color: "#1a1a2e",
         Icon: () => (
@@ -161,7 +162,7 @@ const industriesBase = [
     {
         name: "Retail",
         title: "Retail Industry",
-        desc: "Upgrade to SAP S/4HANA for real-time insights and intelligent operations. We help retailers unify online and offline channels, optimize inventory replenishment, personalize customer experiences, and maximize margins with predictive analytics.",
+        desc: <>Upgrade to <Link to="/services/sap-s4hana" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP S/4HANA</Link> for real-time insights and intelligent operations. We help retailers unify online and offline channels, optimize inventory replenishment, personalize customer experiences, and maximize margins with predictive analytics.</>,
         tags: ["SAP S/4HANA", "Omnichannel", "Inventory Optimization", "Customer Analytics"],
         color: "#2a1020",
         Icon: () => (
@@ -176,7 +177,7 @@ const industriesBase = [
     {
         name: "Textiles",
         title: "Textiles Industry",
-        desc: "Transform business processes with SAP S/4HANA for increased efficiency. Our textile industry solutions cover end-to-end production planning, fabric procurement, quality control, and fashion retail management for global textile enterprises.",
+        desc: <>Transform business processes with <Link to="/services/sap-s4hana" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP S/4HANA</Link> for increased efficiency. Our textile industry solutions cover end-to-end production planning, fabric procurement, quality control, and fashion retail management for global textile enterprises.</>,
         tags: ["Production Planning", "Procurement", "Quality Control", "Fashion Retail"],
         color: "#1a2a1a",
         Icon: () => (
@@ -192,7 +193,7 @@ const industriesBase = [
     {
         name: "Mining",
         title: "Mining Industry",
-        desc: "Enhance operational performance and decision-making with SAP S/4HANA. We deliver specialized mining solutions for asset lifecycle management, safety compliance, resource planning, and environmental reporting to drive sustainable mining operations.",
+        desc: <>Enhance operational performance and decision-making with <Link to="/services/sap-s4hana" className="hover:text-[#c0392b] underline decoration-gray-300 underline-offset-4 transition-colors">SAP S/4HANA</Link>. We deliver specialized mining solutions for asset lifecycle management, safety compliance, resource planning, and environmental reporting to drive sustainable mining operations.</>,
         tags: ["Asset Lifecycle", "Safety Compliance", "Resource Planning", "Environmental"],
         color: "#2a2010",
         Icon: () => (

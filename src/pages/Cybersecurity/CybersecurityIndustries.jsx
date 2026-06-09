@@ -136,7 +136,7 @@ const CybersecurityIndustries = () => {
                 transition={{ duration: 0.5 }}
               >
                 <h3 className="text-2xl font-normal text-[#800000] mb-3">
-                  {industries[activeTab].name} Cybersecurity
+                  {industries[activeTab].name} <Link to="/services/cybersecurityhome" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/cybersecurityhome" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Cybersecurity</Link></Link>
                 </h3>
 
                 <p className="text-gray-400 leading-relaxed mb-3 text-[15px]">

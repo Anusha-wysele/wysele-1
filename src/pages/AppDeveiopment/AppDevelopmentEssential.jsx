@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import appDevGlobalMarket from '../../assets/wysele-appdevelopmentglobalmarket.webp';
@@ -54,7 +55,7 @@ const AppDevelopmentEssential = () => {
                     className="mb-12"
                 >
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-light text-black leading-tight tracking-wide">
-                        How Mobile App Development Supports Business Success
+                        How Mobile <Link to="/services/app-development" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>App Development</Link> Supports Business Success
                     </h2>
                 </motion.div>
 

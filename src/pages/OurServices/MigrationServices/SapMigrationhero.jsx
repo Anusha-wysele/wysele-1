@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   AppWindow,
   CloudArrowUp,
@@ -55,7 +56,7 @@ export default function SapMigrationhero() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 leading-tight tracking-tight"
                         >
-                            Seamless SAP Migration for Modern Enterprises
+                            Seamless <Link to="/services/sap-migration" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>SAP Migration</Link> for Modern Enterprises
                         </motion.h1>
 
                         {/* Sub-headline */}

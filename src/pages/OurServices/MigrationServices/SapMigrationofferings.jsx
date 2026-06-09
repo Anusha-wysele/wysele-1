@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   ArrowsLeftRight,
   ArrowsMerge,
@@ -103,7 +104,7 @@ export default function SapMigrationofferings() {
                                     Expert-Led Migrations for a Smooth Digital Transition
                                 </h3>
                                 <p className="text-xs md:text-sm text-gray-100 leading-relaxed font-normal">
-                                    In the fast-paced digital landscape of today, businesses must leverage the latest SAP solutions to remain competitive. Our SAP Migration Services enable enterprises to transition smoothly from legacy systems to modern SAP environments, ensuring minimal disruption and maximizing operational efficiency.
+                                    In the fast-paced digital landscape of today, businesses must leverage the latest SAP solutions to remain competitive. Our <Link to="/services/sap-migration" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>SAP Migration</Link> Services enable enterprises to transition smoothly from legacy systems to modern SAP environments, ensuring minimal disruption and maximizing operational efficiency.
                                 </p>
                             </motion.div>
                         </div>

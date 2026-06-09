@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 
 const SalesforceProcess = () => {
@@ -51,12 +52,12 @@ const SalesforceProcess = () => {
 
             <h2 className="mt-5 text-xl md:text-2xl leading-tight font-normal text-gray-900">
               Streamlined <br />
-              <span className="text-[#800000]">Salesforce</span> Implementation
+              <span className="text-[#800000]"><Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link></span> Implementation
             </h2>
 
             <p className="mt-4 text-gray-500 leading-5 text-sm md:text-[14px] max-w-md font-normal">
               We follow a clean and scalable process to deliver secure,
-              efficient, and business-focused Salesforce solutions.
+              efficient, and business-focused <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> solutions.
             </p>
           </motion.div>
 

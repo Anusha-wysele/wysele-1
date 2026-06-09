@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import s4hanaHeroImg from '../../../assets/wysele-s4hanahero.webp';
 
@@ -26,7 +27,7 @@ export default function SapS4hero() {
                                 className="order-2 md:order-1"
                             >
                                 <p className="text-sm md:text-base text-white font-light leading-relaxed">
-                                    Unlock the full potential of your business with SAP S/4HANA—the next-generation ERP suite designed to drive smarter decision-making, enhance operational efficiency, and accelerate innovation. Our SAP S/4HANA Conversion Services ensure your transition from a legacy SAP system to SAP S/4HANA is seamless, efficient, and minimally disruptive, allowing you to leverage the latest technologies for superior performance.
+                                    Unlock the full potential of your business with <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link>—the next-generation ERP suite designed to drive smarter decision-making, enhance operational efficiency, and accelerate innovation. Our <Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link> Conversion Services ensure your transition from a legacy SAP system to <Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link> is seamless, efficient, and minimally disruptive, allowing you to leverage the latest technologies for superior performance.
                                 </p>
                             </motion.div>
 
@@ -48,7 +49,7 @@ export default function SapS4hero() {
                                         </div>
                                         <h1 className="text-lg md:text-xl lg:text-2xl font-light text-gray-900 leading-snug">
                                             Smooth Transition to a <br className="hidden sm:block" />
-                                            <span className="font-semibold">Future-Ready</span> SAP S/4HANA
+                                            <span className="font-semibold">Future-Ready</span> <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link>
                                         </h1>
                                     </div>
 

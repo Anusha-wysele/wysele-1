@@ -1,5 +1,6 @@
 import LOGISTICS_IMAGE from "../../assets/wysele-industrieslogistics.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesLogistics = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesLogistics = () => {
     return (
         <IndustrySection
             title="Logistics"
-            description="Streamline operations, enhance route planning, and ensure seamless deliveries with Wysele’s logistics solutions."
+            description={<>Streamline operations, enhance route planning, and ensure seamless deliveries with Wysele’s <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">logistics solutions</Link>.</>}
             image={LOGISTICS_IMAGE}
             features={features}
             reversed={false}

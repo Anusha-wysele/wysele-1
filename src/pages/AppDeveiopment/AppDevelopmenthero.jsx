@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import AppDev1 from '../../assets/wysele-appdevelopmenthero.webp';
 
@@ -16,7 +17,7 @@ const AppDevelopmenthero = () => {
                     <div className="flex items-center justify-center md:justify-start gap-3 mb-4 md:mb-5">
                         <span className="w-8 h-[1.5px] bg-white opacity-60" />
                         <span className="text-xs md:text-[10px] font-normal tracking-[0.2em] md:tracking-[0.3em] text-white opacity-60 uppercase">
-                            Mobile App Development
+                            Mobile <Link to="/services/app-development" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>App Development</Link>
                         </span>
                     </div>
 

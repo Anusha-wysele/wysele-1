@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import fdeImg from '../../assets/Wysele-FDE.webp';
 import { motion } from 'framer-motion';
@@ -45,7 +46,7 @@ const FdeHero = () => {
                             transition={{ duration: 0.6 }}
                             className="text-[#FFB703] text-xs sm:text-sm font-bold tracking-widest uppercase mb-3"
                         >
-                            Forward-Deployed Engineering (FDE) Services
+                            Forward-Deployed Engineering (<Link to="/services/fde" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>FDE</Link>) Services
                         </motion.h4>
 
                         <motion.h1
@@ -64,7 +65,7 @@ const FdeHero = () => {
                             className="space-y-4"
                         >
                             <p className="text-sm sm:text-base text-gray-200 leading-relaxed font-light">
-                                At Wysele Technologies, our Forward-Deployed Engineering (FDE) Services help organizations accelerate AI adoption by embedding experienced engineers directly into business and technology teams. We work alongside your stakeholders to design, build, deploy, and optimize AI-powered solutions that create measurable business impact.
+                                At Wysele Technologies, our Forward-Deployed Engineering (<Link to="/services/fde" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>FDE</Link>) Services help organizations accelerate AI adoption by embedding experienced engineers directly into business and technology teams. We work alongside your stakeholders to design, build, deploy, and optimize AI-powered solutions that create measurable business impact.
                             </p>
                             <p className="text-sm sm:text-base text-gray-200 leading-relaxed font-light">
                                 Powered by our proprietary Generative AI and Agentic AI solutions, we help enterprises reduce implementation complexity, improve adoption, and unlock faster value from AI investments.

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Cylinderr from '../../../components/common/Cylinderr';
 
@@ -29,7 +30,7 @@ const services = [
         description: (
             <div className="flex flex-col gap-2">
                 <p>
-                    Wysele provides SAP Signavio process mining services that help organizations analyze operational data, identify bottlenecks, and improve workflow performance.
+                    Wysele provides <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> process mining services that help organizations analyze operational data, identify bottlenecks, and improve workflow performance.
                 </p>
                 <div className="mt-1">
                     <p className="font-bold text-white mb-1">Our Process Mining Capabilities</p>
@@ -52,7 +53,7 @@ const services = [
         description: (
             <div className="flex flex-col gap-2">
                 <p>
-                    Wysele helps organizations automate repetitive workflows using SAP Signavio automation capabilities designed to improve efficiency and operational performance.
+                    Wysele helps organizations automate repetitive workflows using <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> automation capabilities designed to improve efficiency and operational performance.
                 </p>
                 <div className="mt-1">
                     <p className="font-bold text-white mb-1">We support automation for:</p>
@@ -73,7 +74,7 @@ const services = [
         description: (
             <div className="flex flex-col gap-2">
                 <p>
-                    SAP Signavio helps businesses create transparent process environments that improve communication, accountability, and governance.
+                    <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> helps businesses create transparent process environments that improve communication, accountability, and governance.
                 </p>
                 <p>
                     Wysele supports organizations in building scalable governance frameworks that improve process visibility and operational alignment across the enterprise.
@@ -97,7 +98,7 @@ const services = [
         description: (
             <div className="flex flex-col gap-2">
                 <p>
-                    Digital transformation requires continuous adaptation as business requirements evolve. Wysele helps organizations implement structured change management and continuous process improvement strategies using SAP Signavio solutions.
+                    Digital transformation requires continuous adaptation as business requirements evolve. Wysele helps organizations implement structured change management and continuous process improvement strategies using <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> solutions.
                 </p>
                 <div className="mt-1">
                     <p className="font-bold text-white mb-1">We help organizations:</p>
@@ -118,10 +119,10 @@ const services = [
         description: (
             <div className="flex flex-col gap-2">
                 <p>
-                    Wysele provides SAP Signavio consulting services that support SAP S/4HANA transformation through process discovery, workflow analysis, operational alignment, and process optimization.
+                    Wysele provides <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> consulting services that support <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link> transformation through process discovery, workflow analysis, operational alignment, and process optimization.
                 </p>
                 <div className="mt-1">
-                    <p className="font-bold text-white mb-1">SAP S/4HANA Support Areas</p>
+                    <p className="font-bold text-white mb-1"><Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link> Support Areas</p>
                     <ul className="list-disc pl-3.5 space-y-0 text-white/90">
                         <li>Process discovery and mapping</li>
                         <li>Transformation planning support</li>
@@ -150,7 +151,7 @@ const SapSignavioServices = () => {
                         className="text-2xl md:text-3xl font-normal text-gray-900 mb-2 flex items-center justify-center gap-4"
                     >
                         <Cylinderr className="w-4 h-10 rounded-sm" />
-                        Our SAP Signavio Services
+                        Our <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> Services
                     </motion.h2>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}

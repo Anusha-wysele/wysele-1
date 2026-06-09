@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   ArrowsOut,
   CurrencyCircleDollar,
@@ -75,7 +76,7 @@ const RiseBenifits = () => {
                         transition={{ duration: 0.6 }}
                         className="text-2xl md:text-3xl font-normal text-gray-900 mb-4"
                     >
-                        Benefits of <span className="font-semibold px-2">RISE with SAP</span>
+                        Benefits of <span className="font-semibold px-2"><Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link></span>
                     </motion.h2>
                 </div>
 

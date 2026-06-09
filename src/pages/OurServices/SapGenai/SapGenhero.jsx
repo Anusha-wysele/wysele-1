@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SapgenaiImg from '../../../assets/wysele-Sapgenaihero.webp';
 import Cylinders from '../../../components/common/Cylinders';
@@ -27,7 +28,7 @@ export default function SapGenhero() {
                     >
                         <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-light tracking-wide max-w-4xl leading-tight mb-6">
                             Transforming Enterprise with <br />
-                            <span className="font-semibold text-white">SAP GenAI</span>
+                            <span className="font-semibold text-white"><Link to="/services/sap-genai" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-genai" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP GenAI</Link></Link></span>
                         </h1>
                         <p className="text-base md:text-lg lg:text-xl text-white font-light max-w-2xl mx-auto leading-relaxed">
                             Unlock the future of business intelligence. Our tailored Generative AI solutions for SAP empower your organization with unparalleled automation, insights, and innovation.

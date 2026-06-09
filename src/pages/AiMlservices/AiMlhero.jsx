@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
@@ -141,7 +142,7 @@ export default function AiMlhero() {
                   onClick={() => navigate('/contact')}
                   className="px-7 py-3.5 bg-gradient-to-r from-[#FFB703] to-[#FB8500] hover:from-[#FB8500] hover:to-[#FFB703] text-black font-semibold rounded-full text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_4px_20px_rgba(255,183,3,0.3)] hover:shadow-[0_4px_25px_rgba(251,133,0,0.5)] w-fit group/btn hover:scale-[1.03] active:scale-95"
                 >
-                  Contact Us
+                  <Link to="/contact" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>Contact Us</Link>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 text-black" strokeWidth={2.5} />
                 </button>
               </motion.div>
@@ -151,7 +152,7 @@ export default function AiMlhero() {
         </div>
       </section>
 
-      {/* AI & ML Service Offerings Floating Card */}
+      {/* <Link to="/services/aiml-services" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>AI & ML</Link> Service Offerings Floating Card */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

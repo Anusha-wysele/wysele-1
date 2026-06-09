@@ -1,5 +1,6 @@
 import AUTOMOTIVE_IMAGE from "../../assets/wysele-industriesautomotives.webp";
 import IndustrySection from "./IndustrySection";
+import { Link } from 'react-router-dom';
 
 const IndustriesAutomotive = () => {
     const features = [
@@ -24,7 +25,7 @@ const IndustriesAutomotive = () => {
     return (
         <IndustrySection
             title="Automotive & Heavy Equipment"
-            description="Wysele enables automotive businesses to optimize supply chains, improve production, and enhance customer experience."
+            description={<>Wysele enables automotive businesses to <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">optimize supply chains</Link>, improve production, and enhance customer experience.</>}
             image={AUTOMOTIVE_IMAGE}
             features={features}
             reversed={false}

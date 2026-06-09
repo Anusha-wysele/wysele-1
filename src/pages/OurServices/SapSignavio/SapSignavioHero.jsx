@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import React from 'react';
@@ -96,7 +97,7 @@ const SapSignavioHero = () => {
                             transition={{ duration: 0.7, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
                             className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal"
                         >
-                            Wysele delivers SAP Signavio consulting and implementation services that help organizations streamline workflows, improve collaboration, strengthen process governance, and support continuous operational improvement across departments.
+                            Wysele delivers <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> consulting and implementation services that help organizations streamline workflows, improve collaboration, strengthen process governance, and support continuous operational improvement across departments.
                         </motion.p>
                         
                         <motion.div 
@@ -112,7 +113,7 @@ const SapSignavioHero = () => {
                             transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
                             className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal"
                         >
-                            Whether your business is preparing for SAP S/4HANA transformation, modernizing legacy workflows, or improving operational transparency, our SAP Signavio experts help create scalable and data-driven process environments that support business growth and operational excellence.
+                            Whether your business is preparing for <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link> transformation, modernizing legacy workflows, or improving operational transparency, our <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> experts help create scalable and data-driven process environments that support business growth and operational excellence.
                         </motion.p>
 
                         <motion.div

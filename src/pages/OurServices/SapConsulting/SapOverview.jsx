@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import sapConsultingOverviewImg from '../../../assets/wysele-sapconsultingoverview.webp';
@@ -26,7 +27,7 @@ const SapOverview = () => {
                 </h2>
                 <div className="text-base text-gray-700 leading-relaxed space-y-4 mb-8">
                     <p>
-                        Wysele delivers SAP consulting services designed to help organizations implement, optimize, migrate, and manage SAP environments with confidence. From SAP S/4HANA implementation to cloud migration and process optimization, our consultants help businesses simplify operations while improving visibility across teams.
+                        Wysele delivers SAP consulting services designed to help organizations implement, optimize, migrate, and manage SAP environments with confidence. From <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link> implementation to cloud migration and process optimization, our consultants help businesses simplify operations while improving visibility across teams.
                     </p>
                     <p>
                         Whether you're planning a fresh SAP rollout, upgrading legacy systems, or improving existing workflows, our team helps you move forward with clarity and measurable outcomes.

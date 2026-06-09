@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import itInfrastructureHero from '../../assets/wysele-itinfrastructurehero.webp';
 
@@ -51,7 +52,7 @@ const ItInfrastructureHero = () => {
               <h1 className="text-xl md:text-2xl lg:text-3xl font-normal text-gray-900 leading-[1.2] tracking-tight">
                 Building Reliable {" "}
                 <span className="text-[#800000] font-normal">Secure & Scalable</span> <br />
-                IT Infrastructure
+                <Link to="/services/itinfrastructure" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>IT Infrastructure</Link>
               </h1>
 
               {/* Descriptive Points with Access Lines */}
