@@ -59,7 +59,7 @@ const SapConsulting = () => {
                 <div className="relative w-full lg:w-[60%] h-full flex flex-col justify-end px-6 sm:px-12 lg:pl-16 lg:pr-10 pb-12 sm:pb-16 lg:pb-20 pt-[150px] md:pt-28 sm:pt-32 z-20">
                     <div className="max-w-xl w-full">
                         <motion.h1
-                            initial={{ opacity: 0, y: 25 }}
+                            initial={{ opacity: 1, y: 25 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-3xl sm:text-4xl lg:text-[40px] font-bold mb-4 sm:mb-6 leading-tight text-white lg:text-gray-900"
@@ -69,7 +69,7 @@ const SapConsulting = () => {
                         </motion.h1>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                             className="space-y-3 sm:space-y-4"
@@ -121,7 +121,7 @@ const SapConsulting = () => {
 
                         {/* Layer 3 — FLOATING BADGE */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                            initial={{ opacity: 1, scale: 0.9, x: 20 }}
                             animate={{ opacity: 1, scale: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.6 }}
                             className="absolute bottom-[10%] left-[28%] z-20 bg-white/95 backdrop-blur-md rounded-xl p-3.5 shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100/50 flex items-center gap-3 w-[260px] pointer-events-none"

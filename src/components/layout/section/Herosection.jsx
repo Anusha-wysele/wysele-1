@@ -107,7 +107,7 @@ export default function HeroSection() {
         poster={
           isMobile
             ? "https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-480,q-40,f-webp"
-            : "https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80"
+            : "https://ik.imagekit.io/czsxw7xki/Hero.mp4/ik-thumbnail.jpg?tr=w-1200,q-80,f-webp"
         }
         style={{
           width: "100%",

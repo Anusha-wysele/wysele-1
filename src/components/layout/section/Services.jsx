@@ -400,11 +400,11 @@ const SlideCard = forwardRef(function SlideCard({ service, slideWidth, isActive,
           <div
             style={{
               position: "absolute",
-              bottom: 0,
+              top: 0,
               left: 0,
               width: "100%",
-              height: "70%",
-              background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)",
+              height: "100%",
+              background: "rgba(0,0,0,0.5)",
               pointerEvents: "none",
               zIndex: 1,
             }}
@@ -414,21 +414,24 @@ const SlideCard = forwardRef(function SlideCard({ service, slideWidth, isActive,
           <div
             style={{
               position: "absolute",
-              bottom: 0,
+              top: 0,
               left: 0,
               width: "100%",
+              height: "100%",
               padding: "20px 16px",
               color: "#ffffff",
               pointerEvents: "none",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "flex-end",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
               zIndex: 3,
             }}
           >
             <h3
               style={{
-                fontSize: "1.1rem",
+                fontSize: "1.3rem",
                 fontWeight: "600",
                 lineHeight: 1.2,
                 letterSpacing: "-0.01em",
@@ -439,12 +442,12 @@ const SlideCard = forwardRef(function SlideCard({ service, slideWidth, isActive,
             </h3>
             <p
               style={{
-                fontSize: "0.8rem",
-                color: "#d1d5db",
-                lineHeight: 1.45,
-                fontWeight: "300",
+                fontSize: "0.85rem",
+                color: "#f3f4f6",
+                lineHeight: 1.5,
+                fontWeight: "400",
                 margin: 0,
-                marginTop: "6px",
+                marginTop: "10px",
               }}
             >
               {service.desc}

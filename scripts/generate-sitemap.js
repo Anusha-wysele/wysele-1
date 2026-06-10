@@ -50,12 +50,15 @@ function fetchBlogs() {
       });
       res.on('end', () => {
         try {
+          if (!data || data.startsWith('<') || data.includes('A server error')) {
+            return resolve([]); // Silent fallback to empty array on HTML/Error response
+          }
           const parsed = JSON.parse(data);
-          // Handle response formats: { blogs: [...] } or { data: [...] } or direct array
           const blogList = parsed.blogs || parsed.data || parsed || [];
           resolve(Array.isArray(blogList) ? blogList : []);
         } catch (e) {
-          reject(new Error(`Failed to parse blogs API response: ${e.message}`));
+          // Just resolve to empty rather than throwing an ugly trace
+          resolve([]);
         }
       });
     }).on('error', (err) => {

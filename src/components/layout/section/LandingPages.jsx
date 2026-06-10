@@ -28,28 +28,11 @@ const landingSections = [
     { id: "locations", label: "Our Locations" },
     { id: "footer", label: "Footer", hideDot: true }
 ];
-
-function useMobileCheck() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check, { passive: true });
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  return isMobile;
-}
-
-function LazySection({ children, height = "300px", id, isMobile }) {
-  const [isVisible, setIsVisible] = useState(!isMobile);
+function LazySection({ children, height = "300px", id }) {
+  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!isMobile) {
-      setIsVisible(true);
-      return;
-    }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -65,7 +48,7 @@ function LazySection({ children, height = "300px", id, isMobile }) {
     }
 
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, []);
 
   return (
     <div ref={ref} id={id} style={{ minHeight: isVisible ? "auto" : height }}>
@@ -79,8 +62,6 @@ function LazySection({ children, height = "300px", id, isMobile }) {
 }
 
 const LandingPages = () => {
-    const isMobile = useMobileCheck();
-
     return (
         <div style={{ background: "#fff" }}>
             <ScrollNavigation sections={landingSections} />
@@ -92,53 +73,53 @@ const LandingPages = () => {
                 <Services />
             </div>
 
-                <LazySection id="about" height="400px" isMobile={isMobile}>
+                <LazySection id="about" height="400px">
                     <AboutUs />
                 </LazySection>
 
-                <LazySection id="industries" height="400px" isMobile={isMobile}>
+                <LazySection id="industries" height="400px">
                     <FadeUp id="industries" distance={10}>
                         <Industries />
                     </FadeUp>
                 </LazySection>
 
-                <LazySection id="insights" height="300px" isMobile={isMobile}>
+                <LazySection id="insights" height="300px">
                     <FadeUp id="insights" distance={30}>
                         <InsightsHero />
                     </FadeUp>
                 </LazySection>
 
-                <LazySection id="blogs" height="400px" isMobile={isMobile}>
+                <LazySection id="blogs" height="400px">
                     <FadeUp id="blogs" distance={30}>
                         <BlogsBanner />
                     </FadeUp>
                 </LazySection>
 
-                <LazySection id="team" height="400px" isMobile={isMobile}>
+                <LazySection id="team" height="400px">
                     <FadeUp id="team">
                         <MeetOurPeople />
                     </FadeUp>
                 </LazySection>
 
-                <LazySection id="faq" height="300px" isMobile={isMobile}>
+                <LazySection id="faq" height="300px">
                     <FadeUp id="faq" distance={10}>
                         <Faq />
                     </FadeUp>
                 </LazySection>
 
-                <LazySection id="contact" height="400px" isMobile={isMobile}>
+                <LazySection id="contact" height="400px">
                     <div id="contact">
                         <GetInTouch />
                     </div>
                 </LazySection>
 
-                <LazySection id="locations" height="300px" isMobile={isMobile}>
+                <LazySection id="locations" height="300px">
                     <FadeUp id="locations" distance={30}>
                         <OurLocations />
                     </FadeUp>
                 </LazySection>
 
-                <LazySection id="footer" height="200px" isMobile={isMobile}>
+                <LazySection id="footer" height="200px">
                     <FadeUp id="footer" distance={30}>
                         <Footer />
                     </FadeUp>

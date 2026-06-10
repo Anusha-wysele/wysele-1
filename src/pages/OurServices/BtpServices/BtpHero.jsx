@@ -18,7 +18,7 @@ const BtpHero = () => {
         <section className="relative w-full min-h-[calc(100vh-68px)] lg:min-h-screen overflow-hidden bg-black text-white flex flex-col justify-center pt-[150px] md:pt-0">
             {/* Background Image Container */}
             <div className="absolute inset-0 z-0">
-                <img
+                <img fetchpriority="high"
                     src={sapBtpHeroImg}
                     alt="SAP BTP Services"
                     className="w-full h-full object-cover object-[center_45%]"

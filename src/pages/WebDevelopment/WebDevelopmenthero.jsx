@@ -90,7 +90,7 @@ export default function WebDevelopmenthero() {
                 >
                     <div className="relative">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="text-[10px] font-black tracking-[0.4em] uppercase text-white/40"
                         >
@@ -110,10 +110,10 @@ export default function WebDevelopmenthero() {
                 <div className="w-full lg:w-[70%] flex-1 lg:h-full relative flex items-center px-6 md:px-12 lg:pl-64 lg:pr-24 pt-[220px] md:pt-[280px] lg:pt-0 pb-12 lg:pb-0 overflow-hidden">
                     {/* Background Image for Right Column - Cinematic View */}
                     <div className="absolute inset-0 z-0">
-                        <motion.img
+                        <motion.img fetchpriority="high"
                             src={webDevHeroBg}
                             alt="Background"
-                            initial={{ scale: 1.1, opacity: 0 }}
+                            initial={{ scale: 1.1, opacity: 1 }}
                             animate={{ scale: 1, opacity: 0.85 }}
                             transition={{ duration: 2, ease: "easeOut" }}
                             className="w-full h-full object-cover"
@@ -189,7 +189,7 @@ export default function WebDevelopmenthero() {
                     <motion.div
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={handleMouseLeave}
-                        initial={{ opacity: 0, scale: 0.9, x: "-50%" }}
+                        initial={{ opacity: 1, scale: 0.9, x: "-50%" }}
                         animate={{ opacity: 1, scale: 1, x: "-50%" }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                         className="pointer-events-auto relative cursor-pointer"
@@ -205,14 +205,14 @@ export default function WebDevelopmenthero() {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentSlide}
-                                initial={{ opacity: 0, rotateY: 90 }}
+                                initial={{ opacity: 1, rotateY: 90 }}
                                 animate={{ opacity: 1, rotateY: 0 }}
                                 exit={{ opacity: 0, rotateY: -90 }}
                                 transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
                                 className="w-56 h-40 md:w-64 md:h-48 lg:w-96 lg:h-72 border border-white/40 bg-[#1a1a1a] rounded-sm shadow-2xl overflow-hidden relative"
                                 style={{ backfaceVisibility: "hidden", transformStyle: "preserve-3d" }}
                             >
-                                <img
+                                <img fetchpriority="high"
                                     src={WEB_DEVELOPMENT_IMAGES[currentSlide]}
                                     alt="Web Development Showcase"
                                     className="absolute inset-0 w-full h-full object-cover"

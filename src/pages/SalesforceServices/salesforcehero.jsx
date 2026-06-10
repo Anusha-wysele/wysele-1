@@ -25,8 +25,7 @@ const SalesforceHero = () => {
   return (
     <section className="relative min-h-[560px] lg:h-[600px] w-full overflow-hidden bg-black font-sans">
       {/* Background Image */}
-      <motion.img 
-        initial={{ scale: 1.05 }}
+      <motion.img fetchpriority="high" initial={{ scale: 1.05 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         src={SalesforceHeroImg}
@@ -47,7 +46,7 @@ const SalesforceHero = () => {
             
             {/* Pre-Heading */}
             <motion.div 
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 1, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               className="flex items-center gap-4"
@@ -60,7 +59,7 @@ const SalesforceHero = () => {
 
             {/* Main Heading */}
             <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl lg:text-4xl font-normal text-white leading-tight uppercase tracking-wide"
@@ -71,7 +70,7 @@ const SalesforceHero = () => {
             
             {/* Description */}
             <motion.div 
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 1, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="pl-6 border-l-[3px] border-[#ffcc00] max-w-2xl"
@@ -90,7 +89,7 @@ const SalesforceHero = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
               className="space-y-3"

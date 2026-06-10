@@ -29,7 +29,7 @@ const RiseWithsaphero = () => {
                     {/* Content Column */}
                     <div className="max-w-4xl w-full">
                         <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 1, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
                             className="text-2xl sm:text-3xl lg:text-4xl font-light text-white leading-tight mb-6"
@@ -38,7 +38,7 @@ const RiseWithsaphero = () => {
                         </motion.h1>
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
                             className="text-sm sm:text-base font-semibold text-white leading-relaxed"
@@ -47,14 +47,14 @@ const RiseWithsaphero = () => {
                         </motion.p>
                         
                         <motion.div 
-                            initial={{ opacity: 0 }}
+                            initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.3 }}
                             className="w-12 h-[1.5px] bg-[#FFB703]/60 my-5" 
                         />
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
                             className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal"
@@ -63,14 +63,14 @@ const RiseWithsaphero = () => {
                         </motion.p>
                         
                         <motion.div 
-                            initial={{ opacity: 0 }}
+                            initial={{ opacity: 1 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.45 }}
                             className="w-12 h-[1.5px] bg-[#FFB703]/60 my-5" 
                         />
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
                             className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal"
@@ -79,7 +79,7 @@ const RiseWithsaphero = () => {
                         </motion.p>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.65, ease: [0.33, 1, 0.68, 1] }}
                             className="pt-6"

@@ -38,11 +38,11 @@ export default function SapVimhero() {
         {/* Left Side: Image Slider (50%) */}
         <div className="w-full lg:w-1/2 h-[45vh] lg:h-full relative overflow-hidden bg-gray-900">
           <AnimatePresence initial={false}>
-            <motion.img
+            <motion.img fetchpriority="high"
               key={currentSlide}
               src={VIM_BRIM_CONTENT[currentSlide].image}
               alt={VIM_BRIM_CONTENT[currentSlide].tag}
-              initial={{ opacity: 0, scale: 1 }}
+              initial={{ opacity: 1, scale: 1 }}
               animate={{ opacity: 1, scale: 1.1 }}
               exit={{ opacity: 0, scale: 1.15 }}
               transition={{
@@ -60,7 +60,7 @@ export default function SapVimhero() {
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentSlide}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 className="text-[10px] font-black tracking-[0.4em] uppercase text-white/60"
@@ -76,7 +76,7 @@ export default function SapVimhero() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 1, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}

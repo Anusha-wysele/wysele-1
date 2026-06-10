@@ -656,13 +656,13 @@ const SEOManager = () => {
       updateMeta("og:title", config.title, true),
       updateMeta("og:description", config.description, true),
       updateMeta("og:url", config.canonical, true),
-      updateMeta("og:image", config.ogImage || "https://www.wysele.com/og-image.webp", true),
+      updateMeta("og:image", config.ogImage || "https://www.wysele.com/og-image.png", true),
       updateMeta("og:type", "website", true),
       updateMeta("og:site_name", "Wysele Technologies", true),
       updateMeta("og:locale", "en_US", true),
       updateMeta("og:image:width", "1200", true),
       updateMeta("og:image:height", "630", true),
-      updateMeta("og:image:type", "image/webp", true),
+      updateMeta("og:image:type", "image/png", true),
 
       // Twitter Tags
       updateMeta("twitter:card", "summary_large_image"),
@@ -674,18 +674,54 @@ const SEOManager = () => {
 
       // Links
       updateLink("canonical", config.canonical),
-      updateLink("image_src", config.ogImage || "https://www.wysele.com/og-image.webp")
+      updateLink("image_src", config.ogImage || "https://www.wysele.com/og-image.png")
     ];
 
     // Schema.org structured data script
     let scriptTag = null;
-    if (config.schema) {
-      scriptTag = document.createElement("script");
-      scriptTag.type = "application/ld+json";
-      scriptTag.id = "dynamic-page-structured-data";
-      scriptTag.innerHTML = JSON.stringify(config.schema);
-      document.head.appendChild(scriptTag);
+    
+    // Build Dynamic Breadcrumbs
+    const currentUrl = `https://www.wysele.com${pathname}`;
+    const pathParts = pathname.split('/').filter(Boolean);
+    const breadcrumbItems = pathParts.map((part, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": part.charAt(0).toUpperCase() + part.slice(1).replace(/-/g, ' '),
+      "item": `https://www.wysele.com/${pathParts.slice(0, index + 1).join('/')}`
+    }));
+
+    const dynamicSchema = [
+      {
+        "@type": "WebPage",
+        "@id": `${currentUrl}#webpage`,
+        "url": currentUrl,
+        "name": config.title,
+        "isPartOf": { "@id": "https://www.wysele.com/#website" }
+      }
+    ];
+
+    if (breadcrumbItems.length > 0) {
+      dynamicSchema.push({
+        "@type": "BreadcrumbList",
+        "@id": `${currentUrl}#breadcrumb`,
+        "itemListElement": breadcrumbItems
+      });
     }
+
+    const combinedSchemaGraph = config.schema && config.schema["@graph"] 
+      ? [...config.schema["@graph"], ...dynamicSchema]
+      : config.schema ? [config.schema, ...dynamicSchema] : dynamicSchema;
+
+    const finalSchema = {
+      "@context": "https://schema.org",
+      "@graph": combinedSchemaGraph
+    };
+
+    scriptTag = document.createElement("script");
+    scriptTag.type = "application/ld+json";
+    scriptTag.id = "dynamic-page-structured-data";
+    scriptTag.innerHTML = JSON.stringify(finalSchema);
+    document.head.appendChild(scriptTag);
 
     // 3. Cleanup on Route Change
     return () => {

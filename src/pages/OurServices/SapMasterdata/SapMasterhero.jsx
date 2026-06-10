@@ -32,7 +32,7 @@ export default function SapMasterhero() {
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto w-full">
                     <div className="max-w-2xl">
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 1, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
                             className="mb-4 sm:mb-6"
@@ -43,7 +43,7 @@ export default function SapMasterhero() {
                         </motion.div>
 
                         <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 1, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
                             className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6 sm:mb-8 tracking-tight"
@@ -53,7 +53,7 @@ export default function SapMasterhero() {
                         </motion.h1>
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
                             className="text-sm md:text-base text-white/90 leading-relaxed mb-6"
@@ -64,7 +64,7 @@ export default function SapMasterhero() {
                         <div className="w-16 md:w-24 h-[1px] bg-[#800000] my-6 md:my-8" />
 
                         <motion.p
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
                             className="text-sm md:text-base text-white/90 leading-relaxed"

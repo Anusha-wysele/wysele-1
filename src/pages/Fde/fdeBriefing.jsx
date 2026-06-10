@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+
 import { motion } from 'framer-motion';
 import fdeBriefingImg from '../../assets/wysele-Fdebriefing.webp';
 
@@ -32,7 +32,7 @@ export default function FdeBriefing() {
                   Many AI initiatives fail to reach production due to technical complexity, resource limitations, fragmented data environments, and adoption challenges.
                 </p>
                 <p>
-                  Our <Link to="/fde" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-[#800000] font-medium">Forward-Deployed Engineers</Link> bridge the gap between business objectives and technical execution. By working directly with your teams, we transform ideas into production-ready solutions that align with operational goals, compliance requirements, and long-term growth strategies.
+                  Our <span className="text-[#800000] font-medium">Forward-Deployed Engineers</span> bridge the gap between business objectives and technical execution. By working directly with your teams, we transform ideas into production-ready solutions that align with operational goals, compliance requirements, and long-term growth strategies.
                 </p>
                 <p>
                   Whether you're launching your first AI initiative or scaling enterprise-wide adoption, our team provides the expertise needed to deliver results faster and with less risk.

@@ -14,13 +14,12 @@ const ItInfrastructureHero = () => {
       {/* Image Section (Right Side) - MAINTAINING SPLIT LAYOUT */}
       <div className="absolute right-0 top-0 w-full lg:w-[55%] h-full z-0">
         <motion.div 
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 1, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="w-full h-full relative"
         >
-          <img 
-            src={itInfrastructureHero} 
+          <img fetchpriority="high" src={itInfrastructureHero} 
             alt="IT Infrastructure Team" 
             className="w-full h-full object-cover object-center"
           />
@@ -36,7 +35,7 @@ const ItInfrastructureHero = () => {
           {/* Text Area (Left Side) */}
           <div className="w-full lg:w-[45%] space-y-10 py-12 lg:py-0">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="space-y-8"

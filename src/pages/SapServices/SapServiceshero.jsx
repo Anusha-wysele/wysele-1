@@ -12,8 +12,7 @@ export default function SapServices() {
       <div className="w-full">
         {/* Full Width Hero Image with Content Overlay */}
         <div className="w-full relative overflow-hidden pt-[140px] md:pt-0" style={{ height: 'calc(100vh - 68px)' }}>
-          <img 
-            src={sapServicesImg} 
+          <img fetchpriority="high" src={sapServicesImg} 
             alt="SAP Services Hero" 
             className="absolute inset-0 w-full h-full object-cover z-0"
           />
@@ -31,7 +30,7 @@ export default function SapServices() {
             <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
               <div className="max-w-xl">
               <motion.h1 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight tracking-tight"
@@ -41,7 +40,7 @@ export default function SapServices() {
               
               <div className="space-y-4">
                 <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="text-gray-100 text-sm font-light leading-relaxed"
@@ -50,7 +49,7 @@ export default function SapServices() {
                 </motion.p>
                 
                 <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
                   className="text-gray-200 text-xs font-light leading-relaxed"
@@ -59,7 +58,7 @@ export default function SapServices() {
                 </motion.p>
                 
                 <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
                   className="text-gray-200 text-xs font-light leading-relaxed"

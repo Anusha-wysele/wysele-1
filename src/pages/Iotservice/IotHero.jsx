@@ -31,8 +31,7 @@ export default function IotHero() {
         
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={IotheroImg} 
+          <img fetchpriority="high" src={IotheroImg} 
             alt="IoT Services Hero Background" 
             className="w-full h-full object-cover"
           />
@@ -47,7 +46,7 @@ export default function IotHero() {
           
           {/* Left Card - List */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-1 bg-[#FFB703] rounded-2xl p-3 md:p-4 shadow-2xl"
@@ -70,7 +69,7 @@ export default function IotHero() {
 
           {/* Right Card - Text Content */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 1, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex-1 bg-[#800000] rounded-2xl p-3 md:p-4 shadow-2xl flex flex-col justify-center"

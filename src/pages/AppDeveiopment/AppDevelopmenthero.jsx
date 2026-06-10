@@ -9,7 +9,7 @@ const AppDevelopmenthero = () => {
 
                 {/* Left Side: Content */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 1, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     className="w-full md:w-1/2 flex flex-col z-20 shrink-0 text-center md:text-left items-center md:items-start"
@@ -45,7 +45,7 @@ const AppDevelopmenthero = () => {
                     <motion.img
                         src={AppDev1}
                         alt="App Development Mockup"
-                        initial={{ opacity: 0, y: 40 }}
+                        initial={{ opacity: 1, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                         className="w-[95%] sm:w-[90%] md:w-[720px] lg:w-[1050px] md:max-w-none object-contain md:translate-y-16 lg:translate-y-24"

@@ -81,7 +81,7 @@ export default function AiMlhero() {
             {/* Content Column */}
             <div className="max-w-4xl w-full">
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
                 className="text-2xl sm:text-3xl lg:text-[38px] font-semibold text-white leading-tight mb-4"
@@ -90,7 +90,7 @@ export default function AiMlhero() {
               </motion.h1>
 
               <motion.h2
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.15, ease: [0.33, 1, 0.68, 1] }}
                 className="text-base sm:text-lg lg:text-xl font-bold text-white/95 leading-snug mb-6"
@@ -99,7 +99,7 @@ export default function AiMlhero() {
               </motion.h2>
               
               <motion.div 
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
                 className="w-12 h-[1.5px] bg-[#FFB703]/60 my-4" 
@@ -107,7 +107,7 @@ export default function AiMlhero() {
 
               <div className="flex flex-col gap-3 text-xs sm:text-sm text-gray-200 leading-relaxed font-normal">
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
                 >
@@ -115,7 +115,7 @@ export default function AiMlhero() {
                 </motion.p>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.45, ease: [0.33, 1, 0.68, 1] }}
                   className="hidden sm:block"
@@ -124,7 +124,7 @@ export default function AiMlhero() {
                 </motion.p>
 
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 1, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.6, ease: [0.33, 1, 0.68, 1] }}
                 >
@@ -133,7 +133,7 @@ export default function AiMlhero() {
               </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.75, ease: [0.33, 1, 0.68, 1] }}
                 className="pt-5"
@@ -154,7 +154,7 @@ export default function AiMlhero() {
 
       {/* <Link to="/services/aiml-services" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>AI & ML</Link> Service Offerings Floating Card */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 1, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.9, ease: [0.33, 1, 0.68, 1] }}
         className="relative z-30 max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full -mt-4 sm:-mt-6 lg:-mt-8"

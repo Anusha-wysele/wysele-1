@@ -7,8 +7,7 @@ export default function SapGenhero() {
     return (
         <div className="w-full">
             <section className="relative w-full overflow-hidden font-sans min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] pt-[140px] md:pt-0 py-12 lg:py-0">
-                <img 
-                    src={SapgenaiImg} 
+                <img fetchpriority="high" src={SapgenaiImg} 
                     alt="SAP GenAI" 
                     className="absolute inset-0 w-full h-full object-cover object-center z-0"
                 />
@@ -22,7 +21,7 @@ export default function SapGenhero() {
                 {/* Content Container */}
                 <div className="relative lg:absolute inset-0 flex flex-col justify-center items-center text-center z-20 px-6 mt-12 lg:mt-0">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 1, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >

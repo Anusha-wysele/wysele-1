@@ -27,8 +27,7 @@ export default function SapMigrationhero() {
     return (
         <section className="relative w-full min-h-screen flex items-center overflow-hidden font-sans bg-black pt-[150px] md:pt-0">
             {/* Background Image */}
-            <img 
-                src={sapMigrationHeroImg} 
+            <img fetchpriority="high" src={sapMigrationHeroImg} 
                 alt="SAP Migration" 
                 className="absolute inset-0 w-full h-full object-cover object-center z-0"
             />
@@ -51,7 +50,7 @@ export default function SapMigrationhero() {
                     <div className="max-w-3xl">
                         {/* Main Title */}
                         <motion.h1 
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 1, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4 leading-tight tracking-tight"
@@ -61,7 +60,7 @@ export default function SapMigrationhero() {
 
                         {/* Sub-headline */}
                         <motion.p 
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                             className="text-base md:text-lg text-white mb-6 font-normal max-w-2xl"
@@ -79,7 +78,7 @@ export default function SapMigrationhero() {
                             ].map((bullet, idx) => (
                                 <motion.div 
                                     key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
+                                    initial={{ opacity: 1, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.5, delay: 0.4 + (idx * 0.1) }}
                                     className="flex items-center gap-3 text-white text-xs md:text-sm font-medium"
@@ -95,7 +94,7 @@ export default function SapMigrationhero() {
                             {services.map((service, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    initial={{ opacity: 1, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5, delay: 0.8 + (idx * 0.1) }}
                                     className="flex flex-col items-center group"

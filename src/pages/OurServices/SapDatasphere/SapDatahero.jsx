@@ -28,7 +28,7 @@ const SapDatahero = () => {
                 <div className="max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
                     <div className="max-w-2xl text-left flex flex-col gap-3">
                         <motion.h1
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 1, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] }}
                             className="text-2xl sm:text-3xl lg:text-[38px] font-semibold text-white leading-tight tracking-tight"
@@ -37,7 +37,7 @@ const SapDatahero = () => {
                         </motion.h1>
 
                         <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.15, ease: [0.33, 1, 0.68, 1] }}
                             className="text-base sm:text-lg lg:text-xl font-bold text-white/95 leading-snug"
@@ -47,7 +47,7 @@ const SapDatahero = () => {
 
                         <div className="flex flex-col gap-2.5 text-xs sm:text-sm text-white/80 leading-relaxed font-light">
                             <motion.p
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 1, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
                             >
@@ -55,7 +55,7 @@ const SapDatahero = () => {
                             </motion.p>
 
                             <motion.p
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 1, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.7, delay: 0.45, ease: [0.33, 1, 0.68, 1] }}
                             >
@@ -63,7 +63,7 @@ const SapDatahero = () => {
                             </motion.p>
 
                             <motion.p
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 1, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.7, delay: 0.6, ease: [0.33, 1, 0.68, 1] }}
                             >
@@ -72,7 +72,7 @@ const SapDatahero = () => {
                         </div>
 
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 1, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.75, ease: [0.33, 1, 0.68, 1] }}
                             className="pt-2"

@@ -11,7 +11,7 @@ const SapIntegrationhero = () => {
       {/* Background Image Container */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <motion.img
-          initial={{ scale: 1.1, opacity: 0 }}
+          initial={{ scale: 1.1, opacity: 1 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.5, ease: "easeOut" }}
           src={sapIntegrationHeroImg}
@@ -33,7 +33,7 @@ const SapIntegrationhero = () => {
           <div className="max-w-3xl">
             {/* Capsule Tag */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 1, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-1.5 mb-6 shadow-lg"
@@ -44,7 +44,7 @@ const SapIntegrationhero = () => {
 
             {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 1, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.1 }}
               transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -55,7 +55,7 @@ const SapIntegrationhero = () => {
 
             {/* Description */}
             <motion.p
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 1, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.1 }}
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -66,7 +66,7 @@ const SapIntegrationhero = () => {
 
             {/* Features */}
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 1, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.1 }}
               transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}

@@ -6,8 +6,7 @@ export default function SapS4hero() {
     return (
         <div className="w-full">
             <section className="relative w-full overflow-hidden font-sans min-h-[calc(100vh-68px)] lg:h-[calc(100vh-68px)] pt-[140px] md:pt-0 py-12 lg:py-0">
-                <img 
-                    src={s4hanaHeroImg} 
+                <img fetchpriority="high" src={s4hanaHeroImg} 
                     alt="SAP S/4HANA" 
                     className="absolute inset-0 w-full h-full object-cover object-center z-0"
                 />
@@ -21,7 +20,7 @@ export default function SapS4hero() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
                             {/* Left Side: Content */}
                             <motion.div 
-                                initial={{ opacity: 0, x: -30 }}
+                                initial={{ opacity: 1, x: -30 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                                 className="order-2 md:order-1"
@@ -33,7 +32,7 @@ export default function SapS4hero() {
 
                             {/* Right Side: Heading Card */}
                             <motion.div 
-                                initial={{ opacity: 0, x: 30 }}
+                                initial={{ opacity: 1, x: 30 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                                 className="order-1 md:order-2 w-full max-w-md ml-auto"

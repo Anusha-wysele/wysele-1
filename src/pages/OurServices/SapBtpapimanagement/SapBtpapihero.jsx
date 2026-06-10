@@ -24,7 +24,7 @@ export default function SapBtpapihero() {
 
                     {/* Massive Uppercase Bold Headline */}
                     <motion.h1
-                        initial={{ opacity: 0, y: 40 }}
+                        initial={{ opacity: 1, y: 40 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                         className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-white uppercase leading-[1.15] tracking-tight mb-6"
@@ -36,7 +36,7 @@ export default function SapBtpapihero() {
 
                     {/* Short paragraph */}
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 1, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
                         className="text-sm md:text-base text-white/80 leading-relaxed font-light max-w-md"
@@ -49,7 +49,7 @@ export default function SapBtpapihero() {
 
             {/* Bottom-right: service index labels */}
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, delay: 0.5 }}
                 className="absolute bottom-10 md:bottom-14 right-6 md:right-12 lg:right-20 z-20 hidden md:flex items-end gap-10"
