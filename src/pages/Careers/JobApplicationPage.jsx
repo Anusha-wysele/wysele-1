@@ -15,7 +15,6 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Breadcrumbs from '../../components/common/Breadcrumbs';
 import jobService from '../../services/jobService';
-import { jobOpenings } from './CareersOpenings';
 
 const JobApplicationPage = () => {
   const { id } = useParams();
@@ -87,10 +86,7 @@ const JobApplicationPage = () => {
         setJob(apiJob);
       } catch (err) {
         console.error('Failed to fetch job:', err);
-        // Fallback to mock data if API fails
-        const foundJob = jobOpenings.find(j => j.id === parseInt(id));
-        if (foundJob) setJob(foundJob);
-        else navigate('/careers');
+        navigate('/careers');
       } finally {
         setLoading(false);
       }

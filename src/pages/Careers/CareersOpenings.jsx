@@ -5,134 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import jobService from '../../services/jobService';
 
-export const jobOpenings = [
-  {
-    id: 1,
-    title: "Cloud Infrastructure Engineer",
-    dept: "Engineering",
-    exp: "5+ Years",
-    location: "Remote / Hybrid",
-    type: "Full-Time",
-    desc: "Architect and manage large-scale multi-cloud environments (AWS/Azure) for enterprise clients.",
-    keySkills: ["AWS/Azure", "Terraform", "Kubernetes"],
-    details: {
-      about: "We are seeking a seasoned Cloud Infrastructure Engineer to lead the design and implementation of high-performance cloud architectures. You will be responsible for ensuring scalability, security, and cost-efficiency for global enterprise clients.",
-      responsibilities: [
-        "Design and deploy scalable AWS/Azure architectures.",
-        "Implement Infrastructure as Code (IaC) using Terraform or CloudFormation.",
-        "Optimize cloud resource consumption and performance.",
-        "Collaborate with security teams to ensure robust compliance standards."
-      ],
-      skills: ["AWS/Azure Certified", "Terraform", "Kubernetes", "Python/Go", "CI/CD", "Docker"],
-      benefits: ["Remote work stipends", "Premium health insurance", "Stock options", "Annual learning budget"]
-    }
-  },
-  {
-    id: 2,
-    title: "Network Security Analyst",
-    dept: "Security",
-    exp: "3+ Years",
-    location: "On-site (NY)",
-    type: "Full-Time",
-    desc: "Monitor and protect enterprise network architectures from sophisticated security threats.",
-    keySkills: ["SIEM", "Firewall Mgmt", "Network Security"],
-    details: {
-      about: "Join our core security team to monitor, detect, and respond to network threats in real-time. You'll work at the forefront of cybersecurity for critical IT infrastructure.",
-      responsibilities: [
-        "Perform regular network vulnerability assessments.",
-        "Configure and maintain enterprise-grade firewalls and IDS/IPS.",
-        "Monitor security logs for suspicious activity.",
-        "Develop incident response protocols and documentation."
-      ],
-      skills: ["CISSP/CEH", "Network Protocols", "SIEM Tools", "Firewall Mgmt", "Intrusion Detection"],
-      benefits: ["Gym membership", "Daily gourmet lunches", "Generous PTO", "Tech gear of choice"]
-    }
-  },
-  {
-    id: 3,
-    title: "DevOps Engineer",
-    dept: "Engineering",
-    exp: "4+ Years",
-    location: "Remote",
-    type: "Full-Time",
-    desc: "Bridge the gap between development and operations with automated CI/CD pipelines.",
-    keySkills: ["Docker", "Jenkins", "Ansible"],
-    details: {
-      about: "We're looking for an automation wizard to streamline our deployment processes. You'll build and maintain the pipelines that power our rapid innovation cycles.",
-      responsibilities: [
-        "Build and maintain CI/CD pipelines using Jenkins/GitLab.",
-        "Automate infrastructure provisioning and configuration.",
-        "Monitor system performance and reliability.",
-        "Lead the transition to microservices architecture."
-      ],
-      skills: ["Docker", "Jenkins", "Ansible", "Bash/Python", "Linux Administration", "Git"],
-      benefits: ["Unlimited PTO", "Retreats to tropical locations", "Home office setup", "Performance bonuses"]
-    }
-  },
-  {
-    id: 4,
-    title: "Solutions Architect",
-    dept: "Sales Engineering",
-    exp: "7+ Years",
-    location: "Hybrid",
-    type: "Full-Time",
-    desc: "Design end-to-end technology solutions that solve complex business infrastructure needs.",
-    keySkills: ["Architecture", "Client Strategy", "Hybrid Cloud"],
-    details: {
-      about: "Act as the bridge between technical capability and business strategy. You'll design holistic solutions that empower our clients to scale effectively.",
-      responsibilities: [
-        "Conduct technical discovery workshops with clients.",
-        "Create comprehensive solution design documents.",
-        "Oversee the initial implementation phase of complex projects.",
-        "Advise executive stakeholders on technology roadmaps."
-      ],
-      skills: ["Architecture Frameworks", "Client Facing", "Project Mgmt", "Hybrid Cloud", "Presales"],
-      benefits: ["High commission potential", "Car allowance", "Global travel opportunities", "Flexible hours"]
-    }
-  },
-  {
-    id: 5,
-    title: "System Administrator",
-    dept: "Operations",
-    exp: "4+ Years",
-    location: "Chicago, IL",
-    type: "Full-Time",
-    desc: "Maintain and optimize server performance, ensuring maximum reliability for enterprise systems.",
-    keySkills: ["Linux/Windows", "Active Directory", "Scripting"],
-    details: {
-      about: "We need a proactive System Administrator to manage our internal and client-facing server environments. You will ensure 99.9% uptime and handle troubleshooting.",
-      responsibilities: [
-        "Manage Windows/Linux server environments.",
-        "Perform regular backups and disaster recovery tests.",
-        "Monitor system health and resource utilization.",
-        "Automate routine maintenance tasks."
-      ],
-      skills: ["Windows/Linux", "Active Directory", "Scripting", "Backups", "Virtualization", "Monitoring Tools"],
-      benefits: ["Flexible scheduling", "Competitive salary", "Learning budget", "Health & Wellness"]
-    }
-  },
-  {
-    id: 6,
-    title: "IT Support Specialist",
-    dept: "Support",
-    exp: "2+ Years",
-    location: "Remote / Hybrid",
-    type: "Full-Time",
-    desc: "Provide high-level technical assistance and troubleshooting for enterprise-grade hardware and software.",
-    keySkills: ["Troubleshooting", "OS Mgmt", "Customer Service"],
-    details: {
-      about: "Join our front-line support team to resolve technical issues for our global workforce. You'll play a key role in maintaining productivity across the organization.",
-      responsibilities: [
-        "Troubleshoot hardware, software, and network issues.",
-        "Manage internal ticketing system and prioritize requests.",
-        "Configure and deploy workstations and mobile devices.",
-        "Document common issues and create self-help guides."
-      ],
-      skills: ["Technical Troubleshooting", "Customer Service", "OS Mgmt", "Network Basics", "Hardware Repair", "Ticketing Systems"],
-      benefits: ["Career mentoring", "Overtime opportunities", "Paid certifications", "Casual dress code"]
-    }
-  }
-];
+
 
 const mapApiJob = (job) => {
   const rawSkills = job.required_skills || job.key_skills || job.keySkills || job.skills || [];
@@ -200,9 +73,7 @@ const CareersOpenings = () => {
         setJobs(wyseleJobs);
       } catch (err) {
         console.error('Failed to fetch jobs:', err);
-        if (!searchQuery) {
-          setJobs(jobOpenings);
-        }
+        setJobs([]);
       } finally {
         setLoading(false);
       }
@@ -384,7 +255,7 @@ const CareersOpenings = () => {
                   <Search className="w-10 h-10" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-xl font-normal text-gray-900">No positions found</h3>
+                  <h3 className="text-xl font-normal text-gray-900">No jobs found</h3>
                   <p className="text-sm text-gray-500">Try adjusting your search query or filters.</p>
                 </div>
                 <button 

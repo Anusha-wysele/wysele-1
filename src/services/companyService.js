@@ -2,6 +2,7 @@ import api from './api';
 
 // Cache array initialized to empty list (no fallback mock data)
 let companiesCache = [];
+let activeFetchPromise = null;
 
 const mapCompany = (c) => {
   let domain = c.domain || '';
@@ -41,24 +42,34 @@ const companyService = {
 
   // API Call: Fetch all companies
   fetchCompanies: async () => {
-    try {
-      const response = await api.get('/companies/');
-      const resData = response.data || response;
-      const list = Array.isArray(resData) 
-        ? resData 
-        : (resData.companies && Array.isArray(resData.companies))
-          ? resData.companies
-          : (resData.data && Array.isArray(resData.data))
-            ? resData.data
-            : [];
-      
-      companiesCache = list.map(mapCompany);
-      dispatchUpdate();
-      return [...companiesCache];
-    } catch (err) {
-      console.error('Failed to fetch companies from API:', err);
-      return [...companiesCache];
+    if (activeFetchPromise) {
+      return activeFetchPromise;
     }
+
+    activeFetchPromise = (async () => {
+      try {
+        const response = await api.get('/companies/');
+        const resData = response.data || response;
+        const list = Array.isArray(resData) 
+          ? resData 
+          : (resData.companies && Array.isArray(resData.companies))
+            ? resData.companies
+            : (resData.data && Array.isArray(resData.data))
+              ? resData.data
+              : [];
+        
+        companiesCache = list.map(mapCompany);
+        dispatchUpdate();
+        return [...companiesCache];
+      } catch (err) {
+        console.error('Failed to fetch companies from API:', err);
+        return [...companiesCache];
+      } finally {
+        activeFetchPromise = null;
+      }
+    })();
+
+    return activeFetchPromise;
   },
 
   // API Call: Create or Update company
