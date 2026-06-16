@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Lock, Mail, Eye, EyeOff, Loader2 } from 'lucide-react';
+import { Lock, Mail, Eye, EyeOff, Loader2, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import authService from '../../services/authService';
 import logoDark from '../../assets/wysele_dark-removebg-preview.png';
@@ -13,7 +13,7 @@ const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('ADMIN'); // 'ADMIN' or 'SUPER_ADMIN'
+  const [activeTab, setActiveTab] = useState('SUPER_ADMIN'); // 'ADMIN' or 'SUPER_ADMIN'
 
   // Forgot / Reset password state variables
   const [view, setView] = useState('LOGIN'); // 'LOGIN' | 'FORGOT' | 'RESET'
@@ -157,6 +157,16 @@ const AdminLogin = () => {
         animate={{ opacity: 1, y: 0 }}
         className="relative z-10 w-full max-w-4xl md:h-[500px] bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden rounded-none"
       >
+        {/* Home Button to return to main website */}
+        <button
+          onClick={() => navigate('/')}
+          className="absolute top-6 left-6 z-20 flex items-center gap-2 text-[#800000] text-xs font-bold tracking-wider transition-all cursor-pointer group/home"
+        >
+          <ArrowLeft size={16} className="transition-transform group-hover/home:-translate-x-1" />
+          <span className="group-hover/home:underline decoration-2 underline-offset-4">
+            Back To Home
+          </span>
+        </button>
 
         {/* Left Side - Visual Image */}
         <div className="hidden md:block w-1/2 relative overflow-hidden group">
@@ -200,17 +210,6 @@ const AdminLogin = () => {
             <div className="flex border-b border-gray-100 mb-6">
               <button
                 type="button"
-                onClick={() => handleTabChange('ADMIN')}
-                className={`flex-1 pb-3 text-[10px] font-black uppercase tracking-wider transition-all ${
-                  activeTab === 'ADMIN' 
-                    ? 'text-[#800000] border-b-2 border-[#800000]' 
-                    : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                Admin
-              </button>
-              <button
-                type="button"
                 onClick={() => handleTabChange('SUPER_ADMIN')}
                 className={`flex-1 pb-3 text-[10px] font-black uppercase tracking-wider transition-all ${
                   activeTab === 'SUPER_ADMIN' 
@@ -219,6 +218,17 @@ const AdminLogin = () => {
                 }`}
               >
                 Super Admin
+              </button>
+              <button
+                type="button"
+                onClick={() => handleTabChange('ADMIN')}
+                className={`flex-1 pb-3 text-[10px] font-black uppercase tracking-wider transition-all ${
+                  activeTab === 'ADMIN' 
+                    ? 'text-[#800000] border-b-2 border-[#800000]' 
+                    : 'text-gray-400 hover:text-gray-600'
+                }`}
+              >
+                Admin
               </button>
             </div>
           )}

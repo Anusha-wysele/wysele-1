@@ -89,20 +89,20 @@ const SidebarItem = ({ item, isCollapsed, isActive, company }) => {
       <div className="space-y-1">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex items-center justify-between w-full px-3.5 py-2 rounded-lg transition-all duration-200 group ${
+          className={`flex items-center justify-between w-full pr-6 py-2.5 transition-all duration-200 group ${
             isActive 
-              ? 'bg-[#0078D4] text-white font-semibold shadow-sm' 
-              : 'text-slate-300 hover:text-white hover:bg-white/5'
+              ? 'bg-[#EFF6FC] text-[#0078D4] border-l-4 border-[#0078D4] pl-[16px] font-semibold' 
+              : 'text-gray-700 font-medium hover:text-gray-900 hover:bg-gray-100/80 pl-5'
           }`}
         >
           <div className="flex items-center gap-3">
-            <item.icon size={18} className={`${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} shrink-0`} />
-            <span className="font-normal text-sm tracking-normal capitalize whitespace-nowrap">{item.label}</span>
+            <item.icon size={18} className={`${isActive ? 'text-[#0078D4]' : 'text-gray-500 group-hover:text-gray-700'} shrink-0`} />
+            <span className="font-medium text-sm tracking-normal capitalize whitespace-nowrap">{item.label}</span>
           </div>
           <motion.div
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
-            className={`${isActive ? 'text-white' : 'text-slate-450 group-hover:text-white'}`}
+            className={`${isActive ? 'text-[#0078D4]' : 'text-gray-450 group-hover:text-gray-700'}`}
           >
             <ChevronRight size={14} />
           </motion.div>
@@ -122,7 +122,7 @@ const SidebarItem = ({ item, isCollapsed, isActive, company }) => {
                     key={sub.path} 
                     to={getPathWithCompany(sub.path)}
                     className={`block py-2 text-xs font-normal capitalize transition-colors ${
-                      isSubActive ? 'text-white font-medium bg-[#0078D4]/25 rounded px-2 -mx-2' : 'text-slate-400 hover:text-white'
+                      isSubActive ? 'text-[#0078D4] font-medium bg-[#EFF6FC] rounded px-2 -mx-2' : 'text-gray-500 hover:text-gray-950'
                     }`}
                   >
                     {sub.label}
@@ -140,20 +140,20 @@ const SidebarItem = ({ item, isCollapsed, isActive, company }) => {
     <Link to={getPathWithCompany(item.path)}>
       <motion.div
         whileHover={isCollapsed ? {} : { x: 4 }}
-        className={`flex items-center gap-3 rounded-lg transition-all duration-205 relative group ${
-          isCollapsed ? 'px-2 py-2 justify-center' : 'px-3.5 py-2'
+        className={`flex items-center gap-3 transition-all duration-205 relative group ${
+          isCollapsed ? 'px-2 py-2 justify-center' : 'pr-6 py-2.5'
         } ${
           isActive 
-            ? 'bg-[#0078D4] text-white' 
-            : 'text-slate-300 hover:text-white hover:bg-white/5'
+            ? 'bg-[#EFF6FC] text-[#0078D4] border-l-4 border-[#0078D4] pl-[16px]' 
+            : 'text-gray-700 font-medium hover:text-gray-900 hover:bg-gray-100/80 pl-5'
         }`}
       >
-        <item.icon size={18} className={`${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} shrink-0`} />
+        <item.icon size={18} className={`${isActive ? 'text-[#0078D4]' : 'text-gray-500 group-hover:text-gray-700'} shrink-0`} />
         {!isCollapsed && (
           <div className="flex-1 flex items-center justify-between min-w-0">
-            <span className={`${isActive ? 'font-medium' : 'font-normal'} text-[13px] tracking-normal capitalize whitespace-nowrap truncate`}>{item.label}</span>
+            <span className={`${isActive ? 'font-semibold' : 'font-medium'} text-[13px] tracking-normal capitalize whitespace-nowrap truncate`}>{item.label}</span>
             {item.status && (
-              <span className="ml-2 px-1.5 py-0.5 bg-slate-450/20 text-[8px] font-black text-slate-700 uppercase tracking-tighter rounded-sm border border-slate-450/30 flex-shrink-0">
+              <span className="ml-2 px-1.5 py-0.5 bg-gray-100 text-[8px] font-black text-gray-500 uppercase tracking-tighter rounded-sm border border-gray-200 flex-shrink-0">
                 {item.status}
               </span>
             )}
@@ -239,12 +239,12 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed }) => {
           x: isMobile ? (isMobileMenuOpen ? 0 : -220) : 0
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className={`fixed lg:sticky top-0 h-screen bg-[#0B2540] z-[999] flex flex-col shrink-0 overflow-visible
+        className={`fixed lg:sticky top-0 h-screen bg-white border-r border-gray-200 z-[999] flex flex-col shrink-0 overflow-visible
           ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
 
         {/* Sidebar Header */}
-        <div className="h-[51px] shrink-0 bg-[#081B2E] border-b border-white/5 flex items-center justify-center relative w-full px-4">
+        <div className="h-[51px] shrink-0 bg-[#005A9E] border-b border-white/10 flex items-center justify-center relative w-full px-4">
           <Link to="/admin" className="flex items-center justify-center w-full pr-8 lg:pr-0" onClick={() => setIsMobileMenuOpen(false)}>
             <AnimatePresence mode="wait">
               {isCollapsed ? (
@@ -285,10 +285,10 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed }) => {
           </button>
         </div>
 
-        {/* Main Content Area with Right Border starting below Header */}
-        <div className="flex-1 flex flex-col border-r border-white/5 min-h-0">
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col min-h-0">
           {/* Navigation Menu */}
-          <nav className={`flex-1 space-y-1.5 py-4 overflow-y-auto hide-scrollbar transition-all duration-300 ${isCollapsed ? 'px-2' : 'px-4'}`}>
+          <nav className={`flex-1 space-y-1 py-4 overflow-y-auto hide-scrollbar transition-all duration-300 ${isCollapsed ? 'px-1' : 'px-0'}`}>
             {filteredMenuItems.map((item) => {
               const isActive = location.pathname === item.path || (item.subItems && item.subItems.some(sub => location.pathname === sub.path));
               return (
@@ -305,7 +305,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed }) => {
           </nav>
 
           {/* Sidebar Footer */}
-          <div className={`border-t border-white/5 transition-all duration-300 ${isCollapsed ? 'p-1.5' : 'p-2'} space-y-1.5`}>
+          <div className={`border-t border-gray-200 transition-all duration-300 ${isCollapsed ? 'p-1.5' : 'p-0'} space-y-1`}>
             {userRole && ['SUPER_ADMIN', 'HR', 'ADMIN'].includes(userRole) && (
               <div onClick={() => window.innerWidth < 1024 && setIsMobileMenuOpen(false)}>
                 <SidebarItem 
@@ -327,10 +327,10 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed }) => {
                 setIsMobileMenuOpen(false);
                 window.location.href = '/masterlogin';
               }}
-              className={`flex items-center gap-3 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50/60 transition-all duration-200 group ${isCollapsed ? 'px-2 py-1.5 justify-center' : 'px-2.5 py-1.5 w-full'}`}
+              className={`flex items-center gap-3 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all duration-200 group ${isCollapsed ? 'px-2 py-2 justify-center' : 'pr-6 py-2.5 w-full pl-5'}`}
             >
               <LogOut size={18} className="text-red-600 shrink-0" />
-              {(!isCollapsed || isMobileMenuOpen) && <span className="font-semibold text-[13px] uppercase tracking-tighter">Logout</span>}
+              {(!isCollapsed || isMobileMenuOpen) && <span className="font-bold text-[13px] uppercase tracking-tighter">Logout</span>}
             </motion.button>
           </div>
         </div>

@@ -189,15 +189,15 @@ export default function Dashboard() {
   };
 
   const statCards = [
-    { label: 'Total Jobs Posted', value: data.stats.jobs, icon: Briefcase, color: 'text-rose-500', bg: 'bg-rose-50', trend: '+12%', sparkColor: '#f43f5e' },
-    { label: 'Blog Posts', value: data.stats.blogs, icon: FileText, color: 'text-purple-500', bg: 'bg-purple-50', trend: '+5%', sparkColor: '#a855f7' },
-    hasConsultations && { label: 'Consultations', value: data.stats.consultations, icon: MessageSquare, color: 'text-blue-500', bg: 'bg-blue-50', trend: '+24%', sparkColor: '#3b82f6' },
-    { label: 'Contact Inquiries', value: data.stats.contacts, icon: Mail, color: 'text-orange-500', bg: 'bg-orange-50', trend: '+8%', sparkColor: '#f97316' },
+    { label: 'Total Jobs Posted', value: data.stats.jobs, icon: Briefcase, color: 'text-rose-500', bg: 'bg-rose-50', trend: '+12%', borderStyle: 'border-l-4 border-rose-500' },
+    { label: 'Blog Posts', value: data.stats.blogs, icon: FileText, color: 'text-purple-500', bg: 'bg-purple-50', trend: '+5%', borderStyle: 'border-l-4 border-purple-500' },
+    hasConsultations && { label: 'Consultations', value: data.stats.consultations, icon: MessageSquare, color: 'text-blue-500', bg: 'bg-blue-50', trend: '+24%', borderStyle: 'border-l-4 border-blue-500' },
+    { label: 'Contact Inquiries', value: data.stats.contacts, icon: Mail, color: 'text-orange-500', bg: 'bg-orange-50', trend: '+8%', borderStyle: 'border-l-4 border-orange-500' },
   ].filter(Boolean);
 
   return (
     <AdminLayout>
-      <div className="space-y-6 px-1 pb-10 bg-[#F0F0F0] min-h-screen pt-0 hide-scrollbar">
+      <div className="space-y-6 px-1 pb-10 bg-[#fffcfc] min-h-screen pt-0 hide-scrollbar">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 px-2">
@@ -219,46 +219,23 @@ export default function Dashboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-md p-6 border border-gray-200 relative group overflow-hidden"
+              className={`bg-white rounded-md p-4 border border-gray-200 relative group overflow-hidden ${stat.borderStyle}`}
             >
-              <div className="flex justify-between items-start mb-6">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${stat.bg} ${stat.color} transition-transform duration-500 group-hover:scale-110`}>
-                  <stat.icon size={22} />
+              <div className="flex justify-between items-start mb-3">
+                <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${stat.bg} ${stat.color} transition-transform duration-500 group-hover:scale-110`}>
+                  <stat.icon size={18} />
                 </div>
-                <div className="flex items-center gap-1 text-[10px] font-black text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-full">
-                  <TrendingUp size={12} />
+                <div className="flex items-center gap-1 text-[8px] font-bold text-emerald-500 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                  <TrendingUp size={10} />
                   {stat.trend}
                 </div>
               </div>
               
-              <div className="space-y-1 mb-6">
-                <h3 className="text-3xl font-semibold text-gray-900 tracking-tighter">
+              <div className="space-y-0.5 mb-3">
+                <h3 className="text-2xl font-bold text-gray-900 tracking-tighter">
                   {loading ? '---' : stat.value}
                 </h3>
-                <p className="text-gray-400 text-[9px] font-black uppercase tracking-[0.15em]">{stat.label}</p>
-              </div>
-
-              {/* Sparkline Graphic with Premium Effects */}
-              <div className="absolute bottom-0 left-0 right-0 h-10 overflow-hidden opacity-40">
-                <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 300 40">
-                  <defs>
-                    <filter id={`lineShadow-${index}`} x="-50%" y="-50%" width="200%" height="200%">
-                      <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor={stat.sparkColor} floodOpacity="0.4" />
-                    </filter>
-                  </defs>
-                  <motion.path
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 2, delay: 1 }}
-                    d="M0 25 C 20 20, 40 30, 60 15 S 80 5, 100 20 S 120 30, 140 15 S 160 5, 180 20 S 200 30, 220 15 S 240 5, 260 20 S 280 30, 300 15"
-                    fill="none"
-                    stroke={stat.sparkColor}
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    filter={`url(#lineShadow-${index})`}
-                    vectorEffect="non-scaling-stroke"
-                  />
-                </svg>
+                <p className="text-gray-400 text-[8px] font-black uppercase tracking-[0.1em]">{stat.label}</p>
               </div>
             </motion.div>
           ))}
@@ -268,19 +245,19 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           
           {/* Recent Job Postings */}
-          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
             {/* Header inside card */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
-                  <Briefcase size={20} />
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                  <Briefcase size={13} />
                 </div>
-                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider font-sans">
+                <h2 className="text-xs font-bold text-gray-900 uppercase tracking-wider font-sans">
                   Recent Job Postings
                 </h2>
               </div>
-              <Link to="/admin/job-postings" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
-                VIEW ALL <ArrowRight size={14} />
+              <Link to="/admin/job-postings" className="text-[10px] font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                VIEW ALL <ArrowRight size={12} />
               </Link>
             </div>
             
@@ -289,25 +266,25 @@ export default function Dashboard() {
               <table className="w-full text-left table-auto">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Role</th>
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Job Type</th>
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Status</th>
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Posted On</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Role</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider text-center">Job Type</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider text-center">Status</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider text-center">Posted On</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {loading ? (
-                    [1,2,3].map(i => <tr key={i}><td colSpan="4" className="py-4 animate-pulse bg-gray-50/50 h-12"></td></tr>)
+                    [1,2,3].map(i => <tr key={i}><td colSpan="4" className="py-1.5 animate-pulse bg-gray-50/50 h-8"></td></tr>)
                   ) : data.jobs.length === 0 ? (
-                    <tr><td colSpan="4" className="py-10 text-center text-gray-400 text-xs font-semibold uppercase">No recent jobs</td></tr>
+                    <tr><td colSpan="4" className="py-6 text-center text-gray-400 text-[10px] font-semibold uppercase">No recent jobs</td></tr>
                   ) : (
                     data.jobs.map((job) => (
                       <tr key={job.id || job._id} className="group hover:bg-gray-50/50 transition-colors">
-                        <td className="py-4">
-                          <p className="text-sm font-normal text-gray-900 truncate max-w-[150px]">{job.job_title || job.role || job.title || 'Untitled Role'}</p>
+                        <td className="py-1">
+                          <p className="text-xs font-normal text-gray-900 truncate max-w-[150px]">{job.job_title || job.role || job.title || 'Untitled Role'}</p>
                         </td>
-                        <td className="py-4 text-center">
-                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-center inline-block ${
+                        <td className="py-1 text-center">
+                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider text-center inline-block ${
                             (job.job_type || job.type || '').toLowerCase().includes('part') ? 'bg-purple-50 text-purple-600 border border-purple-100' :
                             (job.job_type || job.type || '').toLowerCase().includes('contract') ? 'bg-orange-50 text-orange-600 border border-orange-100' :
                             'bg-blue-50 text-blue-600 border border-blue-100'
@@ -315,8 +292,8 @@ export default function Dashboard() {
                             {job.job_type || job.type || 'Full-time'}
                           </span>
                         </td>
-                        <td className="py-4 text-center">
-                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-center inline-block ${
+                        <td className="py-1 text-center">
+                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider text-center inline-block ${
                             (job.status === 'active' || job.status === 'published' || job.status === 'Published') 
                               ? 'bg-green-50 text-green-600 border-green-100' 
                               : job.status === 'Draft' 
@@ -326,7 +303,7 @@ export default function Dashboard() {
                             {job.status === 'Published' ? 'Active' : job.status || 'Active'}
                           </span>
                         </td>
-                        <td className="py-4 text-center text-xs font-semibold text-gray-400">
+                        <td className="py-1 text-center text-[10px] font-semibold text-gray-400">
                           {formatDate(job.job_posted_date || job.jobPostedDate || job.createdAt || job.created_at || job.date)}
                         </td>
                       </tr>
@@ -338,19 +315,19 @@ export default function Dashboard() {
           </div>
 
           {/* Latest Blogs */}
-          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
             {/* Header inside card */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
-                  <FileText size={20} />
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                  <FileText size={13} />
                 </div>
-                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
+                <h2 className="text-xs font-bold text-gray-900 uppercase tracking-wider">
                   Latest Blog Posts
                 </h2>
               </div>
-              <Link to="/admin/blogs" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
-                VIEW ALL <ArrowRight size={14} />
+              <Link to="/admin/blogs" className="text-[10px] font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                VIEW ALL <ArrowRight size={12} />
               </Link>
             </div>
             
@@ -359,36 +336,36 @@ export default function Dashboard() {
               <table className="w-full text-left table-auto">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Image</th>
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Title</th>
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Category</th>
-                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Posted On</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Image</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider">Title</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider text-center">Category</th>
+                    <th className="pb-1 text-[9px] font-bold text-gray-400 uppercase tracking-wider text-center">Posted On</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {loading ? (
-                    [1,2,3].map(i => <tr key={i}><td colSpan="4" className="py-4 animate-pulse bg-gray-50/50 h-12"></td></tr>)
+                    [1,2,3].map(i => <tr key={i}><td colSpan="4" className="py-1.5 animate-pulse bg-gray-50/50 h-8"></td></tr>)
                   ) : data.blogs.length === 0 ? (
-                    <tr><td colSpan="4" className="py-10 text-center text-gray-400 text-xs font-semibold uppercase">No blogs</td></tr>
+                    <tr><td colSpan="4" className="py-6 text-center text-gray-400 text-[10px] font-semibold uppercase">No blogs</td></tr>
                   ) : (
                     data.blogs.map((blog) => (
                       <tr key={blog.id || blog._id} className="group hover:bg-gray-50/50 transition-colors">
-                        <td className="py-4">
-                          <div className="w-10 h-10 rounded-md bg-gray-100 overflow-hidden shrink-0 border border-gray-100">
+                        <td className="py-1">
+                          <div className="w-6 h-6 rounded-md bg-gray-100 overflow-hidden shrink-0 border border-gray-100">
                             {(blog.image_url || blog.img) ? (
                               <img src={blog.image_url || blog.img} alt={blog.title} className="w-full h-full object-cover" />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center text-gray-300">
-                                <FileText size={16} />
+                                <FileText size={11} />
                               </div>
                             )}
                           </div>
                         </td>
-                        <td className="py-4">
-                          <p className="text-sm font-normal text-gray-900 truncate max-w-[150px]">{blog.title}</p>
+                        <td className="py-1">
+                          <p className="text-xs font-normal text-gray-900 truncate max-w-[150px]">{blog.title}</p>
                         </td>
-                        <td className="py-4 text-center">
-                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-center inline-block ${
+                        <td className="py-1 text-center">
+                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider text-center inline-block ${
                             blog.category === 'Technology' ? 'bg-blue-50 text-blue-600 border border-blue-100' :
                             blog.category === 'Innovation' ? 'bg-purple-50 text-purple-600 border border-purple-100' :
                             blog.category === 'AI' ? 'bg-green-50 text-green-600 border border-green-100' :
@@ -398,7 +375,7 @@ export default function Dashboard() {
                             {blog.category || 'Tech'}
                           </span>
                         </td>
-                        <td className="py-4 text-center text-xs font-semibold text-gray-400">
+                        <td className="py-1 text-center text-[10px] font-semibold text-gray-400">
                           {formatDate(blog.createdAt || blog.created_at || blog.date || blog.updatedAt || blog.updated_at)}
                         </td>
                       </tr>
@@ -414,39 +391,39 @@ export default function Dashboard() {
         <div className={`grid grid-cols-1 ${!hasConsultations ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} gap-4`}>
           
           {hasConsultations && (
-            <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+            <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
               {/* Header inside card */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
-                    <MessageSquare size={20} />
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-md bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                    <MessageSquare size={13} />
                   </div>
-                  <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider font-sans">
+                  <h2 className="text-xs font-bold text-gray-900 uppercase tracking-wider font-sans">
                     Recent Consultations
                   </h2>
                 </div>
-                <Link to="/admin/consultations" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
-                  VIEW ALL <ArrowRight size={14} />
+                <Link to="/admin/consultations" className="text-[10px] font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                  VIEW ALL <ArrowRight size={12} />
                 </Link>
               </div>
 
               {/* List */}
               <div className="divide-y divide-gray-50 min-h-0">
                 {loading ? (
-                  [1,2,3].map(i => <div key={i} className="py-4 animate-pulse bg-gray-50/50 h-12 rounded-sm mb-1"></div>)
+                  [1,2,3].map(i => <div key={i} className="py-2 animate-pulse bg-gray-50/50 h-8 rounded-sm mb-1"></div>)
                 ) : data.consultations.length === 0 ? (
-                  <div className="py-10 text-center text-gray-400 text-xs font-semibold uppercase">No inquiries</div>
+                  <div className="py-6 text-center text-gray-400 text-[10px] font-semibold uppercase">No inquiries</div>
                 ) : (
                   data.consultations.map((item) => (
-                    <div key={item.id} className="py-3 flex items-center justify-between group hover:bg-gray-50/50 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[10px] font-black">
+                    <div key={item.id} className="py-1 flex items-center justify-between group hover:bg-gray-50/50 transition-colors">
+                      <div className="flex items-center gap-2">
+                        <div className="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[9px] font-black">
                           {item.name?.[0] || 'C'}
                         </div>
-                        <div className="flex gap-10">
+                        <div className="flex gap-6">
                           <p className="text-xs font-bold text-gray-900">{item.name}</p>
                           <div>
-                            <p className="text-[10px] text-gray-400 mt-0.5">{item.email}</p>
+                            <p className="text-[9px] text-gray-400 mt-0.5">{item.email}</p>
                           </div>
                         </div>
                       </div>
@@ -457,38 +434,38 @@ export default function Dashboard() {
             </div>
           )}
 
-          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
             {/* Header inside card */}
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
-                  <Mail size={20} />
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                  <Mail size={13} />
                 </div>
-                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider font-sans">
+                <h2 className="text-xs font-bold text-gray-900 uppercase tracking-wider font-sans">
                   Contact Inquiries
                 </h2>
               </div>
-              <Link to="/admin/contacts" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
-                VIEW ALL <ArrowRight size={14} />
+              <Link to="/admin/contacts" className="text-[10px] font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                VIEW ALL <ArrowRight size={12} />
               </Link>
             </div>
 
             {/* List */}
             <div className="divide-y divide-gray-50 min-h-0">
               {loading ? (
-                [1,2,3].map(i => <div key={i} className="py-4 animate-pulse bg-gray-50/50 h-12 rounded-sm mb-1"></div>)
+                [1,2,3].map(i => <div key={i} className="py-2 animate-pulse bg-gray-50/50 h-8 rounded-sm mb-1"></div>)
               ) : data.contacts.length === 0 ? (
-                <div className="py-10 text-center text-gray-400 text-xs font-semibold uppercase font-sans">No requests</div>
+                <div className="py-6 text-center text-gray-400 text-[10px] font-semibold uppercase font-sans">No requests</div>
               ) : (
                 data.contacts.map((item) => (
-                  <div key={item.id} className="py-3 flex items-center justify-between group hover:bg-gray-50/50 transition-colors">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-[10px] font-black">
+                  <div key={item.id} className="py-1 flex items-center justify-between group hover:bg-gray-50/50 transition-colors">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-[9px] font-black">
                         {item.name?.[0] || 'U'}
                       </div>
                       <div>
                         <p className="text-xs font-bold text-gray-900">{item.name}</p>
-                        <p className="text-[10px] text-gray-400 mt-0.5">{item.email}</p>
+                        <p className="text-[9px] text-gray-400 mt-0.5">{item.email}</p>
                       </div>
                     </div>
                     <p className="text-[9px] font-bold text-gray-500 italic max-w-[120px] truncate">"{item.message}"</p>

@@ -50,6 +50,7 @@ const JobPosting = () => {
   const [qualification, setQualification] = useState('');
   const [applicationEmail, setApplicationEmail] = useState('');
   const [companyId, setCompanyId] = useState(user?.company_id || '');
+  const [description, setDescription] = useState('');
 
   const handlePublish = async (statusVal = 'Published') => {
     if (!jobTitle.trim()) {
@@ -242,7 +243,8 @@ const JobPosting = () => {
     qualification.trim() ||
     skills.length > 0 ||
     responsibilities.length > 0 ||
-    benefits.length > 0
+    benefits.length > 0 ||
+    description.trim()
   );
 
   return (
@@ -701,7 +703,10 @@ const JobPosting = () => {
                       <div 
                         id="rich-editor"
                         contentEditable
-                        onInput={checkActiveStyles}
+                        onInput={(e) => {
+                          checkActiveStyles();
+                          setDescription(e.target.innerHTML);
+                        }}
                         onKeyDown={handleKeyDown}
                         onKeyUp={checkActiveStyles}
                         onMouseUp={checkActiveStyles}
@@ -779,7 +784,7 @@ const JobPosting = () => {
           </div>
 
           {/* Right Column: Live Preview Panel */}
-          <div className="lg:col-span-4 lg:sticky lg:top-6 self-start bg-white rounded-md border border-gray-200 shadow-md p-5 space-y-6 animate-in fade-in duration-300">
+          <div className="lg:col-span-4 lg:sticky lg:top-6 self-start bg-white rounded-md border border-gray-200 shadow-md p-5 space-y-6 animate-in fade-in duration-300 max-h-[85vh] overflow-y-auto hide-scrollbar">
             {/* Live Preview Header */}
             <div className="flex items-center justify-between pb-3 border-b border-gray-100">
               <div className="flex items-center gap-3">
@@ -835,7 +840,7 @@ const JobPosting = () => {
                 )}
 
                 {/* Section: Application Details */}
-                {(applicationEmail || jobCode || location) && (
+                {(applicationEmail || jobCode || location || openings) && (
                   <div className="border-t border-gray-100 pt-4 space-y-2">
                     <h4 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Application Details</h4>
                     <div className="bg-gray-50/50 rounded-lg border border-gray-100 p-3 space-y-1.5 text-xs text-gray-600">
@@ -843,7 +848,42 @@ const JobPosting = () => {
                       {applicationEmail && <p><span className="font-semibold text-gray-800">Email:</span> {applicationEmail}</p>}
                       {jobCode && <p><span className="font-semibold text-gray-800">Job Code:</span> {jobCode}</p>}
                       {location && <p><span className="font-semibold text-gray-800">Location:</span> {location}</p>}
+                      {openings && <p><span className="font-semibold text-gray-800">Openings:</span> {openings}</p>}
                     </div>
+                  </div>
+                )}
+
+                {/* Section: Qualification */}
+                {qualification && (
+                  <div className="border-t border-gray-100 pt-4 space-y-2">
+                    <h4 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Qualification Required</h4>
+                    <p className="text-xs text-gray-700 font-medium">{qualification}</p>
+                  </div>
+                )}
+
+                {/* Section: Key Skills */}
+                {skills.length > 0 && (
+                  <div className="border-t border-gray-100 pt-4 space-y-2">
+                    <h4 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Key Skills</h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {skills.map((skill) => (
+                        <span key={skill} className="px-2 py-0.5 bg-gray-50 border border-gray-200 text-gray-600 text-[10px] font-semibold rounded">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Section: Key Responsibilities */}
+                {responsibilities.length > 0 && (
+                  <div className="border-t border-gray-100 pt-4 space-y-2">
+                    <h4 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Responsibilities</h4>
+                    <ul className="list-disc pl-4 space-y-1 text-xs text-gray-600">
+                      {responsibilities.map((r, idx) => (
+                        <li key={idx}>{r}</li>
+                      ))}
+                    </ul>
                   </div>
                 )}
 
@@ -868,6 +908,17 @@ const JobPosting = () => {
                         </span>
                       ))}
                     </div>
+                  </div>
+                )}
+
+                {/* Section: Job Description */}
+                {description && (
+                  <div className="border-t border-gray-100 pt-4 space-y-2">
+                    <h4 className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Job Description</h4>
+                    <div 
+                      className="text-xs text-gray-650 prose prose-sm max-w-none break-words leading-relaxed editor-preview" 
+                      dangerouslySetInnerHTML={{ __html: description }}
+                    />
                   </div>
                 )}
 

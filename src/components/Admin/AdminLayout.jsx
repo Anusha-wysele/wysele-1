@@ -20,7 +20,7 @@ const AdminLayout = ({ children }) => {
   };
 
   return (
-    <div className="admin-dark-theme min-h-screen flex bg-[#F0F0F0] font-['Inter',_sans-serif]">
+    <div className="admin-dark-theme min-h-screen flex bg-[#fffcfc] font-['Inter',_sans-serif]">
       {/* Sidebar - Desktop and Mobile Overlay */}
       <Sidebar 
         isMobileMenuOpen={isMobileMenuOpen} 
