@@ -55,7 +55,7 @@ const SalesforceProducts = () => {
                 <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
                   What We Offer
                 </h2>
-                <p className="text-white font-sans text-[13px] ">Empower your business with <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> products designed to streamline operations, automate workflows, enhance customer experiences, and drive scalable growth across sales, service, marketing, and commerce</p>
+                <p className="text-white font-sans text-[13px] ">Empower your business with Salesforce products designed to streamline operations, automate workflows, enhance customer experiences, and drive scalable growth across sales, service, marketing, and commerce</p>
               </div>
             </motion.div>
           </div>

@@ -1,8 +1,18 @@
 import { AnimatePresence } from 'framer-motion';
-import { createContext, useCallback, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useState, useEffect } from 'react';
 import Toast from './Toast';
 
 const ToastContext = createContext(null);
+
+let globalShowToast = null;
+
+export const showToast = (message, type = 'info') => {
+  if (globalShowToast) {
+    globalShowToast(message, type);
+  } else {
+    console.warn('ToastProvider not mounted. Message:', message);
+  }
+};
 
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
@@ -11,7 +21,7 @@ export const ToastProvider = ({ children }) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
   }, []);
 
-  const showToast = useCallback((message, type = 'info') => {
+  const addToast = useCallback((message, type = 'info') => {
     const id = Date.now();
     setToasts((prev) => [...prev, { id, message, type }]);
 
@@ -21,8 +31,15 @@ export const ToastProvider = ({ children }) => {
     }, 3000);
   }, [removeToast]);
 
+  useEffect(() => {
+    globalShowToast = addToast;
+    return () => {
+      globalShowToast = null;
+    };
+  }, [addToast]);
+
   return (
-    <ToastContext.Provider value={{ showToast }}>
+    <ToastContext.Provider value={{ showToast: addToast }}>
       {children}
       
       {/* Toast Container */}
@@ -50,3 +67,4 @@ export const useToast = () => {
   }
   return context;
 };
+

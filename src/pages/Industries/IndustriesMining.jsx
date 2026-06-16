@@ -25,7 +25,7 @@ const IndustriesMining = () => {
     return (
         <IndustrySection
             title="Mining"
-            description={<>Enhance safety, sustainability, and efficiency in the mining industry with Wysele’s <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">innovative solutions</Link>.</>}
+            description={<>Enhance safety, sustainability, and efficiency in the mining industry with Wysele’s innovative solutions.</>}
             image={MINING_IMAGE}
             features={features}
             reversed={false}

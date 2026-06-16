@@ -25,7 +25,7 @@ const IndustriesLogistics = () => {
     return (
         <IndustrySection
             title="Logistics"
-            description={<>Streamline operations, enhance route planning, and ensure seamless deliveries with Wysele’s <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">logistics solutions</Link>.</>}
+            description={<>Streamline operations, enhance route planning, and ensure seamless deliveries with Wysele’s logistics solutions.</>}
             image={LOGISTICS_IMAGE}
             features={features}
             reversed={false}

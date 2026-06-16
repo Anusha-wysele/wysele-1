@@ -61,12 +61,12 @@ const WhyChooseUs = () => {
           </span>
 
           <h2 className="mt-2 text-xl md:text-2xl font-semibold text-[white]">
-            <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> Expertise
+            Salesforce Expertise
             <span className="text-[white]"> That Delivers</span>
           </h2>
 
           <p className="mt-2 text-gray-200 leading-5 max-w-2xl mx-auto">
-            We combine scalable <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> solutions, business-focused
+            We combine scalable Salesforce solutions, business-focused
             strategies, and enterprise-grade support to help organizations grow.
           </p>
 

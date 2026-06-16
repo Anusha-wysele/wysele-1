@@ -1,26 +1,29 @@
 import {
-  Briefcase,
   Download,
-  Filter,
   Mail,
   Phone,
   Search,
-  UserSquare2
+  Pencil,
+  ShieldCheck,
+  Loader2
 } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import AdminLayout from '../../components/Admin/AdminLayout';
-import EditPermissionsModal from '../../components/Admin/EditPermissionsModal';
 import { useToast } from '../../components/Admin/ToastContext';
 import employeeService from '../../services/employeeService';
+import EditEmployeeModal from '../../components/Admin/EditEmployeeModal';
+import EditPermissionsModal from '../../components/Admin/EditPermissionsModal';
 
 const Employees = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const { showToast } = useToast();
+
+  // Modal States
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isPermissionsModalOpen, setIsPermissionsModalOpen] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
-  
-  const { showToast } = useToast();
 
   const fetchEmployees = useCallback(async () => {
     try {
@@ -46,30 +49,65 @@ const Employees = () => {
     return () => window.removeEventListener('employeeRegistered', handleRefresh);
   }, [fetchEmployees]);
 
-  const handleEditPermissions = (emp) => {
+  const handleOpenEdit = (emp) => {
+    setSelectedEmployee(emp);
+    setIsEditModalOpen(true);
+  };
+
+  const handleOpenPermissions = (emp) => {
     setSelectedEmployee(emp);
     setIsPermissionsModalOpen(true);
   };
 
-  const filteredEmployees = employees.filter(emp => 
-    `${emp.first_name} ${emp.last_name}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    emp.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    emp.employee_id?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleToggleStatus = async (emp) => {
+    const originalIsActive = emp.is_active ?? true;
+    const newIsActive = !originalIsActive;
+
+    // Optimistically update local UI state immediately
+    setEmployees(prev => 
+      prev.map(e => (emp.id !== undefined ? e.id === emp.id : e._id === emp._id) ? { ...e, is_active: newIsActive } : e)
+    );
+
+    try {
+      await employeeService.toggleStatus(emp._id || emp.id, newIsActive);
+      showToast(
+        `Employee access ${newIsActive ? 'activated' : 'deactivated'} successfully!`,
+        'success'
+      );
+    } catch (err) {
+      // Revert back on failure
+      setEmployees(prev => 
+        prev.map(e => (emp.id !== undefined ? e.id === emp.id : e._id === emp._id) ? { ...e, is_active: originalIsActive } : e)
+      );
+      showToast(err.message || 'Failed to toggle status.', 'error');
+    }
+  };
+
+  const filteredEmployees = employees.filter(emp => {
+    const fullName = emp.name || `${emp.first_name || ''} ${emp.last_name || ''}`;
+    const empId = emp.emp_id || emp.employee_id || '';
+    return (
+      fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      emp.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      empId.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
 
   const exportToCSV = () => {
     if (filteredEmployees.length === 0) return;
 
-    const headers = ['First Name', 'Last Name', 'Email', 'Phone', 'Employee ID', 'Role', 'Status'];
-    const csvRows = filteredEmployees.map(emp => [
-      `"${(emp.first_name || '').replace(/"/g, '""')}"`,
-      `"${(emp.last_name || '').replace(/"/g, '""')}"`,
-      `"${emp.email || ''}"`,
-      `"${emp.phone_number || ''}"`,
-      `"${emp.employee_id || ''}"`,
-      `"${emp.role || ''}"`,
-      `"${emp.is_active ? 'Active' : 'Inactive'}"`
-    ]);
+    const headers = ['Name', 'Email', 'Phone', 'Employee ID', 'Role', 'Status'];
+    const csvRows = filteredEmployees.map(emp => {
+      const name = emp.name || `${emp.first_name || ''} ${emp.last_name || ''}`.trim();
+      return [
+        `"${(name || '').replace(/"/g, '""')}"`,
+        `"${emp.email || ''}"`,
+        `"${emp.phone_number || ''}"`,
+        `"${emp.emp_id || emp.employee_id || ''}"`,
+        `"${emp.role || ''}"`,
+        `"${(emp.is_active ?? true) ? 'Active' : 'Inactive'}"`
+      ];
+    });
 
     const csvContent = [
       headers.join(','),
@@ -93,136 +131,138 @@ const Employees = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <h1 className="text-2xl font-black tracking-normal text-[#800000] capitalize font-semibold font-sans">Employee Directory</h1>
+            <h1 className="text-lg tracking-normal text-[#005A9E] capitalize font-inter font-semibold">Employee Directory</h1>
             <p className="text-gray-500 text-sm font-medium mt-1">Manage and monitor internal staff access.</p>
           </div>
-          
-          <div className="flex items-center gap-3">
-             <button 
-              onClick={exportToCSV}
-              className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-100 rounded-none text-[10px] font-black text-gray-900 hover:bg-gray-50 transition-all shadow-sm tracking-widest"
-             >
-              <Download size={16} />
-              EXPORT 
-            </button>
+        </div>
+
+        {/* Toolbar Card */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="relative flex-1 max-w-md">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input 
+              type="text"
+              placeholder="Search by name, email or ID..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-3 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:bg-white focus:border-[#005A9E] outline-none transition-all"
+            />
           </div>
+          <button 
+            onClick={exportToCSV}
+            className="flex items-center gap-2 px-4 py-1.5 bg-[#005A9E] text-white rounded-lg font-semibold text-xs hover:bg-[#004b85] hover:text-white transition-all shadow-sm"
+          >
+            <Download size={16} />
+            Export CSV
+          </button>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { label: 'Total Staff', value: employees.length.toString(), icon: UserSquare2, color: 'text-crimson-600', bg: 'bg-crimson-50' },
-            { label: 'Active Roles', value: new Set(employees.map(e => e.role)).size.toString(), icon: Briefcase, color: 'text-blue-600', bg: 'bg-blue-50' },
-            { label: 'Departments', value: '0', icon: Filter, color: 'text-amber-600', bg: 'bg-amber-50' },
-          ].map((stat, i) => (
-            <div key={i} className="p-6 rounded-none bg-white border border-gray-100 flex items-center gap-5 shadow-sm">
-              <div className={`w-12 h-12 rounded-none  ${stat.color} flex items-center justify-center`}>
-                <stat.icon size={24} />
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest">{stat.label}</p>
-                <p className="text-2xl font-black text-gray-900">{stat.value}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Main Content Card */}
+        {/* Table Card */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-          
-          {/* Toolbar */}
-          <div className="p-4 border-b border-gray-100 bg-white">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                <input 
-                  type="text"
-                  placeholder="Search by name, email or ID..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-none border border-gray-100 bg-gray-50 text-sm focus:bg-white   outline-none transition-all"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Table */}
-          <div className="responsive-table-container min-h-[300px] relative">
+          <div className="responsive-table-container min-h-[300px] relative overflow-x-auto">
             {loading ? (
                <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] z-10 flex items-center justify-center">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-10 h-10 border-4 border-crimson-100 border-t-crimson-600 rounded-full animate-spin"></div>
+                <div className="flex flex-col items-center gap-3 mt-20">
+                  <Loader2 className="animate-spin text-[#005A9E]" size={36} />
                   <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Loading staff directory...</p>
                 </div>
               </div>
             ) : (
-              <table className="w-full text-left">
-                <thead className="bg-[#800000] text-white">
+              <table className="w-full text-left border-collapse">
+                <thead className="bg-blue-200 text-blue-900">
                   <tr>
-                    <th className="px-6 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Employee</th>
-                    <th className="px-6 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Id</th>
-                    <th className="px-6 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Role</th>
-                    <th className="px-6 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Contact</th>
-                    <th className="px-6 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Permissions</th>
-                    <th className="px-6 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Access Panel</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Employee</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Id</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Role</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Email</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Mobile Number</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Status</th>
+                    <th className="px-4 py-3 text-[11px] font-semibold capitalize tracking-wider text-center">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {filteredEmployees.length > 0 ? (
                     filteredEmployees.map((emp) => (
                       <tr key={emp._id || emp.id} className="group hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 text-center">
-                          <p className="text-sm font-bold text-gray-900 capitalize">{emp.first_name} {emp.last_name}</p>
+                        <td className="px-4 py-3 text-center">
+                          <p className="text-sm font-bold text-gray-900 capitalize">
+                            {emp.name || `${emp.first_name || ''} ${emp.last_name || ''}`.trim() || 'N/A'}
+                          </p>
                         </td>
-                        <td className="px-6 py-4 text-center">
-                          <span className="text-xs font-bold text-gray-600">{emp.employee_id}</span>
+                        <td className="px-4 py-3 text-center">
+                          <span className="text-xs font-bold text-gray-600">
+                            {emp.emp_id || emp.employee_id || 'N/A'}
+                          </span>
                         </td>
-                        <td className="px-6 py-4 text-center">
+                        <td className="px-4 py-3 text-center">
                           <span className="px-3 py-1 bg-blue-50 text-[10px] font-bold text-blue-600 rounded-full uppercase tracking-wider">
                             {emp.role}
                           </span>
                         </td>
-                        <td className="px-6 py-4">
-                          <div className="flex flex-col items-center gap-1">
-                            <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                              <Mail size={12} /> {emp.email}
-                            </div>
-                            <div className="flex items-center gap-1.5 text-xs text-gray-500">
-                              <Phone size={12} /> {emp.phone_number}
-                            </div>
+                        <td className="px-4 py-3 text-center">
+                          <div className="flex items-center justify-center gap-1.5 text-xs text-gray-500">
+                            <Mail size={12} /> {emp.email}
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-center">
-                          {(() => {
-                            const activeCount = [
-                              emp.can_post_blog, 
-                              emp.can_edit_blog, 
-                              emp.can_delete_blog, 
-                              emp.can_post_job, 
-                              emp.can_access_contact, 
-                              emp.can_access_consulting
-                            ].filter(Boolean).length;
-
-                            return activeCount > 0 ? (
-                              <span className="text-xs font-bold text-gray-700">{activeCount}</span>
-                            ) : (
-                              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">No access</span>
-                            );
-                          })()}
+                        <td className="px-4 py-3 text-center">
+                          <div className="flex items-center justify-center gap-1.5 text-xs text-gray-500">
+                            <Phone size={12} /> {emp.phone_number || 'N/A'}
+                          </div>
                         </td>
-                        <td className="px-6 py-4 text-center">
-                          <button 
-                            onClick={() => handleEditPermissions(emp)}
-                            className="text-xs font-semibold text-gray-900 hover:text-blue-400 hover:underline hover:decoration-[2px] transition-all"
-                          >
-                            Edit
-                          </button>
+                        {/* Status Toggle switch */}
+                        <td className="px-4 py-3 text-center">
+                          {emp.role?.toUpperCase() === 'SUPER_ADMIN' || emp.role?.toUpperCase() === 'SUPERADMIN' ? (
+                            <span className="px-2.5 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full uppercase tracking-wider">
+                              Always Active
+                            </span>
+                          ) : (
+                            <div className="flex flex-col items-center justify-center gap-1">
+                              <button
+                                type="button"
+                                onClick={() => handleToggleStatus(emp)}
+                                className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none shadow-sm ${
+                                  (emp.is_active ?? true) ? 'bg-green-600' : 'bg-red-600'
+                                }`}
+                                title={(emp.is_active ?? true) ? 'Deactivate Employee' : 'Activate Employee'}
+                              >
+                                <span
+                                  className={`pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-xs ring-0 transition duration-200 ease-in-out ${
+                                    (emp.is_active ?? true) ? 'translate-x-4' : 'translate-x-0'
+                                  }`}
+                                />
+                              </button>
+                              <span className={`text-[9px] font-black uppercase tracking-wider ${
+                                (emp.is_active ?? true) ? 'text-green-600' : 'text-red-600'
+                              }`}>
+                                {(emp.is_active ?? true) ? 'Active' : 'Inactive'}
+                              </span>
+                            </div>
+                          )}
+                        </td>
+                        {/* Actions column */}
+                        <td className="px-4 py-3 text-center">
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                              onClick={() => handleOpenEdit(emp)}
+                              className="p-1.5 text-gray-500 hover:text-[#005A9E] hover:bg-gray-100 rounded-lg transition-all"
+                              title="Edit Profile"
+                            >
+                              <Pencil size={14} />
+                            </button>
+                            <button
+                              onClick={() => handleOpenPermissions(emp)}
+                              className="p-1.5 text-gray-500 hover:text-blue-650 hover:bg-blue-50 rounded-lg transition-all"
+                              title="Access Control Permissions"
+                            >
+                              <ShieldCheck size={14} />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan="5" className="px-8 py-20 text-center text-gray-400 font-bold uppercase tracking-widest text-xs">
+                      <td colSpan="7" className="px-8 py-20 text-center text-gray-400 font-bold uppercase tracking-widest text-xs">
                         No staff members found
                       </td>
                     </tr>
@@ -233,16 +273,20 @@ const Employees = () => {
           </div>
         </div>
 
+        {/* Modals */}
+        <EditEmployeeModal 
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          employee={selectedEmployee}
+          onSuccess={fetchEmployees}
+        />
+
         <EditPermissionsModal 
           isOpen={isPermissionsModalOpen}
-          onClose={() => {
-            setIsPermissionsModalOpen(false);
-            setSelectedEmployee(null);
-          }}
+          onClose={() => setIsPermissionsModalOpen(false)}
           employee={selectedEmployee}
           onUpdate={fetchEmployees}
         />
-
 
       </div>
     </AdminLayout>

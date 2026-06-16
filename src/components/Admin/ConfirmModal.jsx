@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertTriangle, X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 
 const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText = 'Delete', cancelText = 'Cancel' }) => {
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
@@ -11,7 +12,7 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/60 backdrop-blur-md"
           />
           <motion.div 
             initial={{ opacity: 0, scale: 0.9, y: 20 }} 
@@ -31,13 +32,13 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText 
             <div className="flex flex-col gap-3">
               <button 
                 onClick={onConfirm}
-                className="w-full py-4 bg-rose-600 text-white rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-rose-700 transition-all shadow-lg shadow-rose-900/20 active:scale-95"
+                className="w-full py-3.5 bg-rose-600 text-white rounded-lg font-semibold uppercase text-xs tracking-widest hover:bg-rose-700 transition-all shadow-md active:scale-95"
               >
                 {confirmText}
               </button>
               <button 
                 onClick={onClose}
-                className="w-full py-4 bg-gray-50 text-gray-400 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-gray-100 transition-all active:scale-95"
+                className="w-full py-3.5 bg-gray-50 text-gray-500 rounded-lg font-semibold uppercase text-xs tracking-widest hover:bg-gray-100 transition-all active:scale-95"
               >
                 {cancelText}
               </button>
@@ -52,7 +53,8 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, title, message, confirmText 
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

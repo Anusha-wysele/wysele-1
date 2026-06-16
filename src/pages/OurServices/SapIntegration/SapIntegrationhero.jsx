@@ -39,7 +39,7 @@ const SapIntegrationhero = () => {
               className="inline-flex items-center gap-2 bg-white rounded-full px-4 py-1.5 mb-6 shadow-lg"
             >
               <Star size={14} className="text-[#C9184A] fill-[#C9184A]" />
-              <span className="text-[#C9184A] text-[10px] md:text-xs font-bold tracking-tight uppercase"><Link to="/services/sap-integration" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-integration" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Integration</Link></Link> Excellence</span>
+              <span className="text-[#C9184A] text-[10px] md:text-xs font-bold tracking-tight uppercase">SAP Integration Excellence</span>
             </motion.div>
 
             {/* Headline */}
@@ -50,7 +50,7 @@ const SapIntegrationhero = () => {
               transition={{ duration: 1.2, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-xl md:text-2xl lg:text-3xl font-semibold text-white mb-4 leading-tight tracking-tight"
             >
-              Seamless <span className="text-yellow-400"><Link to="/services/sap-integration" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-integration" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Integration</Link></Link></span> for a <span className="text-yellow-400 font-medium">Connected Business</span>
+              Seamless <span className="text-yellow-400">SAP Integration</span> for a <span className="text-yellow-400 font-medium">Connected Business</span>
             </motion.h1>
 
             {/* Description */}
@@ -61,7 +61,7 @@ const SapIntegrationhero = () => {
               transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-white/80 text-xs md:text-sm font-light leading-relaxed mb-8 max-w-xl"
             >
-              In today’s interconnected business landscape, integrating your SAP systems with various applications, platforms, and services is essential for improving operational efficiency. At Wysele, we provide robust <Link to="/services/sap-integration" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-integration" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Integration</Link></Link> Services tailored to connect your SAP environment with your entire business ecosystem.
+              In today’s interconnected business landscape, integrating your SAP systems with various applications, platforms, and services is essential for improving operational efficiency. At Wysele, we provide robust SAP Integration Services tailored to connect your SAP environment with your entire business ecosystem.
             </motion.p>
 
             {/* Features */}

@@ -19,7 +19,7 @@ export default function SapGenaitransform() {
                         Innovate with AI-Driven Transformation
                     </h2>
                     <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                        As the landscape of technology evolves, Artificial Intelligence is fundamentally transforming various industries, with <Link to="/services/sap-genai" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">Generative AI</Link> at the helm of this change. Our Gen AI Services empower organizations to leverage advanced AI-driven automation, obtain actionable data insights, and create innovative content, ultimately driving growth, efficiency, and competitive advantage.
+                        As the landscape of technology evolves, Artificial Intelligence is fundamentally transforming various industries, with Generative AI at the helm of this change. Our Gen AI Services empower organizations to leverage advanced AI-driven automation, obtain actionable data insights, and create innovative content, ultimately driving growth, efficiency, and competitive advantage.
                     </p>
                 </motion.div>
 

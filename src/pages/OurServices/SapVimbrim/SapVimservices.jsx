@@ -100,10 +100,10 @@ export default function SapVimservices() {
                 {/* Header */}
                 <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 tracking-tight">
-                        <Link to="/services/sap-vim-brim" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>SAP VIM</Link> Implementation & Integration
+                        SAP VIM Implementation & Integration
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-xs md:text-sm leading-relaxed">
-                        Our <Link to="/services/sap-vim-brim" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>SAP VIM</Link> services streamline invoice management by automating and integrating invoicing within your SAP environment.
+                        Our SAP VIM services streamline invoice management by automating and integrating invoicing within your SAP environment.
                     </p>
                 </div>
 

@@ -24,7 +24,7 @@ const services = [
     },
     { 
         title: "SAP Cloud Solutions", 
-        description: <>Wysele supports <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">SAP cloud environments</Link> that improve flexibility, scalability, accessibility, and infrastructure efficiency for growing organizations.</> 
+        description: <>Wysele supports SAP cloud environments that improve flexibility, scalability, accessibility, and infrastructure efficiency for growing organizations.</> 
     },
     { 
         title: "SAP Performance Optimization", 

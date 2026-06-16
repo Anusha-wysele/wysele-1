@@ -77,7 +77,7 @@ const HowRisework = () => {
                         className="text-center mb-8 max-w-3xl drop-shadow-md"
                     >
                         <h2 className="text-2xl md:text-3xl font-light text-white">
-                            How <span className="font-semibold text-white"><Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link></span> Works
+                            How <span className="font-semibold text-white">RISE with SAP</span> Works
                         </h2>
                     </motion.div>
 
@@ -105,7 +105,7 @@ const HowRisework = () => {
                         transition={{ duration: 0.6 }}
                         className="text-2xl md:text-3xl font-normal text-gray-900 mb-4"
                     >
-                        Build a Future-Ready Business with <span className="font-semibold text-[#800000]"><Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link></span>
+                        Build a Future-Ready Business with <span className="font-semibold text-[#800000]">RISE with SAP</span>
                     </motion.h3>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ const HowRisework = () => {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-xs md:text-sm text-gray-600 leading-relaxed mb-4 max-w-3xl font-light"
                     >
-                        Businesses need scalable systems, connected workflows, and flexible infrastructure to support long-term growth and operational efficiency. Wysele helps organizations modernize operations, improve process visibility, and simplify enterprise transformation through <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> consulting and implementation services.
+                        Businesses need scalable systems, connected workflows, and flexible infrastructure to support long-term growth and operational efficiency. Wysele helps organizations modernize operations, improve process visibility, and simplify enterprise transformation through RISE with SAP consulting and implementation services.
                     </motion.p>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

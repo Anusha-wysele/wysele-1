@@ -243,14 +243,28 @@ export default function BlogsBanner() {
         else if (data.data && Array.isArray(data.data)) fetchedBlogs = data.data;
 
         if (fetchedBlogs.length > 0) {
-          const mappedBlogs = fetchedBlogs.map(blog => ({
-            ...blog,
-            day: blog.day || new Date(blog.createdAt || Date.now()).getDate().toString().padStart(2, '0'),
-            month: blog.month || new Date(blog.createdAt || Date.now()).toLocaleString('default', { month: 'short' }),
-            year: blog.year || new Date(blog.createdAt || Date.now()).getFullYear().toString(),
-            img: blog.image_url || blog.img || blog1Img,
-            tags: blog.category ? [blog.category] : (blog.tags || ["Insights"])
-          }));
+          const hostname = window.location.hostname.toLowerCase();
+          const siteCompany = hostname.includes('orbintix') ? 'orbintix' : 
+                              hostname.includes('gracevirtue') ? 'gracevirtue' : 'wysele';
+
+          const mappedBlogs = fetchedBlogs
+            .map(blog => {
+              const hasPrefix = blog.category && blog.category.includes(':');
+              const blogCompany = hasPrefix ? blog.category.split(':')[0] : (blog.company_name || blog.company || 'wysele');
+              const cleanCategory = hasPrefix ? blog.category.split(':')[1] : (blog.category || 'Organisation');
+              return {
+                ...blog,
+                company_name: blogCompany,
+                category: cleanCategory,
+                day: blog.day || new Date(blog.createdAt || Date.now()).getDate().toString().padStart(2, '0'),
+                month: blog.month || new Date(blog.createdAt || Date.now()).toLocaleString('default', { month: 'short' }),
+                year: blog.year || new Date(blog.createdAt || Date.now()).getFullYear().toString(),
+                img: blog.image_url || blog.img || blog1Img,
+                tags: cleanCategory ? [cleanCategory] : (blog.tags || ["Insights"])
+              };
+            })
+            .filter(blog => blog.company_name.toLowerCase() === siteCompany);
+
           setBlogPosts(mappedBlogs);
         }
       } catch (err) {

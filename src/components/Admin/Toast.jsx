@@ -4,13 +4,13 @@ import { AlertCircle, CheckCircle2, Info, X } from 'lucide-react';
 const Toast = ({ id, message, type = 'info', onClose }) => {
   const icons = {
     success: <CheckCircle2 className="text-emerald-500" size={20} />,
-    error: <AlertCircle className="text-rose-500" size={20} />,
+    error: <AlertCircle className="text-white" size={20} />,
     info: <Info className="text-blue-500" size={20} />
   };
 
   const bgColors = {
     success: 'bg-emerald-50 border-emerald-100',
-    error: 'bg-rose-50 border-rose-100',
+    error: 'bg-red-600 border-red-750 text-white',
     info: 'bg-blue-50 border-blue-100'
   };
 
@@ -25,13 +25,17 @@ const Toast = ({ id, message, type = 'info', onClose }) => {
         {icons[type]}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-bold text-gray-800 leading-tight">
+        <p className={`text-sm font-bold leading-tight ${type === 'error' ? 'text-white' : 'text-gray-800'}`}>
           {message}
         </p>
       </div>
       <button 
         onClick={() => onClose(id)}
-        className="flex-shrink-0 p-1 rounded-lg hover:bg-black/5 text-gray-400 hover:text-gray-600 transition-colors"
+        className={`flex-shrink-0 p-1 rounded-lg transition-colors ${
+          type === 'error' 
+            ? 'text-red-100 hover:text-white hover:bg-white/10' 
+            : 'text-gray-400 hover:text-gray-600 hover:bg-black/5'
+        }`}
       >
         <X size={16} />
       </button>

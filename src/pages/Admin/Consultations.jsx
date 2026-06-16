@@ -11,43 +11,102 @@ import {
   X
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import AdminLayout from '../../components/Admin/AdminLayout';
 import { useToast } from '../../components/Admin/ToastContext';
+import { useAuth } from '../../context/AuthContext';
 import jobService from '../../services/jobService';
 
 const AdminConsultations = () => {
+  const { user } = useAuth();
   const { showToast } = useToast();
+  const searchParams = new URLSearchParams(window.location.search);
+  const activeCompany = searchParams.get('company') || user?.company_name || 'wysele';
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const limit = 10;
+
   useEffect(() => {
-    const fetchRequests = async () => {
-      try {
-        setLoading(true);
-        const data = await jobService.getAllConsultations();
-        console.log('📊 Consultation Requests Response:', data);
-        
-        let rawData = [];
-        if (Array.isArray(data)) rawData = data;
+    setCurrentPage(1);
+  }, [searchTerm, activeCompany]);
+
+  const fetchRequests = async () => {
+    try {
+      setLoading(true);
+      const queryParams = { 
+        page: currentPage,
+        limit: limit,
+        company: activeCompany
+      };
+      if (searchTerm.trim()) {
+        queryParams.q = searchTerm;
+        queryParams.query = searchTerm;
+      }
+      const data = await jobService.getAllConsultations(queryParams);
+      console.log('📊 Consultation Requests Response:', data);
+      
+      let rawData = [];
+      let totalCount = 0;
+      let calculatedTotalPages = 1;
+
+      if (Array.isArray(data)) {
+        rawData = data;
+        const filtered = rawData.filter(item => {
+          const contactCompany = item.company || 'wysele';
+          if (contactCompany.toLowerCase() !== activeCompany.toLowerCase()) {
+            return false;
+          }
+          const searchStr = searchTerm.toLowerCase();
+          return (
+            item.name?.toLowerCase().includes(searchStr) ||
+            item.email?.toLowerCase().includes(searchStr) ||
+            item.company_name?.toLowerCase().includes(searchStr)
+          );
+        });
+        totalCount = filtered.length;
+        calculatedTotalPages = Math.ceil(totalCount / limit) || 1;
+        const startIndex = (currentPage - 1) * limit;
+        rawData = filtered.slice(startIndex, startIndex + limit);
+      } else {
+        if (data.results && Array.isArray(data.results)) rawData = data.results;
         else if (data.data && Array.isArray(data.data)) rawData = data.data;
-        else if (data.results && Array.isArray(data.results)) rawData = data.results;
         else if (data.consultations && Array.isArray(data.consultations)) rawData = data.consultations;
         else if (data.items && Array.isArray(data.items)) rawData = data.items;
         
-        console.log('✅ Processed rawData:', rawData);
-        setRequests(rawData);
-      } catch (err) {
-        console.error('Failed to load consultations:', err);
-        showToast('Failed to load consultation requests.', 'error');
-      } finally {
-        setLoading(false);
-      }
-    };
+        const filtered = rawData.filter(item => {
+          const contactCompany = item.company || 'wysele';
+          return contactCompany.toLowerCase() === activeCompany.toLowerCase();
+        });
 
+        totalCount = data.count || data.total || data.totalItems || filtered.length;
+        calculatedTotalPages = data.totalPages || data.pages || Math.ceil(totalCount / limit) || 1;
+
+        rawData = filtered;
+        if (rawData.length > limit) {
+          const startIndex = (currentPage - 1) * limit;
+          rawData = rawData.slice(startIndex, startIndex + limit);
+        }
+      }
+      
+      console.log('✅ Processed rawData:', rawData);
+      setRequests(rawData);
+      setTotalPages(calculatedTotalPages);
+    } catch (err) {
+      console.error('Failed to load consultations:', err);
+      showToast('Failed to load consultation requests.', 'error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchRequests();
-  }, [showToast]);
+  }, [currentPage, activeCompany, searchTerm, showToast]);
 
   const exportToCSV = () => {
     if (filteredRequests.length === 0) return;
@@ -78,14 +137,7 @@ const AdminConsultations = () => {
     document.body.removeChild(link);
   };
 
-  const filteredRequests = requests.filter(item => {
-    const searchStr = searchTerm.toLowerCase();
-    return (
-      item.name?.toLowerCase().includes(searchStr) ||
-      item.email?.toLowerCase().includes(searchStr) ||
-      item.company_name?.toLowerCase().includes(searchStr)
-    );
-  });
+  const filteredRequests = requests;
 
   return (
     <AdminLayout>
@@ -94,58 +146,40 @@ const AdminConsultations = () => {
         {/* Page Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <h1 className="text-2xl font-black tracking-normal text-[#800000] capitalize font-semibold font-sans">Consultation Requests</h1>
+            <h1 className="text-lg tracking-normal text-[#005A9E] capitalize font-inter font-semibold">Consultation Requests</h1>
             <p className="text-gray-500 text-sm font-medium mt-1">Review and manage technical consultation bookings from potential clients.</p>
           </div>
         
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { label: 'Total Requests', value: requests.length.toString(), icon: MessageSquare, color: 'text-crimson-600', bg: 'bg-crimson-50' },
-            { label: 'Unique Companies', value: [...new Set(requests.map(i => i.company_name))].length.toString(), icon: Building2, color: 'text-blue-600', bg: 'bg-blue-50' },
-            { label: 'Pending Callback', value: requests.length.toString(), icon: Phone, color: 'text-amber-600', bg: 'bg-amber-50' },
-          ].map((stat, i) => (
-            <div key={i} className="p-6 rounded-none bg-white border border-gray-100 flex items-center gap-5">
-              <div className={`w-12 h-12 rounded-xl  ${stat.color} flex items-center justify-center`}>
-                <stat.icon size={24} />
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-gray-600 uppercase tracking-widest">{stat.label}</p>
-                <p className="text-2xl font-black text-gray-900">{stat.value}</p>
-              </div>
-            </div>
-          ))}
+
+
+        {/* Search & Export Card */}
+        <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm flex flex-row items-center justify-between gap-4">
+          {/* Search Input */}
+          <div className="relative flex-1 max-w-md">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input 
+              type="text"
+              placeholder="Search by name, email, or company..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-3 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:bg-white focus:border-[#005A9E] outline-none transition-all"
+            />
+          </div>
+          
+          {/* Export CSV Button */}
+          <button 
+            onClick={exportToCSV}
+            className="flex items-center gap-2 px-4 py-1.5 bg-[#005A9E] text-white rounded-lg font-semibold text-xs hover:bg-[#004b85] hover:text-white transition-all shadow-sm whitespace-nowrap"
+          >
+            <Download size={16} />
+            Export CSV
+          </button>
         </div>
 
-        {/* Main Content Card */}
-        <div className="bg-white rounded-lg border border-gray-100 overflow-hidden">
-          
-          {/* Toolbar */}
-          <div className="p-4 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="flex flex-col md:flex-row gap-4 flex-1">
-              <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-                <input 
-                  type="text"
-                  placeholder="Search by name, email, or company..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-11 pr-4 py-2.5 rounded-none border border-gray-200 bg-gray-50 text-sm focus:bg-white outline-none transition-all w-full"
-                />
-              </div>
-              
-            </div>
-            <button 
-              onClick={exportToCSV}
-              className="p-2.5 rounded-none border border-gray-200 text-gray-500 hover:bg-gray-50 transition-all flex items-center gap-2 text-xs font-bold"
-            >
-              <Download size={18} />
-              Export CSV
-            </button>
-          </div>
-
+        {/* Table Card */}
+        <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
           {/* Table */}
           <div className="responsive-table-container min-h-[400px] relative">
             {loading && (
@@ -158,50 +192,49 @@ const AdminConsultations = () => {
             )}
             
             <table className="w-full text-left">
-              <thead>
-                <tr className="bg-[#800000] border-b border-gray-100">
-                  <th className="px-8 py-4 text-[13px] font-semibold text-white capitalize tracking-widest">Client Name</th>
-                  <th className="px-6 py-4 text-[13px] font-semibold text-white capitalize tracking-widest">Company</th>
-                  <th className="px-6 py-4 text-[13px] font-semibold text-white capitalize tracking-widest">Contact</th>
-                  <th className="px-6 py-4 text-[13px] font-semibold text-white capitalize tracking-widest">Submitted</th>
-                  <th className="px-8 py-4 text-[13px] font-semibold text-white capitalize tracking-widest text-right">Actions</th>
+              <thead className="bg-blue-200 text-blue-900">
+                <tr>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center">Client Name</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center">Company</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center">Email</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center">Mobile Number</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center">Submitted</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredRequests.length > 0 ? (
                   filteredRequests.map((item) => (
-                    <tr key={item._id || item.id} className="group hover:bg-gray-50/50 transition-colors">
-                      <td className="px-8 py-5">
-                        <span className="text-sm font-bold text-gray-900 transition-colors capitalize">
+                    <tr key={item._id || item.id} className="group hover:bg-gray-50 transition-colors">
+                      <td className="px-4 py-2.5 text-center">
+                        <p className="text-sm font-bold text-gray-900 capitalize">
                           {item.name}
+                        </p>
+                      </td>
+                      <td className="px-4 py-2.5 text-center">
+                        <span className="text-xs font-bold text-gray-600">
+                          {item.company_name}
                         </span>
                       </td>
-                      <td className="px-6 py-5">
-                        <div className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                          <Building2 size={12} className="text-gray-400" />
-                          {item.company_name}
+                      <td className="px-4 py-2.5 text-center">
+                        <div className="flex items-center justify-center gap-1.5 text-xs text-gray-500">
+                          <Mail size={12} className="text-gray-400" />
+                          {item.email}
                         </div>
                       </td>
-                      <td className="px-6 py-5">
-                        <div className="flex flex-col gap-1">
-                          <div className="flex items-center gap-2 text-xs text-gray-600">
-                            <Mail size={12} className="text-gray-400" />
-                            {item.email}
-                          </div>
-                          <div className="flex items-center gap-2 text-xs text-gray-600">
-                            <Phone size={12} className="text-gray-400" />
-                            {item.mobile_number}
-                          </div>
+                      <td className="px-4 py-2.5 text-center">
+                        <div className="flex items-center justify-center gap-1.5 text-xs text-gray-500">
+                          <Phone size={12} className="text-gray-400" />
+                          {item.mobile_number || 'N/A'}
                         </div>
                       </td>
-                      <td className="px-6 py-5">
-                        <div className="flex items-center gap-2 text-xs text-gray-500 font-medium">
-                          <Calendar size={12} className="text-gray-400" />
+                      <td className="px-4 py-2.5 text-center">
+                        <span className="text-xs text-gray-500">
                           {item.submitted_at || 'Recently'}
-                        </div>
+                        </span>
                       </td>
-                      <td className="px-8 py-5 text-right">
-                        <div className="flex items-center justify-end gap-2">
+                      <td className="px-4 py-2.5 text-center">
+                        <div className="flex items-center justify-center">
                           <button 
                             onClick={() => {setSelectedRequest(item); setIsViewModalOpen(true);}}
                             className="p-2 rounded-lg text-blue-600 hover:bg-blue-50 transition-all"
@@ -214,11 +247,8 @@ const AdminConsultations = () => {
                   ))
                 ) : !loading && (
                   <tr>
-                    <td colSpan="5" className="px-8 py-20 text-center">
-                      <div className="flex flex-col items-center gap-3">
-                        <MessageSquare size={32} className="text-gray-200" />
-                        <p className="text-gray-400 font-bold uppercase text-xs tracking-widest">No consultation requests found</p>
-                      </div>
+                    <td colSpan="6" className="px-8 py-20 text-center text-gray-400 font-bold uppercase tracking-widest text-xs">
+                      No consultation requests found
                     </td>
                   </tr>
                 )}
@@ -227,59 +257,93 @@ const AdminConsultations = () => {
           </div>
         </div>
 
-        {/* View Modal */}
-        <AnimatePresence>
-          {isViewModalOpen && selectedRequest && (
-            <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
-              <motion.div 
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                onClick={() => setIsViewModalOpen(false)}
-                className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-              />
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden"
-              >
-                <div className="bg-[#800000] p-6 flex justify-between items-center text-white">
-                  <h3 className="text-lg font-bold uppercase tracking-widest">Consultation Details</h3>
-                  <button onClick={() => setIsViewModalOpen(false)}><X size={20} /></button>
-                </div>
-                <div className="p-8 space-y-6">
-                  <div className="grid grid-cols-2 gap-6">
-                    <div>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Full Name</p>
-                      <p className="text-sm font-bold text-gray-900">{selectedRequest.name}</p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Company</p>
-                      <p className="text-sm font-bold text-gray-900">{selectedRequest.company_name}</p>
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Mobile</p>
-                      <p className="text-sm font-bold text-gray-900">{selectedRequest.mobile_number}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="pt-6 border-t">
-                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Requirement Details</p>
-                    <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed max-h-48 overflow-y-auto hide-scrollbar">
-                      {selectedRequest.message}
-                    </div>
-                  </div>
+        {/* Standalone Pagination Card */}
+        <div className="flex items-center justify-center py-4">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-lg border text-xs font-bold transition-all ${
+                currentPage === 1 
+                  ? 'border-gray-200 text-gray-400 cursor-not-allowed' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              Previous
+            </button>
+            <span className="text-xs text-gray-500 font-semibold px-2">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button 
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                currentPage === totalPages 
+                  ? 'border border-gray-200 text-gray-400 cursor-not-allowed' 
+                  : 'bg-[#005A9E] text-white hover:bg-[#004b85]'
+              }`}
+            >
+              Next
+            </button>
+          </div>
+        </div>
 
-                  <div className="flex justify-end pt-4">
-                    <button 
-                      onClick={() => setIsViewModalOpen(false)}
-                      className="px-6 py-2 bg-gray-900 text-white rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-black transition-all"
-                    >
-                      Close View
-                    </button>
+        {/* View Modal */}
+        {createPortal(
+          <AnimatePresence>
+            {isViewModalOpen && selectedRequest && (
+              <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
+                <motion.div 
+                  initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                  onClick={() => setIsViewModalOpen(false)}
+                  className="absolute inset-0 bg-black/40 backdrop-blur-md"
+                />
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  className="relative bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden"
+                >
+                  <div className="bg-blue-200 p-6 flex justify-between items-center text-blue-900">
+                    <h3 className="text-lg font-bold uppercase tracking-widest">Consultation Details</h3>
+                    <button onClick={() => setIsViewModalOpen(false)} className="text-blue-900"><X size={20} /></button>
                   </div>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
+                  <div className="p-8 space-y-6">
+                    <div className="grid grid-cols-2 gap-6">
+                      <div>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Full Name</p>
+                        <p className="text-sm font-bold text-gray-900">{selectedRequest.name}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Company</p>
+                        <p className="text-sm font-bold text-gray-900">{selectedRequest.company_name}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Mobile</p>
+                        <p className="text-sm font-bold text-gray-900">{selectedRequest.mobile_number}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="pt-6 border-t">
+                      <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Requirement Details</p>
+                      <div className="p-4 bg-gray-50 rounded-xl border border-gray-100 text-sm text-gray-600 leading-relaxed max-h-48 overflow-y-auto hide-scrollbar">
+                        {selectedRequest.message}
+                      </div>
+                    </div>
+
+                    <div className="flex justify-end pt-4">
+                      <button 
+                        onClick={() => setIsViewModalOpen(false)}
+                        className="px-6 py-2 bg-[#005A9E] text-white rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-[#004b85] transition-all shadow-sm"
+                      >
+                        Close View
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
 
 
       </div>

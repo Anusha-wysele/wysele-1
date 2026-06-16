@@ -18,12 +18,18 @@ const BlogsPage = () => {
   const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const BLOGS_PER_PAGE = 10;
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, searchTerm]);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
-        const data = await blogService.getAllBlogs();
+        const data = await blogService.getAllBlogs({ limit: 100 });
 
         let fetchedBlogs = [];
         if (Array.isArray(data)) fetchedBlogs = data;
@@ -32,15 +38,29 @@ const BlogsPage = () => {
         else if (data.data && Array.isArray(data.data)) fetchedBlogs = data.data;
 
         if (fetchedBlogs.length > 0) {
-          const mappedBlogs = fetchedBlogs.map(blog => ({
-            ...blog,
-            day: blog.day || new Date(blog.createdAt || Date.now()).getDate().toString().padStart(2, '0'),
-            month: blog.month || new Date(blog.createdAt || Date.now()).toLocaleString('default', { month: 'short' }),
-            year: blog.year || new Date(blog.createdAt || Date.now()).getFullYear().toString(),
-            img: blog.image_url || blog.img || blogsDefaultImg,
-            tags: blog.category ? [blog.category] : (blog.tags || ["Insights"]),
-            excerpt: blog.excerpt || blog.content?.substring(0, 120) + "..." || "No description available."
-          }));
+          const hostname = window.location.hostname.toLowerCase();
+          const siteCompany = hostname.includes('orbintix') ? 'orbintix' : 
+                              hostname.includes('gracevirtue') ? 'gracevirtue' : 'wysele';
+
+          const mappedBlogs = fetchedBlogs
+            .map(blog => {
+              const hasPrefix = blog.category && blog.category.includes(':');
+              const blogCompany = hasPrefix ? blog.category.split(':')[0] : (blog.company_name || blog.company || 'wysele');
+              const cleanCategory = hasPrefix ? blog.category.split(':')[1] : (blog.category || 'Organisation');
+              return {
+                ...blog,
+                company_name: blogCompany,
+                category: cleanCategory,
+                day: blog.day || new Date(blog.createdAt || Date.now()).getDate().toString().padStart(2, '0'),
+                month: blog.month || new Date(blog.createdAt || Date.now()).toLocaleString('default', { month: 'short' }),
+                year: blog.year || new Date(blog.createdAt || Date.now()).getFullYear().toString(),
+                img: blog.image_url || blog.img || blogsDefaultImg,
+                tags: cleanCategory ? [cleanCategory] : (blog.tags || ["Insights"]),
+                excerpt: blog.excerpt || blog.content?.substring(0, 120) + "..." || "No description available."
+              };
+            })
+            .filter(blog => blog.company_name.toLowerCase() === siteCompany);
+            
           setBlogPosts(mappedBlogs);
         }
       } catch (err) {
@@ -62,6 +82,12 @@ const BlogsPage = () => {
 
     return matchesCategory && matchesSearch;
   });
+
+  const totalPages = Math.ceil(filteredBlogs.length / BLOGS_PER_PAGE) || 1;
+  const currentBlogs = filteredBlogs.slice(
+    (currentPage - 1) * BLOGS_PER_PAGE,
+    currentPage * BLOGS_PER_PAGE
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -158,7 +184,7 @@ const BlogsPage = () => {
           </div>
         ) : filteredBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {filteredBlogs.map((post, idx) => (
+            {currentBlogs.map((post, idx) => (
               <motion.div
                 key={post.id || post._id || idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -221,6 +247,45 @@ const BlogsPage = () => {
             >
               Clear all filters
             </button>
+          </div>
+        )}
+
+        {/* Standalone Pagination Card */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center pt-16">
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => {
+                  setCurrentPage(prev => Math.max(prev - 1, 1));
+                  document.getElementById('blog-grid')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-lg border text-xs font-bold transition-all ${
+                  currentPage === 1 
+                    ? 'border-gray-200 text-gray-400 cursor-not-allowed' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Previous
+              </button>
+              <span className="text-xs text-gray-500 font-semibold px-2">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button 
+                onClick={() => {
+                  setCurrentPage(prev => Math.min(prev + 1, totalPages));
+                  document.getElementById('blog-grid')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                  currentPage === totalPages 
+                    ? 'border border-gray-200 text-gray-400 cursor-not-allowed' 
+                    : 'bg-[#C9184A] text-white hover:bg-[#a5133b] shadow-md shadow-red-900/10'
+                }`}
+              >
+                Next
+              </button>
+            </div>
           </div>
         )}
       </section>

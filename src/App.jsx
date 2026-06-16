@@ -60,6 +60,8 @@ const AdminEmployees = lazy(() => import("./pages/Admin/Employees"));
 const AdminConsultations = lazy(() => import("./pages/Admin/Consultations"));
 const AdminManageBlogs = lazy(() => import("./pages/Admin/ManageBlogs"));
 const AdminContacts = lazy(() => import("./pages/Admin/Users"));
+const AdminCompanyOnboard = lazy(() => import("./pages/Admin/CompanyOnboard"));
+const AdminSettings = lazy(() => import("./pages/Admin/Settings"));
 
 const AdminRoutes = () => (
   <ToastProvider>
@@ -72,16 +74,22 @@ const AdminRoutes = () => (
       <Route path="/job-posting" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR', 'ADMIN']}><AdminJobPosting /></ProtectedRoute>} />
       <Route path="/applicants" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR', 'ADMIN']}><AdminAllApplications /></ProtectedRoute>} />
       <Route path="/employees" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN']}><AdminEmployees /></ProtectedRoute>} />
-      <Route path="/consultations" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR']}><AdminConsultations /></ProtectedRoute>} />
-      <Route path="/contacts" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR']}><AdminContacts /></ProtectedRoute>} />
+      <Route path="/company-onboard" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN']}><AdminCompanyOnboard /></ProtectedRoute>} />
+      <Route path="/consultations" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR', 'ADMIN']}><AdminConsultations /></ProtectedRoute>} />
+      <Route path="/contacts" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR', 'ADMIN']}><AdminContacts /></ProtectedRoute>} />
       <Route path="/blogs" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'ADMIN']}><AdminManageBlogs /></ProtectedRoute>} />
+      <Route path="/settings" element={<ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR', 'ADMIN']}><AdminSettings /></ProtectedRoute>} />
     </Routes>
   </ToastProvider>
 );
 
 export default function App() {
   const location = useLocation();
-  const isAdminPath = location.pathname.startsWith('/admin');
+  const isAdminPath = location.pathname.startsWith('/admin') || 
+                      location.pathname.startsWith('/superadmin') || 
+                      location.pathname.startsWith('/masterlogin') ||
+                      location.pathname.startsWith('/reset-password') ||
+                      location.pathname.startsWith('/reset');
 
   return (
     <AuthProvider>
@@ -131,7 +139,12 @@ export default function App() {
             <Route path="/cookie-policy" element={<CookiePolicy />} />
 
             {/* Admin Routes */}
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/masterlogin" element={<AdminLogin />} />
+            <Route path="/reset-password" element={<AdminLogin />} />
+            <Route path="/admin/reset-password" element={<AdminLogin />} />
+            <Route path="/reset" element={<AdminLogin />} />
+            <Route path="/superadmin/dashboard" element={<ToastProvider><ProtectedRoute allowedRoles={['SUPER_ADMIN']}><AdminDashboard /></ProtectedRoute></ToastProvider>} />
+            <Route path="/admin/dashboard" element={<ToastProvider><ProtectedRoute allowedRoles={['SUPER_ADMIN', 'HR', 'ADMIN']}><AdminDashboard /></ProtectedRoute></ToastProvider>} />
             <Route path="/admin/*" element={<AdminRoutes />} />
 
             <Route path="*" element={<NotFoundPage />} />

@@ -562,7 +562,7 @@ const SEOManager = () => {
 
     // Subroute wildcards
     if (!config) {
-      if (pathname.startsWith("/admin")) {
+      if (pathname.startsWith("/admin") || pathname.startsWith("/superadmin") || pathname.startsWith("/masterlogin")) {
         config = {
           title: "Admin Dashboard | Wysele Technologies",
           description: "Admin panel dashboard for managing Wysele content, jobs, and consultations.",

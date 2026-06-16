@@ -47,7 +47,7 @@ export default function SapBtpapiintegration() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-gray-600 max-w-3xl mx-auto font-light leading-relaxed"
                     >
-                        A structured, end-to-end approach to delivering seamless <Link to="/services/sap-btp" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></Link> API integrations that drive business value
+                        A structured, end-to-end approach to delivering seamless SAP BTP API integrations that drive business value
                     </motion.p>
                 </div>
 

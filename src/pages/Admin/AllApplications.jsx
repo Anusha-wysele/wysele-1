@@ -7,18 +7,32 @@ import {
   UserCheck
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import jobService from '../../services/jobService';
 
 import AdminLayout from '../../components/Admin/AdminLayout';
 
 const AllApplications = () => {
+  const location = useLocation();
+  const { user } = useAuth();
+  const searchParams = new URLSearchParams(location.search);
+  const activeCompany = searchParams.get('company') || user?.company_name || 'wysele';
+
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 10;
+
+  // Reset page when search or company filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, activeCompany]);
 
   useEffect(() => {
     fetchAllApplications();
-  }, []);
+  }, [activeCompany]);
 
   const fetchAllApplications = async () => {
     try {
@@ -27,8 +41,14 @@ const AllApplications = () => {
       const jobsData = await jobService.getAllJobs();
       const jobsList = Array.isArray(jobsData) ? jobsData : (jobsData.jobs || jobsData.data || []);
       
-      // Step 2: Fetch applications for each job ID
-      const allAppsPromises = jobsList.map(async (job) => {
+      // Filter jobsList by activeCompany
+      const companyKey = activeCompany.toLowerCase();
+      const filteredJobsList = jobsList.filter(job => 
+        (job.company_name || job.company || 'wysele').toLowerCase().includes(companyKey)
+      );
+
+      // Step 2: Fetch applications for each filtered job ID
+      const allAppsPromises = filteredJobsList.map(async (job) => {
         try {
           const jobId = job.id || job.job_id;
           if (!jobId) return [];
@@ -36,7 +56,7 @@ const AllApplications = () => {
           // Return the apps list, adding the job title for context
           return (Array.isArray(apps) ? apps : (apps.applications || [])).map(a => ({
             ...a,
-            role: job.role || job.title
+            role: job.job_title || job.role || job.title || 'Candidate'
           }));
         } catch (err) {
           console.error(`Failed to fetch apps for job ${job.id}:`, err);
@@ -97,73 +117,62 @@ const AllApplications = () => {
     );
   });
 
+  const totalPages = Math.ceil(filteredApps.length / limit) || 1;
+  const startIndex = (currentPage - 1) * limit;
+  const paginatedApps = filteredApps.slice(startIndex, startIndex + limit);
+
   return (
     <AdminLayout>
       <div className="space-y-10 pb-10">
         {/* Header Area */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <h1 className="text-2xl font-black tracking-normal text-[#800000] capitalize font-semibold font-sans">
+            <h1 className="text-lg tracking-normal text-[#005A9E] capitalize font-inter font-semibold">
               All Applications
             </h1>
             <p className="text-gray-500 font-medium tracking-tight">
               Manage and review every candidate submission across your entire recruitment pipeline.
             </p>
           </div>
-
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-              <input 
-                type="text"
-                placeholder="Search candidates..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-6 py-2.5 bg-white border border-gray-100 rounded-none shadow-sm w-full md:w-80 text-sm font-medium transition-all focus:ring-2 focus:ring-[#800000]/10 outline-none"
-              />
-            </div>
-            <button 
-              onClick={exportToCSV}
-              className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-100 rounded-none text-[10px] font-black text-gray-900 hover:bg-gray-50 transition-all shadow-sm tracking-widest"
-            >
-              <Download size={16} />
-              EXPORT
-            </button>
-          </div>
         </div>
 
-        {/* Stats Quick View */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { label: 'Total Applicants', value: applications.length.toString(), icon: UserCheck, color: 'bg-maroon-900/30 text-maroon-400 border-maroon-500/20' },
-            { label: 'Roles with Apps', value: [...new Set(applications.map(a => a.role))].length.toString(), icon: Briefcase, color: 'bg-crimson-900/30 text-crimson-400 border-crimson-500/20' },
-            { label: 'Pending Review', value: applications.length.toString(), icon: Clock, color: 'bg-maroon-900/30 text-maroon-400 border-maroon-500/20' },
-          ].map((stat, i) => (
-            <div key={i} className="bg-white p-3 rounded-none shadow-sm border border-gray-100 flex items-center gap-6 group transition-all hover:shadow-md">
-              <div className={` w-14 h-14 text-blue-400  flex items-center justify-center  transition-transform group-hover:scale-110`}>
-                <stat.icon size={24} />
-              </div>
-              <div>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{stat.label}</p>
-                <h4 className="text-2xl font-black text-gray-900 mt-1">{stat.value}</h4>
-              </div>
-            </div>
-          ))}
+        {/* Search & Export Card */}
+        <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm flex flex-row items-center justify-between gap-4">
+          {/* Search Input */}
+          <div className="relative flex-1 max-w-md">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
+            <input 
+              type="text"
+              placeholder="Search candidates..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-3 py-1.5 rounded-lg border border-gray-200 bg-gray-50 text-sm focus:bg-white focus:border-[#005A9E] outline-none transition-all"
+            />
+          </div>
+          
+          {/* Export CSV Button */}
+          <button 
+            onClick={exportToCSV}
+            className="flex items-center gap-2 px-4 py-1.5 bg-[#005A9E] text-white rounded-lg font-semibold text-xs hover:bg-[#004b85] hover:text-white transition-all shadow-sm whitespace-nowrap"
+          >
+            <Download size={16} />
+            Export CSV
+          </button>
         </div>
 
         {/* Applications Table */}
-        <div className="bg-white rounded-none shadow-xl shadow-gray-200/50 overflow-hidden border border-gray-100">
+        <div className="bg-white rounded-md border border-gray-200 shadow-sm overflow-hidden">
           <div className="responsive-table-container">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-[#800000] border-b border-gray-100">
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Candidate</th>
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Role</th>
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Experience</th>
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Notice</th>
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Contact</th>
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Location</th>
-                  <th className="px-6 py-3 text-center text-[10px] font-semibold text-white capitalize tracking-widest">Action</th>
+                <tr className="bg-blue-200 border-b border-gray-100">
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Candidate</th>
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Role</th>
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Experience</th>
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Notice</th>
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Contact</th>
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Location</th>
+                  <th className="px-6 py-2.5 text-center text-[11px] font-semibold text-[#005A9E] capitalize tracking-wider">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -171,13 +180,13 @@ const AllApplications = () => {
                   <tr>
                     <td colSpan="7" className="px-8 py-20 text-center">
                       <div className="flex flex-col items-center gap-4">
-                        <div className="w-10 h-10 border-4 border-crimson-100 border-t-crimson-600 rounded-full animate-spin"></div>
+                        <div className="w-10 h-10 border-4 border-blue-100 border-t-[#005A9E] rounded-full animate-spin"></div>
                         <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Loading candidates...</p>
                       </div>
                     </td>
                   </tr>
                 ) : filteredApps.length > 0 ? (
-                  filteredApps.map((app, index) => (
+                  paginatedApps.map((app, index) => (
                     <tr key={index} className="group hover:bg-gray-50/50 transition-colors">
                       <td className="px-6 py-6 text-center">
                         <span className="text-xs font-semibold text-gray-900 uppercase transition-colors">
@@ -238,6 +247,37 @@ const AllApplications = () => {
                 )}
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Standalone Pagination Card */}
+        <div className="flex items-center justify-center py-4">
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className={`px-4 py-2 rounded-lg border text-xs font-bold transition-all ${
+                currentPage === 1 
+                  ? 'border-gray-200 text-gray-400 cursor-not-allowed' 
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              Previous
+            </button>
+            <span className="text-xs text-gray-500 font-semibold px-2">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button 
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                currentPage === totalPages 
+                  ? 'border border-gray-200 text-gray-400 cursor-not-allowed' 
+                  : 'bg-[#005A9E] text-white hover:bg-[#004b85]'
+              }`}
+            >
+              Next
+            </button>
           </div>
         </div>
       </div>

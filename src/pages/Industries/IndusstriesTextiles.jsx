@@ -25,7 +25,7 @@ const IndustriesTextiles = () => {
     return (
         <IndustrySection
             title="Textiles"
-            description={<>Revolutionizing the textile industry with smart solutions for <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">supply chain efficiency</Link>, sustainable sourcing, and optimized production workflows.</>}
+            description={<>Revolutionizing the textile industry with smart solutions for supply chain efficiency, sustainable sourcing, and optimized production workflows.</>}
             image={TEXTILES_IMAGE}
             features={features}
             reversed={true}

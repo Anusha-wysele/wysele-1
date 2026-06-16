@@ -60,6 +60,15 @@ const JobApplicationPage = () => {
         // Handle nested structures like { job: { ... } } or { data: { ... } }
         const apiData = data.job || data.data || data;
 
+        const rawSkills = apiData.required_skills || apiData.key_skills || apiData.keySkills || apiData.skills || [];
+        const skills = Array.isArray(rawSkills)
+          ? rawSkills.map(s => {
+              if (!s) return '';
+              if (typeof s === 'object') return s.name || s.label || '';
+              return String(s);
+            }).filter(Boolean)
+          : [];
+
         const apiJob = {
           ...apiData,
           id: apiData.id || apiData._id,
@@ -71,7 +80,7 @@ const JobApplicationPage = () => {
           details: {
             about: apiData.description?.replace(/<[^>]*>/g, '') || 'Join our team...',
             responsibilities: apiData.responsibilities || [],
-            skills: apiData.key_skills || apiData.keySkills || apiData.skills || [],
+            skills,
             benefits: apiData.benefits || ['Flexible Hours', 'Health Insurance']
           }
         };

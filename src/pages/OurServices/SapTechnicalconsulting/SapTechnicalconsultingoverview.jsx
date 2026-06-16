@@ -16,7 +16,7 @@ export default function SapTechnicalconsultingoverview() {
                     className="flex flex-col justify-center lg:pl-16"
                 >
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#1e293b] mb-4 leading-tight">
-                        Expert Technical <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link> Services
+                        Expert Technical SAP Consulting Services
                     </h2>
                     <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
                         At our firm, we understand that the complexities of SAP solutions require specialized expertise. Our technical SAP consultants are dedicated to providing the knowledge and skills necessary to configure, integrate, and maintain your SAP environment effectively. We emphasize building a robust and scalable SAP infrastructure tailored to meet your business's current needs and future growth ambitions.

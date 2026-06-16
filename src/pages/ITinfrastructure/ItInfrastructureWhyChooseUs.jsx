@@ -101,7 +101,7 @@ const ItInfrastructureWhyChooseUs = () => {
                 
                 {/* Floating Stats Card - Positioned at Bottom Left of Image */}
                 <div className="absolute bottom-10 left-0 bg-[#800000]/90 p-3 text-white shadow-xl hidden md:block max-w-[320px]">
-                  <h4 className="text-xl font-normal leading-tight mb-4 uppercase">Leading the Future of <Link to="/services/itinfrastructure" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>IT Infrastructure</Link>.</h4>
+                  <h4 className="text-xl font-normal leading-tight mb-4 uppercase">Leading the Future of IT Infrastructure.</h4>
                   <div className="w-16 h-1 bg-[#ffcc00]" />
                 </div>
               </div>

@@ -16,10 +16,10 @@ export default function SapMastergovernance() {
                     className="flex flex-col justify-center pl-8 lg:pl-16"
                 >
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#1e293b] mb-3 leading-tight">
-                        Comprehensive <Link to="/services/sap-masterdata" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-masterdata" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Master Data</Link></Link> Governance (MDG) Services
+                        Comprehensive SAP Master Data Governance (MDG) Services
                     </h2>
                     <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                        At Wysele Technologies, we specialize in <Link to="/services/sap-masterdata" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-masterdata" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Master Data</Link></Link> Governance (MDG) services, enabling your business to maintain high-quality, accurate, and consistent master data across your organization. Master data is the foundation of your business processes, and managing it efficiently is crucial for operational excellence. Our SAP MDG services provide you with the tools and expertise to streamline your data management, reduce errors, improve decision-making, and drive overall business performance.
+                        At Wysele Technologies, we specialize in SAP Master Data Governance (MDG) services, enabling your business to maintain high-quality, accurate, and consistent master data across your organization. Master data is the foundation of your business processes, and managing it efficiently is crucial for operational excellence. Our SAP MDG services provide you with the tools and expertise to streamline your data management, reduce errors, improve decision-making, and drive overall business performance.
                     </p>
                 </motion.div>
 

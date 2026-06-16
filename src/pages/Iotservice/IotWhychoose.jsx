@@ -47,7 +47,7 @@ export default function IotWhychoose() {
             viewport={{ once: true }}
             className="text-xl md:text-2xl font-bold text-gray-900 mb-3 leading-tight tracking-tight"
           >
-            Why Businesses Choose Wysele for <Link to="/services/iot-services" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>IoT Services</Link>
+            Why Businesses Choose Wysele for IoT Services
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

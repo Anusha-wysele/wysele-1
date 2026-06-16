@@ -7,7 +7,6 @@ import SamyuktaImg from "../../../assets/wysele-imgi_21_bondili-samyukta.webp";
 import GeethikaImg from "../../../assets/wysele-imgi_20_geethika-karrayoula.webp";
 import MadhuImg from "../../../assets/wysele-imgi_24_madhu-megavath.webp";
 import ManikantaImg from "../../../assets/wysele-imgi_26_sattu-manikanta.webp";
-import SaiSudhaImg from "../../../assets/wysele-imgi_23_RajoliSaiSudha.webp";
 import RamyaImg from "../../../assets/wysele-imgi_22_ramya-goruganti.webp";
 import SatishImg from "../../../assets/wysele-imgi_25_satish-thirumani.webp";
 import LegalAdvisorImg from "../../../assets/wysele-imgi_19_ravinder-rao-chirumamilla.webp";
@@ -39,13 +38,6 @@ const localTeamMembers = [
     role: "Admin & Facilities",
     img: RamyaImg,
     alt: "Ramya Goruganti",
-    title: "Team Member"
-  },
-  {
-    name: "Rajoli Saisudha",
-    role: "HR Manager",
-    img: SaiSudhaImg,
-    alt: "Rajoli Saisudha",
     title: "Team Member"
   },
   {

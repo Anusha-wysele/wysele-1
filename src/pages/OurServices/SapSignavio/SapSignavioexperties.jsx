@@ -74,7 +74,7 @@ const SapSignavioexperties = () => {
                 {/* Section Header */}
                 <div className="text-center mb-6 flex flex-col items-center">
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-950 tracking-tight mb-3">
-                        Our <Link to="/services/sap-signavio" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-signavio" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Signavio</Link></Link> Expertise
+                        Our SAP Signavio Expertise
                     </h2>
                     {/* Centered red line divider like in the screenshot */}
                     <div className="w-12 h-1 bg-[#800000] rounded" />

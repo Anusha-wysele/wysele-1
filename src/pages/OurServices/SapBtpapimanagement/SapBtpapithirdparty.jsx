@@ -33,7 +33,7 @@ export default function SapBtpapithirdparty() {
                         Third-Party &amp; Legacy System Integration
                     </h2>
                     <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                        We specialize in seamlessly connecting SAP with legacy applications, <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">Customer Relationship Management</Link> (CRM) systems, Enterprise Resource Planning (ERP) platforms, and other third-party systems. This unified integration fosters smoother operations, ensuring that all your systems work together harmoniously to support your organizational goals.
+                        We specialize in seamlessly connecting SAP with legacy applications, Customer Relationship Management (CRM) systems, Enterprise Resource Planning (ERP) platforms, and other third-party systems. This unified integration fosters smoother operations, ensuring that all your systems work together harmoniously to support your organizational goals.
                     </p>
                 </motion.div>
 

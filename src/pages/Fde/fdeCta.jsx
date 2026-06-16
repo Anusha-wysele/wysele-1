@@ -26,7 +26,7 @@ const FdeCta = () => {
                 <div className="w-full lg:w-auto flex justify-start lg:justify-end flex-shrink-0 pt-2 lg:pt-0">
                     <Link to="/contact">
                         <button className="group relative inline-flex items-center gap-2 text-sm font-bold tracking-[0.15em] text-[#800000] uppercase pb-2 border-b-2 border-[#800000]/30 hover:border-[#800000] transition-colors duration-300">
-                            TALK TO OUR <Link to="/services/fde" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>FDE</Link> TEAM
+                            TALK TO OUR FDE TEAM
                             <ArrowUpRight className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                         </button>
                     </Link>

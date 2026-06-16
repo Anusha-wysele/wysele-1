@@ -1,4 +1,6 @@
-const BASE_URL = process.env.REACT_APP_API_URL || 'https://wysele-backend.vercel.app';
+import { showToast } from '../components/Admin/ToastContext';
+
+const BASE_URL = process.env.REACT_APP_API_URL || 'https://wysele-backend-three.vercel.app';
 const API_PREFIX = '/api/v1';
 
 /**
@@ -32,8 +34,15 @@ const apiFetch = async (endpoint, options = {}) => {
   };
 
   try {
+    let finalEndpoint = endpoint;
+    const params = options.params;
+    if (params && Object.keys(params).length > 0) {
+      const queryString = new URLSearchParams(params).toString();
+      finalEndpoint = endpoint.includes('?') ? `${endpoint}&${queryString}` : `${endpoint}?${queryString}`;
+    }
+
     // Cleanly join URL parts to prevent double slashes
-    const fullUrl = `${BASE_URL}${API_PREFIX}${endpoint}`.replace(/([^:]\/)\/+/g, "$1");
+    const fullUrl = `${BASE_URL}${API_PREFIX}${finalEndpoint}`.replace(/([^:]\/)\/+/g, "$1");
     const response = await fetch(fullUrl, config);
     
     // Safely parse JSON or return text
@@ -48,20 +57,43 @@ const apiFetch = async (endpoint, options = {}) => {
     }
 
     if (!response.ok) {
+      if (response.status === 401) {
+        localStorage.removeItem('admin_user');
+        localStorage.removeItem('admin_token');
+        localStorage.removeItem('login_timestamp');
+        if (!window.location.pathname.startsWith('/masterlogin')) {
+          showToast('Your session has expired. Please log in again.', 'error');
+          setTimeout(() => {
+            window.location.href = '/masterlogin';
+          }, 2000);
+        }
+      }
+
       // Improved error reporting for validation failures
-      const errorDetail = data.detail;
-      const errorMessage = typeof errorDetail === 'object' 
-        ? JSON.stringify(errorDetail) 
-        : (errorDetail || data.message || `API Error: ${response.status}`);
+      let errorMessage = '';
+      if (data.missing_or_invalid_fields && Array.isArray(data.missing_or_invalid_fields)) {
+        errorMessage = data.missing_or_invalid_fields
+          .map(f => {
+            const cleanField = f.field
+              .split('->')
+              .map(part => part.trim().replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()))
+              .join(' -> ');
+            
+            if (f.message.toLowerCase() === 'field cannot be empty or only whitespace') {
+              return `${cleanField} cannot be empty`;
+            }
+            return `${cleanField}: ${f.message}`;
+          })
+          .join(', ');
+      } else {
+        const errorDetail = data.detail;
+        errorMessage = typeof errorDetail === 'object' 
+          ? JSON.stringify(errorDetail) 
+          : (errorDetail || data.message || `API Error: ${response.status}`);
+      }
       
       const error = new Error(errorMessage);
       error.status = response.status;
-      
-      // Ensure the status code is searchable in the error message for legacy catch blocks
-      if (!errorMessage.includes(String(response.status))) {
-        error.message = `${errorMessage} (${response.status})`;
-      }
-      
       throw error;
     }
 
@@ -74,9 +106,7 @@ const apiFetch = async (endpoint, options = {}) => {
 
 const api = {
   get: (url, config) => {
-    const params = config?.params;
-    const queryString = params ? `?${new URLSearchParams(params).toString()}` : '';
-    return apiFetch(`${url}${queryString}`, { method: 'GET', ...config });
+    return apiFetch(url, { method: 'GET', ...config });
   },
   
   post: (url, data, config) => {

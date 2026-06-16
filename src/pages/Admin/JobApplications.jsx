@@ -87,7 +87,7 @@ const JobApplications = () => {
                 <Users size={24} />
               </div>
               <div>
-                <h1 className="text-2xl font-black text-gray-900 tracking-tight uppercase">
+                <h1 className="text-lg tracking-tight uppercase font-inter font-semibold text-[#005A9E]">
                   Candidate Applications
                 </h1>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
@@ -100,7 +100,7 @@ const JobApplications = () => {
           <div className="flex items-center gap-3">
             <button 
               onClick={exportToCSV}
-              className="flex items-center gap-2 px-6 py-3 bg-white border border-gray-100 rounded-none text-[10px] font-black text-gray-900 hover:bg-gray-50 transition-all shadow-sm tracking-widest"
+              className="flex items-center gap-2 px-6 py-3 bg-[#005A9E] text-white rounded-lg font-semibold text-xs hover:bg-[#004b85] hover:text-white transition-all shadow-sm tracking-widest"
             >
               <Download size={14} />
               EXPORT
@@ -125,7 +125,7 @@ const JobApplications = () => {
                 <X size={32} />
               </div>
               <p className="text-sm font-bold text-gray-900">{error}</p>
-              <button onClick={() => window.location.reload()} className="px-6 py-2 bg-gray-900 text-white rounded-xl text-xs font-bold uppercase">Retry</button>
+              <button onClick={() => window.location.reload()} className="px-6 py-2 bg-[#005A9E] text-white rounded-lg text-xs font-bold uppercase hover:bg-[#004b85] transition-all shadow-sm">Retry</button>
             </div>
           )}
 

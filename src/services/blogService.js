@@ -65,6 +65,23 @@ const blogService = {
   },
 
   /**
+   * Publish a draft blog (sets status to ACTIVE)
+   * PATCH /api/v1/blogs/{blog_id}/
+   */
+  publishBlog: async (blogId, currentData = {}) => {
+    try {
+      const response = await api.patch(`/blogs/${blogId}/`, { ...currentData, status: 'ACTIVE' });
+      return response.data;
+    } catch (error) {
+      if (error.status === 404 || error.status === 405 || error.message.includes('404') || error.message.includes('Failed to fetch')) {
+        const response = await api.put(`/blogs/${blogId}/`, { ...currentData, status: 'ACTIVE' });
+        return response.data;
+      }
+      throw error;
+    }
+  },
+
+  /**
    * Delete a blog post
    * DELETE /api/v1/blogs/{blog_id}/
    */

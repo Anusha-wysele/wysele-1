@@ -12,8 +12,53 @@ import { Link } from 'react-router-dom';
 import AdminLayout from '../../components/Admin/AdminLayout';
 import blogService from '../../services/blogService';
 import jobService from '../../services/jobService';
+import { useAuth } from '../../context/AuthContext';
+import companyService from '../../services/companyService';
 
 export default function Dashboard() {
+  const { user } = useAuth();
+  const searchParams = new URLSearchParams(window.location.search);
+  const companyParam = searchParams.get('company') || user?.company_name || 'wysele';
+
+  const [companiesList, setCompaniesList] = useState([]);
+
+  useEffect(() => {
+    const load = () => {
+      setCompaniesList(companyService.getCompanies());
+    };
+    load();
+    companyService.fetchCompanies(); // Fetch fresh data from backend API
+    window.addEventListener('companiesUpdated', load);
+    return () => window.removeEventListener('companiesUpdated', load);
+  }, []);
+
+  const getCompanyDisplayName = (comp) => {
+    try {
+      const lower = (comp || '').toLowerCase();
+      if (!companiesList || !Array.isArray(companiesList)) {
+        return 'Wysele Technologies';
+      }
+      const company = companiesList.find(c => c && (c.id || '').toLowerCase() === lower);
+      if (company && company.name) {
+        return (company.name || '').toLowerCase().includes('technologies') 
+          ? company.name 
+          : `${company.name} Technologies`;
+      }
+      if (lower.includes('orbintix')) {
+        return 'Orbintix Technologies';
+      }
+      if (lower.includes('gracevirtue')) {
+        return 'Grace Virtue Technologies';
+      }
+      return 'Wysele Technologies';
+    } catch (err) {
+      console.error('Error resolving company display name:', err);
+      return 'Wysele Technologies';
+    }
+  };
+
+  const companyDisplayName = getCompanyDisplayName(companyParam);
+
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
     jobs: [],
@@ -32,28 +77,91 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const [jobsRes, blogsRes, consultationsRes, contactsRes] = await Promise.all([
-          jobService.getAllJobs(),
-          blogService.getAllBlogs(),
-          jobService.getAllConsultations(),
-          jobService.getAllContacts()
+        const companyKey = companyParam?.toLowerCase() || 'wysele';
+
+        const results = await Promise.allSettled([
+          jobService.getAllJobs({ company: companyParam, limit: 100 }),
+          blogService.getAllBlogs({ limit: 100 }),
+          companyKey !== 'wysele' 
+            ? Promise.resolve({ data: [], total_records: 0 }) 
+            : jobService.getAllConsultations({ limit: 100 }),
+          jobService.getAllContacts({ limit: 100 })
         ]);
 
-        const jobsList = jobsRes.jobs || jobsRes.data || (Array.isArray(jobsRes) ? jobsRes : []);
-        const blogsList = blogsRes.blogs || blogsRes.data || (Array.isArray(blogsRes) ? blogsRes : []);
-        const consultationsList = consultationsRes.consultations || consultationsRes.data || (Array.isArray(consultationsRes) ? consultationsRes : []);
-        const contactsList = contactsRes.contacts || contactsRes.data || (Array.isArray(contactsRes) ? contactsRes : []);
+        const jobsRes = results[0].status === 'fulfilled' ? results[0].value : {};
+        const blogsRes = results[1].status === 'fulfilled' ? results[1].value : {};
+        const consultationsRes = results[2].status === 'fulfilled' ? results[2].value : {};
+        const contactsRes = results[3].status === 'fulfilled' ? results[3].value : {};
+
+        results.forEach((res, idx) => {
+          if (res.status === 'rejected') {
+            const names = ['Jobs', 'Blogs', 'Consultations', 'Contacts'];
+            console.error(`⚠️ Dashboard failed to load ${names[idx]}:`, res.reason);
+          }
+        });
+
+        // 1. Process Jobs
+        const jobsList = jobsRes.data || jobsRes.jobs || (Array.isArray(jobsRes) ? jobsRes : []);
+        const filteredJobs = jobsList.filter(j => 
+          (j.company_name || j.company || 'wysele')?.toLowerCase().includes(companyKey)
+        );
+        const jobsCount = filteredJobs.length;
+
+        // 2. Process Blogs
+        const blogsList = blogsRes.data || blogsRes.blogs || (Array.isArray(blogsRes) ? blogsRes : []);
+        const processedBlogs = blogsList.map(blog => {
+          const hasPrefix = blog.category && blog.category.includes(':');
+          const blogCompany = hasPrefix ? blog.category.split(':')[0] : (blog.company_name || blog.company || 'wysele');
+          const cleanCategory = hasPrefix ? blog.category.split(':')[1] : (blog.category || 'Organisation');
+          return {
+            ...blog,
+            company_name: blogCompany,
+            category: cleanCategory
+          };
+        });
+        const filteredBlogs = processedBlogs.filter(b => 
+          (b.company_name || 'wysele')?.toLowerCase() === companyKey
+        );
+        const blogsCount = filteredBlogs.length;
+
+        // 3. Process Consultations
+        const consultationsList = consultationsRes.data || consultationsRes.consultations || (Array.isArray(consultationsRes) ? consultationsRes : []);
+        const filteredConsultations = companyKey !== 'wysele' ? [] : consultationsList.filter(c => 
+          (c.company || 'wysele')?.toLowerCase().includes(companyKey)
+        );
+        const consultationsCount = companyKey !== 'wysele' 
+          ? 0 
+          : (consultationsRes.total_records || consultationsRes.count || consultationsRes.total || filteredConsultations.length);
+
+        // 4. Process Contacts
+        const contactsList = contactsRes.data || contactsRes.contacts || (Array.isArray(contactsRes) ? contactsRes : []);
+        const processedContacts = contactsList.map(contact => {
+          const locationVal = contact.location || '';
+          const hasPrefix = locationVal.includes(':');
+          const contactCompany = hasPrefix ? locationVal.split(':')[0] : (contact.company_name || contact.company || 'wysele');
+          const cleanLocation = hasPrefix ? locationVal.split(':').slice(1).join(':') : locationVal;
+          return {
+            ...contact,
+            company_name: contactCompany,
+            company: contactCompany,
+            location: cleanLocation
+          };
+        });
+        const filteredContacts = processedContacts.filter(c => 
+          (c.company_name || 'wysele')?.toLowerCase() === companyKey
+        );
+        const contactsCount = filteredContacts.length;
 
         setData({
-          jobs: jobsList.slice(0, 3),
-          blogs: blogsList.slice(0, 3),
-          consultations: consultationsList.slice(0, 3),
-          contacts: contactsList.slice(0, 3),
+          jobs: filteredJobs.slice(0, 3),
+          blogs: filteredBlogs.slice(0, 3),
+          consultations: filteredConsultations.slice(0, 3),
+          contacts: filteredContacts.slice(0, 3),
           stats: {
-            jobs: jobsList.length,
-            blogs: blogsList.length,
-            consultations: consultationsList.length,
-            contacts: contactsList.length
+            jobs: jobsCount,
+            blogs: blogsCount,
+            consultations: consultationsCount,
+            contacts: contactsCount
           }
         });
       } catch (error) {
@@ -64,37 +172,54 @@ export default function Dashboard() {
     };
 
     fetchDashboardData();
-  }, []);
+  }, [companyParam, user]);
+
+  const isOrbintix = companyParam?.toLowerCase() === 'orbintix';
+  const hasConsultations = companyParam?.toLowerCase() === 'wysele';
+
+  const formatDate = (dateStr) => {
+    if (!dateStr || dateStr === 'Recently' || dateStr === 'N/A') return dateStr || 'Recently';
+    try {
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return dateStr;
+      return d.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+    } catch (e) {
+      return dateStr;
+    }
+  };
 
   const statCards = [
     { label: 'Total Jobs Posted', value: data.stats.jobs, icon: Briefcase, color: 'text-rose-500', bg: 'bg-rose-50', trend: '+12%', sparkColor: '#f43f5e' },
     { label: 'Blog Posts', value: data.stats.blogs, icon: FileText, color: 'text-purple-500', bg: 'bg-purple-50', trend: '+5%', sparkColor: '#a855f7' },
-    { label: 'Consultations', value: data.stats.consultations, icon: MessageSquare, color: 'text-blue-500', bg: 'bg-blue-50', trend: '+24%', sparkColor: '#3b82f6' },
+    hasConsultations && { label: 'Consultations', value: data.stats.consultations, icon: MessageSquare, color: 'text-blue-500', bg: 'bg-blue-50', trend: '+24%', sparkColor: '#3b82f6' },
     { label: 'Contact Inquiries', value: data.stats.contacts, icon: Mail, color: 'text-orange-500', bg: 'bg-orange-50', trend: '+8%', sparkColor: '#f97316' },
-  ];
+  ].filter(Boolean);
 
   return (
     <AdminLayout>
-      <div className="space-y-6 pb-10 bg-white min-h-screen p-1 admin-scrollbar">
+      <div className="space-y-6 px-1 pb-10 bg-[#F0F0F0] min-h-screen pt-0 hide-scrollbar">
         
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 px-2">
           <div>
-            <h1 className="text-2xl font-semibold tracking-normal text-[#800000] capitalize font-sans">Executive Dashboard</h1>
-            <p className="text-gray-500 text-sm font-medium mt-1 font sans">Real-time overview of Wysele IT infrastructure operations.</p>
+            <h1 className="text-lg tracking-normal text-[#005A9E] capitalize font-inter font-semibold">
+              {companyDisplayName} Executive Dashboard
+            </h1>
+            <p className="text-gray-500 text-sm font-medium mt-1 font-sans">
+              Real-time overview of {companyDisplayName} IT infrastructure operations.
+            </p>
           </div>
-          
         </div>
 
         {/* Section 1: KPI Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className={`grid grid-cols-1 md:grid-cols-2 ${!hasConsultations ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} gap-6`}>
           {statCards.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white p-6 border border-gray-100  relative group overflow-hidden"
+              className="bg-white rounded-md p-6 border border-gray-200 relative group overflow-hidden"
             >
               <div className="flex justify-between items-start mb-6">
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${stat.bg} ${stat.color} transition-transform duration-500 group-hover:scale-110`}>
@@ -107,7 +232,7 @@ export default function Dashboard() {
               </div>
               
               <div className="space-y-1 mb-6">
-                <h3 className="text-3xl font-black text-gray-900 tracking-tighter">
+                <h3 className="text-3xl font-semibold text-gray-900 tracking-tighter">
                   {loading ? '---' : stat.value}
                 </h3>
                 <p className="text-gray-400 text-[9px] font-black uppercase tracking-[0.15em]">{stat.label}</p>
@@ -140,52 +265,69 @@ export default function Dashboard() {
         </div>
 
         {/* Section 2: Jobs & Blogs */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           
           {/* Recent Job Postings */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between px-2">
-              <h2 className="text-sm font-semibold text-gray-900 uppercase tracking- normal flex items-center gap-2 font-sans">
-                <Briefcase size={16} className="text-[#800000] " /> Recent Job Postings
-              </h2>
-              <Link to="/admin/job-postings" className="text-[10px] font-black text-crimson-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
-                View All <ArrowRight size={14} />
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+            {/* Header inside card */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                  <Briefcase size={20} />
+                </div>
+                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider font-sans">
+                  Recent Job Postings
+                </h2>
+              </div>
+              <Link to="/admin/job-postings" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                VIEW ALL <ArrowRight size={14} />
               </Link>
             </div>
             
-            <div className="bg-white border border-gray-100 overflow-hidden hide-scrollbar">
+            {/* Table */}
+            <div className="overflow-x-auto min-h-0">
               <table className="w-full text-left table-auto">
-                <thead className="bg-gray-50 border-b border-gray-100">
-                  <tr>
-                    <th className="px-6 py-3 text-[10px] font-black text-gray-600 uppercase tracking-widest">Role</th>
-                    <th className="px-6 py-3 text-[10px] font-black text-gray-600 uppercase tracking-widest">Job Type</th>
-                    <th className="px-6 py-3 text-[10px] font-black text-gray-600 uppercase tracking-widest">Status</th>
+                <thead>
+                  <tr className="border-b border-gray-100">
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Role</th>
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Job Type</th>
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Status</th>
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Posted On</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                   {loading ? (
-                    [1,2,3].map(i => <tr key={i}><td colSpan="3" className="px-6 py-4 animate-pulse bg-gray-50/50 h-12"></td></tr>)
+                    [1,2,3].map(i => <tr key={i}><td colSpan="4" className="py-4 animate-pulse bg-gray-50/50 h-12"></td></tr>)
                   ) : data.jobs.length === 0 ? (
-                    <tr><td colSpan="3" className="px-6 py-10 text-center text-gray-400 text-[10px] font-black uppercase">No recent jobs</td></tr>
+                    <tr><td colSpan="4" className="py-10 text-center text-gray-400 text-xs font-semibold uppercase">No recent jobs</td></tr>
                   ) : (
                     data.jobs.map((job) => (
                       <tr key={job.id || job._id} className="group hover:bg-gray-50/50 transition-colors">
-                        <td className="px-6 py-4">
-                          <p className="text-xs font-bold text-gray-900 group-hover:text-[#800000] truncate max-w-[150px]">{job.role || job.title}</p>
+                        <td className="py-4">
+                          <p className="text-sm font-normal text-gray-900 truncate max-w-[150px]">{job.job_title || job.role || job.title || 'Untitled Role'}</p>
                         </td>
-                        <td className="px-6 py-4">
-                          <span className="text-[10px] font-bold text-gray-500 uppercase bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
+                        <td className="py-4 text-center">
+                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-center inline-block ${
+                            (job.job_type || job.type || '').toLowerCase().includes('part') ? 'bg-purple-50 text-purple-600 border border-purple-100' :
+                            (job.job_type || job.type || '').toLowerCase().includes('contract') ? 'bg-orange-50 text-orange-600 border border-orange-100' :
+                            'bg-blue-50 text-blue-600 border border-blue-100'
+                          }`}>
                             {job.job_type || job.type || 'Full-time'}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-[10px]">
-                          <span className={`px-2 py-0.5 font-black uppercase rounded-sm border ${
+                        <td className="py-4 text-center">
+                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-center inline-block ${
                             (job.status === 'active' || job.status === 'published' || job.status === 'Published') 
-                            ? 'bg-green-50 text-green-600 border-green-100' 
-                            : 'bg-amber-50 text-amber-600 border-amber-100'
+                              ? 'bg-green-50 text-green-600 border-green-100' 
+                              : job.status === 'Draft' 
+                                ? 'bg-gray-50 text-gray-500 border border-gray-100'
+                                : 'bg-rose-50 text-rose-600 border border-rose-100'
                           }`}>
-                            {job.status || 'Active'}
+                            {job.status === 'Published' ? 'Active' : job.status || 'Active'}
                           </span>
+                        </td>
+                        <td className="py-4 text-center text-xs font-semibold text-gray-400">
+                          {formatDate(job.job_posted_date || job.jobPostedDate || job.createdAt || job.created_at || job.date)}
                         </td>
                       </tr>
                     ))
@@ -196,91 +338,150 @@ export default function Dashboard() {
           </div>
 
           {/* Latest Blogs */}
-          <div className="space-y-4">
-            <div className="flex items-center justify-between px-2">
-              <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-medium flex items-center gap-2">
-                <FileText size={16} className="text-[#800000]" /> Latest Blog Posts
-              </h2>
-              <Link to="/admin/blogs" className="text-[10px] font-black text-crimson-600 uppercase tracking-widest flex items-center gap-1 hover:gap-2 transition-all">
-                View All <ArrowRight size={14} />
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+            {/* Header inside card */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                  <FileText size={20} />
+                </div>
+                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider">
+                  Latest Blog Posts
+                </h2>
+              </div>
+              <Link to="/admin/blogs" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                VIEW ALL <ArrowRight size={14} />
               </Link>
             </div>
             
-            <div className="bg-white border border-gray-100 shadow-sm divide-y divide-gray-50">
-              {loading ? (
-                [1,2,3].map(i => <div key={i} className="p-4 animate-pulse bg-gray-50/50 h-16"></div>)
-              ) : data.blogs.length === 0 ? (
-                <div className="p-10 text-center text-gray-400 text-[10px] font-black uppercase">No blogs</div>
-              ) : (
-                data.blogs.map((blog) => (
-                  <div key={blog.id || blog._id} className="p-4 flex items-center gap-4 group hover:bg-gray-50/50 transition-colors">
-                    <div className="w-12 h-12 bg-gray-100 flex-shrink-0 rounded overflow-hidden border border-gray-50">
-                      {(blog.image_url || blog.img) ? (
-                        <img loading="lazy" src={blog.image_url || blog.img} alt={blog.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-gray-300">
-                          <FileText size={18} />
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs font-bold text-gray-900 truncate group-hover:text-[#800000]">{blog.title}</p>
-                      <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-widest">{blog.category || 'Tech'}</p>
-                    </div>
-                    {/* <Eye size={14} className="text-gray-300 group-hover:text-gray-900" /> */}
-                  </div>
-                ))
-              )}
+            {/* Table */}
+            <div className="overflow-x-auto min-h-0">
+              <table className="w-full text-left table-auto">
+                <thead>
+                  <tr className="border-b border-gray-100">
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Image</th>
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider">Title</th>
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Category</th>
+                    <th className="pb-3 text-[10px] font-bold text-gray-400 uppercase tracking-wider text-center">Posted On</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                  {loading ? (
+                    [1,2,3].map(i => <tr key={i}><td colSpan="4" className="py-4 animate-pulse bg-gray-50/50 h-12"></td></tr>)
+                  ) : data.blogs.length === 0 ? (
+                    <tr><td colSpan="4" className="py-10 text-center text-gray-400 text-xs font-semibold uppercase">No blogs</td></tr>
+                  ) : (
+                    data.blogs.map((blog) => (
+                      <tr key={blog.id || blog._id} className="group hover:bg-gray-50/50 transition-colors">
+                        <td className="py-4">
+                          <div className="w-10 h-10 rounded-md bg-gray-100 overflow-hidden shrink-0 border border-gray-100">
+                            {(blog.image_url || blog.img) ? (
+                              <img src={blog.image_url || blog.img} alt={blog.title} className="w-full h-full object-cover" />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-gray-300">
+                                <FileText size={16} />
+                              </div>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-4">
+                          <p className="text-sm font-normal text-gray-900 truncate max-w-[150px]">{blog.title}</p>
+                        </td>
+                        <td className="py-4 text-center">
+                          <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-center inline-block ${
+                            blog.category === 'Technology' ? 'bg-blue-50 text-blue-600 border border-blue-100' :
+                            blog.category === 'Innovation' ? 'bg-purple-50 text-purple-600 border border-purple-100' :
+                            blog.category === 'AI' ? 'bg-green-50 text-green-600 border border-green-100' :
+                            blog.category === 'Culture' ? 'bg-amber-50 text-amber-600 border border-amber-100' :
+                            'bg-rose-50 text-rose-600 border border-rose-100'
+                          }`}>
+                            {blog.category || 'Tech'}
+                          </span>
+                        </td>
+                        <td className="py-4 text-center text-xs font-semibold text-gray-400">
+                          {formatDate(blog.createdAt || blog.created_at || blog.date || blog.updatedAt || blog.updated_at)}
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
             </div>
           </div>
-
         </div>
 
         {/* Section 3: CRM */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className={`grid grid-cols-1 ${!hasConsultations ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} gap-4`}>
           
-          <div className="space-y-4">
-            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-medium px-2 flex items-center gap-2">
-              <MessageSquare size={16} className="text-[#800000]" /> Recent Consultations
-            </h2>
-            <div className="bg-white border border-gray-100 shadow-sm divide-y divide-gray-50">
-              {loading ? (
-                [1,2,3].map(i => <div key={i} className="p-4 animate-pulse h-16"></div>)
-              ) : data.consultations.length === 0 ? (
-                <div className="p-10 text-center text-gray-400 text-[10px] font-black uppercase">No inquiries</div>
-              ) : (
-                data.consultations.map((item) => (
-                  <div key={item.id} className="p-4 flex items-center justify-between group hover:bg-gray-50/50">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[10px] font-black">
-                        {item.name?.[0] || 'C'}
-                      </div>
-                      <div className='flex gap-10'>
-                        <p className="text-xs font-bold text-gray-900">{item.name}</p>
-                        <div>
-                        <p className="text-[10px] text-gray-400 mt-0.5">{item.email}</p>
+          {hasConsultations && (
+            <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+              {/* Header inside card */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                    <MessageSquare size={20} />
+                  </div>
+                  <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider font-sans">
+                    Recent Consultations
+                  </h2>
+                </div>
+                <Link to="/admin/consultations" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                  VIEW ALL <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              {/* List */}
+              <div className="divide-y divide-gray-50 min-h-0">
+                {loading ? (
+                  [1,2,3].map(i => <div key={i} className="py-4 animate-pulse bg-gray-50/50 h-12 rounded-sm mb-1"></div>)
+                ) : data.consultations.length === 0 ? (
+                  <div className="py-10 text-center text-gray-400 text-xs font-semibold uppercase">No inquiries</div>
+                ) : (
+                  data.consultations.map((item) => (
+                    <div key={item.id} className="py-3 flex items-center justify-between group hover:bg-gray-50/50 transition-colors">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-[10px] font-black">
+                          {item.name?.[0] || 'C'}
+                        </div>
+                        <div className="flex gap-10">
+                          <p className="text-xs font-bold text-gray-900">{item.name}</p>
+                          <div>
+                            <p className="text-[10px] text-gray-400 mt-0.5">{item.email}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    {/* <p className="text-[9px] font-black text-gray-400 uppercase">{item.service || 'General'}</p> */}
-                  </div>
-                ))
-              )}
+                  ))
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className="space-y-4">
-            <h2 className="text-sm font-semibold text-gray-900 uppercase tracking-medium px-2 flex items-center gap-2">
-              <Mail size={16} className="text-[#800000]" /> Contact Inquiries
-            </h2>
-            <div className="bg-white border border-gray-100 shadow-sm divide-y divide-gray-50">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-4 space-y-6 flex flex-col h-auto">
+            {/* Header inside card */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-rose-50 text-[#800000] flex items-center justify-center shrink-0">
+                  <Mail size={20} />
+                </div>
+                <h2 className="text-sm font-bold text-gray-900 uppercase tracking-wider font-sans">
+                  Contact Inquiries
+                </h2>
+              </div>
+              <Link to="/admin/contacts" className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-all">
+                VIEW ALL <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            {/* List */}
+            <div className="divide-y divide-gray-50 min-h-0">
               {loading ? (
-                [1,2,3].map(i => <div key={i} className="p-4 animate-pulse h-16"></div>)
+                [1,2,3].map(i => <div key={i} className="py-4 animate-pulse bg-gray-50/50 h-12 rounded-sm mb-1"></div>)
               ) : data.contacts.length === 0 ? (
-                <div className="p-10 text-center text-gray-400 text-[10px] font-black uppercase">No requests</div>
+                <div className="py-10 text-center text-gray-400 text-xs font-semibold uppercase font-sans">No requests</div>
               ) : (
                 data.contacts.map((item) => (
-                  <div key={item.id} className="p-4 flex items-center justify-between group hover:bg-gray-50/50">
+                  <div key={item.id} className="py-3 flex items-center justify-between group hover:bg-gray-50/50 transition-colors">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-[10px] font-black">
                         {item.name?.[0] || 'U'}

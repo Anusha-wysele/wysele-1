@@ -34,7 +34,7 @@ const BtpWhychoose = () => {
                         <span className="relative">
                             Why Choose
                             <div className="absolute -bottom-2 left-0 w-full h-[1px] bg-gray-300" />
-                        </span> <Link to="/services/sap-btp" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></Link> with Us?
+                        </span> SAP BTP with Us?
                     </h2>
                 </div>
 

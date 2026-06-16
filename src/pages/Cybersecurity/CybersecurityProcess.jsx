@@ -57,7 +57,7 @@ const CybersecurityProcess = () => {
         <div className="text-center mb-8 lg:mb-12">
          
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-[#CC012D] mb-4">
-            Our <Link to="/services/cybersecurityhome" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/cybersecurityhome" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Cybersecurity</Link></Link> Process
+            Our Cybersecurity Process
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
             A structured approach to protect your digital assets, minimize risks, and ensure long-term security and compliance.

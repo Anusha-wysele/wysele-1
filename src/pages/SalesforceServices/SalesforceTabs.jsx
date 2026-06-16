@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 
-// Import <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> tabs local images
+// Import Salesforce tabs local images
 import ConsultingImg from '../../assets/wysele-salesforceconsulting.webp';
 import ImplementationImg from '../../assets/wysele-salesfrceimplementation.webp';
 import DevelopmentImg from '../../assets/wysele-salesforcedevelopment.webp';
@@ -129,7 +129,7 @@ const SalesforceTabs = () => {
             viewport={{ once: true }}
             className="text-xl md:text-3xl lg:text-3xl font-normal text-[#800000] mb-2"
           >
-            <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> Services
+            Salesforce Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -138,7 +138,7 @@ const SalesforceTabs = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-600 text-[15px] md:text-[17px] max-w-3xl mx-auto font-light mb-3"
           >
-            All-in-one <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> services to optimize processes, improve visibility, and accelerate growth.
+            All-in-one Salesforce services to optimize processes, improve visibility, and accelerate growth.
           </motion.p>
           <div className="w-24 h-1 bg-[#ffcc00] mx-auto" />
         </div>

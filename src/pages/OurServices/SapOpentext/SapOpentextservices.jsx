@@ -85,7 +85,7 @@ export default function SapOpentextservices() {
                 {/* Header */}
                 <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 tracking-tight">
-                        Our <Link to="/services/sap-opentext" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-opentext" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP OpenText</Link></Link> Services
+                        Our SAP OpenText Services
                     </h2>
                 </div>
 

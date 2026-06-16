@@ -25,7 +25,7 @@ const IndustriesAerospace = () => {
     return (
         <IndustrySection
             title="Aerospace & Defense"
-            description={<>Wysele helps aerospace and defense companies drive <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">operational excellence</Link>, compliance, and innovation.</>}
+            description={<>Wysele helps aerospace and defense companies drive operational excellence, compliance, and innovation.</>}
             image={AEROSPACE_IMAGE}
             features={features}
             reversed={true}

@@ -58,7 +58,7 @@ export default function SapMasterhero() {
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
                             className="text-sm md:text-base text-white/90 leading-relaxed mb-6"
                         >
-                            At Wysele, we help organizations establish a single source of truth across their enterprise with robust <Link to="/services/sap-masterdata" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-masterdata" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Master Data</Link></Link> Governance solutions — ensuring data quality, consistency, and compliance at every level.
+                            At Wysele, we help organizations establish a single source of truth across their enterprise with robust SAP Master Data Governance solutions — ensuring data quality, consistency, and compliance at every level.
                         </motion.p>
                         
                         <div className="w-16 md:w-24 h-[1px] bg-[#800000] my-6 md:my-8" />

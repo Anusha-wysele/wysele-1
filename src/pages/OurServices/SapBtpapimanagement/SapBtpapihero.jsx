@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import SapbtpapiheroImg from '../../../assets/wysele-Sapbtpapihero.webp';
+import SapbtpapiheroImg from '../../../assets/wysele-sapbtpapihero.webp';
 
 export default function SapBtpapihero() {
     return (
@@ -31,7 +31,7 @@ export default function SapBtpapihero() {
                     >
                         Build, Manage <br />
                         &amp; Scale APIs <br />
-                        with <Link to="/services/sap-btp" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></Link>.
+                        with SAP BTP.
                     </motion.h1>
 
                     {/* Short paragraph */}
@@ -41,7 +41,7 @@ export default function SapBtpapihero() {
                         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.35 }}
                         className="text-sm md:text-base text-white/80 leading-relaxed font-light max-w-md"
                     >
-                        Wysele helps you leverage SAP Business Technology Platform (BTP) <Link to="/services/sap-btp-api-management" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>API Management</Link> to securely publish, promote, and oversee APIs in a scalable, enterprise-ready environment.
+                        Wysele helps you leverage SAP Business Technology Platform (BTP) API Management to securely publish, promote, and oversee APIs in a scalable, enterprise-ready environment.
                     </motion.p>
 
                 </div>

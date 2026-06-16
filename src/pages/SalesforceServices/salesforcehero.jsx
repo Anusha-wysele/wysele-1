@@ -53,7 +53,7 @@ const SalesforceHero = () => {
             >
               <div className="w-12 h-[2px] bg-[#ffcc00]" />
               <span className="text-[white] text-xs md:text-sm font-semibold tracking-[0.2em] uppercase">
-                Next-Gen <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> CRM
+                Next-Gen Salesforce CRM
               </span>
             </motion.div>
 
@@ -64,7 +64,7 @@ const SalesforceHero = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl lg:text-4xl font-normal text-white leading-tight uppercase tracking-wide"
             >
-              <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> Solutions That {" "}
+              Salesforce Solutions That {" "}
               <span className="text-[white] font-semibold">Drive Real Business Growth.</span>
             </motion.h1>
             
@@ -76,7 +76,7 @@ const SalesforceHero = () => {
               className="pl-6 border-l-[3px] border-[#ffcc00] max-w-2xl"
             >
               <p className="text-gray-300 text-sm md:text-md font-light leading-relaxed">
-                Design, implement, and scale <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> tailored to your business. 
+                Design, implement, and scale Salesforce tailored to your business. 
                 Automate workflows, improve customer insights, and accelerate revenue
                 Optimize operations with seamless integrations and real-time analytics for smarter decision-making.
               </p>

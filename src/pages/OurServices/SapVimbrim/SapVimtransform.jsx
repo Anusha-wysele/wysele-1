@@ -51,7 +51,7 @@ export default function SapVimtransform() {
                         Transforming <span className="font-semibold px-2 text-[#800000]">Financial Operations</span>
                     </motion.h2>
                     <p className="text-gray-500 text-xs md:text-sm max-w-2xl mx-auto">
-                        Leverage Wysele's expertise in <Link to="/services/sap-vim-brim" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>SAP VIM</Link> and BRIM to automate complex financial processes.
+                        Leverage Wysele's expertise in SAP VIM and BRIM to automate complex financial processes.
                     </p>
                 </div>
 

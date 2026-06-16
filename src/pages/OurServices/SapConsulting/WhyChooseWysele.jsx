@@ -67,7 +67,7 @@ const WhyChooseWysele = () => (
         <div className="relative z-10 max-w-7xl 3xl:max-w-8xl 4xl:max-w-9xl mx-auto px-6 md:px-8 lg:px-16 w-full">
             {/* Title */}
             <h2 className="text-xl sm:text-2xl font-bold text-center mb-12 text-white">
-                Why Businesses Choose Wysele for <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link>
+                Why Businesses Choose Wysele for SAP Consulting
             </h2>
             
             {/* 5-Column Grid */}

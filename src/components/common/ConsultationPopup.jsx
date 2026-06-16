@@ -12,20 +12,23 @@ const ConsultationPopup = () => {
   const [isMinimized, setIsMinimized] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     mobile_number: '',
+    company_name: '',
     message: ''
   });
 
   const isServicePage = location.pathname.startsWith('/services/');
 
   useEffect(() => {
-    setFormData({ name: '', email: '', mobile_number: '', message: '' });
+    setFormData({ name: '', email: '', mobile_number: '', company_name: '', message: '' });
     setIsSubmitted(false);
     setIsSubmitting(false);
+    setError('');
 
     if (isServicePage) {
       setIsOpen(false);
@@ -46,36 +49,31 @@ const ConsultationPopup = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const isBusinessEmail = (email) => {
-    const freeDomains = [
-      'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
-      'icloud.com', 'aol.com', 'live.com', 'msn.com', 'rediffmail.com'
-    ];
-    const domain = email.split('@')[1]?.toLowerCase();
-    return domain && !freeDomains.includes(domain);
+    setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!isBusinessEmail(formData.email)) {
-      alert('Please use a valid business email address. Personal emails (Gmail, Yahoo, etc.) are not accepted.');
-      return;
-    }
+    setError('');
 
     try {
       setIsSubmitting(true);
-      await jobService.submitConsultation(formData);
+      const hostname = window.location.hostname.toLowerCase();
+      const siteCompany = hostname.includes('orbintix') ? 'orbintix' : 
+                          hostname.includes('gracevirtue') ? 'gracevirtue' : 'wysele';
+      const payload = {
+        ...formData,
+        company: siteCompany
+      };
+      await jobService.submitConsultation(payload);
       setIsSubmitted(true);
       setTimeout(() => {
         setIsOpen(false);
         setIsMinimized(false);
       }, 4000);
-    } catch (error) {
-      console.error('❌ Submission Error:', error);
-      alert('Failed to submit. Please try again.');
+    } catch (err) {
+      console.error('❌ Submission Error:', err);
+      setError(err.response?.data?.message || err.message || 'Failed to submit. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -205,6 +203,12 @@ const ConsultationPopup = () => {
                             placeholder="How can we help?"
                           />
                         </div>
+
+                        {error && (
+                          <p className="text-[11px] text-red-500 font-bold uppercase tracking-wider text-center pt-2">
+                            {error}
+                          </p>
+                        )}
 
                         <button
                           type="submit"

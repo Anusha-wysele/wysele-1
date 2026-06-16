@@ -43,6 +43,24 @@ const authService = {
   getCurrentUser: async () => {
     const response = await api.get('/auth/me');
     return response.data;
+  },
+
+  /**
+   * Request password reset token/email
+   * POST /api/v1/auth/forgot-password
+   */
+  forgotPassword: async (email) => {
+    const response = await api.post('/auth/forgot-password', { email });
+    return response.data;
+  },
+
+  /**
+   * Reset password using token/OTP
+   * POST /api/v1/auth/reset-password
+   */
+  resetPassword: async (token, new_password) => {
+    const response = await api.post('/auth/reset-password', { token, new_password });
+    return response.data;
   }
 };
 

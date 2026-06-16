@@ -9,13 +9,14 @@ import {
   Mail,
   MessageCircle,
   UserSquare2,
-  X
+  X,
+  Building,
+  Settings
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import logoDark from '../../assets/wysele_dark-removebg-preview.png';
-import logoIcon from '../../assets/wysele-logo-icon.png';
+import companyService from '../../services/companyService';
 
 
 const menuItems = [
@@ -57,39 +58,51 @@ const menuItems = [
     label: 'Contacts', 
     icon: Mail, 
     path: '/admin/contacts',
-    roles: ['SUPER_ADMIN', 'HR']
+    roles: ['SUPER_ADMIN', 'HR', 'ADMIN']
   },
   { 
     id: 'consultations', 
     label: 'Consultations', 
     icon: MessageCircle, 
     path: '/admin/consultations',
-    roles: ['SUPER_ADMIN', 'HR']
+    roles: ['SUPER_ADMIN', 'HR', 'ADMIN']
+  },
+  { 
+    id: 'company-onboard', 
+    label: 'Organizations', 
+    icon: Building, 
+    path: '/admin/company-onboard',
+    roles: ['SUPER_ADMIN']
   },
 ];
 
-const SidebarItem = ({ item, isCollapsed, isActive }) => {
+const SidebarItem = ({ item, isCollapsed, isActive, company }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+
+  const getPathWithCompany = (path) => {
+    return company ? `${path}?company=${company}` : path;
+  };
 
   if (item.subItems && !isCollapsed) {
     return (
       <div className="space-y-1">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className={`flex items-center justify-between w-full px-4 py-2.5 rounded-xl transition-all duration-300 group ${
+          className={`flex items-center justify-between w-full px-3.5 py-2 rounded-lg transition-all duration-200 group ${
             isActive 
-              ? 'bg-crimson-50/50 text-crimson-600' 
-              : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+              ? 'bg-[#0078D4] text-white font-semibold shadow-sm' 
+              : 'text-slate-300 hover:text-white hover:bg-white/5'
           }`}
         >
-          <div className="flex items-center gap-3.5">
-            <item.icon size={18} className={isActive ? 'text-crimson-600' : 'group-hover:text-crimson-500 transition-colors'} />
-            <span className="font-semibold text-sm tracking-normal capitalize whitespace-nowrap">{item.label}</span>
+          <div className="flex items-center gap-3">
+            <item.icon size={18} className={`${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} shrink-0`} />
+            <span className="font-normal text-sm tracking-normal capitalize whitespace-nowrap">{item.label}</span>
           </div>
           <motion.div
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.2 }}
+            className={`${isActive ? 'text-white' : 'text-slate-450 group-hover:text-white'}`}
           >
             <ChevronRight size={14} />
           </motion.div>
@@ -100,16 +113,16 @@ const SidebarItem = ({ item, isCollapsed, isActive }) => {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden pl-11 pr-2 space-y-1 mt-1"
+              className="overflow-hidden pl-10 pr-2 space-y-1 mt-1"
             >
               {item.subItems.map((sub) => {
                 const isSubActive = location.pathname === sub.path;
                 return (
                   <Link 
                     key={sub.path} 
-                    to={sub.path}
-                    className={`block py-2 text-xs font-semibold capitalize transition-colors ${
-                      isSubActive ? 'text-crimson-600' : 'text-gray-400 hover:text-gray-900'
+                    to={getPathWithCompany(sub.path)}
+                    className={`block py-2 text-xs font-normal capitalize transition-colors ${
+                      isSubActive ? 'text-white font-medium bg-[#0078D4]/25 rounded px-2 -mx-2' : 'text-slate-400 hover:text-white'
                     }`}
                   >
                     {sub.label}
@@ -124,27 +137,23 @@ const SidebarItem = ({ item, isCollapsed, isActive }) => {
   }
 
   return (
-    <Link to={item.path}>
+    <Link to={getPathWithCompany(item.path)}>
       <motion.div
-        whileHover={{ x: 4 }}
-        className={`flex items-center gap-3.5 px-4 py-2.5 rounded-xl transition-all duration-300 relative group ${
+        whileHover={isCollapsed ? {} : { x: 4 }}
+        className={`flex items-center gap-3 rounded-lg transition-all duration-205 relative group ${
+          isCollapsed ? 'px-2 py-2 justify-center' : 'px-3.5 py-2'
+        } ${
           isActive 
-            ? 'bg-crimson-50/50 text-crimson-600' 
-            : 'text-black hover:text-gray-900 hover:bg-gray-50'
+            ? 'bg-[#0078D4] text-white' 
+            : 'text-slate-300 hover:text-white hover:bg-white/5'
         }`}
       >
-        {isActive && (
-          <motion.div
-            layoutId="active-indicator"
-            className="absolute left-0 w-1 h-5 bg-crimson-600 rounded-r-full"
-          />
-        )}
-        <item.icon size={18} className={isActive ? 'text-crimson-600' : 'group-hover:text-crimson-500 transition-colors'} />
+        <item.icon size={18} className={`${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'} shrink-0`} />
         {!isCollapsed && (
           <div className="flex-1 flex items-center justify-between min-w-0">
-            <span className="font-semibold text-sm tracking-normal capitalize whitespace-nowrap truncate">{item.label}</span>
+            <span className={`${isActive ? 'font-medium' : 'font-normal'} text-[13px] tracking-normal capitalize whitespace-nowrap truncate`}>{item.label}</span>
             {item.status && (
-              <span className="ml-2 px-1.5 py-0.5 bg-amber-50 text-[8px] font-black text-amber-600 uppercase tracking-tighter rounded-sm border border-amber-100 flex-shrink-0">
+              <span className="ml-2 px-1.5 py-0.5 bg-slate-450/20 text-[8px] font-black text-slate-700 uppercase tracking-tighter rounded-sm border border-slate-450/30 flex-shrink-0">
                 {item.status}
               </span>
             )}
@@ -161,14 +170,48 @@ const SidebarItem = ({ item, isCollapsed, isActive }) => {
   );
 };
 
-const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen, isCollapsed }) => {
   const location = useLocation();
+  const [isMobile, setIsMobile] = useState(false);
+  const [companiesList, setCompaniesList] = useState([]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    setIsMobile(mediaQuery.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
+
+  useEffect(() => {
+    const loadCompanies = () => {
+      setCompaniesList(companyService.getCompanies());
+    };
+    loadCompanies();
+    companyService.fetchCompanies(); // Fetch fresh data from backend API
+    window.addEventListener('companiesUpdated', loadCompanies);
+    return () => window.removeEventListener('companiesUpdated', loadCompanies);
+  }, []);
+
   const { user } = useAuth();
-  const userRole = user?.role?.toUpperCase() || '';
+  const userRoleRaw = user?.role?.toUpperCase() || '';
+  const userRole = (userRoleRaw === 'SUPERADMIN' || userRoleRaw === 'SUPER_ADMIN') ? 'SUPER_ADMIN' : userRoleRaw;
+
+  const searchParams = new URLSearchParams(location.search);
+  const activeCompany = searchParams.get('company') || user?.company_name || 'wysele';
+
+  const activeCompanyObj = companiesList.find(c => (c.id || '').toLowerCase() === activeCompany?.toLowerCase());
+  const companyDisplayName = (activeCompanyObj && activeCompanyObj.name) ? activeCompanyObj.name : (activeCompany?.toLowerCase() === 'orbintix' ? 'Orbintix' : 'Wysele');
+  const companyLetter = (companyDisplayName || 'W').charAt(0).toUpperCase();
 
   const filteredMenuItems = menuItems
     .filter(item => !item.roles || item.roles.includes(userRole))
+    .filter(item => {
+      if (item.id === 'consultations' && activeCompany?.toLowerCase() !== 'wysele') {
+        return false;
+      }
+      return true;
+    })
     .map(item => ({
       ...item,
       status: item.getStatus ? item.getStatus(userRole) : null
@@ -192,45 +235,43 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
       <motion.aside
         initial={false}
         animate={{ 
-          width: isCollapsed ? 80 : 220,
-          x: isMobileMenuOpen ? 0 : (typeof window !== 'undefined' && window.innerWidth < 1024 ? -220 : 0)
+          width: isCollapsed ? 60 : 180,
+          x: isMobile ? (isMobileMenuOpen ? 0 : -220) : 0
         }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className={`fixed lg:sticky top-0 h-screen bg-white border-r border-gray-100 z-[999] flex flex-col shrink-0 overflow-visible
+        className={`fixed lg:sticky top-0 h-screen bg-[#0B2540] z-[999] flex flex-col shrink-0 overflow-visible
           ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}
       >
-        {/* Collapse Toggle Button (Desktop Only) */}
-        <button
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white border border-gray-100 rounded-full hidden lg:flex items-center justify-center text-gray-800 hover:text-crimson-600 shadow-sm hover:shadow-md transition-all z-[60]"
-        >
-          {isCollapsed ? <ChevronRight size={12} /> : <ChevronLeft size={12} />}
-        </button>
 
         {/* Sidebar Header */}
-        <div className=" pl-2 flex items-start justify-start">
-          <Link to="/admin" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+        <div className="h-[51px] shrink-0 bg-[#081B2E] border-b border-white/5 flex items-center justify-center relative w-full px-4">
+          <Link to="/admin" className="flex items-center justify-center w-full pr-8 lg:pr-0" onClick={() => setIsMobileMenuOpen(false)}>
             <AnimatePresence mode="wait">
               {isCollapsed ? (
-                <motion.img
-                  key="favicon"
+                <motion.div
+                  key="company-collapsed-text"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.5 }}
-                  src={logoIcon}
-                  alt="Wysele"
-                  className="w-10 h-10 sm:w-12 sm:h-12 object-contain"
-                />
+                  className="w-8 h-8 rounded-lg bg-white/10 text-white flex items-center justify-center font-black text-lg select-none"
+                >
+                  {companyLetter}
+                </motion.div>
               ) : (
-                <motion.img
-                  key="logo-dark"
+                <motion.div
+                  key="company-text"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -10 }}
-                  src={logoDark}
-                  alt="Wysele"
-                  className="h-[100px] sm:h-12 lg:h-[100px] w-[200px] object-contain "
-                />
+                  className="select-none text-center"
+                >
+                  <p className="text-sm font-bold text-white tracking-wider uppercase leading-none">
+                    {companyDisplayName}
+                  </p>
+                  <p className="text-[8px] font-medium text-white/65 tracking-widest uppercase mt-1 leading-none">
+                    Technologies
+                  </p>
+                </motion.div>
               )}
             </AnimatePresence>
           </Link>
@@ -238,41 +279,60 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
           {/* Close button for mobile */}
           <button 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="lg:hidden p-2 text-gray-400 hover:text-gray-900"
+            className="absolute right-2 top-1/2 -translate-y-1/2 lg:hidden p-2 text-white hover:text-white/80 z-50"
           >
             <X size={20} />
           </button>
         </div>
 
-        {/* Navigation Menu */}
-        <nav className="flex-1 px-4 space-y-1.5 py-4 overflow-y-auto hide-scrollbar">
-          {filteredMenuItems.map((item) => {
-            const isActive = location.pathname === item.path || (item.subItems && item.subItems.some(sub => location.pathname === sub.path));
-            return (
-              <div key={item.id} onClick={() => window.innerWidth < 1024 && setIsMobileMenuOpen(false)}>
+        {/* Main Content Area with Right Border starting below Header */}
+        <div className="flex-1 flex flex-col border-r border-white/5 min-h-0">
+          {/* Navigation Menu */}
+          <nav className={`flex-1 space-y-1.5 py-4 overflow-y-auto hide-scrollbar transition-all duration-300 ${isCollapsed ? 'px-2' : 'px-4'}`}>
+            {filteredMenuItems.map((item) => {
+              const isActive = location.pathname === item.path || (item.subItems && item.subItems.some(sub => location.pathname === sub.path));
+              return (
+                <div key={item.id} onClick={() => window.innerWidth < 1024 && setIsMobileMenuOpen(false)}>
+                  <SidebarItem 
+                    item={item} 
+                    isCollapsed={isCollapsed} 
+                    isActive={isActive} 
+                    company={activeCompany}
+                  />
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Sidebar Footer */}
+          <div className={`border-t border-white/5 transition-all duration-300 ${isCollapsed ? 'p-1.5' : 'p-2'} space-y-1.5`}>
+            {userRole && ['SUPER_ADMIN', 'HR', 'ADMIN'].includes(userRole) && (
+              <div onClick={() => window.innerWidth < 1024 && setIsMobileMenuOpen(false)}>
                 <SidebarItem 
-                  item={item} 
+                  item={{
+                    id: 'settings', 
+                    label: 'Settings', 
+                    icon: Settings, 
+                    path: '/admin/settings'
+                  }} 
                   isCollapsed={isCollapsed} 
-                  isActive={isActive} 
+                  isActive={location.pathname === '/admin/settings'} 
+                  company={activeCompany}
                 />
               </div>
-            );
-          })}
-        </nav>
-
-        {/* Sidebar Footer */}
-        <div className="p-4 border-t border-gray-50">
-          <motion.button
-            whileHover={{ x: 4 }}
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              window.location.href = '/admin/login';
-            }}
-            className="flex items-center gap-3.5 px-4 py-3 w-full rounded-xl text-gray-500 hover:text-red-600 hover:bg-red-50 transition-all duration-300 group"
-          >
-            <LogOut size={18} className="group-hover:text-red-600" />
-            {(!isCollapsed || isMobileMenuOpen) && <span className="font-bold text-xs uppercase tracking-widest">Logout</span>}
-          </motion.button>
+            )}
+            <motion.button
+              whileHover={isCollapsed ? {} : { x: 4 }}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                window.location.href = '/masterlogin';
+              }}
+              className={`flex items-center gap-3 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50/60 transition-all duration-200 group ${isCollapsed ? 'px-2 py-1.5 justify-center' : 'px-2.5 py-1.5 w-full'}`}
+            >
+              <LogOut size={18} className="text-red-600 shrink-0" />
+              {(!isCollapsed || isMobileMenuOpen) && <span className="font-semibold text-[13px] uppercase tracking-tighter">Logout</span>}
+            </motion.button>
+          </div>
         </div>
       </motion.aside>
     </>

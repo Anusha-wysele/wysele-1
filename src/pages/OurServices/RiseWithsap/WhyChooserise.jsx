@@ -55,7 +55,7 @@ const WhyChooserise = () => {
                         className="text-3xl md:text-4xl font-normal text-gray-900 mb-2 z-10 flex items-center justify-center gap-3"
                     >
                         <Cylinderr className="w-[3px] h-10 rounded-sm" />
-                        Why Businesses Choose Wysele for <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> Services
+                        Why Businesses Choose Wysele for RISE with SAP Services
                     </motion.h2>
                 </div>
 

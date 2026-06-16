@@ -95,51 +95,53 @@ const EditPermissionsModal = ({ isOpen, onClose, employee, onUpdate }) => {
             className="relative w-[600px] max-h-[90vh] bg-white rounded-xl shadow-2xl overflow-hidden flex flex-col m-auto z-10"
           >
             {/* Header */}
-            <div className="bg-[#800000] p-4 text-white flex items-center justify-between shrink-0">
+            <div className="bg-blue-200 p-4 text-blue-900 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <ShieldCheck size={20} />
+                <ShieldCheck size={20} className="text-blue-900" />
                 <div>
                   <h3 className="text-base font-bold uppercase tracking-wide">Access Control</h3>
-                  <p className="text-white/70 text-[9px] font-semibold uppercase tracking-widest">
-                     {employee?.first_name} {employee?.last_name}
+                  <p className="text-blue-900/70 text-[9px] font-semibold uppercase tracking-widest">
+                     {employee?.name || `${employee?.first_name || ''} ${employee?.last_name || ''}`.trim() || 'N/A'}
                   </p>
                 </div>
               </div>
-              <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+              <button onClick={onClose} className="p-2 hover:bg-blue-900/10 rounded-full transition-colors text-blue-900">
                 <X size={18} />
               </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-4 admin-scrollbar hide-scrollbar">
               {/* Account Status */}
-              <section className="bg-gray-50/50 p-3 rounded-lg border border-gray-100">
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-[10px] font-semibold text-gray-600 uppercase tracking-widest">
-                    Account Status
-                  </h4>
-                  <span className={`px-2 py-0.5 text-[8px] font-bold rounded-full ${isActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                    {isActive ? 'Active' : 'Blocked'}
-                  </span>
-                </div>
-                <div 
-                  onClick={() => setIsActive(!isActive)}
-                  className={`p-3 cursor-pointer border rounded-lg transition-all flex items-center justify-between ${
-                    isActive ? 'bg-white border-green-100' : 'bg-white border-red-100'
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-full ${isActive ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50'}`}>
-                      {isActive ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
+              {!(employee?.role?.toUpperCase() === 'SUPER_ADMIN' || employee?.role?.toUpperCase() === 'SUPERADMIN') && (
+                <section className="bg-gray-50/50 p-3 rounded-lg border border-gray-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <h4 className="text-[10px] font-semibold text-gray-600 uppercase tracking-widest">
+                      Account Status
+                    </h4>
+                    <span className={`px-2 py-0.5 text-[8px] font-bold rounded-full ${isActive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                      {isActive ? 'Active' : 'Blocked'}
+                    </span>
+                  </div>
+                  <div 
+                    onClick={() => setIsActive(!isActive)}
+                    className={`p-3 cursor-pointer border rounded-lg transition-all flex items-center justify-between ${
+                      isActive ? 'bg-white border-green-100' : 'bg-white border-red-100'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-full ${isActive ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50'}`}>
+                        {isActive ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-gray-900 uppercase">System Access</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-[10px] font-bold text-gray-900 uppercase">System Access</p>
+                    <div className={`w-10 h-5 rounded-full relative transition-colors ${isActive ? 'bg-green-600' : 'bg-red-600'}`}>
+                      <div className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${isActive ? 'translate-x-5' : 'translate-x-0'}`} />
                     </div>
                   </div>
-                  <div className={`w-10 h-5 rounded-full relative transition-colors ${isActive ? 'bg-green-600' : 'bg-gray-300'}`}>
-                    <div className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${isActive ? 'translate-x-5' : 'translate-x-0'}`} />
-                  </div>
-                </div>
-              </section>
+                </section>
+              )}
 
               {/* Module Permissions Grid */}
               <div className="space-y-4">
@@ -213,7 +215,7 @@ const EditPermissionsModal = ({ isOpen, onClose, employee, onUpdate }) => {
                 <button 
                   onClick={handleSave}
                   disabled={isSaving}
-                  className="px-6 py-2 bg-[#800000] text-white text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-all flex items-center gap-2 rounded-lg"
+                  className="px-6 py-2 bg-[#005A9E] text-white text-xs font-semibold hover:bg-[#004b85] transition-all flex items-center gap-2 rounded-lg shadow-sm"
                 >
                   {isSaving ? <Loader2 className="animate-spin" size={14} /> : <Save size={14} />}
                   Save

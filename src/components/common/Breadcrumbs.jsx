@@ -59,7 +59,7 @@ export default function Breadcrumbs() {
   const { pathname } = useLocation();
 
   // Don't render on home or admin paths
-  if (pathname === '/' || pathname.startsWith('/admin')) {
+  if (pathname === '/' || pathname.startsWith('/admin') || pathname.startsWith('/superadmin') || pathname.startsWith('/masterlogin')) {
     return null;
   }
 

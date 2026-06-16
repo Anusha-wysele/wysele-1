@@ -69,7 +69,7 @@ export default function SapTechnicalConsultingprocess() {
                     className="text-center mb-10"
                 >
                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-                        <Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link> Process
+                        SAP Consulting Process
                     </h2>
                 </motion.div>
 

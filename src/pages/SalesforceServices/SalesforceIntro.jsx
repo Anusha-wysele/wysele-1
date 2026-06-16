@@ -36,7 +36,7 @@ const SalesforceIntro = () => {
                 viewport={{ once: true }}
                 className="text-xl md:text-3xl font-normal text-gray-900 leading-tight"
               >
-                Innovative <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> Solutions <br />
+                Innovative Salesforce Solutions <br />
                 <span className="text-gray-800">For Modern Enterprises</span>
               </motion.h2>
 
@@ -47,7 +47,7 @@ const SalesforceIntro = () => {
                 transition={{ delay: 0.1 }}
                 className="text-gray-500 text-base font-light leading-relaxed max-w-xl"
               >
-                <Link to="/services/salesforce" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/salesforce" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Salesforce</Link></Link> is a leading cloud-based CRM platform that helps businesses manage sales, customer service, marketing, and operations in one unified system. It connects your teams, data, and processes—so you can deliver better customer experiences and scale faster.
+                Salesforce is a leading cloud-based CRM platform that helps businesses manage sales, customer service, marketing, and operations in one unified system. It connects your teams, data, and processes—so you can deliver better customer experiences and scale faster.
               </motion.p>
             </div>
 

@@ -16,7 +16,7 @@ export default function SapApimanagement() {
                     className="flex flex-col justify-center pl-8 lg:pl-16"
                 >
                     <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#1e293b] mb-4 leading-tight">
-                        Seamless <Link to="/services/sap-btp-api-management" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>API Management</Link> for Scalable Integration
+                        Seamless API Management for Scalable Integration
                     </h2>
                     <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
                         Unlock the full potential of your enterprise by leveraging the SAP Business Technology Platform (BTP) alongside APIs. This integration enhances interoperability and enables greater operational agility across your business processes.

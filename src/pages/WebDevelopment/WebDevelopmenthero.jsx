@@ -13,7 +13,7 @@ const WEB_DEVELOPMENT_IMAGES = [webDevHero1, webDevHero2, webDevHero3];
 const HERO_CONTENT = [
     {
         title: "Driving Digital Excellence Through Web Development",
-        desc: <>We deliver high-performance, scalable, and secure <Link to="/services/web-development" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">web solutions</Link> designed to drive business growth and digital success.</>
+        desc: <>We deliver high-performance, scalable, and secure web solutions designed to drive business growth and digital success.</>
     },
     {
         title: "Building Resilient and Scalable Web Platforms",

@@ -152,7 +152,7 @@ export default function AiMlhero() {
         </div>
       </section>
 
-      {/* <Link to="/services/aiml-services" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>AI & ML</Link> Service Offerings Floating Card */}
+      {/* AI & ML Service Offerings Floating Card */}
       <motion.div
         initial={{ opacity: 1, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

@@ -25,7 +25,7 @@ const IndustriesRetail = () => {
     return (
         <IndustrySection
             title="Retail"
-            description={<>Enable omnichannel experiences, optimize inventory, and enhance customer engagement with Wysele’s <Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-[#C9184A] underline-offset-4 text-inherit font-medium">retail solutions</Link>.</>}
+            description={<>Enable omnichannel experiences, optimize inventory, and enhance customer engagement with Wysele’s retail solutions.</>}
             image={RETAIL_IMAGE}
             features={features}
             reversed={false}

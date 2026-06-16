@@ -24,7 +24,7 @@ export default function IotHero() {
 
   return (
     <div className="w-full bg-white font-sans overflow-hidden">
-      <h1 className="sr-only"><Link to="/services/iot-services" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>IoT Services</Link></h1>
+      <h1 className="sr-only">IoT Services</h1>
       
       {/* Top Dark Background Section */}
       <div className="relative w-full pt-[150px] md:pt-[140px] pb-[100px] md:pb-[140px] min-h-[250px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[500px] flex flex-col justify-center items-center">

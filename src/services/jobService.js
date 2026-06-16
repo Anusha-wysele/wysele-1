@@ -189,13 +189,13 @@ const jobService = {
    * Get all contact inquiries
    * GET /api/v1/contact/all
    */
-  getAllContacts: async () => {
+  getAllContacts: async (params = {}) => {
     try {
-      const response = await api.get('/contact/all');
+      const response = await api.get('/contact/all', { params });
       return response.data;
     } catch (error) {
       if (error.message.includes('404')) {
-        const response = await api.get('/contact/');
+        const response = await api.get('/contact/', { params });
         return response.data;
       }
       throw error;
@@ -262,13 +262,13 @@ const jobService = {
    * Get all consultation requests
    * GET /api/v1/consulting/
    */
-  getAllConsultations: async () => {
+  getAllConsultations: async (params = {}) => {
     try {
-      const response = await api.get('/consulting/');
+      const response = await api.get('/consulting/', { params });
       return response.data;
     } catch (error) {
       if (error.message.includes('404')) {
-        const response = await api.get('/consulting');
+        const response = await api.get('/consulting', { params });
         return response.data;
       }
       throw error;

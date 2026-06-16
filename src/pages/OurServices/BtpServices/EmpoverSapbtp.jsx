@@ -35,7 +35,7 @@ const EmpoverSapbtp = () => {
                             {/* Heading */}
                             <h2 className="text-lg md:text-xl font-semibold text-gray-900 leading-tight mb-2">
                                 Empower Your Business <br />
-                                <span className="text-[#800000]">with <Link to="/services/sap-btp" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP BTP</Link></span>
+                                <span className="text-[#800000]">with SAP BTP</span>
                             </h2>
 
                             {/* List with Arrows */}

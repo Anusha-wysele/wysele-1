@@ -131,7 +131,7 @@ export default function WebDevelopmentProcess() {
                                 Our Methodology
                             </span>
                             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                                <Link to="/services/web-development" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/web-development" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Web Development</Link></Link> <span className="text-gray-400 font-light italic">Process</span>
+                                Web Development <span className="text-gray-400 font-light italic">Process</span>
                             </h2>
                         </motion.div>
 

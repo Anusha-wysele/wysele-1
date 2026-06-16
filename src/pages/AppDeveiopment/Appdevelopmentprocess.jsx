@@ -94,7 +94,7 @@ export default function Appdevelopmentprocess() {
                 {/* Header */}
                 <div className="text-center mb-10">
                     <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 tracking-tight">
-                        <Link to="/services/app-development" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>App Development</Link> Process
+                        App Development Process
                     </h2>
                     <p className="text-gray-500 max-w-2xl mx-auto text-xs md:text-sm leading-relaxed">
                         From conceptualization to deployment and beyond, our structured approach ensures high-quality applications that meet your business goals.

@@ -44,7 +44,7 @@ export default function SapTechnicalconsultingwhychoose() {
                     {/* Left Column: Features List */}
                     <div className="lg:col-span-7">
                         <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-4 tracking-tight">
-                            Why Choose <span className="text-[#800000] font-normal"><Link to="/services/sap-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-consulting" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP Consulting</Link></Link> Services</span> with Us?
+                            Why Choose <span className="text-[#800000] font-normal">SAP Consulting Services</span> with Us?
                         </h2>
 
                         <div className="space-y-2 md:space-y-3">

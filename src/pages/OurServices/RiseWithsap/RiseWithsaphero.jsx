@@ -43,7 +43,7 @@ const RiseWithsaphero = () => {
                             transition={{ duration: 0.7, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
                             className="text-sm sm:text-base font-semibold text-white leading-relaxed"
                         >
-                            <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> Services for Enterprise Agility and Business Transformation
+                            RISE with SAP Services for Enterprise Agility and Business Transformation
                         </motion.p>
                         
                         <motion.div 
@@ -59,7 +59,7 @@ const RiseWithsaphero = () => {
                             transition={{ duration: 0.7, delay: 0.35, ease: [0.33, 1, 0.68, 1] }}
                             className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal"
                         >
-                            Businesses today need flexible systems that support growth, improve operational efficiency, and simplify complex business processes. Many organizations still rely on disconnected systems, outdated workflows, and infrastructure that slows down productivity and decision-making. <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> helps businesses modernize operations through cloud-based solutions, integrated services, and process optimization tools designed to support long-term business transformation.
+                            Businesses today need flexible systems that support growth, improve operational efficiency, and simplify complex business processes. Many organizations still rely on disconnected systems, outdated workflows, and infrastructure that slows down productivity and decision-making. RISE with SAP helps businesses modernize operations through cloud-based solutions, integrated services, and process optimization tools designed to support long-term business transformation.
                         </motion.p>
                         
                         <motion.div 
@@ -75,7 +75,7 @@ const RiseWithsaphero = () => {
                             transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
                             className="text-xs sm:text-sm text-gray-200 leading-relaxed font-normal"
                         >
-                            Wysele provides <Link to="/services/rise-with-sap" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/rise-with-sap" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">RISE with SAP</Link></Link> consulting and implementation services that help organizations improve workflow visibility, simplify enterprise operations, and build scalable digital environments that support business growth. Our consultants work closely with businesses to understand operational challenges, identify process gaps, and create transformation strategies aligned with long-term business goals.
+                            Wysele provides RISE with SAP consulting and implementation services that help organizations improve workflow visibility, simplify enterprise operations, and build scalable digital environments that support business growth. Our consultants work closely with businesses to understand operational challenges, identify process gaps, and create transformation strategies aligned with long-term business goals.
                         </motion.p>
 
                         <motion.div

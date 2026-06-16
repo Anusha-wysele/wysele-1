@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Clock, Facebook, Linkedin, Share2, Twitter } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Breadcrumbs from "../../components/common/Breadcrumbs";
 import Footer from "../../components/layout/section/Footer";
@@ -12,6 +12,8 @@ const BlogDetailPage = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     const fetchBlogDetails = async () => {
@@ -31,6 +33,21 @@ const BlogDetailPage = () => {
     fetchBlogDetails();
     window.scrollTo(0, 0);
   }, [id]);
+
+  // Keyboard navigation for lightbox
+  const handleKeyDown = useCallback((e) => {
+    if (!lightboxOpen) return;
+    const allImages = blog && Array.isArray(blog.image_urls) && blog.image_urls.length > 0
+      ? blog.image_urls : [];
+    if (e.key === 'Escape') setLightboxOpen(false);
+    if (e.key === 'ArrowRight') setLightboxIndex(i => (i + 1) % allImages.length);
+    if (e.key === 'ArrowLeft') setLightboxIndex(i => (i - 1 + allImages.length) % allImages.length);
+  }, [lightboxOpen, blog]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   // Inject per-blog dynamic SEO meta once blog data is loaded
   useEffect(() => {
@@ -195,19 +212,28 @@ const BlogDetailPage = () => {
       </section>
 
       {/* Featured Image */}
-      <section className="px-6 md:px-20 max-w-5xl mx-auto mb-16">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="w-full aspect-video overflow-hidden bg-gray-100"
-        >
-          <img loading="lazy" src={blog.image_url || blog.img} 
-            alt={blog.title} 
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-      </section>
+      {(() => {
+        const allImages = Array.isArray(blog.image_urls) && blog.image_urls.length > 0
+          ? blog.image_urls
+          : (blog.image_url || blog.img ? [blog.image_url || blog.img] : []);
+        const featuredImg = allImages[0];
+        if (!featuredImg) return null;
+        return (
+          <section className="px-6 md:px-20 max-w-5xl mx-auto mb-16">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="w-full aspect-video overflow-hidden bg-gray-100"
+            >
+              <img loading="lazy" src={featuredImg}
+                alt={blog.title}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </section>
+        );
+      })()}
 
       {/* Article Content */}
       <section className="px-6 md:px-20 max-w-4xl mx-auto pb-32">
@@ -217,6 +243,79 @@ const BlogDetailPage = () => {
           {blog.content}
         </div>
 
+        {/* Photo Gallery — extra images beyond the featured one */}
+        {(() => {
+          const allImages = Array.isArray(blog.image_urls) && blog.image_urls.length > 0
+            ? blog.image_urls
+            : [];
+          const galleryImages = allImages.slice(1); // skip first (shown as featured)
+          if (galleryImages.length === 0) return null;
+
+          const MAX_VISIBLE = 4;
+          const visibleTiles = galleryImages.slice(0, MAX_VISIBLE);
+          const hiddenCount = galleryImages.length - MAX_VISIBLE;
+
+          const openLightbox = (galleryIdx) => {
+            // galleryIdx is index within galleryImages; add 1 for allImages offset
+            setLightboxIndex(galleryIdx + 1);
+            setLightboxOpen(true);
+          };
+
+          return (
+            <div className="mt-16 pt-8 border-t border-gray-100">
+              <div className="flex items-center justify-between mb-6">
+                <h4 className="text-sm font-black text-gray-900 uppercase tracking-widest">
+                  Photo Gallery
+                  <span className="ml-2 text-[10px] font-bold text-gray-400 normal-case tracking-normal">
+                    ({galleryImages.length} {galleryImages.length === 1 ? 'photo' : 'photos'})
+                  </span>
+                </h4>
+                {galleryImages.length > MAX_VISIBLE && (
+                  <button
+                    onClick={() => openLightbox(0)}
+                    className="text-[11px] font-bold text-[#C9184A] hover:underline uppercase tracking-widest"
+                  >
+                    View all {galleryImages.length}
+                  </button>
+                )}
+              </div>
+
+              {/* Grid: always 2 columns, up to 4 tiles */}
+              <div className="grid grid-cols-2 gap-2">
+                {visibleTiles.map((url, idx) => {
+                  const isLastVisible = idx === MAX_VISIBLE - 1;
+                  const showOverlay = isLastVisible && hiddenCount > 0;
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.35, delay: idx * 0.07 }}
+                      className="relative overflow-hidden bg-gray-100 aspect-video cursor-pointer group"
+                      onClick={() => openLightbox(idx)}
+                    >
+                      <img
+                        loading="lazy"
+                        src={url}
+                        alt={`${blog.title} — photo ${idx + 2}`}
+                        className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                          showOverlay ? 'brightness-50' : ''
+                        }`}
+                      />
+                      {showOverlay && (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                          <span className="text-3xl font-black">+{hiddenCount}</span>
+                          <span className="text-[11px] font-bold uppercase tracking-widest mt-1">more photos</span>
+                        </div>
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })()}
+
         {/* Related Services (SEO Internal Linking) */}
         <div className="mt-16 pt-8 border-t border-gray-100">
           <h4 className="text-sm font-black text-gray-900 uppercase tracking-widest mb-6">Explore Related Services</h4>
@@ -224,18 +323,18 @@ const BlogDetailPage = () => {
             <Link to="/sap-services" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
               SAP Consulting
             </Link>
-            <Link to="/services/salesforce" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+            
               Salesforce Solutions
-            </Link>
-            <Link to="/services/aiml-services" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+            
+            
               AI / ML Services
-            </Link>
-            <Link to="/services/cybersecurityhome" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+            
+            
               Cybersecurity
-            </Link>
-            <Link to="/services/itinfrastructure" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
+            
+            
               IT Infrastructure
-            </Link>
+            
             <Link to="/industries" className="px-4 py-2 bg-gray-50 border border-gray-100 text-[11px] font-bold text-gray-600 hover:text-[#800000] hover:border-[#800000] transition-colors uppercase tracking-widest">
               Industries We Serve
             </Link>
@@ -270,6 +369,84 @@ const BlogDetailPage = () => {
       </section>
 
       <Footer />
+
+      {/* ── Lightbox Modal ────────────────────────────────────────────── */}
+      {lightboxOpen && (() => {
+        const allImages = Array.isArray(blog?.image_urls) && blog.image_urls.length > 0
+          ? blog.image_urls : [];
+        if (allImages.length === 0) return null;
+        const total = allImages.length;
+        const prev = () => setLightboxIndex(i => (i - 1 + total) % total);
+        const next = () => setLightboxIndex(i => (i + 1) % total);
+        return (
+          <div
+            className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center"
+            onClick={() => setLightboxOpen(false)}
+          >
+            {/* Counter */}
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-xs font-bold uppercase tracking-widest">
+              {lightboxIndex + 1} / {total}
+            </div>
+
+            {/* Close */}
+            <button
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors p-2"
+              onClick={() => setLightboxOpen(false)}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            {/* Prev arrow */}
+            {total > 1 && (
+              <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all"
+                onClick={(e) => { e.stopPropagation(); prev(); }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+            )}
+
+            {/* Image */}
+            <motion.img
+              key={lightboxIndex}
+              src={allImages[lightboxIndex]}
+              alt={`Photo ${lightboxIndex + 1}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.25 }}
+              className="max-h-[85vh] max-w-[90vw] object-contain rounded shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Next arrow */}
+            {total > 1 && (
+              <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all"
+                onClick={(e) => { e.stopPropagation(); next(); }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            )}
+
+            {/* Thumbnail strip */}
+            {total > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90vw] px-2">
+                {allImages.map((url, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => { e.stopPropagation(); setLightboxIndex(idx); }}
+                    className={`w-14 h-10 shrink-0 overflow-hidden rounded border-2 transition-all ${
+                      idx === lightboxIndex ? 'border-white opacity-100' : 'border-transparent opacity-40 hover:opacity-70'
+                    }`}
+                  >
+                    <img src={url} alt={`thumb-${idx}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })()}
     </div>
   );
 };

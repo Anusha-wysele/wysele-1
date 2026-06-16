@@ -50,7 +50,7 @@ const CybersecurityWhyChooseUs = () => {
             className="w-full lg:w-1/2 text-left"
           >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-[white] leading-tight mb-5">
-              Why Businesses Choose Wysele For <Link to="/services/cybersecurityhome" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/cybersecurityhome" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">Cybersecurity</Link></Link> Services
+              Why Businesses Choose Wysele For Cybersecurity Services
             </h2>
 
             <div className="mb-3">

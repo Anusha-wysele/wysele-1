@@ -134,11 +134,38 @@ export const jobOpenings = [
   }
 ];
 
+const mapApiJob = (job) => {
+  const rawSkills = job.required_skills || job.key_skills || job.keySkills || job.skills || [];
+  const keySkills = Array.isArray(rawSkills)
+    ? rawSkills.map(s => {
+        if (!s) return '';
+        if (typeof s === 'object') return s.name || s.label || '';
+        return String(s);
+      }).filter(Boolean)
+    : [];
+
+  return {
+    id: job.id || job._id,
+    title: job.job_title || job.role || job.title || 'Untitled Role',
+    dept: job.region || 'Engineering',
+    exp: job.experience || job.total_exp || 'Any Experience',
+    location: job.location || 'Remote',
+    type: job.job_type || job.jobType || job.type || 'Full Time',
+    desc: job.description?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || 'No description available',
+    keySkills,
+    company_name: job.company_name || job.company || 'wysele',
+    status: job.status || 'Published',
+    details: job
+  };
+};
+
 const CareersOpenings = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const JOBS_PER_PAGE = 6;
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -147,54 +174,49 @@ const CareersOpenings = () => {
         let data;
         
         if (searchQuery.trim()) {
-          // Use search API if there is a query
           data = await jobService.searchJobs(searchQuery);
         } else {
-          // Otherwise get all jobs
-          data = await jobService.getAllJobs();
+          data = await jobService.getAllJobs({
+            company: 'wysele',
+            limit: 100
+          });
         }
 
         console.log('🚀 Careers API Response:', data);
 
-        const rawJobs = Array.isArray(data) ? data : (data.results || data.jobs || data.data || []);
-        
-        // Map API jobs to UI structure
-        const mappedJobs = rawJobs.map(job => ({
-          id: job.id || job._id,
-          title: job.role || job.title || 'Untitled Role',
-          dept: job.region || 'Engineering',
-          exp: job.experience || job.total_exp || 'Any Experience',
-          location: job.location || 'Remote',
-          type: job.job_type || job.jobType || job.type || 'Full Time',
-          desc: job.description?.replace(/<[^>]*>/g, '').substring(0, 150) + '...' || 'No description available',
-          keySkills: job.key_skills || job.keySkills || job.skills || [],
-          details: job
-        }));
-
-        // If we have API data, use it.
-        if (mappedJobs.length > 0) {
-          setJobs(mappedJobs);
-        } else if (!searchQuery) {
-          // Only use mock data if it's the initial load (no query) and API is empty
-          setJobs(jobOpenings);
+        let rawJobs = [];
+        if (Array.isArray(data)) {
+          rawJobs = data;
         } else {
-          // If searching and nothing found, show empty
-          setJobs([]);
+          rawJobs = data.data || data.results || data.jobs || [];
         }
+
+        // Map and filter active Wysele jobs
+        const wyseleJobs = rawJobs.map(mapApiJob).filter(j => 
+          (j.company_name.toLowerCase() === 'wysele' || j.company_name === '') && 
+          (j.status.toLowerCase() === 'published' || j.status.toLowerCase() === 'active')
+        );
+
+        setJobs(wyseleJobs);
       } catch (err) {
         console.error('Failed to fetch jobs:', err);
-        if (!searchQuery) setJobs(jobOpenings);
+        if (!searchQuery) {
+          setJobs(jobOpenings);
+        }
       } finally {
         setLoading(false);
       }
     };
 
-    // Debounce search to avoid too many API calls
     const timer = setTimeout(() => {
       fetchJobs();
     }, searchQuery ? 500 : 0);
 
     return () => clearTimeout(timer);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    setCurrentPage(1);
   }, [searchQuery]);
 
   const filteredJobs = jobs.filter(job => {
@@ -211,6 +233,12 @@ const CareersOpenings = () => {
     navigate(`/careers/apply/${jobId}`);
     window.scrollTo(0, 0);
   };
+
+  const totalPages = Math.ceil(filteredJobs.length / JOBS_PER_PAGE) || 1;
+  const currentJobs = filteredJobs.slice(
+    (currentPage - 1) * JOBS_PER_PAGE,
+    currentPage * JOBS_PER_PAGE
+  );
 
   return (
     <section className="py-10 bg-gray-50/30 font-sans">
@@ -289,8 +317,8 @@ const CareersOpenings = () => {
             </div>
           )}
           <AnimatePresence mode="popLayout">
-            {filteredJobs.length > 0 ? (
-              filteredJobs.map((job) => (
+            {currentJobs.length > 0 ? (
+              currentJobs.map((job) => (
                 <motion.div 
                   key={job.id}
                   layout
@@ -369,6 +397,45 @@ const CareersOpenings = () => {
             )}
           </AnimatePresence>
         </div>
+
+        {/* Standalone Pagination Card */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center pt-10">
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => {
+                  setCurrentPage(prev => Math.max(prev - 1, 1));
+                  document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                disabled={currentPage === 1}
+                className={`px-4 py-2 rounded-lg border text-xs font-bold transition-all ${
+                  currentPage === 1 
+                    ? 'border-gray-200 text-gray-400 cursor-not-allowed' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}
+              >
+                Previous
+              </button>
+              <span className="text-xs text-gray-500 font-semibold px-2">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button 
+                onClick={() => {
+                  setCurrentPage(prev => Math.min(prev + 1, totalPages));
+                  document.getElementById('open-positions')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                disabled={currentPage === totalPages}
+                className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                  currentPage === totalPages 
+                    ? 'border border-gray-200 text-gray-400 cursor-not-allowed' 
+                    : 'bg-[#800000] text-white hover:bg-[#a31414] shadow-md shadow-maroon-900/10'
+                }`}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

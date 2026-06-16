@@ -55,7 +55,7 @@ export default function SapTechnicalconsultinghero() {
                     </p>
 
                     <h1 className="text-xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-5">
-                        SAP <Link to="/services/sap-technical-consulting" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}>Technical Consulting</Link>
+                        SAP Technical Consulting
                     </h1>
 
                     <p className="text-white text-sm md:text-base font-light max-w-md leading-relaxed mb-8">

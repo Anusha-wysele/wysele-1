@@ -37,12 +37,18 @@ const GetInTouch = () => {
         try {
             setIsSubmitting(true);
 
+            const hostname = window.location.hostname.toLowerCase();
+            const siteCompany = hostname.includes('orbintix') ? 'orbintix' : 
+                                hostname.includes('gracevirtue') ? 'gracevirtue' : 'wysele';
+
             const payload = {
                 full_name: form.fullName,
                 email: form.emailAddress,
                 phone_number: form.phoneNumber,
-                location: form.location,
-                message: form.message
+                location: `${siteCompany}:${form.location}`,
+                message: form.message,
+                company_name: siteCompany,
+                company: siteCompany
             };
 
             await jobService.createContact(payload);

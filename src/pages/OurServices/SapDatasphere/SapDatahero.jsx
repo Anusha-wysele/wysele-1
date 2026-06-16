@@ -67,7 +67,7 @@ const SapDatahero = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.7, delay: 0.6, ease: [0.33, 1, 0.68, 1] }}
                             >
-                                Whether your organization uses <Link to="/services/sap-s4hana" style={{ color: "inherit", textDecoration: "none", borderBottom: "1px dotted #ccc" }}><Link to="/services/sap-s4hana" className="hover:underline transition-colors decoration-gray-400 underline-offset-4 text-inherit">SAP S/4HANA</Link></Link>, SAP ECC, SAP cloud environments, or integrated enterprise applications, our SAP support specialists ensure your systems remain secure, responsive, and aligned with business goals.
+                                Whether your organization uses SAP S/4HANA, SAP ECC, SAP cloud environments, or integrated enterprise applications, our SAP support specialists ensure your systems remain secure, responsive, and aligned with business goals.
                             </motion.p>
                         </div>
 

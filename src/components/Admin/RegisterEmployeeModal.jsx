@@ -1,23 +1,35 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { Briefcase, Building, Fingerprint, Loader2, Mail, Phone, ShieldCheck, UserPlus, X } from 'lucide-react';
-import { useState } from 'react';
+import { Briefcase, Building, Fingerprint, Loader2, Mail, Phone, ShieldCheck, UserPlus, X, Lock, Eye, EyeOff } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import employeeService from '../../services/employeeService';
 import { useToast } from '../Admin/ToastContext';
+import companyService from '../../services/companyService';
 
 const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
-    employee_id: '',
+    emp_id: '',
     email: '',
-    first_name: '',
-    middle_name: '',
-    last_name: '',
+    name: '',
     phone_number: '',
-    company_id: '',
-    role: 'HR'
+    company_name: '',
+    role: 'ADMIN',
+    password: ''
   });
   
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [companiesList, setCompaniesList] = useState([]);
   const { showToast } = useToast();
+
+  useEffect(() => {
+    const loadCompanies = () => {
+      setCompaniesList(companyService.getCompanies());
+    };
+    loadCompanies();
+    companyService.fetchCompanies(); // Fetch fresh data from backend API
+    window.addEventListener('companiesUpdated', loadCompanies);
+    return () => window.removeEventListener('companiesUpdated', loadCompanies);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,15 +45,15 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
       window.dispatchEvent(new CustomEvent('employeeRegistered'));
       onSuccess?.();
       onClose();
+      setShowPassword(false);
       setFormData({
-        employee_id: '',
+        emp_id: '',
         email: '',
-        first_name: '',
-        middle_name: '',
-        last_name: '',
+        name: '',
         phone_number: '',
-        company_id: '',
-        role: 'HR'
+        company_name: '',
+        role: 'ADMIN',
+        password: ''
       });
     } catch (err) {
       showToast(err.message || 'Failed to register employee.', 'error');
@@ -59,7 +71,7 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md"
           />
           
           <motion.div
@@ -69,17 +81,17 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
             className="relative w-full max-w-2xl bg-white rounded-none shadow-2xl overflow-hidden my-auto"
           >
             {/* Header */}
-            <div className="bg-[#800000]  p-3 text-white flex items-center justify-between gap-8">
+            <div className="bg-blue-200 p-3 text-blue-900 flex items-center justify-between gap-8">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-[#ffcc00] text-black  rounded-full">
+                <div className="p-2 bg-[#ffcc00] text-black rounded-full">
                   <UserPlus size={24} />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold uppercase tracking-normal">Register New Employee</h3>
-                  <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-1">Onboarding System</p>
+                  <p className="text-blue-900/60 text-[10px] font-bold uppercase tracking-widest mt-1">Onboarding System</p>
                 </div>
               </div>
-              <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors">
+              <button onClick={onClose} className="p-2 hover:bg-blue-900/10 rounded-full transition-colors text-blue-900">
                 <X size={20} />
               </button>
             </div>
@@ -93,20 +105,21 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
                     <Fingerprint size={12} /> Employee ID
                   </label>
                   <input 
-                    type="text" name="employee_id" required
-                    value={formData.employee_id} onChange={handleChange}
+                    type="text" name="emp_id" required
+                    value={formData.emp_id} onChange={handleChange}
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all"
                     placeholder="e.g. WYS-001"
                   />
                 </div>
 
-                {/* Field 2: First Name */}
+                {/* Field 2: Full Name */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">First Name</label>
+                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Full Name</label>
                   <input 
-                    type="text" name="first_name" required
-                    value={formData.first_name} onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all"
+                    type="text" name="name" required
+                    value={formData.name} onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all capitalize"
+                    placeholder="e.g. John Doe"
                   />
                 </div>
 
@@ -123,17 +136,7 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
                   />
                 </div>
 
-                {/* Field 4: Middle Name */}
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Middle Name</label>
-                  <input 
-                    type="text" name="middle_name"
-                    value={formData.middle_name} onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all"
-                  />
-                </div>
-
-                {/* Field 5: Phone Number */}
+                {/* Field 4: Phone Number */}
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
                     <Phone size={12} /> Phone Number
@@ -146,30 +149,24 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
                   />
                 </div>
 
-                {/* Field 6: Last Name */}
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Last Name</label>
-                  <input 
-                    type="text" name="last_name" required
-                    value={formData.last_name} onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all"
-                  />
-                </div>
-
-                {/* Field 7: Company ID */}
+                {/* Field 5: Company Name */}
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                    <Building size={12} /> Company ID
+                    <Building size={12} /> Company Name
                   </label>
-                  <input 
-                    type="text" name="company_id" required
-                    value={formData.company_id} onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all"
-                    placeholder="WYS-GLOBAL"
-                  />
+                  <select 
+                    name="company_name" required
+                    value={formData.company_name} onChange={handleChange}
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all capitalize"
+                  >
+                    <option value="">Select Company</option>
+                    {companiesList.filter(c => c.is_active).map(company => (
+                      <option key={company.id} value={company.id}>{company.name}</option>
+                    ))}
+                  </select>
                 </div>
 
-                {/* Field 8: System Role */}
+                {/* Field 6: System Role */}
                 <div className="space-y-1.5">
                   <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
                     <ShieldCheck size={12} /> System Role
@@ -177,11 +174,32 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
                   <select 
                     name="role"
                     value={formData.role} onChange={handleChange}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-normal focus:bg-white focus:border-[#800000] outline-none transition-all capitalize tracking-normal"
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-normal focus:bg-white focus:border-[#800000] outline-none transition-all tracking-normal"
                   >
-                    <option value="HR">HR Manager</option>
-                    <option value="ADMIN">System Admin</option>
+                    <option value="ADMIN">ADMIN</option>
                   </select>
+                </div>
+
+                {/* Field 7: Password */}
+                <div className="space-y-1.5">
+                  <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                    <Lock size={12} /> Password
+                  </label>
+                  <div className="relative">
+                    <input 
+                      type={showPassword ? 'text' : 'password'} name="password" required
+                      value={formData.password} onChange={handleChange}
+                      className="w-full pl-4 pr-11 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all"
+                      placeholder="••••••••"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none transition-colors"
+                    >
+                      {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                    </button>
+                  </div>
                 </div>
 
               </div>
@@ -191,7 +209,7 @@ const RegisterEmployeeModal = ({ isOpen, onClose, onSuccess }) => {
                 <button 
                   type="submit"
                   disabled={isLoading}
-                  className="w-full md:w-[35%]  bg-[#ffcc00] text-black py-3 rounded-none font-semibold uppercase tracking-normal text-xs hover:bg-black hover:text-white transition-all flex items-center justify-center gap-2"
+                  className="w-full md:w-[35%] bg-[#005A9E] text-white py-3 rounded-lg font-semibold uppercase tracking-normal text-xs hover:bg-[#004b85] hover:text-white transition-all flex items-center justify-center gap-2 shadow-sm"
                 >
                   {isLoading ? <Loader2 className="animate-spin" size={18} /> : <Briefcase size={18} />}
                   Register Employee

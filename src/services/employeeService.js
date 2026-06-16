@@ -7,7 +7,7 @@ const employeeService = {
    */
   registerEmployee: async (employeeData) => {
     const response = await api.post('/auth/register', employeeData);
-    return response.data;
+    return response.data || response;
   },
 
   /**
@@ -16,7 +16,9 @@ const employeeService = {
    */
   getAllEmployees: async (params = {}) => {
     const response = await api.get('/admins/', { params });
-    return response.data;
+    const resData = response.data || response;
+    const employees = resData.employees || resData.data || (Array.isArray(resData) ? resData : []);
+    return { employees };
   },
 
   /**
