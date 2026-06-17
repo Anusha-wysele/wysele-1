@@ -103,6 +103,15 @@ const blogService = {
       }
       throw error;
     }
+  },
+
+  /**
+   * Upload blog image(s)
+   * POST /api/v1/blogs/upload-images
+   */
+  uploadImage: async (formData) => {
+    const response = await api.post('/blogs/upload-images', formData);
+    return response.data;
   }
 };
 

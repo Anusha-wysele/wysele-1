@@ -238,10 +238,9 @@ const BlogDetailPage = () => {
       {/* Article Content */}
       <section className="px-6 md:px-20 max-w-4xl mx-auto pb-32">
         <div 
-          className="prose prose-lg max-w-none text-gray-600 leading-[1.8] text-base md:text-lg whitespace-pre-wrap"
-        >
-          {blog.content}
-        </div>
+          className="prose prose-lg max-w-none text-gray-600 leading-[1.8] text-base md:text-lg"
+          dangerouslySetInnerHTML={{ __html: blog.content }}
+        />
 
         {/* Photo Gallery — extra images beyond the featured one */}
         {(() => {

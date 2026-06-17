@@ -15,6 +15,22 @@ import AdminLayout from '../../components/Admin/AdminLayout';
 import { useToast } from '../../components/Admin/ToastContext';
 import blogService from '../../services/blogService';
 import { useAuth } from '../../context/AuthContext';
+import BlogEditor from '../../components/BlogEditor/BlogEditor';
+
+const getCleanImageName = (url, index) => {
+  if (!url) return '';
+  if (url.startsWith('data:image/')) {
+    const extension = url.split(';')[0].split('/')[1] || 'png';
+    return `image_${index + 1}.${extension}`;
+  }
+  try {
+    const parts = url.split('/');
+    const lastPart = parts[parts.length - 1];
+    return lastPart.split('?')[0] || `image_${index + 1}`;
+  } catch (e) {
+    return `image_${index + 1}`;
+  }
+};
 
 const ManageBlogs = () => {
   const { user } = useAuth();
@@ -592,22 +608,38 @@ const ManageBlogs = () => {
                             type="file"
                             accept="image/*"
                             className="hidden"
-                            onChange={(e) => {
+                            onChange={async (e) => {
                               const file = e.target.files[0];
                               if (!file) return;
                               if (file.size > 2 * 1024 * 1024) {
                                 showToast('File exceeds 2MB limit.', 'error');
                                 return;
                               }
-                              const reader = new FileReader();
-                              reader.onload = (event) => {
-                                const base64Url = event.target.result;
-                                if (!formData.image_urls.includes(base64Url)) {
-                                  setFormData(prev => ({ ...prev, image_urls: [...prev.image_urls, base64Url] }));
-                                  showToast('Image uploaded successfully from device.', 'success');
+                              try {
+                                const formDataUpload = new FormData();
+                                formDataUpload.append('files', file);
+                                formDataUpload.append('file', file);
+                                const res = await blogService.uploadImage(formDataUpload);
+                                const data = res.data || res;
+                                const imgUrl = Array.isArray(data) ? data[0] : (
+                                               data.url || 
+                                               (Array.isArray(data.urls) && data.urls[0]) || 
+                                               (data.data && data.data.url) ||
+                                               (Array.isArray(data.data) && data.data[0]) ||
+                                               data.imageUrl
+                                             );
+                                if (imgUrl) {
+                                  if (!formData.image_urls.includes(imgUrl)) {
+                                    setFormData(prev => ({ ...prev, image_urls: [...prev.image_urls, imgUrl] }));
+                                    showToast('Image uploaded successfully.', 'success');
+                                  }
+                                } else {
+                                  throw new Error('Image URL not found in response');
                                 }
-                              };
-                              reader.readAsDataURL(file);
+                              } catch (err) {
+                                console.error('Upload failed:', err);
+                                showToast('Failed to upload image to server.', 'error');
+                              }
                             }}
                           />
                         </label>
@@ -624,7 +656,9 @@ const ManageBlogs = () => {
                                 className="w-12 h-10 object-cover shrink-0 bg-gray-200"
                                 onError={(e) => { e.target.style.display = 'none'; }}
                               />
-                              <span className="flex-1 text-[10px] text-gray-500 truncate font-medium">{url}</span>
+                              <span className="flex-1 text-[10px] text-gray-500 truncate font-medium">
+                                {getCleanImageName(url, idx)}
+                              </span>
                               <button
                                 type="button"
                                 onClick={() => setFormData(prev => ({ ...prev, image_urls: prev.image_urls.filter((_, i) => i !== idx) }))}
@@ -645,12 +679,10 @@ const ManageBlogs = () => {
 
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Content</label>
-                      <textarea
-                        required
-                        className="w-full border p-3 rounded-none text-sm min-h-[200px] focus:border-[#800000] outline-none bg-gray-50 focus:bg-white transition-all resize-none"
+                      <BlogEditor
+                        key={selectedBlog?._id || selectedBlog?.id || 'new'}
                         value={formData.content}
-                        onChange={(e) => setFormData({...formData, content: e.target.value})}
-                        placeholder="Write your blog content here..."
+                        onChange={(html) => setFormData(prev => ({ ...prev, content: html }))}
                       />
                     </div>
                   </div>
@@ -764,9 +796,10 @@ const ManageBlogs = () => {
                     </div>
                     <h2 className="text-2xl font-black text-gray-900 leading-tight">{selectedBlog.title}</h2>
                   </div>
-                  <div className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">
-                    {selectedBlog.content}
-                  </div>
+                  <div 
+                    className="prose prose-sm max-w-none text-sm text-gray-600 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
+                  />
                 </div>
                 </motion.div>
               </div>

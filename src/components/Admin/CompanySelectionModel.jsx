@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 // Import images from assets
 import wyseleLogo from '../../assets/wysele.png';
 import orbintixLogo from '../../assets/orbintix.png';
+import gracevirtueLogo from '../../assets/gracevirtue.png';
 
 const companies = [
   {
@@ -15,6 +16,11 @@ const companies = [
     name: 'Orbintix Technologies',
     logo: orbintixLogo,
     url: 'https://orbintix.com/',
+  },
+  {
+    name: 'Grace Virtue Technologies',
+    logo: gracevirtueLogo,
+    url: 'https://gracevirtue.com/',
   },
 ];
 
@@ -56,7 +62,7 @@ const CompanySelectionModal = () => {
         initial="hidden"
         animate="visible"
         variants={modalVariants}
-        className="w-full max-w-4xl p-8 md:p-12 rounded-none shadow-2xl relative overflow-hidden text-center"
+        className="w-full max-w-5xl p-8 md:p-12 rounded-none shadow-2xl relative overflow-hidden text-center"
         style={{
           background:"white",
           border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -75,7 +81,7 @@ const CompanySelectionModal = () => {
             Choose the company you want to access
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {companies.map((company) => (
               <motion.div
                 key={company.name}

@@ -1,8 +1,37 @@
 import api from './api';
 
-// Cache array initialized to empty list (no fallback mock data)
-let companiesCache = [];
-let activeFetchPromise = null;
+const defaultCompanies = [
+  {
+    company_id: 'wysele',
+    company_name: 'Wysele Technologies',
+    website_url: 'https://wysele.com',
+    company_email: 'info@wysele.com',
+    company_representative: 'Wysele Representative',
+    description: 'Wysele Technologies Private Limited is a premier IT consulting company.',
+    address: 'Hyderabad, India',
+    is_active: true
+  },
+  {
+    company_id: 'orbintix',
+    company_name: 'Orbintix Technologies',
+    website_url: 'https://orbintix.com',
+    company_email: 'info@orbintix.com',
+    company_representative: 'Orbintix Representative',
+    description: 'Orbintix Technologies is a premier cloud engineering company.',
+    address: 'Hyderabad, India',
+    is_active: true
+  },
+  {
+    company_id: 'gracevirtue',
+    company_name: 'Grace Virtue Technologies',
+    website_url: 'https://gracevirtue.com',
+    company_email: 'info@gracevirtue.com',
+    company_representative: 'Grace Virtue Representative',
+    description: 'Grace Virtue Technologies is an IT consulting and solutions provider.',
+    address: 'Hyderabad, India',
+    is_active: true
+  }
+];
 
 const mapCompany = (c) => {
   let domain = c.domain || '';
@@ -17,14 +46,28 @@ const mapCompany = (c) => {
     ...c,
     id: c.company_id || c.id || c._id || '',
     company_id: c.company_id || c.id || c._id || '',
+    company_name: c.company_name || c.name || '',
+    company_type: c.company_type || 'Pvt Ltd',
+    company_email: c.company_email || (emailDomain ? `info@${emailDomain}` : ''),
+    description: c.description || '',
+    website_url: c.website_url || c.domain_link || '',
+    company_representative: c.company_representative || c.responsible_person || '',
+    documents: c.documents || '',
+    address: c.address || '',
+    is_active: c.is_active === true || c.is_active === 'true' || c.is_active === 1 || c.is_active === '1' || c.is_active === 'Active',
+
+    // Keep legacy fields so we don't break anything unexpectedly
     name: c.company_name || c.name || '',
     domain: domain,
     email_domain: emailDomain,
     domain_link: c.website_url || c.domain_link || '',
-    responsible_person: c.company_representative || c.responsible_person || '',
-    is_active: c.is_active === true || c.is_active === 'true' || c.is_active === 1 || c.is_active === '1' || c.is_active === 'Active'
+    responsible_person: c.company_representative || c.responsible_person || ''
   };
 };
+
+// Cache array initialized with mapped default companies
+let companiesCache = defaultCompanies.map(mapCompany);
+let activeFetchPromise = null;
 
 const dispatchUpdate = () => {
   window.dispatchEvent(new CustomEvent('companiesUpdated'));
@@ -58,7 +101,20 @@ const companyService = {
               ? resData.data
               : [];
         
-        companiesCache = list.map(mapCompany);
+        let mergedList = [...list];
+        const defaultIds = ['wysele', 'orbintix', 'gracevirtue'];
+        defaultIds.forEach(id => {
+          const exists = mergedList.some(c => {
+            const cid = (c.company_id || c.id || c._id || '').toLowerCase();
+            return cid === id;
+          });
+          if (!exists) {
+            const defComp = defaultCompanies.find(dc => dc.company_id === id);
+            mergedList.push(defComp);
+          }
+        });
+
+        companiesCache = mergedList.map(mapCompany);
         dispatchUpdate();
         return [...companiesCache];
       } catch (err) {
@@ -74,26 +130,27 @@ const companyService = {
 
   // API Call: Create or Update company
   saveCompany: async (companyData) => {
-    const companyId = companyData.company_id || companyData.id || companyData.name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
+    const compName = companyData.company_name || companyData.name || '';
+    const companyId = companyData.company_id || companyData.id || compName.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
     const payload = {
       // Backend expected fields
-      company_name: companyData.name || '',
+      company_name: compName,
       company_type: companyData.company_type || 'Pvt Ltd',
       company_email: companyData.company_email || (companyData.email_domain ? (companyData.email_domain.includes('@') ? companyData.email_domain : `info@${companyData.email_domain}`) : `info@${companyData.domain}`),
       description: companyData.description || '',
-      website_url: companyData.domain_link || '',
-      company_representative: companyData.responsible_person || '',
+      website_url: companyData.website_url || companyData.domain_link || '',
+      company_representative: companyData.company_representative || companyData.responsible_person || '',
       documents: companyData.documents || null,
       address: companyData.address || '',
       is_active: companyData.is_active !== undefined ? companyData.is_active : true,
       company_id: companyId,
       
       // Frontend expected fields (just in case)
-      name: companyData.name || '',
-      domain: companyData.domain || '',
-      email_domain: companyData.email_domain || '',
-      domain_link: companyData.domain_link || '',
-      responsible_person: companyData.responsible_person || ''
+      name: compName,
+      domain: companyData.website_url ? companyData.website_url.replace(/https?:\/\/(www\.)?/, '').split('/')[0] : (companyData.domain || ''),
+      email_domain: companyData.company_email ? (companyData.company_email.includes('@') ? companyData.company_email.split('@')[1] : companyData.company_email) : (companyData.email_domain || ''),
+      domain_link: companyData.website_url || companyData.domain_link || '',
+      responsible_person: companyData.company_representative || companyData.responsible_person || ''
     };
 
     let response;

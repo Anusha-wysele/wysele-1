@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Import images from assets
 import wyseleLogo from '../../assets/wysele.png';
 import orbintixLogo from '../../assets/orbintix.png';
+import gracevirtueLogo from '../../assets/gracevirtue.png';
 
 const companies = [
   {
@@ -15,6 +16,11 @@ const companies = [
     name: 'Orbintix Technologies',
     logo: orbintixLogo,
     url: 'https://orbintix.com/',
+  },
+  {
+    name: 'Grace Virtue Technologies',
+    logo: gracevirtueLogo,
+    url: 'https://gracevirtue.com/',
   },
 ];
 
@@ -73,7 +79,7 @@ const CompanySelectionModal = ({ isOpen, onClose }) => {
       >
         <motion.div
           variants={modalVariants}
-          className="w-full max-w-4xl bg-white border border-slate-100 p-8 md:p-12 relative overflow-hidden text-center rounded-none"
+          className="w-full max-w-5xl bg-white border border-slate-100 p-8 md:p-12 relative overflow-hidden text-center rounded-none"
         >
           <div className="relative z-10">
             <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-wider uppercase mb-2">
@@ -83,7 +89,7 @@ const CompanySelectionModal = ({ isOpen, onClose }) => {
               Choose the company portal you wish to access
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {companies.map((company) => (
                 <motion.div
                   key={company.name}

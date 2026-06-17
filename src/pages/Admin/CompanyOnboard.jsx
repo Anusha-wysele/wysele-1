@@ -38,16 +38,15 @@ const CompanyOnboard = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState(null);
   
-  
   // Form state
   const [formData, setFormData] = useState({
     id: '',
-    name: '',
-    domain: '',
-    email_domain: '',
+    company_name: '',
+    company_type: '',
+    company_email: '',
     description: '',
-    domain_link: '',
-    responsible_person: '',
+    website_url: '',
+    company_representative: '',
     documents: '',
     address: '',
     is_active: true
@@ -72,12 +71,12 @@ const CompanyOnboard = () => {
     setSelectedCompany(null);
     setFormData({
       id: '',
-      name: '',
-      domain: '',
-      email_domain: '',
+      company_name: '',
+      company_type: 'Pvt Ltd',
+      company_email: '',
       description: '',
-      domain_link: '',
-      responsible_person: '',
+      website_url: '',
+      company_representative: '',
       documents: '',
       address: '',
       is_active: true
@@ -108,7 +107,7 @@ const CompanyOnboard = () => {
     e.preventDefault();
 
     // Field validation (NOT NULL validation)
-    const requiredFields = ['name', 'domain', 'email_domain', 'description', 'domain_link', 'responsible_person', 'address'];
+    const requiredFields = ['company_name', 'company_type', 'company_email', 'description', 'website_url', 'company_representative', 'address'];
     for (const field of requiredFields) {
       if (!formData[field]?.trim()) {
         showToast(`${field.replace('_', ' ')} is required.`, 'error');
@@ -169,15 +168,13 @@ const CompanyOnboard = () => {
     // 1. Filter by Active Tab
     if (activeTab === 'active' && !company.is_active) return false;
     if (activeTab === 'inactive' && company.is_active) return false;
-
     // 2. Filter by Search Term
-    const name = (company?.name || '').toLowerCase();
-    const domain = (company?.domain || '').toLowerCase();
-    const responsiblePerson = (company?.responsible_person || '').toLowerCase();
+    const name = (company?.company_name || company?.name || '').toLowerCase();
+    const domain = (company?.website_url || company?.domain || '').toLowerCase();
+    const responsiblePerson = (company?.company_representative || company?.responsible_person || '').toLowerCase();
     const term = (searchTerm || '').toLowerCase();
     return name.includes(term) || domain.includes(term) || responsiblePerson.includes(term);
   });
-
   return (
     <AdminLayout>
       <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -248,87 +245,64 @@ const CompanyOnboard = () => {
 
         {/* Table Card */}
         <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="responsive-table-container min-h-[300px] relative overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+          <div className="min-h-[300px] relative">
+            <table className="w-full text-left border-collapse table-fixed">
               <thead className="bg-blue-200 text-blue-900">
                 <tr>
-                  <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider">Company</th>
-                  <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider">Domain Info</th>
-                  <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider">Owner</th>
-                  <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider">Address</th>
-                  <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-center">Status</th>
-                  <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-right">Actions</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[12%]">Company</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[25%]">Description</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[15%]">Company Representative</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[18%]">Website URL</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[12%]">Email Address</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[9%]">Status</th>
+                  <th className="px-4 py-2 text-[11px] font-semibold text-blue-900 capitalize tracking-wider text-center w-[9%]">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredCompanies.length > 0 ? (
                   filteredCompanies.map((company) => (
                     <tr key={company.id} className="group hover:bg-gray-50/50 transition-colors">
-                      {/* Company Name & Description */}
-                      <td className="px-4 py-3.5 max-w-xs">
-                        <p className="text-sm font-bold text-gray-900 capitalize">
-                          {company.name}
+                      <td className="px-4 py-3.5 align-middle text-center">
+                        <p className="text-sm font-bold text-gray-900 capitalize break-words">
+                          {company.company_name || company.name}
                         </p>
-                        <p className="text-xs text-gray-400 font-normal line-clamp-2 mt-0.5">
+                      </td>
+
+                      {/* Description */}
+                      <td className="px-4 py-3.5 align-middle text-center">
+                        <p className="text-xs text-gray-500 font-normal break-words whitespace-pre-wrap">
                           {company.description}
                         </p>
                       </td>
 
-                      {/* Domains */}
-                      <td className="px-4 py-3.5">
-                        <div className="space-y-1">
-                          <a 
-                            href={company.domain_link} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="flex items-center gap-1.5 text-xs text-[#005A9E] hover:underline font-semibold"
-                          >
-                            <Globe size={12} />
-                            {company.domain}
-                            <ExternalLink size={10} />
-                          </a>
-                          <div className="flex items-center gap-1.5 text-[11px] text-gray-500">
-                            <Mail size={12} className="text-gray-400" />
-                            @{company.email_domain}
-                          </div>
-                        </div>
+                      {/* Company Representative */}
+                      <td className="px-4 py-3.5 align-middle text-center">
+                        <p className="text-xs font-semibold text-gray-800 capitalize break-words">
+                          {company.company_representative || company.responsible_person || 'N/A'}
+                        </p>
                       </td>
 
-                      {/* Responsible Person */}
-                      <td className="px-4 py-3.5">
-                        <div className="flex items-center gap-2">
-                          <div className="w-6 h-6 rounded-full bg-blue-50 text-[#005A9E] flex items-center justify-center font-bold text-[10px] uppercase">
-                            {(company.responsible_person || 'RP').slice(0, 2)}
-                          </div>
-                          <div>
-                            <p className="text-xs font-semibold text-gray-800 capitalize">{company.responsible_person || 'N/A'}</p>
-                            {company.documents && (
-                              <a 
-                                href={company.documents} 
-                                target="_blank" 
-                                rel="noopener noreferrer" 
-                                className="flex items-center gap-1 text-[10px] text-gray-400 hover:text-[#005A9E] mt-0.5 font-medium"
-                              >
-                                <FileText size={10} />
-                                View Docs
-                              </a>
-                            )}
-                          </div>
-                        </div>
+                      {/* Website URL */}
+                      <td className="px-4 py-3.5 align-middle text-center">
+                        <a 
+                          href={company.website_url || company.domain_link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center justify-center gap-1.5 text-xs text-[#005A9E] hover:underline font-semibold break-all"
+                        >
+                          {company.website_url || company.domain}
+                        </a>
                       </td>
 
-                      {/* Address */}
-                      <td className="px-4 py-3.5">
-                        <div className="flex items-center gap-1.5 text-xs text-gray-600 font-medium">
-                          <MapPin size={12} className="text-gray-400 shrink-0" />
-                          <span className="truncate max-w-[150px]" title={company.address}>
-                            {company.address}
-                          </span>
-                        </div>
+                      {/* Email Address */}
+                      <td className="px-4 py-3.5 align-middle text-center">
+                        <span className="text-xs text-gray-500 break-all">
+                          {company.company_email || (company.email_domain ? `@${company.email_domain}` : 'N/A')}
+                        </span>
                       </td>
 
                       {/* Status */}
-                      <td className="px-4 py-3.5 text-center">
+                      <td className="px-4 py-3.5 text-center align-middle">
                         <div className="flex flex-col items-center justify-center gap-1">
                           <button
                             type="button"
@@ -352,9 +326,9 @@ const CompanyOnboard = () => {
                         </div>
                       </td>
 
-                      {/* Actions */}
-                      <td className="px-4 py-3.5 text-right">
-                        <div className="flex items-center justify-end gap-2">
+                      {/* Action */}
+                      <td className="px-4 py-3.5 text-center align-middle">
+                        <div className="flex items-center justify-center gap-2">
                           <button
                             onClick={() => handleOpenEdit(company)}
                             className="p-1.5 text-gray-500 hover:text-[#005A9E] hover:bg-gray-100 rounded-lg transition-all"
@@ -377,7 +351,7 @@ const CompanyOnboard = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="6" className="px-8 py-20 text-center text-gray-400 font-bold uppercase tracking-widest text-xs">
+                    <td colSpan="7" className="px-8 py-20 text-center text-gray-400 font-bold uppercase tracking-widest text-xs">
                       No companies found
                     </td>
                   </tr>
@@ -430,63 +404,63 @@ const CompanyOnboard = () => {
                       {/* Field 1: Company Name */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <Building size={12} /> Company Name *
+                          <Building size={12} /> COMPANY NAME *
                         </label>
                         <input 
-                          type="text" name="name" required
-                          value={formData.name} onChange={handleFormChange}
+                          type="text" name="company_name" required
+                          value={formData.company_name} onChange={handleFormChange}
                           className="w-full px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#005A9E] outline-none transition-all"
                           placeholder="e.g. Wysele, Orbintix"
                         />
                       </div>
 
-                      {/* Field 2: Domain */}
+                      {/* Field 2: Company Type */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <Globe size={12} /> Domain *
+                          <Building size={12} /> COMPANY TYPE *
                         </label>
                         <input 
-                          type="text" name="domain" required
-                          value={formData.domain} onChange={handleFormChange}
+                          type="text" name="company_type" required
+                          value={formData.company_type} onChange={handleFormChange}
                           className="w-full px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#005A9E] outline-none transition-all"
-                          placeholder="e.g. wysele.com"
+                          placeholder="e.g. Pvt Ltd, LLC"
                         />
                       </div>
 
-                      {/* Field 3: Email Domain */}
+                      {/* Field 3: Company Email */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <Mail size={12} /> Email Domain *
+                          <Mail size={12} /> COMPANY EMAIL *
                         </label>
                         <input 
-                          type="text" name="email_domain" required
-                          value={formData.email_domain} onChange={handleFormChange}
+                          type="email" name="company_email" required
+                          value={formData.company_email} onChange={handleFormChange}
                           className="w-full px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#005A9E] outline-none transition-all"
-                          placeholder="e.g. wysele.com"
+                          placeholder="e.g. info@wysele.com"
                         />
                       </div>
 
-                      {/* Field 4: Domain Link */}
+                      {/* Field 4: Website URL */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <ExternalLink size={12} /> Domain Link *
+                          <ExternalLink size={12} /> WEBSITE URL *
                         </label>
                         <input 
-                          type="url" name="domain_link" required
-                          value={formData.domain_link} onChange={handleFormChange}
+                          type="url" name="website_url" required
+                          value={formData.website_url} onChange={handleFormChange}
                           className="w-full px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#005A9E] outline-none transition-all"
                           placeholder="e.g. https://wysele.com"
                         />
                       </div>
 
-                      {/* Field 5: Responsible Person */}
+                      {/* Field 5: Company Representative */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <User size={12} /> Responsible Person *
+                          <User size={12} /> COMPANY REPRESENTATIVE *
                         </label>
                         <input 
-                          type="text" name="responsible_person" required
-                          value={formData.responsible_person} onChange={handleFormChange}
+                          type="text" name="company_representative" required
+                          value={formData.company_representative} onChange={handleFormChange}
                           className="w-full px-4 py-2.5 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#005A9E] outline-none transition-all"
                           placeholder="Contact person name"
                         />
@@ -495,7 +469,7 @@ const CompanyOnboard = () => {
                       {/* Field 6: Documents */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <FileText size={12} /> Documents Link (Optional)
+                          <FileText size={12} /> DOCUMENTS (OPTIONAL)
                         </label>
                         <input 
                           type="url" name="documents"
@@ -508,7 +482,7 @@ const CompanyOnboard = () => {
                       {/* Field 7: Address */}
                       <div className="space-y-1.5 md:col-span-2">
                         <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest flex items-center gap-2">
-                          <MapPin size={12} /> Address *
+                          <MapPin size={12} /> ADDRESS *
                         </label>
                         <textarea 
                           name="address" required rows={2}
@@ -520,7 +494,7 @@ const CompanyOnboard = () => {
 
                       {/* Field 8: Description */}
                       <div className="space-y-1.5 md:col-span-2">
-                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Description *</label>
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">DESCRIPTION *</label>
                         <textarea 
                           name="description" required rows={3}
                           value={formData.description} onChange={handleFormChange}

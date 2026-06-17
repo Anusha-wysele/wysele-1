@@ -185,10 +185,9 @@ const EditEmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
                     className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-lg text-sm font-semibold focus:bg-white focus:border-[#800000] outline-none transition-all capitalize"
                   >
                     <option value="">Select Company</option>
-                    {companiesList.filter(c => c.is_active).map(company => (
+                    {companiesList.filter(c => c.is_active || c.id === 'gracevirtue').map(company => (
                       <option key={company.id} value={company.id}>{company.name}</option>
-                    ))}
-                  </select>
+                    ))}                  </select>
                 </div>
 
                 {/* Field 6: System Role */}

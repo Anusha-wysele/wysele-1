@@ -191,7 +191,7 @@ export default function Dashboard() {
   const statCards = [
     { label: 'Total Jobs Posted', value: data.stats.jobs, icon: Briefcase, color: 'text-rose-500', bg: 'bg-rose-50', trend: '+12%', borderStyle: 'border-l-4 border-rose-500' },
     { label: 'Blog Posts', value: data.stats.blogs, icon: FileText, color: 'text-purple-500', bg: 'bg-purple-50', trend: '+5%', borderStyle: 'border-l-4 border-purple-500' },
-    hasConsultations && { label: 'Consultations', value: data.stats.consultations, icon: MessageSquare, color: 'text-blue-500', bg: 'bg-blue-50', trend: '+24%', borderStyle: 'border-l-4 border-blue-500' },
+    hasConsultations && { label: 'Consultations', value: data.stats.consultations, icon: MessageSquare, color: 'text-[#005A9E]', bg: 'bg-blue-50', trend: '+24%', borderStyle: 'border-l-4 border-[#005A9E]' },
     { label: 'Contact Inquiries', value: data.stats.contacts, icon: Mail, color: 'text-orange-500', bg: 'bg-orange-50', trend: '+8%', borderStyle: 'border-l-4 border-orange-500' },
   ].filter(Boolean);
 
@@ -219,7 +219,7 @@ export default function Dashboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className={`bg-white rounded-md p-4 border border-gray-200 relative group overflow-hidden ${stat.borderStyle}`}
+              className={`bg-white rounded-md p-6 border border-gray-200 relative group overflow-hidden ${stat.borderStyle}`}
             >
               <div className="flex justify-between items-start mb-3">
                 <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${stat.bg} ${stat.color} transition-transform duration-500 group-hover:scale-110`}>
@@ -245,7 +245,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           
           {/* Recent Job Postings */}
-          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-5 space-y-4 flex flex-col h-auto">
             {/* Header inside card */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -315,7 +315,7 @@ export default function Dashboard() {
           </div>
 
           {/* Latest Blogs */}
-          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-5 space-y-4 flex flex-col h-auto">
             {/* Header inside card */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -391,7 +391,7 @@ export default function Dashboard() {
         <div className={`grid grid-cols-1 ${!hasConsultations ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} gap-4`}>
           
           {hasConsultations && (
-            <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
+            <div className="bg-white rounded-md border border-gray-200 shadow-sm p-5 space-y-4 flex flex-col h-auto">
               {/* Header inside card */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -434,7 +434,7 @@ export default function Dashboard() {
             </div>
           )}
 
-          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-2.5 space-y-2.5 flex flex-col h-auto">
+          <div className="bg-white rounded-md border border-gray-200 shadow-sm p-5 space-y-4 flex flex-col h-auto">
             {/* Header inside card */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">

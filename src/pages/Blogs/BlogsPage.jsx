@@ -10,6 +10,11 @@ import { staticBlogPosts } from "../../components/layout/section/BlogsBanner";
 import Footer from "../../components/layout/section/Footer";
 import blogService from "../../services/blogService";
 
+const stripHtml = (html) => {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '');
+};
+
 const categories = ["All", "Organisation", "Innovation", "Technology", "Culture", "AI"];
 
 const BlogsPage = () => {
@@ -56,7 +61,7 @@ const BlogsPage = () => {
                 year: blog.year || new Date(blog.createdAt || Date.now()).getFullYear().toString(),
                 img: blog.image_url || blog.img || blogsDefaultImg,
                 tags: cleanCategory ? [cleanCategory] : (blog.tags || ["Insights"]),
-                excerpt: blog.excerpt || blog.content?.substring(0, 120) + "..." || "No description available."
+                excerpt: blog.excerpt || (stripHtml(blog.content || '').substring(0, 120) + "...") || "No description available."
               };
             })
             .filter(blog => blog.company_name.toLowerCase() === siteCompany);
